@@ -89,6 +89,8 @@ npm install npm@latest -g
    npm run dev
    ```
 
+### Roles & permissions
+
 To demonstrate role-based authentication, only users with the admin role (not the regular user role) can sign in. If you want to allow regular users to access the dashboard, you’ll need to make the following adjustments:
 
 - In `app/routes/_dashboard.tsx` and `app/routes/auth.tsx`, check only for an active session instead of enforcing the admin role.
