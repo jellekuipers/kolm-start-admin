@@ -3,11 +3,11 @@ import { useState } from "react";
 import { useForm } from "@tanstack/react-form";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
-import { Label } from "radix-ui";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
 import { FormFieldInfo } from "~/components/form/form-field-info";
+import { FormFieldLabel } from "~/components/form/form-field-label";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
@@ -110,11 +110,7 @@ export function InviteMemberForm({
           children={(field) => {
             return (
               <Flex direction="column" gap="1">
-                <Label.Root asChild htmlFor="email">
-                  <Text as="label" size="2" weight="medium">
-                    Email
-                  </Text>
-                </Label.Root>
+                <FormFieldLabel htmlFor="email" text="Email" />
                 <TextField.Root
                   defaultValue={field.state.value}
                   onBlur={field.handleBlur}
@@ -131,11 +127,7 @@ export function InviteMemberForm({
           children={({ handleChange, name, state }) => {
             return (
               <Flex direction="column" gap="1">
-                <Label.Root asChild htmlFor="role">
-                  <Text as="label" size="2" weight="medium">
-                    Role
-                  </Text>
-                </Label.Root>
+                <FormFieldLabel htmlFor="role" text="Role" />
                 <Select.Root
                   defaultValue={state.value}
                   name={name}
@@ -162,11 +154,7 @@ export function InviteMemberForm({
           children={({ handleChange, name, state }) => {
             return (
               <Flex direction="column" gap="1">
-                <Label.Root asChild htmlFor="teamId">
-                  <Text as="label" size="2" weight="medium">
-                    Add to team
-                  </Text>
-                </Label.Root>
+                <FormFieldLabel htmlFor="teamId" text="Add to team" />
                 <Select.Root
                   defaultValue={state.value}
                   name={name}

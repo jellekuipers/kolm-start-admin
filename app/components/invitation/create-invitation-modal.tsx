@@ -7,7 +7,7 @@ import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
 import { FormFieldInfo } from "~/components/form/form-field-info";
-import { FormLabel } from "~/components/form/form-label";
+import { FormFieldLabel } from "~/components/form/form-field-label";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
@@ -132,7 +132,7 @@ export function CreateInvitationModal() {
               children={(field) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <FormLabel htmlFor="email" text="Email" />
+                    <FormFieldLabel htmlFor="email" text="Email" />
                     <TextField.Root
                       defaultValue={field.state.value}
                       onBlur={field.handleBlur}
@@ -151,7 +151,7 @@ export function CreateInvitationModal() {
               children={({ handleChange, name, state }) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <FormLabel htmlFor="organizationId" text="Organization" />
+                    <FormFieldLabel htmlFor="organizationId" text="Organization" />
                     <Select.Root
                       defaultValue={state.value}
                       name={name}
@@ -178,7 +178,7 @@ export function CreateInvitationModal() {
               children={({ handleChange, name, state }) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <FormLabel htmlFor="role" text="Role" />
+                    <FormFieldLabel htmlFor="role" text="Role" />
                     <Select.Root
                       defaultValue={state.value}
                       name={name}
@@ -205,7 +205,7 @@ export function CreateInvitationModal() {
               children={({ handleChange, name, state }) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <FormLabel htmlFor="teamId" text="Add to team" />
+                    <FormFieldLabel htmlFor="teamId" text="Add to team" />
                     <Select.Root
                       defaultValue={state.value}
                       disabled={!teams?.length || teamsQuery.isPending}

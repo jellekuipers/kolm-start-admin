@@ -3,11 +3,11 @@ import { useState } from "react";
 import { useForm } from "@tanstack/react-form";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
-import { Label } from "radix-ui";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
 import { FormFieldInfo } from "~/components/form/form-field-info";
+import { FormFieldLabel } from "~/components/form/form-field-label";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
@@ -117,11 +117,7 @@ export function CreateUserModal() {
               children={(field) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <Label.Root asChild htmlFor="email">
-                      <Text as="label" size="2" weight="medium">
-                        Email
-                      </Text>
-                    </Label.Root>
+                    <FormFieldLabel htmlFor="email" text="Email" />
                     <TextField.Root
                       defaultValue={field.state.value}
                       onBlur={field.handleBlur}
@@ -140,11 +136,7 @@ export function CreateUserModal() {
               children={(field) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <Label.Root asChild htmlFor="name">
-                      <Text as="label" size="2" weight="medium">
-                        Name
-                      </Text>
-                    </Label.Root>
+                    <FormFieldLabel htmlFor="name" text="Name" />
                     <TextField.Root
                       defaultValue={field.state.value}
                       onBlur={field.handleBlur}
@@ -168,11 +160,10 @@ export function CreateUserModal() {
               children={({ handleChange, name, state }) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <Label.Root asChild htmlFor="organizationId">
-                      <Text as="label" size="2" weight="medium">
-                        Add to organization
-                      </Text>
-                    </Label.Root>
+                    <FormFieldLabel
+                      htmlFor="organizationId"
+                      text="Add to organization"
+                    />
                     <Select.Root
                       defaultValue={state.value}
                       name={name}
@@ -199,11 +190,7 @@ export function CreateUserModal() {
               children={({ handleChange, name, state }) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <Label.Root asChild htmlFor="memberRole">
-                      <Text as="label" size="2" weight="medium">
-                        Role
-                      </Text>
-                    </Label.Root>
+                    <FormFieldLabel htmlFor="role" text="memberRole" />
                     <Select.Root
                       defaultValue={state.value}
                       name={name}

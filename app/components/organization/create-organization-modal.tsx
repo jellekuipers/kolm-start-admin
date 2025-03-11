@@ -3,15 +3,14 @@ import { useState } from "react";
 import { useForm } from "@tanstack/react-form";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
-import { Label } from "radix-ui";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
 import { FormFieldInfo } from "~/components/form/form-field-info";
+import { FormFieldLabel } from "~/components/form/form-field-label";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
 import { Flex } from "~/components/ui/flex";
-import { Text } from "~/components/ui/text";
 import { TextField } from "~/components/ui/text-field";
 import { createOrganization } from "~/lib/organization";
 
@@ -88,11 +87,7 @@ export function CreateOrganizationModal() {
               children={(field) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <Label.Root asChild htmlFor="name">
-                      <Text as="label" size="2" weight="medium">
-                        Name
-                      </Text>
-                    </Label.Root>
+                    <FormFieldLabel htmlFor="name" text="Name" />
                     <TextField.Root
                       defaultValue={field.state.value}
                       onBlur={field.handleBlur}
@@ -111,11 +106,7 @@ export function CreateOrganizationModal() {
               children={(field) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <Label.Root asChild htmlFor="slug">
-                      <Text as="label" size="2" weight="medium">
-                        Slug
-                      </Text>
-                    </Label.Root>
+                    <FormFieldLabel htmlFor="slug" text="Slug" />
                     <TextField.Root
                       defaultValue={field.state.value}
                       onBlur={field.handleBlur}
