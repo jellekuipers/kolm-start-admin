@@ -1,21 +1,19 @@
 import { useMemo } from "react";
-import {
-  Avatar,
-  Code,
-  Container,
-  Flex,
-  Heading,
-  Separator,
-  Text,
-} from "@radix-ui/themes";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { ColumnDef } from "@tanstack/react-table";
 
+import { CopyValue } from "~/components/misc/copy-value";
 import { UpdateProfileModal } from "~/components/profile/update-profile-modal";
 import { DataTableSimple } from "~/components/table/data-table-simple";
-import { CopyValue } from "~/components/ui/copy-value";
+import { Avatar } from "~/components/ui/avatar";
+import { Code } from "~/components/ui/code";
+import { Container } from "~/components/ui/container";
+import { Flex } from "~/components/ui/flex";
+import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
+import { Separator } from "~/components/ui/separator";
+import { Text } from "~/components/ui/text";
 import { SessionUserActiveOrganizationBadge } from "~/components/user/session-user-active-organization-badge";
 import { SessionUserOrganizationActions } from "~/components/user/session-user-organization-actions";
 import { membersQueryOptions } from "~/lib/member";

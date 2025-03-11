@@ -1,8 +1,11 @@
-import { Container, Flex, Heading, Separator } from "@radix-ui/themes";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { InvitationCard } from "~/components/invitation/invitation-card";
+import { Container } from "~/components/ui/container";
+import { Flex } from "~/components/ui/flex";
+import { Heading } from "~/components/ui/heading";
+import { Separator } from "~/components/ui/separator";
 import { invitationQueryOptions } from "~/lib/invitation";
 
 export const Route = createFileRoute("/_dashboard/invitations/$invitationId/")({

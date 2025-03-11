@@ -7,6 +7,11 @@ import {
 } from "@tanstack/react-router";
 
 import { Logo } from "~/components/logo";
+import { Box } from "~/components/ui/box";
+import { Button } from "~/components/ui/button";
+import { Code } from "~/components/ui/code";
+import { Flex } from "~/components/ui/flex";
+import { Separator } from "~/components/ui/separator";
 import { SessionUserDropdown } from "~/components/user/session-user-dropdown";
 
 export const Route = createFileRoute("/_dashboard")({

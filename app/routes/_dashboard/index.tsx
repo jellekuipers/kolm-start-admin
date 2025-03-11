@@ -1,8 +1,12 @@
-import { Container, Flex, Grid, Heading, Separator } from "@radix-ui/themes";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { StatCard } from "~/components/ui/stat-card";
+import { StatCard } from "~/components/stats/stat-card";
+import { Container } from "~/components/ui/container";
+import { Flex } from "~/components/ui/flex";
+import { Grid } from "~/components/ui/grid";
+import { Heading } from "~/components/ui/heading";
+import { Separator } from "~/components/ui/separator";
 import { useTRPC } from "~/trpc/react";
 
 export const Route = createFileRoute("/_dashboard/")({

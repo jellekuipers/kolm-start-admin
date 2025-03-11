@@ -1,5 +1,6 @@
 import { InfoCircledIcon } from "@radix-ui/react-icons";
-import { Callout } from "@radix-ui/themes";
+
+import { Callout } from "~/components/ui/callout";
 
 export interface FormErrorProps {
   error: Error;

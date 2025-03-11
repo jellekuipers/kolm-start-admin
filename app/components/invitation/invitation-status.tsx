@@ -1,4 +1,4 @@
-import { Badge } from "@radix-ui/themes";
+import { Badge } from "~/components/ui/badge";
 
 interface InvitationStatusProps {
   status: "pending" | "accepted" | "rejected" | "canceled";

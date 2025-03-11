@@ -4,11 +4,12 @@ import {
   DotsVerticalIcon,
   PaperPlaneIcon,
 } from "@radix-ui/react-icons";
-import { DropdownMenu, IconButton } from "@radix-ui/themes";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 
 import { InvitationModal } from "~/components/invitation/invitation-modal";
+import { DropdownMenu } from "~/components/ui/dropdown-menu";
+import { IconButton } from "~/components/ui/icon-button";
 import { cancelInvitation } from "~/lib/invitation";
 import { Invitation } from "~/types";
 

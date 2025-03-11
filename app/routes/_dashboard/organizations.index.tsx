@@ -1,22 +1,20 @@
 import { useMemo } from "react";
-import {
-  Avatar,
-  Badge,
-  Code,
-  Container,
-  Flex,
-  Heading,
-  Separator,
-} from "@radix-ui/themes";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { ColumnDef } from "@tanstack/react-table";
 
+import { CopyValue } from "~/components/misc/copy-value";
 import { CreateOrganizationModal } from "~/components/organization/create-organization-modal";
 import { OrganizationActions } from "~/components/organization/organization-actions";
 import { DataTable } from "~/components/table/data-table";
-import { CopyValue } from "~/components/ui/copy-value";
+import { Avatar } from "~/components/ui/avatar";
+import { Badge } from "~/components/ui/badge";
+import { Code } from "~/components/ui/code";
+import { Container } from "~/components/ui/container";
+import { Flex } from "~/components/ui/flex";
+import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
+import { Separator } from "~/components/ui/separator";
 import { organizationsQueryOptions } from "~/lib/organization";
 import { AuthOrganization, ORMOrganization } from "~/types";
 
