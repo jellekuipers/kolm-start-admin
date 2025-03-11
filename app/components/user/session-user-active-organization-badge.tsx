@@ -1,5 +1,4 @@
-import { Badge } from "@radix-ui/themes";
-
+import { Badge } from "~/components/ui/badge";
 import { authClient } from "~/lib/auth-client";
 
 interface SessionUserActiveOrganizationBadgeProps {

@@ -1,11 +1,13 @@
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
-import { Avatar, Badge, Heading } from "@radix-ui/themes";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
 
+import { Avatar } from "~/components/ui/avatar";
+import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Container } from "~/components/ui/container";
 import { Flex } from "~/components/ui/flex";
+import { Heading } from "~/components/ui/heading";
 import { UserActions } from "~/components/user/user-actions";
 import { UserTabNav } from "~/components/user/user-tab-nav";
 import { userQueryOptions } from "~/lib/user";

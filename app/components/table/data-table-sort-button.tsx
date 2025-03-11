@@ -3,8 +3,9 @@ import {
   CaretSortIcon,
   CaretUpIcon,
 } from "@radix-ui/react-icons";
-import { IconButton } from "@radix-ui/themes";
 import { SortDirection } from "@tanstack/react-table";
+
+import { IconButton } from "~/components/ui/icon-button";
 
 interface DataTableSortButtonProps {
   isSorted: SortDirection | false;

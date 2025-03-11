@@ -1,6 +1,5 @@
 /* eslint-disable react/no-children-prop */
 import { useState } from "react";
-import { Button, Dialog, Flex, Text, TextField } from "@radix-ui/themes";
 import { useForm } from "@tanstack/react-form";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
@@ -9,6 +8,11 @@ import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
 import { FormFieldInfo } from "~/components/form/form-field-info";
+import { Button } from "~/components/ui/button";
+import { Dialog } from "~/components/ui/dialog";
+import { Flex } from "~/components/ui/flex";
+import { Text } from "~/components/ui/text";
+import { TextField } from "~/components/ui/text-field";
 import { createOrganization } from "~/lib/organization";
 
 const createOrganizationSchema = z.object({

@@ -1,5 +1,8 @@
 import { CopyIcon } from "@radix-ui/react-icons";
-import { Code, Flex, IconButton } from "@radix-ui/themes";
+
+import { Code } from "~/components/ui/code";
+import { Flex } from "~/components/ui/flex";
+import { IconButton } from "~/components/ui/icon-button";
 
 interface CopyValueProps {
   value: string;

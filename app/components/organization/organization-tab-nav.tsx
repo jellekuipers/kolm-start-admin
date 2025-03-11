@@ -1,5 +1,6 @@
-import { TabNav } from "@radix-ui/themes";
 import { Link, useMatchRoute } from "@tanstack/react-router";
+
+import { TabNav } from "~/components/ui/tab-nav";
 
 interface OrganizationTabNavProps {
   organizationId: string;

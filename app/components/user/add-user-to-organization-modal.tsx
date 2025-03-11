@@ -1,7 +1,6 @@
 /* eslint-disable react/no-children-prop */
 import { useState } from "react";
 import { PlusIcon } from "@radix-ui/react-icons";
-import { Button, Dialog, Flex, Select, Text } from "@radix-ui/themes";
 import { useForm } from "@tanstack/react-form";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
@@ -10,6 +9,11 @@ import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
 import { FormFieldInfo } from "~/components/form/form-field-info";
+import { Button } from "~/components/ui/button";
+import { Dialog } from "~/components/ui/dialog";
+import { Flex } from "~/components/ui/flex";
+import { Select } from "~/components/ui/select";
+import { Text } from "~/components/ui/text";
 import { addMember } from "~/lib/member";
 import { organizationsQueryOptions } from "~/lib/organization";
 

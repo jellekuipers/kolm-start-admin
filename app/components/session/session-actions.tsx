@@ -1,8 +1,9 @@
 import { DotsVerticalIcon, TrashIcon } from "@radix-ui/react-icons";
-import { DropdownMenu, IconButton } from "@radix-ui/themes";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 
+import { DropdownMenu } from "~/components/ui/dropdown-menu";
+import { IconButton } from "~/components/ui/icon-button";
 import { revokeUserSession } from "~/lib/user";
 
 interface SessionActionsProps {

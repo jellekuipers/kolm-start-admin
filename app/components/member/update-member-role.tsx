@@ -1,8 +1,8 @@
-import { Select } from "@radix-ui/themes";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 
 import { MemberRole } from "~/components/member/member-role";
+import { Select } from "~/components/ui/select";
 import { updateMemberRole } from "~/lib/member";
 import { Member, OrganizationMember } from "~/types";
 
