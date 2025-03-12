@@ -1,4 +1,6 @@
-import { Card, Flex, Text } from "@radix-ui/themes";
+import { Card } from "~/components/ui/card";
+import { Flex } from "~/components/ui/flex";
+import { Text } from "~/components/ui/text";
 
 interface StatCardProps {
   count: number;
