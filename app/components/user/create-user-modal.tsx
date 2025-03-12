@@ -6,16 +6,16 @@ import { useRouter } from "@tanstack/react-router";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
-import { FormFieldInfo } from "~/components/form/form-field-info";
-import { FormFieldLabel } from "~/components/form/form-field-label";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
+import { Label } from "~/components/ui/field";
 import { Flex } from "~/components/ui/flex";
 import { Select } from "~/components/ui/select";
 import { Separator } from "~/components/ui/separator";
 import { Text } from "~/components/ui/text";
 import { TextField } from "~/components/ui/text-field";
+import { getFieldErrorMessage } from "~/lib/error";
 import { organizationsQueryOptions } from "~/lib/organization";
 import { createUser } from "~/lib/user";
 
@@ -116,18 +116,14 @@ export function CreateUserModal() {
               name="email"
               children={(field) => {
                 return (
-                  <Flex direction="column" gap="1">
-                    <FormFieldLabel htmlFor="email" text="Email" />
-                    <TextField.Root
-                      defaultValue={field.state.value}
-                      onBlur={field.handleBlur}
-                      name={field.name}
-                      onChange={(event) =>
-                        field.handleChange(event.target.value)
-                      }
-                    />
-                    <FormFieldInfo field={field} />
-                  </Flex>
+                  <TextField
+                    defaultValue={field.state.value}
+                    errorMessage={getFieldErrorMessage({ field })}
+                    label="Email"
+                    name={field.name}
+                    onBlur={field.handleBlur}
+                    onChange={(value) => field.handleChange(value)}
+                  />
                 );
               }}
             />
@@ -135,18 +131,14 @@ export function CreateUserModal() {
               name="name"
               children={(field) => {
                 return (
-                  <Flex direction="column" gap="1">
-                    <FormFieldLabel htmlFor="name" text="Name" />
-                    <TextField.Root
-                      defaultValue={field.state.value}
-                      onBlur={field.handleBlur}
-                      name={field.name}
-                      onChange={(event) =>
-                        field.handleChange(event.target.value)
-                      }
-                    />
-                    <FormFieldInfo field={field} />
-                  </Flex>
+                  <TextField
+                    defaultValue={field.state.value}
+                    errorMessage={getFieldErrorMessage({ field })}
+                    label="Name"
+                    name={field.name}
+                    onBlur={field.handleBlur}
+                    onChange={(value) => field.handleChange(value)}
+                  />
                 );
               }}
             />
@@ -160,10 +152,7 @@ export function CreateUserModal() {
               children={({ handleChange, name, state }) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <FormFieldLabel
-                      htmlFor="organizationId"
-                      text="Add to organization"
-                    />
+                    <Label htmlFor="organizationId">Add to organization</Label>
                     <Select.Root
                       defaultValue={state.value}
                       name={name}
@@ -190,7 +179,7 @@ export function CreateUserModal() {
               children={({ handleChange, name, state }) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <FormFieldLabel htmlFor="role" text="memberRole" />
+                    <Label htmlFor="role">Role</Label>
                     <Select.Root
                       defaultValue={state.value}
                       name={name}
@@ -213,9 +202,7 @@ export function CreateUserModal() {
               children={([canSubmit, isSubmitting]) => (
                 <Flex gap="3" justify="end">
                   <Dialog.Close>
-                    <Button>
-                      Cancel
-                    </Button>
+                    <Button>Cancel</Button>
                   </Dialog.Close>
                   <Button isDisabled={!canSubmit} isPending={isSubmitting}>
                     Save

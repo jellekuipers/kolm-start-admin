@@ -7,10 +7,9 @@ import { useRouter } from "@tanstack/react-router";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
-import { FormFieldInfo } from "~/components/form/form-field-info";
-import { FormFieldLabel } from "~/components/form/form-field-label";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
+import { Label } from "~/components/ui/field";
 import { Flex } from "~/components/ui/flex";
 import { Select } from "~/components/ui/select";
 import { addMember } from "~/lib/member";
@@ -110,7 +109,7 @@ export function AddUserToOrganizationModal({
               children={(field) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <FormFieldLabel htmlFor="organizationId" text="Organization" />
+                    <Label htmlFor="organizationId">Organization</Label>
                     <Select.Root
                       defaultValue={field.state.value}
                       name={field.name}
@@ -128,7 +127,6 @@ export function AddUserToOrganizationModal({
                         ))}
                       </Select.Content>
                     </Select.Root>
-                    <FormFieldInfo field={field} />
                   </Flex>
                 );
               }}
@@ -138,7 +136,7 @@ export function AddUserToOrganizationModal({
               children={(field) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <FormFieldLabel htmlFor="memberRole" text="Member role" />
+                    <Label htmlFor="memberRole">Member role</Label>
                     <Select.Root
                       defaultValue={field.state.value}
                       name={field.name}
@@ -151,7 +149,6 @@ export function AddUserToOrganizationModal({
                         <Select.Item value="owner">Owner</Select.Item>
                       </Select.Content>
                     </Select.Root>
-                    <FormFieldInfo field={field} />
                   </Flex>
                 );
               }}
@@ -162,9 +159,7 @@ export function AddUserToOrganizationModal({
               children={([canSubmit, isSubmitting]) => (
                 <Flex gap="3" justify="end">
                   <Dialog.Close>
-                    <Button>
-                      Cancel
-                    </Button>
+                    <Button>Cancel</Button>
                   </Dialog.Close>
                   <Button isDisabled={!canSubmit} isPending={isSubmitting}>
                     Save

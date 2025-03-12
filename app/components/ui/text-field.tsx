@@ -1,18 +1,30 @@
-import type { ComponentProps } from "react";
-import { TextField as RadixTextField } from "@radix-ui/themes";
+import {
+  TextField as RACTextField,
+  TextFieldProps as RACTextFieldProps,
+} from "react-aria-components";
 
-export type TextFieldRootProps = ComponentProps<typeof RadixTextField.Root>;
-export type TextFieldSlotProps = ComponentProps<typeof RadixTextField.Slot>;
+import { Description, FieldError, Input, Label } from "~/components/ui/field";
 
-export function Root(props: TextFieldRootProps) {
-  return <RadixTextField.Root {...props} />;
+export interface TextFieldProps extends RACTextFieldProps {
+  description?: string;
+  errorMessage?: string | null;
+  label?: string;
 }
 
-export function Slot(props: TextFieldSlotProps) {
-  return <RadixTextField.Slot {...props} />;
+export function TextField({
+  description,
+  errorMessage,
+  label,
+  ...props
+}: TextFieldProps) {
+  return (
+    <RACTextField className="flex flex-col gap-1" {...props}>
+      <Label>{label}</Label>
+      <Input />
+      {description && (
+        <Description slot="description">{description}</Description>
+      )}
+      <FieldError>{errorMessage}</FieldError>
+    </RACTextField>
+  );
 }
-
-export const TextField = {
-  Root,
-  Slot,
-};

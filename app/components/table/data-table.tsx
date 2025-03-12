@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ValueNoneIcon } from "@radix-ui/react-icons";
-
 import { RankingInfo, rankItem } from "@tanstack/match-sorter-utils";
 import {
   FilterFn,
@@ -16,13 +15,13 @@ import {
 } from "@tanstack/react-table";
 
 import { DataTableSearch } from "~/components/table/data-table-search";
+import { Callout } from "~/components/ui/callout";
+import { Flex } from "~/components/ui/flex";
+import { Table } from "~/components/ui/table";
 
 import { DataTableColumnFilter } from "./data-table-column-filter";
 import { DataTablePagination } from "./data-table-pagination";
 import { DataTableSortButton } from "./data-table-sort-button";
-import { Callout } from "~/components/ui/callout";
-import { Flex } from "~/components/ui/flex";
-import { Table } from "~/components/ui/table";
 
 declare module "@tanstack/react-table" {
   interface FilterFns {
@@ -90,10 +89,7 @@ export function DataTable<TData, TValue>({
   return (
     <Flex direction="column" gap="4">
       <Flex gap="4" justify="between" wrap="wrap">
-        <DataTableSearch
-          onChange={(event) => setGlobalFilter(String(event.target.value))}
-          value={globalFilter}
-        />
+        <DataTableSearch onChange={setGlobalFilter} value={globalFilter} />
         {defaultColumnVisibility ? (
           <DataTableColumnFilter table={table} />
         ) : null}

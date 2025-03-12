@@ -6,7 +6,6 @@ import { useRouter } from "@tanstack/react-router";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
-import { FormFieldLabel } from "~/components/form/form-field-label";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
 import { Flex } from "~/components/ui/flex";
@@ -100,15 +99,15 @@ export function UpdateOrganizationModal({
           <Flex direction="column" gap="4">
             <Field
               name="name"
-              children={({ handleBlur, handleChange, name, state }) => {
+              children={(field) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <FormFieldLabel htmlFor="name" text="Name" />
-                    <TextField.Root
-                      defaultValue={state.value}
-                      onBlur={handleBlur}
-                      name={name}
-                      onChange={(event) => handleChange(event.target.value)}
+                    <TextField
+                      defaultValue={field.state.value}
+                      label="Name"
+                      name={field.name}
+                      onBlur={field.handleBlur}
+                      onChange={(value) => field.handleChange(value)}
                     />
                   </Flex>
                 );
@@ -116,15 +115,15 @@ export function UpdateOrganizationModal({
             />
             <Field
               name="slug"
-              children={({ handleBlur, handleChange, name, state }) => {
+              children={(field) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <FormFieldLabel htmlFor="slug" text="Slug" />
-                    <TextField.Root
-                      defaultValue={state.value}
-                      onBlur={handleBlur}
-                      name={name}
-                      onChange={(event) => handleChange(event.target.value)}
+                    <TextField
+                      defaultValue={field.state.value}
+                      label="Slug"
+                      name={field.name}
+                      onBlur={field.handleBlur}
+                      onChange={(value) => field.handleChange(value)}
                     />
                   </Flex>
                 );
@@ -136,9 +135,7 @@ export function UpdateOrganizationModal({
               children={([canSubmit, isSubmitting]) => (
                 <Flex gap="3" justify="end">
                   <Dialog.Close>
-                    <Button>
-                      Cancel
-                    </Button>
+                    <Button>Cancel</Button>
                   </Dialog.Close>
                   <Button isDisabled={!canSubmit} isPending={isSubmitting}>
                     Save

@@ -5,16 +5,16 @@ import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
-import { FormFieldInfo } from "~/components/form/form-field-info";
-import { FormFieldLabel } from "~/components/form/form-field-label";
 import { Logo } from "~/components/logo";
 import { Button } from "~/components/ui/button";
 import { Card } from "~/components/ui/card";
+import { Label } from "~/components/ui/field";
 import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
 import { TextField } from "~/components/ui/text-field";
 import { signIn } from "~/lib/auth-client";
+import { getFieldErrorMessage } from "~/lib/error";
 
 const signInSchema = z.object({
   email: z.string().email(),
@@ -82,18 +82,15 @@ function RouteComponent() {
                 name="email"
                 children={(field) => {
                   return (
-                    <Flex direction="column" gap="1">
-                      <FormFieldLabel htmlFor="email" text="Email" />
-                      <TextField.Root
-                        defaultValue={field.state.value}
-                        onBlur={field.handleBlur}
-                        name={field.name}
-                        onChange={(event) =>
-                          field.handleChange(event.target.value)
-                        }
-                      />
-                      <FormFieldInfo field={field} />
-                    </Flex>
+                    <TextField
+                      defaultValue={field.state.value}
+                      errorMessage={getFieldErrorMessage({ field })}
+                      label="Email"
+                      name={field.name}
+                      onBlur={field.handleBlur}
+                      onChange={(value) => field.handleChange(value)}
+                      type="email"
+                    />
                   );
                 }}
               />
@@ -103,19 +100,18 @@ function RouteComponent() {
                   return (
                     <Flex direction="column" gap="1">
                       <Flex align="baseline" justify="between" mb="1">
-                        <FormFieldLabel htmlFor="password" text="password" />
+                        <Label htmlFor="password">Password</Label>
                         <Link to="/">Forgot password?</Link>
                       </Flex>
-                      <TextField.Root
+                      <TextField
                         defaultValue={field.state.value}
-                        onBlur={field.handleBlur}
+                        errorMessage={getFieldErrorMessage({ field })}
+                        label="Password"
                         name={field.name}
-                        onChange={(event) =>
-                          field.handleChange(event.target.value)
-                        }
+                        onBlur={field.handleBlur}
+                        onChange={(value) => field.handleChange(value)}
                         type="password"
                       />
-                      <FormFieldInfo field={field} />
                     </Flex>
                   );
                 }}

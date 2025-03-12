@@ -6,12 +6,11 @@ import { useRouter } from "@tanstack/react-router";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
-import { FormFieldInfo } from "~/components/form/form-field-info";
-import { FormFieldLabel } from "~/components/form/form-field-label";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
 import { Flex } from "~/components/ui/flex";
 import { TextField } from "~/components/ui/text-field";
+import { getFieldErrorMessage } from "~/lib/error";
 import { createOrganization } from "~/lib/organization";
 
 const createOrganizationSchema = z.object({
@@ -86,18 +85,14 @@ export function CreateOrganizationModal() {
               name="name"
               children={(field) => {
                 return (
-                  <Flex direction="column" gap="1">
-                    <FormFieldLabel htmlFor="name" text="Name" />
-                    <TextField.Root
-                      defaultValue={field.state.value}
-                      onBlur={field.handleBlur}
-                      name={field.name}
-                      onChange={(event) =>
-                        field.handleChange(event.target.value)
-                      }
-                    />
-                    <FormFieldInfo field={field} />
-                  </Flex>
+                  <TextField
+                    defaultValue={field.state.value}
+                    errorMessage={getFieldErrorMessage({ field })}
+                    label="Name"
+                    name={field.name}
+                    onBlur={field.handleBlur}
+                    onChange={(value) => field.handleChange(value)}
+                  />
                 );
               }}
             />
@@ -105,18 +100,14 @@ export function CreateOrganizationModal() {
               name="slug"
               children={(field) => {
                 return (
-                  <Flex direction="column" gap="1">
-                    <FormFieldLabel htmlFor="slug" text="Slug" />
-                    <TextField.Root
-                      defaultValue={field.state.value}
-                      onBlur={field.handleBlur}
-                      name={field.name}
-                      onChange={(event) =>
-                        field.handleChange(event.target.value)
-                      }
-                    />
-                    <FormFieldInfo field={field} />
-                  </Flex>
+                  <TextField
+                    defaultValue={field.state.value}
+                    errorMessage={getFieldErrorMessage({ field })}
+                    label="Slug"
+                    name={field.name}
+                    onBlur={field.handleBlur}
+                    onChange={(value) => field.handleChange(value)}
+                  />
                 );
               }}
             />
@@ -126,9 +117,7 @@ export function CreateOrganizationModal() {
               children={([canSubmit, isSubmitting]) => (
                 <Flex gap="3" justify="end">
                   <Dialog.Close>
-                    <Button>
-                      Cancel
-                    </Button>
+                    <Button>Cancel</Button>
                   </Dialog.Close>
                   <Button isDisabled={!canSubmit} isPending={isSubmitting}>
                     Save
