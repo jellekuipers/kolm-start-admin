@@ -1,8 +1,11 @@
-import type { ComponentProps } from "react";
-import { Badge as RadixBadge } from "@radix-ui/themes";
+interface BadgeProps {
+  children: React.ReactNode;
+}
 
-export type BadgeProps = ComponentProps<typeof RadixBadge>;
-
-export function Badge(props: BadgeProps) {
-  return <RadixBadge {...props} />;
+export function Badge({ children }: BadgeProps) {
+  return (
+    <div className="bg-gray-200 rounded px-2 py-1 text-sm inline-flex">
+      {children}
+    </div>
+  );
 }

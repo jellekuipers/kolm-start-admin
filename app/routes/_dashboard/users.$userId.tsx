@@ -42,10 +42,8 @@ function RouteComponent() {
               <Avatar fallback="@" size="4" src={user.image ?? undefined} />
               <Flex align="center" gap="2">
                 <Heading>{user.name ?? user.email}</Heading>
-                {session.user.id === user.id ? (
-                  <Badge color="violet">you</Badge>
-                ) : null}
-                {user.banned ? <Badge color="red">banned</Badge> : null}
+                {session.user.id === user.id ? <Badge>you</Badge> : null}
+                {user.banned ? <Badge>banned</Badge> : null}
               </Flex>
             </Flex>
             {session.user.id !== user.id ? (
