@@ -28,7 +28,7 @@ function RouteComponent() {
       <Flex direction="column" gap="6">
         <Flex direction="column" gap="4">
           <Heading>Dashboard</Heading>
-          <Separator size="4" />
+          <Separator />
         </Flex>
         <Grid columns={{ initial: "1", md: "4" }} gap="4">
           <StatCard count={users} title="Users" />

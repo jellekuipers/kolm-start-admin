@@ -157,7 +157,7 @@ function RouteComponent() {
             </Flex>
             <CreateUserModal />
           </Flex>
-          <Separator size="4" />
+          <Separator />
         </Flex>
         <DataTable
           columns={columns}

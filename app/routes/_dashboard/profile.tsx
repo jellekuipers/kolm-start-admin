@@ -178,7 +178,7 @@ function RouteComponent() {
             </Flex>
             <UpdateProfileModal user={user} />
           </Flex>
-          <Separator size="4" />
+          <Separator />
         </Flex>
         <Flex direction="column" gap="4">
           <Heading as="h2" size="3" weight="medium">

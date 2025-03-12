@@ -54,7 +54,7 @@ function LayoutComponent() {
         </Flex>
         <SessionUserDropdown />
       </Flex>
-      <Separator size="4" />
+      <Separator />
       <Flex align="center" gap="4" p="4" overflowX="auto">
         {routes.map((route) => (
           <Button

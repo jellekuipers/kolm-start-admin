@@ -150,7 +150,7 @@ export function CreateUserModal() {
                 );
               }}
             />
-            <Separator size="4" />
+            <Separator />
             <Flex align="center" gap="2">
               <Text weight="medium">Organization</Text>
               <Badge>optional</Badge>

@@ -90,7 +90,7 @@ export function InvitationCard({ invitation }: InvitationCardProps) {
           </DataList.Value>
         </DataList.Item>
       </DataList.Root>
-      <Separator size="4" />
+      <Separator />
       {error ? (
         <Callout.Root color="red">
           <Callout.Icon>

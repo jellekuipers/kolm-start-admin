@@ -102,7 +102,7 @@ function RouteComponent() {
             </Flex>
             <CreateOrganizationModal />
           </Flex>
-          <Separator size="4" />
+          <Separator />
         </Flex>
         <DataTable columns={columns} data={organizations} />
       </Flex>

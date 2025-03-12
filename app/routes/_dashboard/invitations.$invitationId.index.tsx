@@ -31,7 +31,7 @@ function RouteComponent() {
     <Container size="3">
       <Flex direction="column" gap="4">
         <Heading>Invitation</Heading>
-        <Separator size="4" />
+        <Separator />
         <InvitationCard invitation={invitation} />
       </Flex>
     </Container>

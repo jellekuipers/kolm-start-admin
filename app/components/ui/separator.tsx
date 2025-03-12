@@ -1,8 +1,8 @@
-import type { ComponentProps } from "react";
-import { Separator as RadixSeparator } from "@radix-ui/themes";
-
-export type SeparatorProps = ComponentProps<typeof RadixSeparator>;
+import {
+  Separator as RACSeparator,
+  SeparatorProps,
+} from "react-aria-components";
 
 export function Separator(props: SeparatorProps) {
-  return <RadixSeparator {...props} />;
+  return <RACSeparator {...props} className="border-gray-300" />;
 }

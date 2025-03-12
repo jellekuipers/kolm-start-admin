@@ -82,7 +82,7 @@ function RouteComponent() {
             </Flex>
             <CreateInvitationModal />
           </Flex>
-          <Separator size="4" />
+          <Separator />
         </Flex>
         <DataTable columns={columns} data={invitations} />
       </Flex>

@@ -195,7 +195,7 @@ export function CreateInvitationModal() {
                 );
               }}
             />
-            <Separator size="4" />
+            <Separator />
             <Flex align="center" gap="2">
               <Text weight="medium">Team</Text>
               <Badge>optional</Badge>
