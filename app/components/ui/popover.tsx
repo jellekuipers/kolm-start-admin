@@ -1,5 +1,5 @@
 import {
-  Dialog,
+  Dialog as RACDialog,
   Popover as RACPopover,
   PopoverProps as RACPopoverProps,
 } from "react-aria-components";
@@ -14,7 +14,7 @@ export function Popover({ children, ...props }: PopoverProps) {
       className="border border-gray-300 rounded bg-white shadow p-4 entering:animate-in entering:fade-in entering:placement-bottom:slide-in-from-top-1 entering:placement-top:slide-in-from-bottom-1 exiting:animate-out exiting:fade-out exiting:placement-bottom:slide-out-to-top-1 exiting:placement-top:slide-out-to-bottom-1"
       {...props}
     >
-      <Dialog>{children}</Dialog>
+      <RACDialog>{children}</RACDialog>
     </RACPopover>
   );
 }

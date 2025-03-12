@@ -4,7 +4,7 @@ interface BadgeProps {
 
 export function Badge({ children }: BadgeProps) {
   return (
-    <div className="bg-gray-200 rounded px-2 py-1 text-sm inline-flex">
+    <div className="bg-gray-200 rounded px-1.5 py-0.5 text-xs inline-flex">
       {children}
     </div>
   );
