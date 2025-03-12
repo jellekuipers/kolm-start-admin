@@ -1,7 +1,9 @@
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
-import { Button, Flex, Text } from "@radix-ui/themes";
 
+import { Button } from "~/components/ui/button";
+import { Flex } from "~/components/ui/flex";
 import { Link } from "~/components/ui/link";
+import { Text } from "~/components/ui/text";
 
 interface NotFoundProps {
   children?: React.ReactNode;

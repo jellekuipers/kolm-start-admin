@@ -1,6 +1,8 @@
 import { DotsVerticalIcon, PersonIcon } from "@radix-ui/react-icons";
-import { DropdownMenu, IconButton } from "@radix-ui/themes";
 import { useNavigate } from "@tanstack/react-router";
+
+import { DropdownMenu } from "~/components/ui/dropdown-menu";
+import { IconButton } from "~/components/ui/icon-button";
 
 interface SessionUserActionsProps {
   userId: string;

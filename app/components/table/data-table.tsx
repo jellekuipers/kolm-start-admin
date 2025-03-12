@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ValueNoneIcon } from "@radix-ui/react-icons";
-import { Callout, Flex, Table } from "@radix-ui/themes";
+
 import { RankingInfo, rankItem } from "@tanstack/match-sorter-utils";
 import {
   FilterFn,
@@ -20,6 +20,9 @@ import { DataTableSearch } from "~/components/table/data-table-search";
 import { DataTableColumnFilter } from "./data-table-column-filter";
 import { DataTablePagination } from "./data-table-pagination";
 import { DataTableSortButton } from "./data-table-sort-button";
+import { Callout } from "~/components/ui/callout";
+import { Flex } from "~/components/ui/flex";
+import { Table } from "~/components/ui/table";
 
 declare module "@tanstack/react-table" {
   interface FilterFns {

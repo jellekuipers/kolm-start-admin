@@ -1,17 +1,16 @@
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
-import {
-  Avatar,
-  Button,
-  Container,
-  Flex,
-  Heading,
-  Text,
-} from "@radix-ui/themes";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
+import { createFileRoute, Outlet } from "@tanstack/react-router";
 
 import { OrganizationActions } from "~/components/organization/organization-actions";
 import { OrganizationTabNav } from "~/components/organization/organization-tab-nav";
+import { Avatar } from "~/components/ui/avatar";
+import { Button } from "~/components/ui/button";
+import { Container } from "~/components/ui/container";
+import { Flex } from "~/components/ui/flex";
+import { Heading } from "~/components/ui/heading";
+import { Link } from "~/components/ui/link";
+import { Text } from "~/components/ui/text";
 import { organizationQueryOptions } from "~/lib/organization";
 
 export const Route = createFileRoute(

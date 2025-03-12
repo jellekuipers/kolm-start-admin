@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { PlusIcon } from "@radix-ui/react-icons";
-import { Box, Button, Dialog, Tabs } from "@radix-ui/themes";
 
 import { AddMemberForm } from "~/components/member/add-member-form";
 import { CreateMemberForm } from "~/components/member/create-member-form";
 import { InviteMemberForm } from "~/components/member/invite-member-form";
+import { Box } from "~/components/ui/box";
+import { Button } from "~/components/ui/button";
+import { Dialog } from "~/components/ui/dialog";
+import { Tabs } from "~/components/ui/tabs";
 
 interface AddMemberToOrganizationModalProps {
   organizationId: string;

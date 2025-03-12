@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { Badge, Container, Flex, Heading, Separator } from "@radix-ui/themes";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { ColumnDef } from "@tanstack/react-table";
@@ -8,6 +7,11 @@ import { CreateInvitationModal } from "~/components/invitation/create-invitation
 import { InvitationActions } from "~/components/invitation/invitation-actions";
 import { InvitationStatus } from "~/components/invitation/invitation-status";
 import { DataTable } from "~/components/table/data-table";
+import { Badge } from "~/components/ui/badge";
+import { Container } from "~/components/ui/container";
+import { Flex } from "~/components/ui/flex";
+import { Heading } from "~/components/ui/heading";
+import { Separator } from "~/components/ui/separator";
 import { invitationsQueryOptions } from "~/lib/invitation";
 import { Invitation } from "~/types";
 

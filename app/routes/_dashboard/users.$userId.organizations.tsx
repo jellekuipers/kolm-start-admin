@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { Avatar, Flex } from "@radix-ui/themes";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { ColumnDef } from "@tanstack/react-table";
@@ -7,6 +6,8 @@ import { ColumnDef } from "@tanstack/react-table";
 import { MemberActions } from "~/components/member/member-actions";
 import { UpdateMemberRole } from "~/components/member/update-member-role";
 import { DataTableSimple } from "~/components/table/data-table-simple";
+import { Avatar } from "~/components/ui/avatar";
+import { Flex } from "~/components/ui/flex";
 import { Link } from "~/components/ui/link";
 import { AddUserToOrganizationModal } from "~/components/user/add-user-to-organization-modal";
 import { membersQueryOptions } from "~/lib/member";

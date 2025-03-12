@@ -1,6 +1,5 @@
-import { Dialog } from "@radix-ui/themes";
-
 import { InvitationCard } from "~/components/invitation/invitation-card";
+import { Dialog } from "~/components/ui/dialog";
 import { Invitation } from "~/types";
 
 interface InvitationModalProps {

@@ -1,5 +1,6 @@
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
-import { TextField } from "@radix-ui/themes";
+
+import { TextField } from "~/components/ui/text-field";
 
 interface DataTableSearchProps {
   onChange: React.ChangeEventHandler<HTMLInputElement>;

@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
-import { Button, Callout, DataList, Flex, Separator } from "@radix-ui/themes";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
 import { InvitationStatus } from "~/components/invitation/invitation-status";
 import { MemberRole } from "~/components/member/member-role";
+import { Button } from "~/components/ui/button";
+import { Callout } from "~/components/ui/callout";
+import { DataList } from "~/components/ui/data-list";
+import { Flex } from "~/components/ui/flex";
+import { Separator } from "~/components/ui/separator";
 import { acceptInvitation, rejectInvitation } from "~/lib/invitation";
 import { Invitation } from "~/types";
 

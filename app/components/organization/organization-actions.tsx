@@ -6,11 +6,13 @@ import {
   Pencil1Icon,
   TrashIcon,
 } from "@radix-ui/react-icons";
-import { Button, DropdownMenu, IconButton } from "@radix-ui/themes";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
 import { UpdateOrganizationModal } from "~/components/organization/update-organization-modal";
+import { Button } from "~/components/ui/button";
+import { DropdownMenu } from "~/components/ui/dropdown-menu";
+import { IconButton } from "~/components/ui/icon-button";
 import { deleteOrganization } from "~/lib/organization";
 import { AuthOrganization, ORMOrganization } from "~/types";
 

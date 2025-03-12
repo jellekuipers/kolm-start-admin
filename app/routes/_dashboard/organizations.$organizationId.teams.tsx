@@ -1,13 +1,13 @@
 import { useMemo } from "react";
-import { Flex } from "@radix-ui/themes";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { ColumnDef } from "@tanstack/react-table";
 
+import { CopyValue } from "~/components/misc/copy-value";
 import { DataTable } from "~/components/table/data-table";
 import { CreateTeamModal } from "~/components/team/create-team-modal";
 import { TeamActions } from "~/components/team/team-actions";
-import { CopyValue } from "~/components/ui/copy-value";
+import { Flex } from "~/components/ui/flex";
 import { teamsQueryOptions } from "~/lib/team";
 import { Team } from "~/types";
 

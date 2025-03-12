@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ValueNoneIcon } from "@radix-ui/react-icons";
-import { Callout, Flex, Table } from "@radix-ui/themes";
 import {
   flexRender,
   getCoreRowModel,
@@ -9,6 +8,10 @@ import {
   useReactTable,
   type ColumnDef,
 } from "@tanstack/react-table";
+
+import { Callout } from "~/components/ui/callout";
+import { Flex } from "~/components/ui/flex";
+import { Table } from "~/components/ui/table";
 
 import { DataTableSortButton } from "./data-table-sort-button";
 

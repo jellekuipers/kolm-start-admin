@@ -1,4 +1,4 @@
-import { Badge } from "@radix-ui/themes";
+import { Badge } from "~/components/ui/badge";
 
 interface UserRoleProps {
   role?: string | null;

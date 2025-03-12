@@ -4,10 +4,11 @@ import {
   DotsVerticalIcon,
   DrawingPinIcon,
 } from "@radix-ui/react-icons";
-import { DropdownMenu, IconButton } from "@radix-ui/themes";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
+import { DropdownMenu } from "~/components/ui/dropdown-menu";
+import { IconButton } from "~/components/ui/icon-button";
 import { authClient, useSession } from "~/lib/auth-client";
 
 interface OrganizationActionsProps {

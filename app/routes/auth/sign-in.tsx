@@ -1,15 +1,19 @@
 /* eslint-disable react/no-children-prop */
 import { useState } from "react";
-import { Button, Card, Flex, Heading, Text, TextField } from "@radix-ui/themes";
 import { useForm } from "@tanstack/react-form";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
-import { Label } from "radix-ui";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
 import { FormFieldInfo } from "~/components/form/form-field-info";
+import { FormFieldLabel } from "~/components/form/form-field-label";
 import { Logo } from "~/components/logo";
+import { Button } from "~/components/ui/button";
+import { Card } from "~/components/ui/card";
+import { Flex } from "~/components/ui/flex";
+import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
+import { TextField } from "~/components/ui/text-field";
 import { signIn } from "~/lib/auth-client";
 
 const signInSchema = z.object({
@@ -79,11 +83,7 @@ function RouteComponent() {
                 children={(field) => {
                   return (
                     <Flex direction="column" gap="1">
-                      <Label.Root asChild htmlFor="email">
-                        <Text as="label" size="2" weight="medium">
-                          Email
-                        </Text>
-                      </Label.Root>
+                      <FormFieldLabel htmlFor="email" text="Email" />
                       <TextField.Root
                         defaultValue={field.state.value}
                         onBlur={field.handleBlur}
@@ -103,11 +103,7 @@ function RouteComponent() {
                   return (
                     <Flex direction="column" gap="1">
                       <Flex align="baseline" justify="between" mb="1">
-                        <Label.Root asChild htmlFor="password">
-                          <Text as="label" size="2" weight="medium">
-                            Password
-                          </Text>
-                        </Label.Root>
+                        <FormFieldLabel htmlFor="password" text="password" />
                         <Link to="/" size="2">
                           Forgot password?
                         </Link>

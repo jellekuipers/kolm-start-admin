@@ -1,7 +1,7 @@
-import { Select } from "@radix-ui/themes";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 
+import { Select } from "~/components/ui/select";
 import { UserRole } from "~/components/user/user-role";
 import { setUserRole } from "~/lib/user";
 import { User } from "~/types";

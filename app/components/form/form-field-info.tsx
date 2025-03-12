@@ -1,5 +1,6 @@
-import { Text } from "@radix-ui/themes";
 import type { AnyFieldApi } from "@tanstack/react-form";
+
+import { Text } from "~/components/ui/text";
 
 export interface FormFieldInfoProps {
   field: AnyFieldApi;

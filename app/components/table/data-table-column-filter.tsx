@@ -1,7 +1,12 @@
 import { ChevronDownIcon } from "@radix-ui/react-icons";
-import { Button, Checkbox, Flex, Popover, Text } from "@radix-ui/themes";
 import { Table } from "@tanstack/react-table";
 import { Label } from "radix-ui";
+
+import { Button } from "~/components/ui/button";
+import { Checkbox } from "~/components/ui/checkbox";
+import { Flex } from "~/components/ui/flex";
+import { Popover } from "~/components/ui/popover";
+import { Text } from "~/components/ui/text";
 
 interface DataTableColumnFilterProps<TData> {
   table: Table<TData>;

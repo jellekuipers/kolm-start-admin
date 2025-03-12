@@ -1,14 +1,17 @@
 /* eslint-disable react/no-children-prop */
 import { useState } from "react";
-import { Button, Dialog, Flex, Select, Text } from "@radix-ui/themes";
 import { useForm } from "@tanstack/react-form";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
-import { Label } from "radix-ui";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
 import { FormFieldInfo } from "~/components/form/form-field-info";
+import { FormFieldLabel } from "~/components/form/form-field-label";
+import { Button } from "~/components/ui/button";
+import { Dialog } from "~/components/ui/dialog";
+import { Flex } from "~/components/ui/flex";
+import { Select } from "~/components/ui/select";
 import { addMember } from "~/lib/member";
 import { usersQueryOptions } from "~/lib/user";
 
@@ -91,11 +94,7 @@ export function AddMemberForm({
           children={(field) => {
             return (
               <Flex direction="column" gap="1">
-                <Label.Root asChild htmlFor="userId">
-                  <Text as="label" size="2" weight="medium">
-                    User
-                  </Text>
-                </Label.Root>
+                <FormFieldLabel htmlFor="userId" text="User" />
                 <Select.Root
                   defaultValue={field.state.value}
                   name={field.name}
@@ -120,11 +119,7 @@ export function AddMemberForm({
           children={(field) => {
             return (
               <Flex direction="column" gap="1">
-                <Label.Root asChild htmlFor="memberRole">
-                  <Text as="label" size="2" weight="medium">
-                    Member role
-                  </Text>
-                </Label.Root>
+                <FormFieldLabel htmlFor="memberRole" text="Member role" />
                 <Select.Root
                   defaultValue={field.state.value}
                   name={field.name}

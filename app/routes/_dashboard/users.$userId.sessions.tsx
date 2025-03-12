@@ -1,13 +1,13 @@
 import { useMemo } from "react";
-import { Flex } from "@radix-ui/themes";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { ColumnDef } from "@tanstack/react-table";
 import { Session } from "better-auth";
 
+import { CopyValue } from "~/components/misc/copy-value";
 import { SessionActions } from "~/components/session/session-actions";
 import { DataTable } from "~/components/table/data-table";
-import { CopyValue } from "~/components/ui/copy-value";
+import { Flex } from "~/components/ui/flex";
 import { userSessionsQueryOptions } from "~/lib/user";
 
 export const Route = createFileRoute("/_dashboard/users/$userId/sessions")({

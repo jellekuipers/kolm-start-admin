@@ -1,8 +1,11 @@
-import { Avatar, Code, DataList, Flex } from "@radix-ui/themes";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { CopyValue } from "~/components/ui/copy-value";
+import { CopyValue } from "~/components/misc/copy-value";
+import { Avatar } from "~/components/ui/avatar";
+import { Code } from "~/components/ui/code";
+import { DataList } from "~/components/ui/data-list";
+import { Flex } from "~/components/ui/flex";
 import { Link } from "~/components/ui/link";
 import { organizationQueryOptions } from "~/lib/organization";
 

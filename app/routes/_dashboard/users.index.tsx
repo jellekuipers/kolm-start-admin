@@ -1,21 +1,19 @@
 import { useMemo } from "react";
 import { CheckIcon, Cross2Icon } from "@radix-ui/react-icons";
-import {
-  Avatar,
-  Badge,
-  Container,
-  Flex,
-  Heading,
-  Separator,
-} from "@radix-ui/themes";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { ColumnDef } from "@tanstack/react-table";
 import { UserWithRole } from "better-auth/plugins";
 
+import { CopyValue } from "~/components/misc/copy-value";
 import { DataTable } from "~/components/table/data-table";
-import { CopyValue } from "~/components/ui/copy-value";
+import { Avatar } from "~/components/ui/avatar";
+import { Badge } from "~/components/ui/badge";
+import { Container } from "~/components/ui/container";
+import { Flex } from "~/components/ui/flex";
+import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
+import { Separator } from "~/components/ui/separator";
 import { CreateUserModal } from "~/components/user/create-user-modal";
 import { UserActions } from "~/components/user/user-actions";
 import { UserRole } from "~/components/user/user-role";

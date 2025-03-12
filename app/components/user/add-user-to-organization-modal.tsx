@@ -1,15 +1,18 @@
 /* eslint-disable react/no-children-prop */
 import { useState } from "react";
 import { PlusIcon } from "@radix-ui/react-icons";
-import { Button, Dialog, Flex, Select, Text } from "@radix-ui/themes";
 import { useForm } from "@tanstack/react-form";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
-import { Label } from "radix-ui";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
 import { FormFieldInfo } from "~/components/form/form-field-info";
+import { FormFieldLabel } from "~/components/form/form-field-label";
+import { Button } from "~/components/ui/button";
+import { Dialog } from "~/components/ui/dialog";
+import { Flex } from "~/components/ui/flex";
+import { Select } from "~/components/ui/select";
 import { addMember } from "~/lib/member";
 import { organizationsQueryOptions } from "~/lib/organization";
 
@@ -107,11 +110,7 @@ export function AddUserToOrganizationModal({
               children={(field) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <Label.Root asChild htmlFor="organizationId">
-                      <Text as="label" size="2" weight="medium">
-                        Organization
-                      </Text>
-                    </Label.Root>
+                    <FormFieldLabel htmlFor="organizationId" text="Organization" />
                     <Select.Root
                       defaultValue={field.state.value}
                       name={field.name}
@@ -139,11 +138,7 @@ export function AddUserToOrganizationModal({
               children={(field) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <Label.Root asChild htmlFor="memberRole">
-                      <Text as="label" size="2" weight="medium">
-                        Member role
-                      </Text>
-                    </Label.Root>
+                    <FormFieldLabel htmlFor="memberRole" text="Member role" />
                     <Select.Root
                       defaultValue={field.state.value}
                       name={field.name}

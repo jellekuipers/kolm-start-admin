@@ -1,4 +1,5 @@
-import { Flex, Spinner } from "@radix-ui/themes";
+import { Flex } from "~/components/ui/flex";
+import { Spinner } from "~/components/ui/spinner";
 
 export function Pending() {
   return (

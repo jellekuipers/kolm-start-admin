@@ -1,13 +1,16 @@
 /* eslint-disable react/no-children-prop */
 import { useState } from "react";
-import { Button, Dialog, Flex, Text, TextField } from "@radix-ui/themes";
 import { useForm } from "@tanstack/react-form";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
-import { Label } from "radix-ui";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
+import { FormFieldLabel } from "~/components/form/form-field-label";
+import { Button } from "~/components/ui/button";
+import { Dialog } from "~/components/ui/dialog";
+import { Flex } from "~/components/ui/flex";
+import { TextField } from "~/components/ui/text-field";
 import { updateTeam } from "~/lib/team";
 import { Team } from "~/types";
 
@@ -87,11 +90,7 @@ export function UpdateTeamModal({ open, team, setOpen }: UpdateTeamModalProps) {
               children={({ handleBlur, handleChange, name, state }) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <Label.Root asChild htmlFor="name">
-                      <Text as="label" size="2" weight="medium">
-                        Name
-                      </Text>
-                    </Label.Root>
+                    <FormFieldLabel htmlFor="name" text="Name" />
                     <TextField.Root
                       defaultValue={state.value}
                       onBlur={handleBlur}

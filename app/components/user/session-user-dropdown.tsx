@@ -1,7 +1,10 @@
 import { ExitIcon, PersonIcon, UpdateIcon } from "@radix-ui/react-icons";
-import { Avatar, DropdownMenu, IconButton, Skeleton } from "@radix-ui/themes";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
+import { Avatar } from "~/components/ui/avatar";
+import { DropdownMenu } from "~/components/ui/dropdown-menu";
+import { IconButton } from "~/components/ui/icon-button";
+import { Skeleton } from "~/components/ui/skeleton";
 import { authClient, signOut, useSession } from "~/lib/auth-client";
 
 export function SessionUserDropdown() {
