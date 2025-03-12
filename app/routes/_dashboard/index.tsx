@@ -4,7 +4,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { StatCard } from "~/components/stats/stat-card";
 import { Container } from "~/components/ui/container";
 import { Flex } from "~/components/ui/flex";
-import { Grid } from "~/components/ui/grid";
 import { Heading } from "~/components/ui/heading";
 import { Separator } from "~/components/ui/separator";
 import { useTRPC } from "~/trpc/react";
@@ -30,10 +29,10 @@ function RouteComponent() {
           <Heading>Dashboard</Heading>
           <Separator />
         </Flex>
-        <Grid columns={{ initial: "1", md: "4" }} gap="4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <StatCard count={users} title="Users" />
           <StatCard count={organizations} title="Organizations" />
-        </Grid>
+        </div>
       </Flex>
     </Container>
   );
