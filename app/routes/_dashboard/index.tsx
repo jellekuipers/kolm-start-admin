@@ -2,7 +2,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { StatCard } from "~/components/stats/stat-card";
-import { Container } from "~/components/ui/container";
+import { Container } from "~/components/layout/container";
 import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { Separator } from "~/components/ui/separator";
@@ -23,7 +23,7 @@ function RouteComponent() {
   } = useSuspenseQuery(trpc.stats.getStats.queryOptions());
 
   return (
-    <Container size="3">
+    <Container>
       <Flex direction="column" gap="6">
         <Flex direction="column" gap="4">
           <Heading>Dashboard</Heading>

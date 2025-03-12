@@ -8,7 +8,7 @@ import { UpdateProfileModal } from "~/components/profile/update-profile-modal";
 import { DataTableSimple } from "~/components/table/data-table-simple";
 import { Avatar } from "~/components/ui/avatar";
 import { Code } from "~/components/ui/code";
-import { Container } from "~/components/ui/container";
+import { Container } from "~/components/layout/container";
 import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
@@ -159,7 +159,7 @@ function RouteComponent() {
   if (!user) return null;
 
   return (
-    <Container size="3">
+    <Container>
       <Flex direction="column" gap="6">
         <Flex direction="column" gap="4">
           <Flex justify="between" gap="4" wrap="wrap">

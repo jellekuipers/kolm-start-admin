@@ -8,7 +8,7 @@ import { InvitationActions } from "~/components/invitation/invitation-actions";
 import { InvitationStatus } from "~/components/invitation/invitation-status";
 import { DataTable } from "~/components/table/data-table";
 import { Badge } from "~/components/ui/badge";
-import { Container } from "~/components/ui/container";
+import { Container } from "~/components/layout/container";
 import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { Separator } from "~/components/ui/separator";
@@ -72,7 +72,7 @@ function RouteComponent() {
   const columns = useMemo(() => dataTableColumns, []);
 
   return (
-    <Container size="3">
+    <Container>
       <Flex direction="column" gap="6">
         <Flex direction="column" gap="4">
           <Flex justify="between" gap="4" wrap="wrap">

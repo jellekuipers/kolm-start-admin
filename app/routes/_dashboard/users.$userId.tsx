@@ -5,7 +5,7 @@ import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
 import { Avatar } from "~/components/ui/avatar";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
-import { Container } from "~/components/ui/container";
+import { Container } from "~/components/layout/container";
 import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { UserActions } from "~/components/user/user-actions";
@@ -30,7 +30,7 @@ function RouteComponent() {
   if (!user || !session) return null;
 
   return (
-    <Container size="3">
+    <Container>
       <Flex direction="column" gap="6">
         <Flex justify="start">
           <Button

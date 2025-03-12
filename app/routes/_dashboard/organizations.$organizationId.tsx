@@ -6,7 +6,7 @@ import { OrganizationActions } from "~/components/organization/organization-acti
 import { OrganizationTabNav } from "~/components/organization/organization-tab-nav";
 import { Avatar } from "~/components/ui/avatar";
 import { Button } from "~/components/ui/button";
-import { Container } from "~/components/ui/container";
+import { Container } from "~/components/layout/container";
 import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
@@ -35,7 +35,7 @@ function RouteComponent() {
   if (!organization) return null;
 
   return (
-    <Container size="3">
+    <Container>
       <Flex direction="column" gap="6">
         <Flex justify="start">
           <Button

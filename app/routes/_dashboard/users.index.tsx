@@ -9,7 +9,7 @@ import { CopyValue } from "~/components/misc/copy-value";
 import { DataTable } from "~/components/table/data-table";
 import { Avatar } from "~/components/ui/avatar";
 import { Badge } from "~/components/ui/badge";
-import { Container } from "~/components/ui/container";
+import { Container } from "~/components/layout/container";
 import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
@@ -147,7 +147,7 @@ function RouteComponent() {
   const columns = useMemo(() => dataTableColumns, []);
 
   return (
-    <Container size="3">
+    <Container>
       <Flex direction="column" gap="6">
         <Flex direction="column" gap="4">
           <Flex justify="between" gap="4" wrap="wrap">
