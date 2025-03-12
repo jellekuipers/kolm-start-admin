@@ -1,8 +1,5 @@
-import { ComponentProps } from "react";
-import { Spinner as RadixSpinner } from "@radix-ui/themes";
+import { DividerVerticalIcon } from "@radix-ui/react-icons";
 
-export type SpinnerProps = ComponentProps<typeof RadixSpinner>;
-
-export function Spinner(props: SpinnerProps) {
-  return <RadixSpinner {...props} />;
+export function Spinner() {
+  return <DividerVerticalIcon className="animate-spin size-4" />;
 }
