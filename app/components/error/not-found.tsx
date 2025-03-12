@@ -13,7 +13,7 @@ export function NotFound({ children }: NotFoundProps) {
       {children || (
         <div className="flex items-center flex-col gap-4 justify-center">
           <Text size="9">404</Text>
-          <Link to="/">
+          <Link className="flex items-center gap-2" to="/">
             <ArrowLeftIcon />
             Home
           </Link>

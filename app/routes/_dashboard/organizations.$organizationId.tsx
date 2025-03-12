@@ -35,11 +35,9 @@ function RouteComponent() {
   return (
     <Container>
       <div className="space-y-6">
-        <div className="flex justify-start">
-          <Link to="/organizations">
-            <ArrowLeftIcon /> Organizations
-          </Link>
-        </div>
+        <Link className="flex items-center gap-2" to="/organizations">
+          <ArrowLeftIcon /> Organizations
+        </Link>
         <div className="space-y-4">
           <div className="flex justify-between gap-4 flex-wrap">
             <div className="flex items-center gap-4 flex-wrap">
