@@ -102,22 +102,20 @@ export function InvitationCard({ invitation }: InvitationCardProps) {
       {invitation.status === "pending" ? (
         <Flex align="center" gap="4" justify="end" wrap="wrap">
           <Button
-            color="red"
-            disabled={rejectInvitationMutation.isPending}
-            loading={rejectInvitationMutation.isPending}
-            onClick={async () =>
+            isDisabled={rejectInvitationMutation.isPending}
+            isPending={rejectInvitationMutation.isPending}
+            onPress={async () =>
               await rejectInvitationMutation.mutateAsync({
                 invitationId: invitation.id,
               })
             }
-            variant="outline"
           >
             Reject
           </Button>
           <Button
-            disabled={acceptInvitationMutation.isPending}
-            loading={acceptInvitationMutation.isPending}
-            onClick={async () =>
+            isDisabled={acceptInvitationMutation.isPending}
+            isPending={acceptInvitationMutation.isPending}
+            onPress={async () =>
               await acceptInvitationMutation.mutateAsync({
                 invitationId: invitation.id,
               })

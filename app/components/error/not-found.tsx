@@ -1,6 +1,5 @@
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 
-import { Button } from "~/components/ui/button";
 import { Flex } from "~/components/ui/flex";
 import { Link } from "~/components/ui/link";
 import { Text } from "~/components/ui/text";
@@ -22,12 +21,10 @@ export function NotFound({ children }: NotFoundProps) {
       {children || (
         <Flex align="center" direction="column" gap="4" justify="center">
           <Text size="9">404</Text>
-          <Button asChild variant="outline">
-            <Link to="/">
-              <ArrowLeftIcon />
-              Home
-            </Link>
-          </Button>
+          <Link to="/">
+            <ArrowLeftIcon />
+            Home
+          </Link>
         </Flex>
       )}
     </Flex>

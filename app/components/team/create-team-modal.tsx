@@ -114,11 +114,11 @@ export function CreateTeamModal({ organizationId }: CreateTeamModalProps) {
               children={([canSubmit, isSubmitting]) => (
                 <Flex gap="3" justify="end">
                   <Dialog.Close>
-                    <Button variant="soft" color="gray">
+                    <Button>
                       Cancel
                     </Button>
                   </Dialog.Close>
-                  <Button disabled={!canSubmit} loading={isSubmitting}>
+                  <Button isDisabled={!canSubmit} isPending={isSubmitting}>
                     Save
                   </Button>
                 </Flex>

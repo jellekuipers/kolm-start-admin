@@ -125,7 +125,7 @@ function RouteComponent() {
                 selector={(state) => [state.canSubmit, state.isSubmitting]}
                 children={([canSubmit, isSubmitting]) => (
                   <Flex justify="end">
-                    <Button disabled={!canSubmit} loading={isSubmitting}>
+                    <Button isDisabled={!canSubmit} isPending={isSubmitting}>
                       Sign in
                     </Button>
                   </Flex>

@@ -1,8 +1,10 @@
-import { ComponentProps } from "react";
-import { Button as RadixButton } from "@radix-ui/themes";
-
-export type ButtonProps = ComponentProps<typeof RadixButton>;
+import { ButtonProps, Button as RACButton } from "react-aria-components";
 
 export function Button(props: ButtonProps) {
-  return <RadixButton {...props} />;
+  return (
+    <RACButton
+      className="text-white bg-indigo-500 rounded px-3 py-2 font-medium flex items-center gap-2 text-sm"
+      {...props}
+    />
+  );
 }

@@ -89,7 +89,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
             <DotsVerticalIcon />
           </IconButton>
         ) : (
-          <Button variant="soft">
+          <Button>
             Actions <ChevronDownIcon />
           </Button>
         )}

@@ -151,7 +151,10 @@ export function CreateInvitationModal() {
               children={({ handleChange, name, state }) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <FormFieldLabel htmlFor="organizationId" text="Organization" />
+                    <FormFieldLabel
+                      htmlFor="organizationId"
+                      text="Organization"
+                    />
                     <Select.Root
                       defaultValue={state.value}
                       name={name}
@@ -231,11 +234,9 @@ export function CreateInvitationModal() {
               children={([canSubmit, isSubmitting]) => (
                 <Flex gap="3" justify="end">
                   <Dialog.Close>
-                    <Button variant="soft" color="gray">
-                      Cancel
-                    </Button>
+                    <Button>Cancel</Button>
                   </Dialog.Close>
-                  <Button disabled={!canSubmit} loading={isSubmitting}>
+                  <Button isDisabled={!canSubmit} isPending={isSubmitting}>
                     Save
                   </Button>
                 </Flex>

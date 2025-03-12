@@ -1,8 +1,8 @@
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { Table } from "@tanstack/react-table";
-import { Button, DialogTrigger } from "react-aria-components";
+import { DialogTrigger } from "react-aria-components";
 
-// import { Button } from "~/components/ui/button";
+import { Button } from "~/components/ui/button";
 import { Checkbox } from "~/components/ui/checkbox";
 import { Popover } from "~/components/ui/popover";
 

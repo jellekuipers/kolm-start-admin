@@ -2,10 +2,9 @@ import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
 
+import { Container } from "~/components/layout/container";
 import { Avatar } from "~/components/ui/avatar";
 import { Badge } from "~/components/ui/badge";
-import { Button } from "~/components/ui/button";
-import { Container } from "~/components/layout/container";
 import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { UserActions } from "~/components/user/user-actions";
@@ -33,15 +32,9 @@ function RouteComponent() {
     <Container>
       <Flex direction="column" gap="6">
         <Flex justify="start">
-          <Button
-            asChild
-            variant="ghost"
-            style={{ fontWeight: "var(--font-weight-medium)" }}
-          >
-            <Link to="/users">
-              <ArrowLeftIcon /> Users
-            </Link>
-          </Button>
+          <Link to="/users">
+            <ArrowLeftIcon /> Users
+          </Link>
         </Flex>
         <Flex direction="column" gap="4">
           <Flex justify="between" gap="4" wrap="wrap">

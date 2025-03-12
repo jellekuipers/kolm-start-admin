@@ -62,7 +62,7 @@ export function OrganizationActions({
               <DotsVerticalIcon />
             </IconButton>
           ) : (
-            <Button variant="soft">
+            <Button>
               Actions <ChevronDownIcon />
             </Button>
           )}
