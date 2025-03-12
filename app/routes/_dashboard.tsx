@@ -1,13 +1,8 @@
-import {
-  createFileRoute,
-  Link,
-  Outlet,
-  redirect,
-} from "@tanstack/react-router";
+import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
 import { Logo } from "~/components/logo";
 import { Code } from "~/components/ui/code";
-import { Flex } from "~/components/ui/flex";
+import { Link } from "~/components/ui/link";
 import { Separator } from "~/components/ui/separator";
 import { SessionUserDropdown } from "~/components/user/session-user-dropdown";
 
@@ -32,32 +27,23 @@ function LayoutComponent() {
 
   return (
     <>
-      <Flex
-        align="center"
-        gap="4"
-        justify="between"
-        px="4"
-        py="3"
-        style={{
-          backgroundColor: "var(--gray-1)",
-        }}
-      >
-        <Flex align="center" gap="2">
-          <Link style={{ display: "flex" }} to="/">
+      <header className="px-4 py-3 flex items-center gap-2 justify-between bg-gray-50">
+        <div className="flex items-center gap-2">
+          <Link to="/">
             <Logo size={32} />
           </Link>
           <Code>v0.9.0</Code>
-        </Flex>
+        </div>
         <SessionUserDropdown />
-      </Flex>
+      </header>
       <Separator />
-      <Flex align="center" gap="4" p="4" overflowX="auto">
+      <div className="flex gap-4 items-center overflow-x-auto p-4">
         {routes.map((route) => (
           <Link key={route.to} to={route.to}>
             {route.label}
           </Link>
         ))}
-      </Flex>
+      </div>
       <div className="p-4">
         <Outlet />
       </div>
