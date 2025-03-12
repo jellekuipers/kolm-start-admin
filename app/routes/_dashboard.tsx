@@ -46,9 +46,7 @@ function LayoutComponent() {
           <Link style={{ display: "flex" }} to="/">
             <Logo size={32} />
           </Link>
-          <Code color="gray" size="1">
-            v0.9.0
-          </Code>
+          <Code>v0.9.0</Code>
         </Flex>
         <SessionUserDropdown />
       </Flex>

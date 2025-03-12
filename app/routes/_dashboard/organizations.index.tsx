@@ -3,6 +3,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { ColumnDef } from "@tanstack/react-table";
 
+import { Container } from "~/components/layout/container";
 import { CopyValue } from "~/components/misc/copy-value";
 import { CreateOrganizationModal } from "~/components/organization/create-organization-modal";
 import { OrganizationActions } from "~/components/organization/organization-actions";
@@ -10,7 +11,6 @@ import { DataTable } from "~/components/table/data-table";
 import { Avatar } from "~/components/ui/avatar";
 import { Badge } from "~/components/ui/badge";
 import { Code } from "~/components/ui/code";
-import { Container } from "~/components/layout/container";
 import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
@@ -54,7 +54,7 @@ const dataTableColumns: ColumnDef<AuthOrganization | ORMOrganization>[] = [
     accessorKey: "slug",
     header: "Slug",
     cell({ row }) {
-      return <Code variant="ghost">{row.original.slug}</Code>;
+      return <Code>{row.original.slug}</Code>;
     },
   },
   {

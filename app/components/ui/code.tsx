@@ -1,8 +1,9 @@
-import { ComponentProps } from "react";
-import { Code as RadixCode } from "@radix-ui/themes";
+interface CodeProps {
+  children: React.ReactNode;
+}
 
-export type CodeProps = ComponentProps<typeof RadixCode>;
-
-export function Code(props: CodeProps) {
-  return <RadixCode {...props} />;
+export function Code({ children }: CodeProps) {
+  return (
+    <code className="bg-gray-200 rounded px-2 py-1">{children}</code>
+  );
 }

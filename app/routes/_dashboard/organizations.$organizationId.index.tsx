@@ -43,7 +43,7 @@ function RouteComponent() {
       <DataList.Item>
         <DataList.Label>Slug</DataList.Label>
         <DataList.Value>
-          <Code variant="ghost">{organization.slug}</Code>
+          <Code>{organization.slug}</Code>
         </DataList.Value>
       </DataList.Item>
       <DataList.Item>

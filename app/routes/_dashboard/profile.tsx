@@ -3,12 +3,12 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { ColumnDef } from "@tanstack/react-table";
 
+import { Container } from "~/components/layout/container";
 import { CopyValue } from "~/components/misc/copy-value";
 import { UpdateProfileModal } from "~/components/profile/update-profile-modal";
 import { DataTableSimple } from "~/components/table/data-table-simple";
 import { Avatar } from "~/components/ui/avatar";
 import { Code } from "~/components/ui/code";
-import { Container } from "~/components/layout/container";
 import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
@@ -56,7 +56,7 @@ const accountsDataTableColumns: ColumnDef<Account>[] = [
     accessorKey: "provider",
     header: "Provider",
     cell({ row }) {
-      return <Code color="gray">{row.original.provider}</Code>;
+      return <Code>{row.original.provider}</Code>;
     },
   },
   {
@@ -107,7 +107,7 @@ const membersDataTableColumns: ColumnDef<
     accessorKey: "organization.slug",
     header: "Slug",
     cell({ row }) {
-      return <Code variant="ghost">{row.original.organization.slug}</Code>;
+      return <Code>{row.original.organization.slug}</Code>;
     },
   },
   {
