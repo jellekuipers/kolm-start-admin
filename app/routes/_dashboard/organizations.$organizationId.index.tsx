@@ -5,7 +5,6 @@ import { CopyValue } from "~/components/misc/copy-value";
 import { Avatar } from "~/components/ui/avatar";
 import { Code } from "~/components/ui/code";
 import { DataList } from "~/components/ui/data-list";
-import { Flex } from "~/components/ui/flex";
 import { Link } from "~/components/ui/link";
 import { organizationQueryOptions } from "~/lib/organization";
 
@@ -66,14 +65,14 @@ function RouteComponent() {
               params={{ userId: organizationOwner.userId }}
               to="/users/$userId"
             >
-              <Flex align="center" gap="2">
+              <div className="flex gap-2 items-center">
                 <Avatar
                   fallback="@"
                   src={organizationOwner.user.image ?? undefined}
                   size="1"
                 />
                 {organizationOwner.user.email}
-              </Flex>
+              </div>
             </Link>
           </DataList.Value>
         ) : (

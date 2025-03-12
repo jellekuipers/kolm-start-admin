@@ -8,7 +8,6 @@ import { UpdateMemberRole } from "~/components/member/update-member-role";
 import { OrganizationMemberActions } from "~/components/organization/organization-member-actions";
 import { DataTable } from "~/components/table/data-table";
 import { Avatar } from "~/components/ui/avatar";
-import { Flex } from "~/components/ui/flex";
 import { Link } from "~/components/ui/link";
 import { organizationQueryOptions } from "~/lib/organization";
 import { OrganizationMember } from "~/types";
@@ -68,13 +67,13 @@ const dataTableColumns: ColumnDef<OrganizationMember>[] = [
     header: undefined,
     cell({ row }) {
       return (
-        <Flex justify="end">
+        <div className="flex justify-end">
           <OrganizationMemberActions
             memberId={row.original.id}
             organizationId={row.original.organizationId}
             userId={row.original.userId}
           />
-        </Flex>
+        </div>
       );
     },
   },
@@ -94,11 +93,11 @@ function RouteComponent() {
   if (!organization) return null;
 
   return (
-    <Flex direction="column" gap="4">
-      <Flex justify="end">
+    <div className="space-y-4">
+      <div className="flex justify-end">
         <AddMemberToOrganizationModal organizationId={organizationId} />
-      </Flex>
+      </div>
       <DataTable columns={columns} data={organization.members} />
-    </Flex>
+    </div>
   );
 }

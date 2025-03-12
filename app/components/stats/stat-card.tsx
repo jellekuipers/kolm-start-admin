@@ -1,5 +1,4 @@
 import { Card } from "~/components/ui/card";
-import { Flex } from "~/components/ui/flex";
 import { Text } from "~/components/ui/text";
 
 interface StatCardProps {
@@ -10,7 +9,7 @@ interface StatCardProps {
 export function StatCard({ count, title }: StatCardProps) {
   return (
     <Card>
-      <Flex direction="column" gap="4">
+      <div className="space-y-4">
         <Text
           as="div"
           color="gray"
@@ -23,7 +22,7 @@ export function StatCard({ count, title }: StatCardProps) {
         <Text as="div" weight="bold" size="6">
           {count}
         </Text>
-      </Flex>
+      </div>
     </Card>
   );
 }

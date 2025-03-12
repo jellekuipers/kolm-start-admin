@@ -7,7 +7,6 @@ import { MemberActions } from "~/components/member/member-actions";
 import { UpdateMemberRole } from "~/components/member/update-member-role";
 import { DataTableSimple } from "~/components/table/data-table-simple";
 import { Avatar } from "~/components/ui/avatar";
-import { Flex } from "~/components/ui/flex";
 import { Link } from "~/components/ui/link";
 import { AddUserToOrganizationModal } from "~/components/user/add-user-to-organization-modal";
 import { membersQueryOptions } from "~/lib/member";
@@ -78,12 +77,12 @@ const dataTableColumns: ColumnDef<
     header: undefined,
     cell({ row }) {
       return (
-        <Flex justify="end">
+        <div className="flex justify-end">
           <MemberActions
             memberId={row.original.id}
             organizationId={row.original.organizationId}
           />
-        </Flex>
+        </div>
       );
     },
   },
@@ -97,11 +96,11 @@ function RouteComponent() {
   const columns = useMemo(() => dataTableColumns, []);
 
   return (
-    <Flex direction="column" gap="4">
-      <Flex justify="end">
+    <div className="space-y-4">
+      <div className="flex justify-end">
         <AddUserToOrganizationModal userId={userId} />
-      </Flex>
+      </div>
       <DataTableSimple columns={columns} data={members} />
-    </Flex>
+    </div>
   );
 }

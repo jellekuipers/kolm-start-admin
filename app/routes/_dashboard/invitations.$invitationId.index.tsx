@@ -3,7 +3,6 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { InvitationCard } from "~/components/invitation/invitation-card";
 import { Container } from "~/components/layout/container";
-import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { Separator } from "~/components/ui/separator";
 import { invitationQueryOptions } from "~/lib/invitation";
@@ -29,11 +28,11 @@ function RouteComponent() {
 
   return (
     <Container>
-      <Flex direction="column" gap="4">
+      <div className="space-y-4">
         <Heading>Invitation</Heading>
         <Separator />
         <InvitationCard invitation={invitation} />
-      </Flex>
+      </div>
     </Container>
   );
 }

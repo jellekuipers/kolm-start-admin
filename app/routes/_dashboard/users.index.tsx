@@ -10,7 +10,6 @@ import { CopyValue } from "~/components/misc/copy-value";
 import { DataTable } from "~/components/table/data-table";
 import { Avatar } from "~/components/ui/avatar";
 import { Badge } from "~/components/ui/badge";
-import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
 import { Separator } from "~/components/ui/separator";
@@ -120,9 +119,9 @@ const dataTableColumns: ColumnDef<User | UserWithRole>[] = [
     header: undefined,
     cell({ row }) {
       return (
-        <Flex justify="end">
+        <div className="flex justify-end">
           <UserActions user={row.original} variant="overview" />
-        </Flex>
+        </div>
       );
     },
   },

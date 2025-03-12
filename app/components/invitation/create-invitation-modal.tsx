@@ -10,7 +10,6 @@ import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
 import { Label } from "~/components/ui/field";
-import { Flex } from "~/components/ui/flex";
 import { Select } from "~/components/ui/select";
 import { Separator } from "~/components/ui/separator";
 import { Text } from "~/components/ui/text";
@@ -200,7 +199,7 @@ export function CreateInvitationModal() {
               name="teamId"
               children={({ handleChange, name, state }) => {
                 return (
-                  <Flex direction="column" gap="1">
+                  <div className="space-y-1">
                     <Label htmlFor="teamId">Add to team</Label>
                     <Select.Root
                       defaultValue={state.value}
@@ -217,7 +216,7 @@ export function CreateInvitationModal() {
                         ))}
                       </Select.Content>
                     </Select.Root>
-                  </Flex>
+                  </div>
                 );
               }}
             />

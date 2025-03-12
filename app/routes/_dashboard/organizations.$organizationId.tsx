@@ -6,7 +6,6 @@ import { Container } from "~/components/layout/container";
 import { OrganizationActions } from "~/components/organization/organization-actions";
 import { OrganizationTabNav } from "~/components/organization/organization-tab-nav";
 import { Avatar } from "~/components/ui/avatar";
-import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
 import { Text } from "~/components/ui/text";
@@ -35,37 +34,37 @@ function RouteComponent() {
 
   return (
     <Container>
-      <Flex direction="column" gap="6">
-        <Flex justify="start">
+      <div className="space-y-6">
+        <div className="flex justify-start">
           <Link to="/organizations">
             <ArrowLeftIcon /> Organizations
           </Link>
-        </Flex>
-        <Flex direction="column" gap="4">
-          <Flex justify="between" gap="4" wrap="wrap">
-            <Flex align="center" gap="4" wrap="wrap">
+        </div>
+        <div className="space-y-4">
+          <div className="flex justify-between gap-4 flex-wrap">
+            <div className="flex items-center gap-4 flex-wrap">
               <Avatar
                 fallback="@"
                 size="4"
                 src={organization.logo ?? undefined}
               />
-              <Flex direction="column">
+              <div className="space-y-0">
                 <Heading>{organization.name}</Heading>
                 <Text color="gray" size="1" weight="medium">
                   {organization.members.length}{" "}
                   {organization.members.length === 1 ? "member" : "members"}
                 </Text>
-              </Flex>
-            </Flex>
+              </div>
+            </div>
             <OrganizationActions
               organization={organization}
               variant="profile"
             />
-          </Flex>
+          </div>
           <OrganizationTabNav organizationId={organization.id} />
-        </Flex>
+        </div>
         <Outlet />
-      </Flex>
+      </div>
     </Container>
   );
 }

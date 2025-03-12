@@ -4,7 +4,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { CopyValue } from "~/components/misc/copy-value";
 import { Badge } from "~/components/ui/badge";
 import { DataList } from "~/components/ui/data-list";
-import { Flex } from "~/components/ui/flex";
 import { UpdateUserRole } from "~/components/user/update-user-role";
 import { userQueryOptions } from "~/lib/user";
 
@@ -34,10 +33,10 @@ function RouteComponent() {
       <DataList.Item>
         <DataList.Label>Email</DataList.Label>
         <DataList.Value>
-          <Flex gap="2" align="center">
+          <div className="flex items-center gap-2">
             {user.email}
             {user.emailVerified ? null : <Badge>unverified</Badge>}
-          </Flex>
+          </div>
         </DataList.Value>
       </DataList.Item>
       <DataList.Item>

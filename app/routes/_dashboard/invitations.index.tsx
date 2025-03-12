@@ -6,10 +6,9 @@ import { ColumnDef } from "@tanstack/react-table";
 import { CreateInvitationModal } from "~/components/invitation/create-invitation-modal";
 import { InvitationActions } from "~/components/invitation/invitation-actions";
 import { InvitationStatus } from "~/components/invitation/invitation-status";
+import { Container } from "~/components/layout/container";
 import { DataTable } from "~/components/table/data-table";
 import { Badge } from "~/components/ui/badge";
-import { Container } from "~/components/layout/container";
-import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { Separator } from "~/components/ui/separator";
 import { invitationsQueryOptions } from "~/lib/invitation";
@@ -58,9 +57,9 @@ const dataTableColumns: ColumnDef<Invitation>[] = [
     header: undefined,
     cell({ row }) {
       return (
-        <Flex justify="end">
+        <div className="flex justify-end">
           <InvitationActions invitation={row.original} />
-        </Flex>
+        </div>
       );
     },
   },
@@ -73,19 +72,19 @@ function RouteComponent() {
 
   return (
     <Container>
-      <Flex direction="column" gap="6">
-        <Flex direction="column" gap="4">
-          <Flex justify="between" gap="4" wrap="wrap">
-            <Flex align="center" gap="2">
+      <div className="space-y-6">
+        <div className="space-y-4">
+          <div className="flex justify-between gap-4 flex-wrap">
+            <div className="flex items-center gap-2">
               <Heading>Invitations</Heading>
               <Badge>{invitations.length}</Badge>
-            </Flex>
+            </div>
             <CreateInvitationModal />
-          </Flex>
+          </div>
           <Separator />
-        </Flex>
+        </div>
         <DataTable columns={columns} data={invitations} />
-      </Flex>
+      </div>
     </Container>
   );
 }

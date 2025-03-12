@@ -11,7 +11,6 @@ import { DataTable } from "~/components/table/data-table";
 import { Avatar } from "~/components/ui/avatar";
 import { Badge } from "~/components/ui/badge";
 import { Code } from "~/components/ui/code";
-import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
 import { Separator } from "~/components/ui/separator";
@@ -78,9 +77,9 @@ const dataTableColumns: ColumnDef<AuthOrganization | ORMOrganization>[] = [
     header: undefined,
     cell({ row }) {
       return (
-        <Flex justify="end">
+        <div className="flex justify-end">
           <OrganizationActions organization={row.original} variant="overview" />
-        </Flex>
+        </div>
       );
     },
   },

@@ -9,7 +9,6 @@ import { UpdateProfileModal } from "~/components/profile/update-profile-modal";
 import { DataTableSimple } from "~/components/table/data-table-simple";
 import { Avatar } from "~/components/ui/avatar";
 import { Code } from "~/components/ui/code";
-import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
 import { Separator } from "~/components/ui/separator";
@@ -164,19 +163,19 @@ function RouteComponent() {
         <div className="space-y-4">
           <div className="flex justify-between items-center gap-4">
             <div className="space-y-1">
-              <Flex align="center" gap="4" wrap="wrap">
+              <div className="flex items-center gap-4 flex-wrap">
                 <Avatar fallback="@" size="4" src={user.image ?? undefined} />
                 {user.name ? (
-                  <Flex direction="column">
+                  <div className="space-y-0">
                     <Heading>{user.name}</Heading>
                     <Text color="gray" size="1" weight="medium">
                       {user.email}
                     </Text>
-                  </Flex>
+                  </div>
                 ) : (
                   <Heading>{user.email}</Heading>
                 )}
-              </Flex>
+              </div>
             </div>
             <UpdateProfileModal user={user} />
           </div>
