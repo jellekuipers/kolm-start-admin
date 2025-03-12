@@ -1,24 +1,21 @@
-import type { ComponentProps } from "react";
-import { Popover as RadixPopover } from "@radix-ui/themes";
+import React from "react";
+import {
+  Dialog,
+  Popover as RACPopover,
+  PopoverProps as RACPopoverProps,
+} from "react-aria-components";
 
-export type PopoverContentProps = ComponentProps<typeof RadixPopover.Content>;
-export type PopoverRootProps = ComponentProps<typeof RadixPopover.Root>;
-export type PopoverTriggerProps = ComponentProps<typeof RadixPopover.Trigger>;
-
-export function Content(props: PopoverContentProps) {
-  return <RadixPopover.Content {...props} />;
+export interface PopoverProps extends Omit<RACPopoverProps, "children"> {
+  children: React.ReactNode;
 }
 
-export function Root(props: PopoverRootProps) {
-  return <RadixPopover.Root {...props} />;
+export function Popover({ children, ...props }: PopoverProps) {
+  return (
+    <RACPopover
+      className="border border-gray-300 rounded bg-white shadow p-4 entering:animate-in entering:fade-in entering:placement-bottom:slide-in-from-top-1 entering:placement-top:slide-in-from-bottom-1 exiting:animate-out exiting:fade-out exiting:placement-bottom:slide-out-to-top-1 exiting:placement-top:slide-out-to-bottom-1"
+      {...props}
+    >
+      <Dialog>{children}</Dialog>
+    </RACPopover>
+  );
 }
-
-export function Trigger(props: PopoverTriggerProps) {
-  return <RadixPopover.Trigger {...props} />;
-}
-
-export const Popover = {
-  Content,
-  Root,
-  Trigger,
-};
