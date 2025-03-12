@@ -1,6 +1,6 @@
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { Table } from "@tanstack/react-table";
-import { DialogTrigger } from "react-aria-components";
+import { DialogTrigger, GridList, GridListItem } from "react-aria-components";
 
 import { Button } from "~/components/ui/button";
 import { Checkbox } from "~/components/ui/checkbox";
@@ -13,32 +13,32 @@ interface DataTableColumnFilterProps<TData> {
 export function DataTableColumnFilter<TData>({
   table,
 }: DataTableColumnFilterProps<TData>) {
+  const columns = table.getAllColumns().filter((column) => column.getCanHide());
+
   return (
-    <>
-      <DialogTrigger>
-        <Button>
-          Column visibility <ChevronDownIcon />
-        </Button>
-        <Popover>
-          <div className="flex flex-col gap-2">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
-                return (
-                  <Checkbox
-                    key={column.id}
-                    id={column.id}
-                    isSelected={column.getIsVisible()}
-                    onChange={(checked) => column.toggleVisibility(!!checked)}
-                  >
-                    {column.columnDef.header?.toString()}
-                  </Checkbox>
-                );
-              })}
-          </div>
-        </Popover>
-      </DialogTrigger>
-    </>
+    <DialogTrigger>
+      <Button>
+        Column visibility <ChevronDownIcon />
+      </Button>
+      <Popover>
+        <GridList
+          aria-label="Column filter"
+          items={columns}
+          onSelectionChange={(column) => console.log(column)}
+          selectionMode="multiple"
+        >
+          {(column) => (
+            <GridListItem
+              key={column.id}
+              textValue={column.columnDef.header?.toString()}
+            >
+              <Checkbox slot="selection">
+                {column.columnDef.header?.toString()}
+              </Checkbox>
+            </GridListItem>
+          )}
+        </GridList>
+      </Popover>
+    </DialogTrigger>
   );
 }
