@@ -4,7 +4,6 @@ import { PlusIcon } from "@radix-ui/react-icons";
 import { AddMemberForm } from "~/components/member/add-member-form";
 import { CreateMemberForm } from "~/components/member/create-member-form";
 import { InviteMemberForm } from "~/components/member/invite-member-form";
-import { Box } from "~/components/ui/box";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
 import { Tabs } from "~/components/ui/tabs";
@@ -33,7 +32,7 @@ export function AddMemberToOrganizationModal({
             <Tabs.Trigger value="create">Create user</Tabs.Trigger>
             <Tabs.Trigger value="invite">Invite user</Tabs.Trigger>
           </Tabs.List>
-          <Box pt="4">
+          <div className="pt-4">
             <Tabs.Content value="add">
               <AddMemberForm
                 onSuccess={() => setOpen(false)}
@@ -52,7 +51,7 @@ export function AddMemberToOrganizationModal({
                 organizationId={organizationId}
               />
             </Tabs.Content>
-          </Box>
+          </div>
         </Tabs.Root>
       </Dialog.Content>
     </Dialog.Root>

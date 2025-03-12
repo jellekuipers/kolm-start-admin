@@ -6,7 +6,6 @@ import {
 } from "@tanstack/react-router";
 
 import { Logo } from "~/components/logo";
-import { Box } from "~/components/ui/box";
 import { Button } from "~/components/ui/button";
 import { Code } from "~/components/ui/code";
 import { Flex } from "~/components/ui/flex";
@@ -67,9 +66,9 @@ function LayoutComponent() {
           </Button>
         ))}
       </Flex>
-      <Box p="4">
+      <div className="p-4">
         <Outlet />
-      </Box>
+      </div>
     </>
   );
 }
