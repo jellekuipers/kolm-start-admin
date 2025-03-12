@@ -65,7 +65,7 @@ function RouteComponent() {
       style={{ backgroundColor: "var(--gray-1)", minHeight: "inherit" }}
     >
       <Logo size={48} />
-      <Card size="4" style={{ width: 400 }}>
+      <Card>
         <Flex direction="column" gap="5">
           <Heading as="h3" size="6">
             Sign in

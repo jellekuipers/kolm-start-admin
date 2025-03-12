@@ -1,8 +1,7 @@
-import type { ComponentProps } from "react";
-import { Card as RadixCard } from "@radix-ui/themes";
+interface CardProps {
+  children: React.ReactNode;
+}
 
-export type CardProps = ComponentProps<typeof RadixCard>;
-
-export function Card(props: CardProps) {
-  return <RadixCard {...props} />;
+export function Card({ children }: CardProps) {
+  return <div className="p-4 border border-gray-300 rounded">{children}</div>;
 }
