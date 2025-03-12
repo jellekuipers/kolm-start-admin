@@ -104,9 +104,7 @@ function RouteComponent() {
                     <Flex direction="column" gap="1">
                       <Flex align="baseline" justify="between" mb="1">
                         <FormFieldLabel htmlFor="password" text="password" />
-                        <Link to="/" size="2">
-                          Forgot password?
-                        </Link>
+                        <Link to="/">Forgot password?</Link>
                       </Flex>
                       <TextField.Root
                         defaultValue={field.state.value}

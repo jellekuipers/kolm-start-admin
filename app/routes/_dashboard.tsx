@@ -6,7 +6,6 @@ import {
 } from "@tanstack/react-router";
 
 import { Logo } from "~/components/logo";
-import { Button } from "~/components/ui/button";
 import { Code } from "~/components/ui/code";
 import { Flex } from "~/components/ui/flex";
 import { Separator } from "~/components/ui/separator";
@@ -56,14 +55,9 @@ function LayoutComponent() {
       <Separator />
       <Flex align="center" gap="4" p="4" overflowX="auto">
         {routes.map((route) => (
-          <Button
-            key={route.to}
-            asChild
-            style={{ fontWeight: "var(--font-weight-medium)" }}
-            variant="ghost"
-          >
-            <Link to={route.to}>{route.label}</Link>
-          </Button>
+          <Link key={route.to} to={route.to}>
+            {route.label}
+          </Link>
         ))}
       </Flex>
       <div className="p-4">
