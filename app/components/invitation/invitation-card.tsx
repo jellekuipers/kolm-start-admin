@@ -8,7 +8,6 @@ import { MemberRole } from "~/components/member/member-role";
 import { Button } from "~/components/ui/button";
 import { Callout } from "~/components/ui/callout";
 import { DataList } from "~/components/ui/data-list";
-import { Flex } from "~/components/ui/flex";
 import { Separator } from "~/components/ui/separator";
 import { acceptInvitation, rejectInvitation } from "~/lib/invitation";
 import { Invitation } from "~/types";
@@ -61,7 +60,7 @@ export function InvitationCard({ invitation }: InvitationCardProps) {
   });
 
   return (
-    <Flex direction="column" gap="4">
+    <div className="space-y-4">
       <DataList.Root orientation={{ initial: "vertical", md: "horizontal" }}>
         <DataList.Item>
           <DataList.Label>Organization</DataList.Label>
@@ -100,7 +99,7 @@ export function InvitationCard({ invitation }: InvitationCardProps) {
         </Callout.Root>
       ) : null}
       {invitation.status === "pending" ? (
-        <Flex align="center" gap="4" justify="end" wrap="wrap">
+        <div className="flex justify-end">
           <Button
             isDisabled={rejectInvitationMutation.isPending}
             isPending={rejectInvitationMutation.isPending}
@@ -123,8 +122,8 @@ export function InvitationCard({ invitation }: InvitationCardProps) {
           >
             Accept
           </Button>
-        </Flex>
+        </div>
       ) : null}
-    </Flex>
+    </div>
   );
 }

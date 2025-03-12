@@ -5,11 +5,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ColumnDef } from "@tanstack/react-table";
 import { UserWithRole } from "better-auth/plugins";
 
+import { Container } from "~/components/layout/container";
 import { CopyValue } from "~/components/misc/copy-value";
 import { DataTable } from "~/components/table/data-table";
 import { Avatar } from "~/components/ui/avatar";
 import { Badge } from "~/components/ui/badge";
-import { Container } from "~/components/layout/container";
 import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
@@ -148,23 +148,23 @@ function RouteComponent() {
 
   return (
     <Container>
-      <Flex direction="column" gap="6">
-        <Flex direction="column" gap="4">
-          <Flex justify="between" gap="4" wrap="wrap">
-            <Flex align="center" gap="2">
+      <div className="space-y-6">
+        <div className="space-y-4">
+          <div className="flex justify-between gap-4 flex-wrap">
+            <div className="flex items-center gap-2">
               <Heading>Users</Heading>
               <Badge>{users.length}</Badge>
-            </Flex>
+            </div>
             <CreateUserModal />
-          </Flex>
+          </div>
           <Separator />
-        </Flex>
+        </div>
         <DataTable
           columns={columns}
           data={users}
           defaultColumnVisibility={defaultColumnVisibility}
         />
-      </Flex>
+      </div>
     </Container>
   );
 }

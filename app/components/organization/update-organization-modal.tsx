@@ -8,7 +8,6 @@ import { z } from "zod";
 import { FormError } from "~/components/form/form-error";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
-import { Flex } from "~/components/ui/flex";
 import { TextField } from "~/components/ui/text-field";
 import { updateOrganization } from "~/lib/organization";
 import { AuthOrganization, ORMOrganization } from "~/types";
@@ -96,12 +95,12 @@ export function UpdateOrganizationModal({
             handleSubmit();
           }}
         >
-          <Flex direction="column" gap="4">
+          <div className="space-y-4">
             <Field
               name="name"
               children={(field) => {
                 return (
-                  <Flex direction="column" gap="1">
+                  <div className="space-y-1">
                     <TextField
                       defaultValue={field.state.value}
                       label="Name"
@@ -109,7 +108,7 @@ export function UpdateOrganizationModal({
                       onBlur={field.handleBlur}
                       onChange={(value) => field.handleChange(value)}
                     />
-                  </Flex>
+                  </div>
                 );
               }}
             />
@@ -117,7 +116,7 @@ export function UpdateOrganizationModal({
               name="slug"
               children={(field) => {
                 return (
-                  <Flex direction="column" gap="1">
+                  <div className="space-y-1">
                     <TextField
                       defaultValue={field.state.value}
                       label="Slug"
@@ -125,7 +124,7 @@ export function UpdateOrganizationModal({
                       onBlur={field.handleBlur}
                       onChange={(value) => field.handleChange(value)}
                     />
-                  </Flex>
+                  </div>
                 );
               }}
             />
@@ -133,17 +132,21 @@ export function UpdateOrganizationModal({
             <Subscribe
               selector={(state) => [state.canSubmit, state.isSubmitting]}
               children={([canSubmit, isSubmitting]) => (
-                <Flex gap="3" justify="end">
+                <div className="flex gap-3 justify-end">
                   <Dialog.Close>
                     <Button>Cancel</Button>
                   </Dialog.Close>
-                  <Button isDisabled={!canSubmit} isPending={isSubmitting}>
+                  <Button
+                    isDisabled={!canSubmit}
+                    isPending={isSubmitting}
+                    type="submit"
+                  >
                     Save
                   </Button>
-                </Flex>
+                </div>
               )}
             />
-          </Flex>
+          </div>
         </form>
       </Dialog.Content>
     </Dialog.Root>

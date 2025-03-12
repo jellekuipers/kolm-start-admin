@@ -1,5 +1,5 @@
 import { CopyIcon } from "@radix-ui/react-icons";
-import { Flex, IconButton } from "@radix-ui/themes";
+import { IconButton } from "@radix-ui/themes";
 
 import { Code } from "~/components/ui/code";
 
@@ -9,7 +9,7 @@ interface CopyValueProps {
 
 export function CopyValue({ value }: CopyValueProps) {
   return (
-    <Flex align="center" gap="2">
+    <div className="flex items-center gap-2">
       <Code>{value}</Code>
       <IconButton
         color="gray"
@@ -19,6 +19,6 @@ export function CopyValue({ value }: CopyValueProps) {
       >
         <CopyIcon />
       </IconButton>
-    </Flex>
+    </div>
   );
 }

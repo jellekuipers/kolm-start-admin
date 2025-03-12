@@ -134,11 +134,11 @@ const membersDataTableColumns: ColumnDef<
     header: undefined,
     cell({ row }) {
       return (
-        <Flex justify="end">
+        <div className="flex justify-end">
           <SessionUserOrganizationActions
             organizationId={row.original.organizationId}
           />
-        </Flex>
+        </div>
       );
     },
   },
@@ -160,27 +160,29 @@ function RouteComponent() {
 
   return (
     <Container>
-      <Flex direction="column" gap="6">
-        <Flex direction="column" gap="4">
-          <Flex justify="between" gap="4" wrap="wrap">
-            <Flex align="center" gap="4" wrap="wrap">
-              <Avatar fallback="@" size="4" src={user.image ?? undefined} />
-              {user.name ? (
-                <Flex direction="column">
-                  <Heading>{user.name}</Heading>
-                  <Text color="gray" size="1" weight="medium">
-                    {user.email}
-                  </Text>
-                </Flex>
-              ) : (
-                <Heading>{user.email}</Heading>
-              )}
-            </Flex>
+      <div className="space-y-6">
+        <div className="space-y-4">
+          <div className="flex justify-between items-center gap-4">
+            <div className="space-y-1">
+              <Flex align="center" gap="4" wrap="wrap">
+                <Avatar fallback="@" size="4" src={user.image ?? undefined} />
+                {user.name ? (
+                  <Flex direction="column">
+                    <Heading>{user.name}</Heading>
+                    <Text color="gray" size="1" weight="medium">
+                      {user.email}
+                    </Text>
+                  </Flex>
+                ) : (
+                  <Heading>{user.email}</Heading>
+                )}
+              </Flex>
+            </div>
             <UpdateProfileModal user={user} />
-          </Flex>
+          </div>
           <Separator />
-        </Flex>
-        <Flex direction="column" gap="4">
+        </div>
+        <div className="space-y-4">
           <Heading as="h2" size="3" weight="medium">
             Accounts
           </Heading>
@@ -189,8 +191,8 @@ function RouteComponent() {
             data={accounts}
             variant="surface"
           />
-        </Flex>
-        <Flex direction="column" gap="4">
+        </div>
+        <div className="space-y-4">
           <Heading as="h2" size="3" weight="medium">
             Organizations
           </Heading>
@@ -199,8 +201,8 @@ function RouteComponent() {
             data={members}
             variant="surface"
           />
-        </Flex>
-      </Flex>
+        </div>
+      </div>
     </Container>
   );
 }

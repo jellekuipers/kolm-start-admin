@@ -93,19 +93,19 @@ function RouteComponent() {
 
   return (
     <Container>
-      <Flex direction="column" gap="6">
-        <Flex direction="column" gap="4">
-          <Flex justify="between" gap="4" wrap="wrap">
-            <Flex align="center" gap="2">
+      <div className="space-y-6">
+        <div className="space-y-4">
+          <div className="flex justify-between gap-4 flex-wrap">
+            <div className="flex items-center gap-2">
               <Heading>Organizations</Heading>
               <Badge>{organizations.length}</Badge>
-            </Flex>
+            </div>
             <CreateOrganizationModal />
-          </Flex>
+          </div>
           <Separator />
-        </Flex>
+        </div>
         <DataTable columns={columns} data={organizations} />
-      </Flex>
+      </div>
     </Container>
   );
 }

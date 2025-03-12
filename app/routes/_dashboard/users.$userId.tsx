@@ -5,7 +5,6 @@ import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
 import { Container } from "~/components/layout/container";
 import { Avatar } from "~/components/ui/avatar";
 import { Badge } from "~/components/ui/badge";
-import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { UserActions } from "~/components/user/user-actions";
 import { UserTabNav } from "~/components/user/user-tab-nav";
@@ -30,30 +29,30 @@ function RouteComponent() {
 
   return (
     <Container>
-      <Flex direction="column" gap="6">
-        <Flex justify="start">
+      <div className="space-y-6">
+        <div className="flex justify-start">
           <Link to="/users">
             <ArrowLeftIcon /> Users
           </Link>
-        </Flex>
-        <Flex direction="column" gap="4">
-          <Flex justify="between" gap="4" wrap="wrap">
-            <Flex align="center" gap="4">
+        </div>
+        <div className="space-y-4">
+          <div className="flex justify-between gap-4 flex-wrap">
+            <div className="flex items-center gap-4">
               <Avatar fallback="@" size="4" src={user.image ?? undefined} />
-              <Flex align="center" gap="2">
+              <div className="flex items-center gap-2">
                 <Heading>{user.name ?? user.email}</Heading>
                 {session.user.id === user.id ? <Badge>you</Badge> : null}
                 {user.banned ? <Badge>banned</Badge> : null}
-              </Flex>
-            </Flex>
+              </div>
+            </div>
             {session.user.id !== user.id ? (
               <UserActions user={user} variant="profile" />
             ) : null}
-          </Flex>
+          </div>
           <UserTabNav userId={user.id} />
-        </Flex>
+        </div>
         <Outlet />
-      </Flex>
+      </div>
     </Container>
   );
 }

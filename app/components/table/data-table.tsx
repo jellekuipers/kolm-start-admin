@@ -16,7 +16,6 @@ import {
 
 import { DataTableSearch } from "~/components/table/data-table-search";
 import { Callout } from "~/components/ui/callout";
-import { Flex } from "~/components/ui/flex";
 import { Table } from "~/components/ui/table";
 
 import { DataTableColumnFilter } from "./data-table-column-filter";
@@ -87,15 +86,15 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <Flex direction="column" gap="4">
-      <Flex gap="4" justify="between" wrap="wrap">
+    <div className="space-y-4">
+      <div className="flex gap-4 justify-between flex-wrap">
         <DataTableSearch onChange={setGlobalFilter} value={globalFilter} />
         {defaultColumnVisibility ? (
           <DataTableColumnFilter table={table} />
         ) : null}
-      </Flex>
+      </div>
       {table.getRowModel().rows?.length ? (
-        <Flex direction="column" gap="4">
+        <div className="space-y-4">
           <Table.Root>
             <Table.Header>
               {table.getHeaderGroups().map((headerGroup) => (
@@ -107,7 +106,7 @@ export function DataTable<TData, TValue>({
                         whiteSpace: "nowrap",
                       }}
                     >
-                      <Flex gap="4" align="center">
+                      <div className="flex gap-4 items-center">
                         {header.isPlaceholder
                           ? null
                           : flexRender(
@@ -120,7 +119,7 @@ export function DataTable<TData, TValue>({
                             onClick={header.column.getToggleSortingHandler()}
                           />
                         ) : null}
-                      </Flex>
+                      </div>
                     </Table.ColumnHeaderCell>
                   ))}
                 </Table.Row>
@@ -148,7 +147,7 @@ export function DataTable<TData, TValue>({
             </Table.Body>
           </Table.Root>
           <DataTablePagination table={table} />
-        </Flex>
+        </div>
       ) : (
         <Callout.Root>
           <Callout.Icon>
@@ -157,6 +156,6 @@ export function DataTable<TData, TValue>({
           <Callout.Text>No results</Callout.Text>
         </Callout.Root>
       )}
-    </Flex>
+    </div>
   );
 }

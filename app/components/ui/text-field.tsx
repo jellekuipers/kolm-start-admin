@@ -18,7 +18,7 @@ export function TextField({
   ...props
 }: TextFieldProps) {
   return (
-    <RACTextField className="flex flex-col gap-1" {...props}>
+    <RACTextField className="space-y-1" {...props}>
       <Label>{label}</Label>
       <Input />
       {description && (

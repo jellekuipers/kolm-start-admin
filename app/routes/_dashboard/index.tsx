@@ -1,9 +1,8 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { StatCard } from "~/components/stats/stat-card";
 import { Container } from "~/components/layout/container";
-import { Flex } from "~/components/ui/flex";
+import { StatCard } from "~/components/stats/stat-card";
 import { Heading } from "~/components/ui/heading";
 import { Separator } from "~/components/ui/separator";
 import { useTRPC } from "~/trpc/react";
@@ -24,16 +23,16 @@ function RouteComponent() {
 
   return (
     <Container>
-      <Flex direction="column" gap="6">
-        <Flex direction="column" gap="4">
+      <div className="space-y-6">
+        <div className="space-y-4">
           <Heading>Dashboard</Heading>
           <Separator />
-        </Flex>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <StatCard count={users} title="Users" />
           <StatCard count={organizations} title="Organizations" />
         </div>
-      </Flex>
+      </div>
     </Container>
   );
 }

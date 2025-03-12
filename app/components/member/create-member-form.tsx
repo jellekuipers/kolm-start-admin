@@ -9,7 +9,6 @@ import { FormError } from "~/components/form/form-error";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
 import { Label } from "~/components/ui/field";
-import { Flex } from "~/components/ui/flex";
 import { Select } from "~/components/ui/select";
 import { TextField } from "~/components/ui/text-field";
 import { getFieldErrorMessage } from "~/lib/error";
@@ -96,7 +95,7 @@ export function CreateMemberForm({
         handleSubmit();
       }}
     >
-      <Flex direction="column" gap="4">
+      <div className="space-y-4">
         <Field
           name="email"
           children={(field) => {
@@ -131,7 +130,7 @@ export function CreateMemberForm({
           name="memberRole"
           children={({ handleChange, name, state }) => {
             return (
-              <Flex direction="column" gap="1">
+              <div className="space-y-1">
                 <Label htmlFor="memberRole">Role</Label>
                 <Select.Root
                   defaultValue={state.value}
@@ -145,7 +144,7 @@ export function CreateMemberForm({
                     <Select.Item value="owner">Owner</Select.Item>
                   </Select.Content>
                 </Select.Root>
-              </Flex>
+              </div>
             );
           }}
         />
@@ -153,17 +152,21 @@ export function CreateMemberForm({
         <Subscribe
           selector={(state) => [state.canSubmit, state.isSubmitting]}
           children={([canSubmit, isSubmitting]) => (
-            <Flex gap="3" justify="end">
+            <div className="flex gap-3 justify-end">
               <Dialog.Close>
                 <Button>Cancel</Button>
               </Dialog.Close>
-              <Button isDisabled={!canSubmit} isPending={isSubmitting}>
+              <Button
+                isDisabled={!canSubmit}
+                isPending={isSubmitting}
+                type="submit"
+              >
                 Save
               </Button>
-            </Flex>
+            </div>
           )}
         />
-      </Flex>
+      </div>
     </form>
   );
 }

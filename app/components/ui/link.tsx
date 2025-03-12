@@ -10,6 +10,7 @@ import {
 } from "react-aria";
 
 interface RACLinkProps extends Omit<AriaLinkOptions, "href"> {
+  className?: string;
   children?: React.ReactNode;
 }
 

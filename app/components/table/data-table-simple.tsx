@@ -10,7 +10,6 @@ import {
 } from "@tanstack/react-table";
 
 import { Callout } from "~/components/ui/callout";
-import { Flex } from "~/components/ui/flex";
 import { Table } from "~/components/ui/table";
 
 import { DataTableSortButton } from "./data-table-sort-button";
@@ -54,7 +53,7 @@ export function DataTableSimple<TData, TValue>({
                       whiteSpace: "nowrap",
                     }}
                   >
-                    <Flex gap="4" align="center">
+                    <div className="flex items-center gap-2">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -67,7 +66,7 @@ export function DataTableSimple<TData, TValue>({
                           onClick={header.column.getToggleSortingHandler()}
                         />
                       ) : null}
-                    </Flex>
+                    </div>
                   </Table.ColumnHeaderCell>
                 ))}
               </Table.Row>

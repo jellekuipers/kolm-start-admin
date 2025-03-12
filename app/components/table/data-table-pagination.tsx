@@ -6,7 +6,6 @@ import {
 } from "@radix-ui/react-icons";
 import { Table } from "@tanstack/react-table";
 
-import { Flex } from "~/components/ui/flex";
 import { IconButton } from "~/components/ui/icon-button";
 import { Text } from "~/components/ui/text";
 
@@ -18,7 +17,7 @@ export function DataTablePagination<TData>({
   table,
 }: DataTablePaginationProps<TData>) {
   return (
-    <Flex align="center" gap="4">
+    <div className="flex items-center justify-between gap-2">
       <IconButton
         color="gray"
         disabled={!table.getCanPreviousPage()}
@@ -61,6 +60,6 @@ export function DataTablePagination<TData>({
       >
         <DoubleArrowRightIcon />
       </IconButton>
-    </Flex>
+    </div>
   );
 }

@@ -10,7 +10,6 @@ import { FormError } from "~/components/form/form-error";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
 import { Label } from "~/components/ui/field";
-import { Flex } from "~/components/ui/flex";
 import { Select } from "~/components/ui/select";
 import { addMember } from "~/lib/member";
 import { organizationsQueryOptions } from "~/lib/organization";
@@ -91,11 +90,12 @@ export function AddUserToOrganizationModal({
     <Dialog.Root open={open} onOpenChange={onOpenChangeHandler}>
       <Dialog.Trigger>
         <Button>
-          <PlusIcon /> Add organization
+          <PlusIcon />
+          Add to organization
         </Button>
       </Dialog.Trigger>
       <Dialog.Content>
-        <Dialog.Title>Add organization</Dialog.Title>
+        <Dialog.Title>Add to organization</Dialog.Title>
         <form
           onSubmit={(event) => {
             event.preventDefault();
@@ -103,12 +103,12 @@ export function AddUserToOrganizationModal({
             handleSubmit();
           }}
         >
-          <Flex direction="column" gap="4">
+          <div className="space-y-4">
             <Field
               name="organizationId"
               children={(field) => {
                 return (
-                  <Flex direction="column" gap="1">
+                  <div className="space-y-1">
                     <Label htmlFor="organizationId">Organization</Label>
                     <Select.Root
                       defaultValue={field.state.value}
@@ -127,7 +127,7 @@ export function AddUserToOrganizationModal({
                         ))}
                       </Select.Content>
                     </Select.Root>
-                  </Flex>
+                  </div>
                 );
               }}
             />
@@ -135,7 +135,7 @@ export function AddUserToOrganizationModal({
               name="memberRole"
               children={(field) => {
                 return (
-                  <Flex direction="column" gap="1">
+                  <div className="space-y-1">
                     <Label htmlFor="memberRole">Member role</Label>
                     <Select.Root
                       defaultValue={field.state.value}
@@ -149,7 +149,7 @@ export function AddUserToOrganizationModal({
                         <Select.Item value="owner">Owner</Select.Item>
                       </Select.Content>
                     </Select.Root>
-                  </Flex>
+                  </div>
                 );
               }}
             />
@@ -157,17 +157,21 @@ export function AddUserToOrganizationModal({
             <Subscribe
               selector={(state) => [state.canSubmit, state.isSubmitting]}
               children={([canSubmit, isSubmitting]) => (
-                <Flex gap="3" justify="end">
+                <div className="flex gap-3 justify-end">
                   <Dialog.Close>
                     <Button>Cancel</Button>
                   </Dialog.Close>
-                  <Button isDisabled={!canSubmit} isPending={isSubmitting}>
+                  <Button
+                    isDisabled={!canSubmit}
+                    isPending={isSubmitting}
+                    type="submit"
+                  >
                     Save
                   </Button>
-                </Flex>
+                </div>
               )}
             />
-          </Flex>
+          </div>
         </form>
       </Dialog.Content>
     </Dialog.Root>

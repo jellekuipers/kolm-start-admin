@@ -10,7 +10,6 @@ import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
 import { Label } from "~/components/ui/field";
-import { Flex } from "~/components/ui/flex";
 import { Select } from "~/components/ui/select";
 import { Separator } from "~/components/ui/separator";
 import { Text } from "~/components/ui/text";
@@ -104,7 +103,7 @@ export function InviteMemberForm({
         handleSubmit();
       }}
     >
-      <Flex direction="column" gap="4">
+      <div className="space-y-4">
         <Field
           name="email"
           children={(field) => {
@@ -124,7 +123,7 @@ export function InviteMemberForm({
           name="role"
           children={({ handleChange, name, state }) => {
             return (
-              <Flex direction="column" gap="1">
+              <div className="space-y-1">
                 <Label htmlFor="role">Role</Label>
                 <Select.Root
                   defaultValue={state.value}
@@ -138,20 +137,20 @@ export function InviteMemberForm({
                     <Select.Item value="owner">Owner</Select.Item>
                   </Select.Content>
                 </Select.Root>
-              </Flex>
+              </div>
             );
           }}
         />
         <Separator />
-        <Flex align="center" gap="2">
+        <div className="flex items-center gap-2">
           <Text weight="medium">Team</Text>
           <Badge>optional</Badge>
-        </Flex>
+        </div>
         <Field
           name="teamId"
           children={({ handleChange, name, state }) => {
             return (
-              <Flex direction="column" gap="1">
+              <div className="space-y-1">
                 <Label htmlFor="teamId">Add to team</Label>
                 <Select.Root
                   defaultValue={state.value}
@@ -167,7 +166,7 @@ export function InviteMemberForm({
                     ))}
                   </Select.Content>
                 </Select.Root>
-              </Flex>
+              </div>
             );
           }}
         />
@@ -175,17 +174,21 @@ export function InviteMemberForm({
         <Subscribe
           selector={(state) => [state.canSubmit, state.isSubmitting]}
           children={([canSubmit, isSubmitting]) => (
-            <Flex gap="3" justify="end">
+            <div className="flex gap-3 justify-end">
               <Dialog.Close>
                 <Button>Cancel</Button>
               </Dialog.Close>
-              <Button isDisabled={!canSubmit} isPending={isSubmitting}>
+              <Button
+                isDisabled={!canSubmit}
+                isPending={isSubmitting}
+                type="submit"
+              >
                 Save
               </Button>
-            </Flex>
+            </div>
           )}
         />
-      </Flex>
+      </div>
     </form>
   );
 }

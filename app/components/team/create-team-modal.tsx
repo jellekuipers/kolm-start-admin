@@ -8,7 +8,6 @@ import { z } from "zod";
 import { FormError } from "~/components/form/form-error";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
-import { Flex } from "~/components/ui/flex";
 import { TextField } from "~/components/ui/text-field";
 import { getFieldErrorMessage } from "~/lib/error";
 import { createTeam } from "~/lib/team";
@@ -87,7 +86,7 @@ export function CreateTeamModal({ organizationId }: CreateTeamModalProps) {
             handleSubmit();
           }}
         >
-          <Flex direction="column" gap="4">
+          <div className="space-y-4">
             <Field
               name="name"
               children={(field) => {
@@ -107,17 +106,21 @@ export function CreateTeamModal({ organizationId }: CreateTeamModalProps) {
             <Subscribe
               selector={(state) => [state.canSubmit, state.isSubmitting]}
               children={([canSubmit, isSubmitting]) => (
-                <Flex gap="3" justify="end">
+                <div className="flex gap-3 justify-end">
                   <Dialog.Close>
                     <Button>Cancel</Button>
                   </Dialog.Close>
-                  <Button isDisabled={!canSubmit} isPending={isSubmitting}>
+                  <Button
+                    isDisabled={!canSubmit}
+                    isPending={isSubmitting}
+                    type="submit"
+                  >
                     Save
                   </Button>
-                </Flex>
+                </div>
               )}
             />
-          </Flex>
+          </div>
         </form>
       </Dialog.Content>
     </Dialog.Root>

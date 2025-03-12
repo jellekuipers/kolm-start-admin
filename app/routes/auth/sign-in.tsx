@@ -9,7 +9,6 @@ import { Logo } from "~/components/logo";
 import { Button } from "~/components/ui/button";
 import { Card } from "~/components/ui/card";
 import { Label } from "~/components/ui/field";
-import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
 import { TextField } from "~/components/ui/text-field";
@@ -56,17 +55,13 @@ function RouteComponent() {
   });
 
   return (
-    <Flex
-      align="center"
-      direction="column"
-      gap="6"
-      justify="center"
-      p="4"
+    <div
+      className="flex flex-col items-center justify-center gap-6 p-4"
       style={{ backgroundColor: "var(--gray-1)", minHeight: "inherit" }}
     >
       <Logo size={48} />
       <Card>
-        <Flex direction="column" gap="5">
+        <div className="space-y-4">
           <Heading as="h3" size="6">
             Sign in
           </Heading>
@@ -77,7 +72,7 @@ function RouteComponent() {
               handleSubmit();
             }}
           >
-            <Flex direction="column" gap="5">
+            <div className="space-y-4">
               <Field
                 name="email"
                 children={(field) => {
@@ -98,21 +93,22 @@ function RouteComponent() {
                 name="password"
                 children={(field) => {
                   return (
-                    <Flex direction="column" gap="1">
-                      <Flex align="baseline" justify="between" mb="1">
+                    <div className="space-y-1">
+                      <div className="flex items-baseline justify-between mb-1">
                         <Label htmlFor="password">Password</Label>
-                        <Link to="/">Forgot password?</Link>
-                      </Flex>
+                        <Link className="text-sm font-medium" to="/">
+                          Forgot password?
+                        </Link>
+                      </div>
                       <TextField
                         defaultValue={field.state.value}
                         errorMessage={getFieldErrorMessage({ field })}
-                        label="Password"
                         name={field.name}
                         onBlur={field.handleBlur}
                         onChange={(value) => field.handleChange(value)}
                         type="password"
                       />
-                    </Flex>
+                    </div>
                   );
                 }}
               />
@@ -120,17 +116,21 @@ function RouteComponent() {
               <Subscribe
                 selector={(state) => [state.canSubmit, state.isSubmitting]}
                 children={([canSubmit, isSubmitting]) => (
-                  <Flex justify="end">
-                    <Button isDisabled={!canSubmit} isPending={isSubmitting}>
+                  <div className="flex justify-end">
+                    <Button
+                      isDisabled={!canSubmit}
+                      isPending={isSubmitting}
+                      type="submit"
+                    >
                       Sign in
                     </Button>
-                  </Flex>
+                  </div>
                 )}
               />
-            </Flex>
+            </div>
           </form>
-        </Flex>
+        </div>
       </Card>
-    </Flex>
+    </div>
   );
 }
