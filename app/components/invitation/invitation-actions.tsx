@@ -49,7 +49,7 @@ export function InvitationActions({ invitation }: InvitationActionsProps) {
       <InvitationModal invitation={invitation} open={open} setOpen={setOpen} />
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
-          <IconButton variant="ghost">
+          <IconButton>
             <DotsVerticalIcon />
           </IconButton>
         </DropdownMenu.Trigger>

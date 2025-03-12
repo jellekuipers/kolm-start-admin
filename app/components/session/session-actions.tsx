@@ -35,7 +35,7 @@ export function SessionActions({ sessionToken }: SessionActionsProps) {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
-        <IconButton variant="ghost">
+        <IconButton>
           <DotsVerticalIcon />
         </IconButton>
       </DropdownMenu.Trigger>

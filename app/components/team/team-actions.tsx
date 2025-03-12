@@ -56,7 +56,7 @@ export function TeamActions({ team }: TeamActionsProps) {
       <UpdateTeamModal open={open} setOpen={setOpen} team={team} />
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
-          <IconButton variant="ghost">
+          <IconButton>
             <DotsVerticalIcon />
           </IconButton>
         </DropdownMenu.Trigger>

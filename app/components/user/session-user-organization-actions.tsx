@@ -57,7 +57,7 @@ export function SessionUserOrganizationActions({
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
-        <IconButton variant="ghost">
+        <IconButton>
           <DotsVerticalIcon />
         </IconButton>
       </DropdownMenu.Trigger>

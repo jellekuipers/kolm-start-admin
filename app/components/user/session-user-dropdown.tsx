@@ -35,7 +35,7 @@ export function SessionUserDropdown() {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
-        <IconButton variant="ghost">
+        <IconButton>
           <Avatar
             fallback="@"
             src={session?.user.image ?? undefined}

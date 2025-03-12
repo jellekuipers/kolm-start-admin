@@ -85,7 +85,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
         {variant === "overview" ? (
-          <IconButton variant="ghost">
+          <IconButton>
             <DotsVerticalIcon />
           </IconButton>
         ) : (

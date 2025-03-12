@@ -58,7 +58,7 @@ export function OrganizationActions({
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
           {variant === "overview" ? (
-            <IconButton variant="ghost">
+            <IconButton>
               <DotsVerticalIcon />
             </IconButton>
           ) : (

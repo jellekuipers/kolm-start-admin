@@ -17,20 +17,16 @@ export function DataTablePagination<TData>({
   table,
 }: DataTablePaginationProps<TData>) {
   return (
-    <div className="flex items-center justify-between gap-2">
+    <div className="flex items-center gap-2">
       <IconButton
-        color="gray"
-        disabled={!table.getCanPreviousPage()}
-        onClick={() => table.firstPage()}
-        variant="ghost"
+        isDisabled={!table.getCanPreviousPage()}
+        onPress={() => table.firstPage()}
       >
         <DoubleArrowLeftIcon />
       </IconButton>
       <IconButton
-        color="gray"
-        disabled={!table.getCanPreviousPage()}
-        onClick={() => table.previousPage()}
-        variant="ghost"
+        isDisabled={!table.getCanPreviousPage()}
+        onPress={() => table.previousPage()}
       >
         <ChevronLeftIcon />
       </IconButton>
@@ -45,18 +41,14 @@ export function DataTablePagination<TData>({
         {table.getPageCount().toLocaleString()}
       </Text>
       <IconButton
-        color="gray"
-        disabled={!table.getCanNextPage()}
-        onClick={() => table.nextPage()}
-        variant="ghost"
+        isDisabled={!table.getCanNextPage()}
+        onPress={() => table.nextPage()}
       >
         <ChevronRightIcon />
       </IconButton>
       <IconButton
-        color="gray"
-        disabled={!table.getCanNextPage()}
-        onClick={() => table.lastPage()}
-        variant="ghost"
+        isDisabled={!table.getCanNextPage()}
+        onPress={() => table.lastPage()}
       >
         <DoubleArrowRightIcon />
       </IconButton>
