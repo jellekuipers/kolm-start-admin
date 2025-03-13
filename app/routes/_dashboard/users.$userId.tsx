@@ -34,7 +34,7 @@ function RouteComponent() {
           <ArrowLeftIcon /> Users
         </Link>
         <div className="space-y-4">
-          <div className="flex justify-between gap-4 flex-wrap">
+          <div className="flex justify-between gap-4 flex-wrap items-start">
             <div className="flex items-center gap-4">
               <Avatar fallback="@" src={user.image ?? undefined} />
               <div className="flex items-center gap-2">
