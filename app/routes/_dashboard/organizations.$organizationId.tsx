@@ -41,11 +41,7 @@ function RouteComponent() {
         <div className="space-y-4">
           <div className="flex justify-between gap-4 flex-wrap">
             <div className="flex items-center gap-4 flex-wrap">
-              <Avatar
-                fallback="@"
-                size="4"
-                src={organization.logo ?? undefined}
-              />
+              <Avatar fallback="@" src={organization.logo ?? undefined} />
               <div className="space-y-0">
                 <Heading>{organization.name}</Heading>
                 <Text color="gray" size="1" weight="medium">

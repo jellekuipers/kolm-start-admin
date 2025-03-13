@@ -69,7 +69,6 @@ function RouteComponent() {
                 <Avatar
                   fallback="@"
                   src={organizationOwner.user.image ?? undefined}
-                  size="1"
                 />
                 {organizationOwner.user.email}
               </div>

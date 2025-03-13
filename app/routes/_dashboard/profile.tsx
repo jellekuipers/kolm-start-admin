@@ -164,7 +164,7 @@ function RouteComponent() {
           <div className="flex justify-between items-center gap-4">
             <div className="space-y-1">
               <div className="flex items-center gap-4 flex-wrap">
-                <Avatar fallback="@" size="4" src={user.image ?? undefined} />
+                <Avatar fallback="@" src={user.image ?? undefined} />
                 {user.name ? (
                   <div className="space-y-0">
                     <Heading>{user.name}</Heading>

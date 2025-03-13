@@ -41,11 +41,7 @@ export function SessionUserDropdown() {
     <MenuButton
       label={
         <IconButton>
-          <Avatar
-            fallback="@"
-            src={session?.user.image ?? undefined}
-            size="2"
-          />
+          <Avatar fallback="@" src={session?.user.image ?? undefined} />
         </IconButton>
       }
     >

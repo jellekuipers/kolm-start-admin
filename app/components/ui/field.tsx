@@ -22,7 +22,12 @@ export function FieldError(props: FieldErrorProps) {
 }
 
 export function FieldGroup(props: GroupProps) {
-  return <AriaGroup {...props} />;
+  return (
+    <AriaGroup
+      className="group flex items-center border border-gray-300 rounded overflow-hidden"
+      {...props}
+    />
+  );
 }
 
 export function Input(props: InputProps) {

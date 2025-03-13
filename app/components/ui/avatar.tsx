@@ -1,8 +1,17 @@
-import type { ComponentProps } from "react";
-import { Avatar as RadixAvatar } from "@radix-ui/themes";
+interface AvatarProps {
+  alt?: string;
+  fallback: string;
+  src: string | undefined;
+}
 
-export type AvatarProps = ComponentProps<typeof RadixAvatar>;
-
-export function Avatar(props: AvatarProps) {
-  return <RadixAvatar {...props} />;
+export function Avatar({ alt, fallback, src }: AvatarProps) {
+  return (
+    <div className="rounded flex items-center justify-center size-10 bg-gray-50 shrink-0">
+      {src ? (
+        <img alt={alt ?? ""} src={src} />
+      ) : (
+        <span className="font-medium">{fallback}</span>
+      )}
+    </div>
+  );
 }
