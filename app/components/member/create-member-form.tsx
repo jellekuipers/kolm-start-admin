@@ -133,14 +133,14 @@ export function CreateMemberForm({
         />
         <Field
           name="memberRole"
-          children={({ handleChange, name, state }) => {
+          children={(field) => {
             return (
               <Flex direction="column" gap="1">
                 <FormFieldLabel htmlFor="memberRole" text="Role" />
                 <Select.Root
-                  defaultValue={state.value}
-                  name={name}
-                  onValueChange={handleChange}
+                  defaultValue={field.state.value}
+                  name={field.name}
+                  onValueChange={field.handleChange}
                 >
                   <Select.Trigger />
                   <Select.Content>
