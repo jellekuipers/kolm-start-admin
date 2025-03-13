@@ -40,5 +40,5 @@ AriaLinkComponent.displayName = "AriaLinkComponent";
 const CreatedLinkComponent = createLink(AriaLinkComponent);
 
 export const Link: LinkComponent<typeof AriaLinkComponent> = (props) => {
-  return <CreatedLinkComponent preload={"intent"} {...props} />;
+  return <CreatedLinkComponent preload="intent" {...props} />;
 };
