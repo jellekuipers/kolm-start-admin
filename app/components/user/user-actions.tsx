@@ -13,8 +13,8 @@ import { useNavigate, useRouter } from "@tanstack/react-router";
 import { UserWithRole } from "better-auth/plugins";
 
 import { Button } from "~/components/ui/button";
-import { DropdownMenu } from "~/components/ui/dropdown-menu";
 import { IconButton } from "~/components/ui/icon-button";
+import { MenuButton, MenuItem, MenuSeparator } from "~/components/ui/menu";
 import { authClient, useSession } from "~/lib/auth-client";
 import {
   banUser,
@@ -82,9 +82,9 @@ export function UserActions({ user, variant }: UserActionsProps) {
   });
 
   return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger>
-        {variant === "overview" ? (
+    <MenuButton
+      label={
+        variant === "overview" ? (
           <IconButton>
             <DotsVerticalIcon />
           </IconButton>
@@ -92,74 +92,71 @@ export function UserActions({ user, variant }: UserActionsProps) {
           <Button>
             Actions <ChevronDownIcon />
           </Button>
-        )}
-      </DropdownMenu.Trigger>
-      <DropdownMenu.Content align="end">
-        {variant === "overview" ? (
-          <DropdownMenu.Item
-            onClick={() =>
-              navigate({
-                params: { userId: user.id },
-                to: "/users/$userId",
-              })
-            }
-          >
-            <PersonIcon />
-            View user
-          </DropdownMenu.Item>
-        ) : null}
-        {variant === "overview" ? <DropdownMenu.Separator /> : null}
-        {user.banned ? (
-          <DropdownMenu.Item
-            disabled={unbanUserMutation.isPending}
-            onClick={async () =>
-              await unbanUserMutation.mutateAsync({ userId: user.id })
-            }
-          >
-            <CircleIcon />
-            Unban user
-          </DropdownMenu.Item>
-        ) : (
-          <DropdownMenu.Item
-            disabled={banUserMutation.isPending}
-            onClick={async () =>
-              await banUserMutation.mutateAsync({ userId: user.id })
-            }
-          >
-            <CrossCircledIcon />
-            Ban user
-          </DropdownMenu.Item>
-        )}
-        <DropdownMenu.Item
-          disabled={impersonateUserMutation.isPending || !!user.banned}
-          onClick={async () =>
-            await impersonateUserMutation.mutateAsync({ userId: user.id })
+        )
+      }
+    >
+      {variant === "overview" ? (
+        <MenuItem
+          onAction={() =>
+            navigate({
+              params: { userId: user.id },
+              to: "/users/$userId",
+            })
           }
         >
-          <UpdateIcon />
-          Impersonate user
-        </DropdownMenu.Item>
-        <DropdownMenu.Item
-          disabled={revokeAllUserSessionsMutation.isPending}
-          onClick={async () =>
-            await revokeAllUserSessionsMutation.mutateAsync({ userId: user.id })
+          <PersonIcon />
+          View user
+        </MenuItem>
+      ) : null}
+      {user.banned ? (
+        <MenuItem
+          isDisabled={unbanUserMutation.isPending}
+          onAction={async () =>
+            await unbanUserMutation.mutateAsync({ userId: user.id })
           }
         >
-          <CircleBackslashIcon />
-          Revoke all sessions
-        </DropdownMenu.Item>
-        <DropdownMenu.Separator />
-        <DropdownMenu.Item
-          disabled={removeUserMutation.isPending}
-          color="red"
-          onClick={async () =>
-            await removeUserMutation.mutateAsync({ userId: user.id })
+          <CircleIcon />
+          Unban user
+        </MenuItem>
+      ) : (
+        <MenuItem
+          isDisabled={banUserMutation.isPending}
+          onAction={async () =>
+            await banUserMutation.mutateAsync({ userId: user.id })
           }
         >
-          <TrashIcon />
-          Remove user
-        </DropdownMenu.Item>
-      </DropdownMenu.Content>
-    </DropdownMenu.Root>
+          <CrossCircledIcon />
+          Ban user
+        </MenuItem>
+      )}
+      <MenuItem
+        isDisabled={impersonateUserMutation.isPending || !!user.banned}
+        onAction={async () =>
+          await impersonateUserMutation.mutateAsync({ userId: user.id })
+        }
+      >
+        <UpdateIcon />
+        Impersonate user
+      </MenuItem>
+      <MenuItem
+        isDisabled={revokeAllUserSessionsMutation.isPending}
+        onAction={async () =>
+          await revokeAllUserSessionsMutation.mutateAsync({ userId: user.id })
+        }
+      >
+        <CircleBackslashIcon />
+        Revoke all sessions
+      </MenuItem>
+      <MenuSeparator />
+      <MenuItem
+        isDisabled={removeUserMutation.isPending}
+        onAction={async () =>
+          await removeUserMutation.mutateAsync({ userId: user.id })
+        }
+      >
+        <TrashIcon />
+        Remove user
+      </MenuItem>
+    </MenuButton>
   );
 }

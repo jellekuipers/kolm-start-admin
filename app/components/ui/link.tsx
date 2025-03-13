@@ -9,12 +9,12 @@ import {
   type AriaLinkOptions,
 } from "react-aria";
 
-interface RACLinkProps extends Omit<AriaLinkOptions, "href"> {
+interface AriaLinkProps extends Omit<AriaLinkOptions, "href"> {
   className?: string;
   children?: React.ReactNode;
 }
 
-const RACLinkComponent = forwardRef<HTMLAnchorElement, RACLinkProps>(
+const AriaLinkComponent = forwardRef<HTMLAnchorElement, AriaLinkProps>(
   (props, forwardedRef) => {
     const ref = useObjectRef(forwardedRef);
 
@@ -35,10 +35,10 @@ const RACLinkComponent = forwardRef<HTMLAnchorElement, RACLinkProps>(
   },
 );
 
-RACLinkComponent.displayName = "RACLinkComponent";
+AriaLinkComponent.displayName = "AriaLinkComponent";
 
-const CreatedLinkComponent = createLink(RACLinkComponent);
+const CreatedLinkComponent = createLink(AriaLinkComponent);
 
-export const Link: LinkComponent<typeof RACLinkComponent> = (props) => {
+export const Link: LinkComponent<typeof AriaLinkComponent> = (props) => {
   return <CreatedLinkComponent preload={"intent"} {...props} />;
 };

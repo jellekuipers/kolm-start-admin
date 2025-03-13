@@ -1,34 +1,34 @@
 import {
+  FieldError as AriaFieldError,
+  Group as AriaGroup,
+  Input as AriaInput,
+  Label as AriaLabel,
+  Text as AriaText,
   FieldErrorProps,
   GroupProps,
   InputProps,
   LabelProps,
-  FieldError as RACFieldError,
-  Group as RACGroup,
-  Input as RACInput,
-  Label as RACLabel,
-  Text as RACText,
   TextProps,
 } from "react-aria-components";
 
 export function Description(props: TextProps) {
-  return <RACText {...props} slot="description" />;
+  return <AriaText {...props} slot="description" />;
 }
 
 export function FieldError(props: FieldErrorProps) {
   return (
-    <RACFieldError className="text-sm text-red-500 font-medium" {...props} />
+    <AriaFieldError className="text-sm text-red-500 font-medium" {...props} />
   );
 }
 
 export function FieldGroup(props: GroupProps) {
-  return <RACGroup {...props} />;
+  return <AriaGroup {...props} />;
 }
 
 export function Input(props: InputProps) {
-  return <RACInput className="border border-gray-300 rounded" {...props} />;
+  return <AriaInput className="border border-gray-300 rounded" {...props} />;
 }
 
 export function Label(props: LabelProps) {
-  return <RACLabel className="font-medium text-sm" {...props} />;
+  return <AriaLabel className="font-medium text-sm" {...props} />;
 }

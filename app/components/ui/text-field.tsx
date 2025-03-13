@@ -1,11 +1,11 @@
 import {
-  TextField as RACTextField,
-  TextFieldProps as RACTextFieldProps,
+  TextField as AriaTextField,
+  TextFieldProps as AriaTextFieldProps,
 } from "react-aria-components";
 
 import { Description, FieldError, Input, Label } from "~/components/ui/field";
 
-export interface TextFieldProps extends RACTextFieldProps {
+export interface TextFieldProps extends AriaTextFieldProps {
   description?: string;
   errorMessage?: string | null;
   label?: string;
@@ -18,13 +18,13 @@ export function TextField({
   ...props
 }: TextFieldProps) {
   return (
-    <RACTextField className="space-y-1" {...props}>
+    <AriaTextField className="space-y-1" {...props}>
       <Label>{label}</Label>
       <Input />
       {description && (
         <Description slot="description">{description}</Description>
       )}
       <FieldError>{errorMessage}</FieldError>
-    </RACTextField>
+    </AriaTextField>
   );
 }

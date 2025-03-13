@@ -1,12 +1,12 @@
 import {
-  Button as RACButton,
-  SearchField as RACSearchField,
-  SearchFieldProps as RACSearchFieldProps,
+  Button as AriaButton,
+  SearchField as AriaSearchField,
+  SearchFieldProps as AriaSearchFieldProps,
 } from "react-aria-components";
 
 import { Description, FieldError, Input, Label } from "~/components/ui/field";
 
-export interface SearchFieldProps extends RACSearchFieldProps {
+export interface SearchFieldProps extends AriaSearchFieldProps {
   description?: string;
   errorMessage?: string | null;
   label?: string;
@@ -21,14 +21,14 @@ export function SearchField({
   ...props
 }: SearchFieldProps) {
   return (
-    <RACSearchField {...props}>
+    <AriaSearchField {...props}>
       {label && <Label>{label}</Label>}
       <Input placeholder={placeholder} />
-      <RACButton>✕</RACButton>
+      <AriaButton>✕</AriaButton>
       {description && (
         <Description slot="description">{description}</Description>
       )}
       <FieldError>{errorMessage}</FieldError>
-    </RACSearchField>
+    </AriaSearchField>
   );
 }

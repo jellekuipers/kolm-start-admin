@@ -2,8 +2,13 @@ import { ExitIcon, PersonIcon, UpdateIcon } from "@radix-ui/react-icons";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
 import { Avatar } from "~/components/ui/avatar";
-import { DropdownMenu } from "~/components/ui/dropdown-menu";
 import { IconButton } from "~/components/ui/icon-button";
+import {
+  MenuButton,
+  MenuHeader,
+  MenuItem,
+  MenuSeparator,
+} from "~/components/ui/menu";
 import { authClient, signOut, useSession } from "~/lib/auth-client";
 
 export function SessionUserDropdown() {
@@ -33,8 +38,8 @@ export function SessionUserDropdown() {
   if (isPendingSession || !session) return null;
 
   return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger>
+    <MenuButton
+      label={
         <IconButton>
           <Avatar
             fallback="@"
@@ -42,31 +47,30 @@ export function SessionUserDropdown() {
             size="2"
           />
         </IconButton>
-      </DropdownMenu.Trigger>
-      <DropdownMenu.Content align="end">
-        <DropdownMenu.Label>{session?.user.email}</DropdownMenu.Label>
-        <DropdownMenu.Item
-          onClick={() =>
-            navigate({
-              to: "/profile",
-            })
-          }
-        >
-          <PersonIcon />
-          View profile
-        </DropdownMenu.Item>
-        {session?.session.impersonatedBy ? (
-          <DropdownMenu.Item onClick={stopImpersonatingHandler}>
-            <UpdateIcon />
-            Stop impersonating
-          </DropdownMenu.Item>
-        ) : null}
-        <DropdownMenu.Separator />
-        <DropdownMenu.Item onClick={signOutHandler}>
-          <ExitIcon />
-          Sign out
-        </DropdownMenu.Item>
-      </DropdownMenu.Content>
-    </DropdownMenu.Root>
+      }
+    >
+      <MenuHeader>{session?.user.email}</MenuHeader>
+      <MenuItem
+        onAction={() =>
+          navigate({
+            to: "/profile",
+          })
+        }
+      >
+        <PersonIcon />
+        View profile
+      </MenuItem>
+      {session?.session.impersonatedBy ? (
+        <MenuItem onAction={stopImpersonatingHandler}>
+          <UpdateIcon />
+          Stop impersonating
+        </MenuItem>
+      ) : null}
+      <MenuSeparator />
+      <MenuItem onAction={signOutHandler}>
+        <ExitIcon />
+        Sign out
+      </MenuItem>
+    </MenuButton>
   );
 }

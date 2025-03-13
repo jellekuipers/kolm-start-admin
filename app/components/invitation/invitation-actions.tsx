@@ -8,8 +8,8 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 
 import { InvitationModal } from "~/components/invitation/invitation-modal";
-import { DropdownMenu } from "~/components/ui/dropdown-menu";
 import { IconButton } from "~/components/ui/icon-button";
+import { MenuButton, MenuItem, MenuSeparator } from "~/components/ui/menu";
 import { cancelInvitation } from "~/lib/invitation";
 import { Invitation } from "~/types";
 
@@ -47,35 +47,33 @@ export function InvitationActions({ invitation }: InvitationActionsProps) {
   return (
     <>
       <InvitationModal invitation={invitation} open={open} setOpen={setOpen} />
-      <DropdownMenu.Root>
-        <DropdownMenu.Trigger>
+      <MenuButton
+        label={
           <IconButton>
             <DotsVerticalIcon />
           </IconButton>
-        </DropdownMenu.Trigger>
-        <DropdownMenu.Content align="end">
-          <DropdownMenu.Item
-            disabled={cancelInvitationMutation.isPending}
-            onClick={() => setOpen(true)}
-          >
-            <PaperPlaneIcon />
-            View invitation
-          </DropdownMenu.Item>
-          <DropdownMenu.Separator />
-          <DropdownMenu.Item
-            color="red"
-            disabled={cancelInvitationMutation.isPending}
-            onClick={async () =>
-              await cancelInvitationMutation.mutateAsync({
-                invitationId: invitation.id,
-              })
-            }
-          >
-            <CrossCircledIcon />
-            Cancel
-          </DropdownMenu.Item>
-        </DropdownMenu.Content>
-      </DropdownMenu.Root>
+        }
+      >
+        <MenuItem
+          isDisabled={cancelInvitationMutation.isPending}
+          onAction={() => setOpen(true)}
+        >
+          <PaperPlaneIcon />
+          View invitation
+        </MenuItem>
+        <MenuSeparator />
+        <MenuItem
+          isDisabled={cancelInvitationMutation.isPending}
+          onAction={async () =>
+            await cancelInvitationMutation.mutateAsync({
+              invitationId: invitation.id,
+            })
+          }
+        >
+          <CrossCircledIcon />
+          Cancel
+        </MenuItem>
+      </MenuButton>
     </>
   );
 }

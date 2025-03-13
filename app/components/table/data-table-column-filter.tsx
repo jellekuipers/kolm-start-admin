@@ -1,6 +1,11 @@
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { Table } from "@tanstack/react-table";
-import { DialogTrigger, GridList, GridListItem } from "react-aria-components";
+import {
+  Dialog,
+  DialogTrigger,
+  GridList,
+  GridListItem,
+} from "react-aria-components";
 
 import { Button } from "~/components/ui/button";
 import { Checkbox } from "~/components/ui/checkbox";
@@ -21,23 +26,25 @@ export function DataTableColumnFilter<TData>({
         Column visibility <ChevronDownIcon />
       </Button>
       <Popover>
-        <GridList
-          aria-label="Column filter"
-          items={columns}
-          onSelectionChange={(column) => console.log(column)}
-          selectionMode="multiple"
-        >
-          {(column) => (
-            <GridListItem
-              key={column.id}
-              textValue={column.columnDef.header?.toString()}
-            >
-              <Checkbox slot="selection">
-                {column.columnDef.header?.toString()}
-              </Checkbox>
-            </GridListItem>
-          )}
-        </GridList>
+        <Dialog>
+          <GridList
+            aria-label="Column filter"
+            items={columns}
+            onSelectionChange={(column) => console.log(column)}
+            selectionMode="multiple"
+          >
+            {(column) => (
+              <GridListItem
+                key={column.id}
+                textValue={column.columnDef.header?.toString()}
+              >
+                <Checkbox slot="selection">
+                  {column.columnDef.header?.toString()}
+                </Checkbox>
+              </GridListItem>
+            )}
+          </GridList>
+        </Dialog>
       </Popover>
     </DialogTrigger>
   );

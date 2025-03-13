@@ -6,8 +6,8 @@ import {
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
-import { DropdownMenu } from "~/components/ui/dropdown-menu";
 import { IconButton } from "~/components/ui/icon-button";
+import { MenuButton, MenuItem, MenuSeparator } from "~/components/ui/menu";
 import { removeMember } from "~/lib/organization";
 
 interface MemberActionsProps {
@@ -53,39 +53,37 @@ export function MemberActions({
   });
 
   return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger>
+    <MenuButton
+      label={
         <IconButton>
           <DotsVerticalIcon />
         </IconButton>
-      </DropdownMenu.Trigger>
-      <DropdownMenu.Content align="end">
-        <DropdownMenu.Item
-          onClick={() =>
-            navigate({
-              params: { organizationId },
-              to: "/organizations/$organizationId",
-            })
-          }
-        >
-          <CardStackIcon />
-          View organization
-        </DropdownMenu.Item>
-        <DropdownMenu.Separator />
-        <DropdownMenu.Item
-          color="red"
-          disabled={removeMemberMutation.isPending}
-          onClick={async () =>
-            await removeMemberMutation.mutateAsync({
-              memberIdOrEmail: memberId,
-              organizationId,
-            })
-          }
-        >
-          <TrashIcon />
-          Remove membership
-        </DropdownMenu.Item>
-      </DropdownMenu.Content>
-    </DropdownMenu.Root>
+      }
+    >
+      <MenuItem
+        onAction={() =>
+          navigate({
+            params: { organizationId },
+            to: "/organizations/$organizationId",
+          })
+        }
+      >
+        <CardStackIcon />
+        View organization
+      </MenuItem>
+      <MenuSeparator />
+      <MenuItem
+        isDisabled={removeMemberMutation.isPending}
+        onAction={async () =>
+          await removeMemberMutation.mutateAsync({
+            memberIdOrEmail: memberId,
+            organizationId,
+          })
+        }
+      >
+        <TrashIcon />
+        Remove membership
+      </MenuItem>
+    </MenuButton>
   );
 }

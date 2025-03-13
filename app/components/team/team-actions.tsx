@@ -8,8 +8,8 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 
 import { UpdateTeamModal } from "~/components/team/update-team-modal";
-import { DropdownMenu } from "~/components/ui/dropdown-menu";
 import { IconButton } from "~/components/ui/icon-button";
+import { MenuButton, MenuItem, MenuSeparator } from "~/components/ui/menu";
 import { removeTeam } from "~/lib/team";
 import { Team } from "~/types";
 
@@ -54,33 +54,31 @@ export function TeamActions({ team }: TeamActionsProps) {
   return (
     <>
       <UpdateTeamModal open={open} setOpen={setOpen} team={team} />
-      <DropdownMenu.Root>
-        <DropdownMenu.Trigger>
+      <MenuButton
+        label={
           <IconButton>
             <DotsVerticalIcon />
           </IconButton>
-        </DropdownMenu.Trigger>
-        <DropdownMenu.Content align="end">
-          <DropdownMenu.Item onClick={() => setOpen(true)}>
-            <Pencil1Icon />
-            Update team
-          </DropdownMenu.Item>
-          <DropdownMenu.Separator />
-          <DropdownMenu.Item
-            color="red"
-            disabled={removeTeamMutation.isPending}
-            onClick={async () =>
-              await removeTeamMutation.mutateAsync({
-                organizationId: team.organizationId,
-                teamId: team.id,
-              })
-            }
-          >
-            <TrashIcon />
-            Remove team
-          </DropdownMenu.Item>
-        </DropdownMenu.Content>
-      </DropdownMenu.Root>
+        }
+      >
+        <MenuItem onAction={() => setOpen(true)}>
+          <Pencil1Icon />
+          Update team
+        </MenuItem>
+        <MenuSeparator />
+        <MenuItem
+          isDisabled={removeTeamMutation.isPending}
+          onAction={async () =>
+            await removeTeamMutation.mutateAsync({
+              organizationId: team.organizationId,
+              teamId: team.id,
+            })
+          }
+        >
+          <TrashIcon />
+          Remove team
+        </MenuItem>
+      </MenuButton>
     </>
   );
 }

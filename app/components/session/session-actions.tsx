@@ -2,8 +2,8 @@ import { DotsVerticalIcon, TrashIcon } from "@radix-ui/react-icons";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 
-import { DropdownMenu } from "~/components/ui/dropdown-menu";
 import { IconButton } from "~/components/ui/icon-button";
+import { MenuButton, MenuItem } from "~/components/ui/menu";
 import { revokeUserSession } from "~/lib/user";
 
 interface SessionActionsProps {
@@ -33,26 +33,24 @@ export function SessionActions({ sessionToken }: SessionActionsProps) {
   });
 
   return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger>
+    <MenuButton
+      label={
         <IconButton>
           <DotsVerticalIcon />
         </IconButton>
-      </DropdownMenu.Trigger>
-      <DropdownMenu.Content align="end">
-        <DropdownMenu.Item
-          color="red"
-          disabled={revokeUserSessionMutation.isPending}
-          onClick={async () =>
-            await revokeUserSessionMutation.mutateAsync({
-              sessionToken,
-            })
-          }
-        >
-          <TrashIcon />
-          Revoke session
-        </DropdownMenu.Item>
-      </DropdownMenu.Content>
-    </DropdownMenu.Root>
+      }
+    >
+      <MenuItem
+        isDisabled={revokeUserSessionMutation.isPending}
+        onAction={async () =>
+          await revokeUserSessionMutation.mutateAsync({
+            sessionToken,
+          })
+        }
+      >
+        <TrashIcon />
+        Revoke session
+      </MenuItem>
+    </MenuButton>
   );
 }

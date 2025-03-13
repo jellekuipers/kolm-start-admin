@@ -11,8 +11,8 @@ import { useNavigate, useRouter } from "@tanstack/react-router";
 
 import { UpdateOrganizationModal } from "~/components/organization/update-organization-modal";
 import { Button } from "~/components/ui/button";
-import { DropdownMenu } from "~/components/ui/dropdown-menu";
 import { IconButton } from "~/components/ui/icon-button";
+import { MenuButton, MenuItem, MenuSeparator } from "~/components/ui/menu";
 import { deleteOrganization } from "~/lib/organization";
 import { AuthOrganization, ORMOrganization } from "~/types";
 
@@ -55,9 +55,9 @@ export function OrganizationActions({
         setOpen={setOpen}
         organization={organization}
       />
-      <DropdownMenu.Root>
-        <DropdownMenu.Trigger>
-          {variant === "overview" ? (
+      <MenuButton
+        label={
+          variant === "overview" ? (
             <IconButton>
               <DotsVerticalIcon />
             </IconButton>
@@ -65,41 +65,39 @@ export function OrganizationActions({
             <Button>
               Actions <ChevronDownIcon />
             </Button>
-          )}
-        </DropdownMenu.Trigger>
-        <DropdownMenu.Content align="end">
-          {variant === "overview" ? (
-            <DropdownMenu.Item
-              onClick={() =>
-                navigate({
-                  params: { organizationId: organization.id },
-                  to: "/organizations/$organizationId",
-                })
-              }
-            >
-              <CardStackIcon />
-              View organization
-            </DropdownMenu.Item>
-          ) : null}
-          <DropdownMenu.Item onClick={() => setOpen(true)}>
-            <Pencil1Icon />
-            Update organization
-          </DropdownMenu.Item>
-          <DropdownMenu.Separator />
-          <DropdownMenu.Item
-            color="red"
-            disabled={deleteOrganizationMutation.isPending}
-            onClick={async () =>
-              await deleteOrganizationMutation.mutateAsync({
-                organizationId: organization.id,
+          )
+        }
+      >
+        {variant === "overview" ? (
+          <MenuItem
+            onAction={() =>
+              navigate({
+                params: { organizationId: organization.id },
+                to: "/organizations/$organizationId",
               })
             }
           >
-            <TrashIcon />
-            Delete organization
-          </DropdownMenu.Item>
-        </DropdownMenu.Content>
-      </DropdownMenu.Root>
+            <CardStackIcon />
+            View organization
+          </MenuItem>
+        ) : null}
+        <MenuItem onAction={() => setOpen(true)}>
+          <Pencil1Icon />
+          Update organization
+        </MenuItem>
+        <MenuSeparator />
+        <MenuItem
+          isDisabled={deleteOrganizationMutation.isPending}
+          onAction={async () =>
+            await deleteOrganizationMutation.mutateAsync({
+              organizationId: organization.id,
+            })
+          }
+        >
+          <TrashIcon />
+          Delete organization
+        </MenuItem>
+      </MenuButton>
     </>
   );
 }

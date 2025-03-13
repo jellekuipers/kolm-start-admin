@@ -7,8 +7,8 @@ import {
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
-import { DropdownMenu } from "~/components/ui/dropdown-menu";
 import { IconButton } from "~/components/ui/icon-button";
+import { MenuButton, MenuItem, MenuSeparator } from "~/components/ui/menu";
 import { authClient, useSession } from "~/lib/auth-client";
 
 interface OrganizationActionsProps {
@@ -55,48 +55,46 @@ export function SessionUserOrganizationActions({
   });
 
   return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger>
+    <MenuButton
+      label={
         <IconButton>
           <DotsVerticalIcon />
         </IconButton>
-      </DropdownMenu.Trigger>
-      <DropdownMenu.Content align="end">
-        <DropdownMenu.Item
-          onClick={() =>
-            navigate({
-              params: { organizationId },
-              to: "/organizations/$organizationId",
-            })
-          }
-        >
-          <CardStackIcon />
-          View organization
-        </DropdownMenu.Item>
-        <DropdownMenu.Item
-          onClick={async () =>
-            await setActiveOrganizationMutation.mutateAsync({
-              organizationId,
-            })
-          }
-        >
-          <DrawingPinIcon />
-          Set active organization
-        </DropdownMenu.Item>
-        <DropdownMenu.Separator />
-        <DropdownMenu.Item
-          color="red"
-          disabled={leaveOrganizationMutation.isPending}
-          onClick={async () =>
-            await leaveOrganizationMutation.mutateAsync({
-              organizationId,
-            })
-          }
-        >
-          <ArrowRightIcon />
-          Leave organization
-        </DropdownMenu.Item>
-      </DropdownMenu.Content>
-    </DropdownMenu.Root>
+      }
+    >
+      <MenuItem
+        onAction={() =>
+          navigate({
+            params: { organizationId },
+            to: "/organizations/$organizationId",
+          })
+        }
+      >
+        <CardStackIcon />
+        View organization
+      </MenuItem>
+      <MenuItem
+        onAction={async () =>
+          await setActiveOrganizationMutation.mutateAsync({
+            organizationId,
+          })
+        }
+      >
+        <DrawingPinIcon />
+        Set active organization
+      </MenuItem>
+      <MenuSeparator />
+      <MenuItem
+        isDisabled={leaveOrganizationMutation.isPending}
+        onAction={async () =>
+          await leaveOrganizationMutation.mutateAsync({
+            organizationId,
+          })
+        }
+      >
+        <ArrowRightIcon />
+        Leave organization
+      </MenuItem>
+    </MenuButton>
   );
 }
