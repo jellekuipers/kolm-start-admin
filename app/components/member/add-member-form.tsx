@@ -9,7 +9,7 @@ import { FormError } from "~/components/form/form-error";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
 import { Label } from "~/components/ui/field";
-import { Select } from "~/components/ui/select";
+import { Select, SelectItem } from "~/components/ui/select";
 import { addMember } from "~/lib/member";
 import { usersQueryOptions } from "~/lib/user";
 
@@ -93,20 +93,19 @@ export function AddMemberForm({
             return (
               <div className="space-y-1">
                 <Label htmlFor="userId">User</Label>
-                <Select.Root
-                  defaultValue={field.state.value}
+                <Select
                   name={field.name}
-                  onValueChange={field.handleChange}
+                  onSelectionChange={(key) =>
+                        field.handleChange(key as string)
+                      }
+                  selectedKey={field.state.value}
                 >
-                  <Select.Trigger />
-                  <Select.Content>
-                    {users?.map((user) => (
-                      <Select.Item key={user.id} value={user.id}>
-                        {user.email}
-                      </Select.Item>
-                    ))}
-                  </Select.Content>
-                </Select.Root>
+                  {users?.map((user) => (
+                    <SelectItem key={user.id} id={user.id}>
+                      {user.email}
+                    </SelectItem>
+                  ))}
+                </Select>
               </div>
             );
           }}
@@ -117,18 +116,17 @@ export function AddMemberForm({
             return (
               <div className="space-y-1">
                 <Label htmlFor="memberRole">Member role</Label>
-                <Select.Root
-                  defaultValue={field.state.value}
+                <Select
                   name={field.name}
-                  onValueChange={field.handleChange}
+                  onSelectionChange={(key) =>
+                        field.handleChange(key as string)
+                      }
+                  selectedKey={field.state.value}
                 >
-                  <Select.Trigger />
-                  <Select.Content>
-                    <Select.Item value="admin">Admin</Select.Item>
-                    <Select.Item value="member">Member</Select.Item>
-                    <Select.Item value="owner">Owner</Select.Item>
-                  </Select.Content>
-                </Select.Root>
+                  <SelectItem id="admin">Admin</SelectItem>
+                  <SelectItem id="member">Member</SelectItem>
+                  <SelectItem id="owner">Owner</SelectItem>
+                </Select>
               </div>
             );
           }}

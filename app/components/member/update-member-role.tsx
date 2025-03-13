@@ -1,8 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 
-import { MemberRole } from "~/components/member/member-role";
-import { Select } from "~/components/ui/select";
+import { Select, SelectItem } from "~/components/ui/select";
 import { updateMemberRole } from "~/lib/member";
 import { Member, OrganizationMember } from "~/types";
 
@@ -40,25 +39,20 @@ export function UpdateMemberRole({ member }: UpdateMemberRoleProps) {
   });
 
   return (
-    <Select.Root
-      defaultValue={member.role}
-      disabled={updateMemberRoleMutation.isPending}
-      onValueChange={async (role) =>
+    <Select
+      isDisabled={updateMemberRoleMutation.isPending}
+      onSelectionChange={async (key) =>
         await updateMemberRoleMutation.mutateAsync({
           memberId: member.id,
           organizationId: member.organizationId,
-          role,
+          role: key as string,
         })
       }
+      selectedKey={member.role}
     >
-      <Select.Trigger color="gray" variant="ghost">
-        <MemberRole role={member.role} />
-      </Select.Trigger>
-      <Select.Content>
-        <Select.Item value="admin">Admin</Select.Item>
-        <Select.Item value="member">Member</Select.Item>
-        <Select.Item value="owner">Owner</Select.Item>
-      </Select.Content>
-    </Select.Root>
+      <SelectItem id="admin">Admin</SelectItem>
+      <SelectItem id="member">Member</SelectItem>
+      <SelectItem id="owner">Owner</SelectItem>
+    </Select>
   );
 }

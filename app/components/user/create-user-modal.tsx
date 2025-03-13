@@ -10,7 +10,7 @@ import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
 import { Label } from "~/components/ui/field";
-import { Select } from "~/components/ui/select";
+import { Select, SelectItem } from "~/components/ui/select";
 import { Separator } from "~/components/ui/separator";
 import { Text } from "~/components/ui/text";
 import { TextField } from "~/components/ui/text-field";
@@ -148,49 +148,44 @@ export function CreateUserModal() {
             </div>
             <Field
               name="organizationId"
-              children={({ handleChange, name, state }) => {
+              children={(field) => {
                 return (
                   <div className="space-y-1">
                     <Label htmlFor="organizationId">Add to organization</Label>
-                    <Select.Root
-                      defaultValue={state.value}
-                      name={name}
-                      onValueChange={handleChange}
+                    <Select
+                      name={field.name}
+                      onSelectionChange={(key) =>
+                        field.handleChange(key as string)
+                      }
+                      selectedKey={field.state.value}
                     >
-                      <Select.Trigger />
-                      <Select.Content>
-                        {organizations?.map((organization) => (
-                          <Select.Item
-                            key={organization.id}
-                            value={organization.id}
-                          >
-                            {organization.name}
-                          </Select.Item>
-                        ))}
-                      </Select.Content>
-                    </Select.Root>
+                      {organizations?.map((organization) => (
+                        <SelectItem key={organization.id} id={organization.id}>
+                          {organization.name}
+                        </SelectItem>
+                      ))}
+                    </Select>
                   </div>
                 );
               }}
             />
             <Field
               name="memberRole"
-              children={({ handleChange, name, state }) => {
+              children={(field) => {
                 return (
                   <div className="space-y-1">
                     <Label htmlFor="role">Role</Label>
-                    <Select.Root
-                      defaultValue={state.value}
-                      name={name}
-                      onValueChange={handleChange}
+                    <Select
+                      name={field.name}
+                      onSelectionChange={(key) =>
+                        field.handleChange(key as string)
+                      }
+                      selectedKey={field.state.value}
                     >
-                      <Select.Trigger />
-                      <Select.Content>
-                        <Select.Item value="admin">Admin</Select.Item>
-                        <Select.Item value="member">Member</Select.Item>
-                        <Select.Item value="owner">Owner</Select.Item>
-                      </Select.Content>
-                    </Select.Root>
+                      <SelectItem id="admin">Admin</SelectItem>
+                      <SelectItem id="member">Member</SelectItem>
+                      <SelectItem id="owner">Owner</SelectItem>
+                    </Select>
                   </div>
                 );
               }}
