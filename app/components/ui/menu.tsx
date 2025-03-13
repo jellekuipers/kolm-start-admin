@@ -28,7 +28,7 @@ export function MenuButton<T extends object>({
       {label}
       <Popover>
         <AriaDialog>
-          <AriaMenu className="space-y-2 outline-0" {...props}>
+          <AriaMenu className="space-y-2 outline-hidden" {...props}>
             {children}
           </AriaMenu>
         </AriaDialog>
@@ -40,7 +40,7 @@ export function MenuButton<T extends object>({
 export function MenuHeader(
   props: React.HTMLAttributes<HTMLElement> & React.RefAttributes<object>,
 ) {
-  return <AriaHeader className="px-3 py-1.5 text-sm font-medium" {...props} />;
+  return <AriaHeader className="px-3 py-1.5 font-medium" {...props} />;
 }
 
 export function MenuItem(props: MenuItemProps) {
@@ -50,7 +50,7 @@ export function MenuItem(props: MenuItemProps) {
 
   return (
     <AriaMenuItem
-      className="rounded px-3 py-1.5 text-sm font-medium flex items-center gap-2 hover:bg-gray-50 cursor-default"
+      className="rounded px-3 py-1.5 font-medium flex items-center gap-2 hover:bg-gray-50 cursor-default"
       textValue={textValue}
       {...props}
     />

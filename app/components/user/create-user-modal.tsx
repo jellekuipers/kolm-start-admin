@@ -9,7 +9,6 @@ import { z } from "zod";
 import { FormError } from "~/components/form/form-error";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
-import { Label } from "~/components/ui/field";
 import { Heading } from "~/components/ui/heading";
 import { Modal } from "~/components/ui/modal";
 import { Select, SelectItem } from "~/components/ui/select";
@@ -151,27 +150,21 @@ export function CreateUserModal() {
                 name="organizationId"
                 children={(field) => {
                   return (
-                    <div className="space-y-1">
-                      <Label htmlFor="organizationId">
-                        Add to organization
-                      </Label>
-                      <Select
-                        name={field.name}
-                        onSelectionChange={(key) =>
-                          field.handleChange(key as string)
-                        }
-                        selectedKey={field.state.value}
-                      >
-                        {organizations?.map((organization) => (
-                          <SelectItem
-                            key={organization.id}
-                            id={organization.id}
-                          >
-                            {organization.name}
-                          </SelectItem>
-                        ))}
-                      </Select>
-                    </div>
+                    <Select
+                      errorMessage={getFieldErrorMessage({ field })}
+                      label="Add to organization"
+                      name={field.name}
+                      onSelectionChange={(key) =>
+                        field.handleChange(key as string)
+                      }
+                      selectedKey={field.state.value}
+                    >
+                      {organizations?.map((organization) => (
+                        <SelectItem key={organization.id} id={organization.id}>
+                          {organization.name}
+                        </SelectItem>
+                      ))}
+                    </Select>
                   );
                 }}
               />
@@ -179,20 +172,19 @@ export function CreateUserModal() {
                 name="memberRole"
                 children={(field) => {
                   return (
-                    <div className="space-y-1">
-                      <Label htmlFor="role">Role</Label>
-                      <Select
-                        name={field.name}
-                        onSelectionChange={(key) =>
-                          field.handleChange(key as string)
-                        }
-                        selectedKey={field.state.value}
-                      >
-                        <SelectItem id="admin">Admin</SelectItem>
-                        <SelectItem id="member">Member</SelectItem>
-                        <SelectItem id="owner">Owner</SelectItem>
-                      </Select>
-                    </div>
+                    <Select
+                      errorMessage={getFieldErrorMessage({ field })}
+                      label="Role"
+                      name={field.name}
+                      onSelectionChange={(key) =>
+                        field.handleChange(key as string)
+                      }
+                      selectedKey={field.state.value}
+                    >
+                      <SelectItem id="admin">Admin</SelectItem>
+                      <SelectItem id="member">Member</SelectItem>
+                      <SelectItem id="owner">Owner</SelectItem>
+                    </Select>
                   );
                 }}
               />

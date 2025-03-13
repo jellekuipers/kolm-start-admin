@@ -49,9 +49,7 @@ export function DataTableSimple<TData, TValue>({
                 {headerGroup.headers.map((header) => (
                   <Table.ColumnHeaderCell
                     key={header.id}
-                    style={{
-                      whiteSpace: "nowrap",
-                    }}
+                    className="whitespace-nowrap"
                   >
                     <div className="flex items-center gap-2">
                       {header.isPlaceholder
@@ -78,10 +76,7 @@ export function DataTableSimple<TData, TValue>({
                 {row.getVisibleCells().map((cell) => (
                   <Table.Cell
                     key={cell.id}
-                    style={{
-                      verticalAlign: "middle",
-                      whiteSpace: "nowrap",
-                    }}
+                    className="align-middle whitespace-nowrap"
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </Table.Cell>

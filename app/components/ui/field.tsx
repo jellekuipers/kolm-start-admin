@@ -16,9 +16,7 @@ export function Description(props: TextProps) {
 }
 
 export function FieldError(props: FieldErrorProps) {
-  return (
-    <AriaFieldError className="text-sm text-red-500 font-medium" {...props} />
-  );
+  return <AriaFieldError className="text-red-500 font-medium" {...props} />;
 }
 
 export function FieldGroup(props: GroupProps) {
@@ -35,5 +33,5 @@ export function Input(props: InputProps) {
 }
 
 export function Label(props: LabelProps) {
-  return <AriaLabel className="font-medium text-sm" {...props} />;
+  return <AriaLabel className="font-medium" {...props} />;
 }

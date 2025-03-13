@@ -96,7 +96,7 @@ function RouteComponent() {
                     <div className="space-y-1">
                       <div className="flex items-baseline justify-between mb-1">
                         <Label htmlFor="password">Password</Label>
-                        <Link className="text-sm font-medium" to="/">
+                        <Link className="font-medium" to="/">
                           Forgot password?
                         </Link>
                       </div>

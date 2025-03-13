@@ -6,7 +6,7 @@ interface AvatarProps {
 
 export function Avatar({ alt, fallback, src }: AvatarProps) {
   return (
-    <div className="rounded flex items-center justify-center size-10 bg-gray-100 shrink-0">
+    <div className="rounded flex items-center justify-center size-10 bg-gray-100 shrink-0 overflow-hidden">
       {src ? (
         <img alt={alt ?? ""} src={src} />
       ) : (

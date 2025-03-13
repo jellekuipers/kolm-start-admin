@@ -26,9 +26,8 @@ export function DataTableColumnFilter<TData>({
         Column visibility <ChevronDownIcon />
       </Button>
       <Popover>
-        <Dialog>
+        <Dialog className="outline-hidden relative">
           <GridList
-            aria-label="Column filter"
             items={columns}
             onSelectionChange={(column) => console.log(column)}
             selectionMode="multiple"

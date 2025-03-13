@@ -87,15 +87,13 @@ export function UpdateTeamModal({ open, team, setOpen }: UpdateTeamModalProps) {
               name="name"
               children={(field) => {
                 return (
-                  <div className="space-y-1">
-                    <TextField
-                      defaultValue={field.state.value}
-                      label="Name"
-                      name={field.name}
-                      onBlur={field.handleBlur}
-                      onChange={(value) => field.handleChange(value)}
-                    />
-                  </div>
+                  <TextField
+                    defaultValue={field.state.value}
+                    label="Name"
+                    name={field.name}
+                    onBlur={field.handleBlur}
+                    onChange={(value) => field.handleChange(value)}
+                  />
                 );
               }}
             />

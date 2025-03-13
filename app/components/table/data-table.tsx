@@ -102,9 +102,7 @@ export function DataTable<TData, TValue>({
                   {headerGroup.headers.map((header) => (
                     <Table.ColumnHeaderCell
                       key={header.id}
-                      style={{
-                        whiteSpace: "nowrap",
-                      }}
+                      className="whitespace-nowrap"
                     >
                       <div className="flex gap-4 items-center">
                         {header.isPlaceholder
@@ -131,10 +129,7 @@ export function DataTable<TData, TValue>({
                   {row.getVisibleCells().map((cell) => (
                     <Table.Cell
                       key={cell.id}
-                      style={{
-                        verticalAlign: "middle",
-                        whiteSpace: "nowrap",
-                      }}
+                      className="whitespace-nowrap align-middle"
                     >
                       {flexRender(
                         cell.column.columnDef.cell,

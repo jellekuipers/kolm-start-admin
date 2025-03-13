@@ -6,40 +6,35 @@ import {
   SelectProps as AriaSelectProps,
   SelectValue as AriaSelectValue,
   ListBoxItemProps,
-  ValidationResult,
 } from "react-aria-components";
 
 import { Button } from "~/components/ui/button";
-import { Description, FieldError, Label } from "~/components/ui/field";
+import { FieldError, Label } from "~/components/ui/field";
 import { Popover } from "~/components/ui/popover";
 
 export interface SelectProps<T extends object>
   extends Omit<AriaSelectProps<T>, "children"> {
   children: React.ReactNode | ((item: T) => React.ReactNode);
   description?: string;
-  errorMessage?: string | ((validation: ValidationResult) => string);
+  errorMessage?: string | null;
   items?: Iterable<T>;
   label?: string;
 }
 
 export function Select<T extends object>({
   children,
-  description,
   errorMessage,
   items,
   label,
   ...props
 }: SelectProps<T>) {
   return (
-    <AriaSelect {...props}>
+    <AriaSelect className="group flex flex-col gap-4" {...props}>
       <Label>{label}</Label>
       <Button>
         <AriaSelectValue />
         <ChevronDownIcon />
       </Button>
-      {description && (
-        <Description slot="description">{description}</Description>
-      )}
       <FieldError>{errorMessage}</FieldError>
       <Popover>
         <AriaListBox items={items}>{children}</AriaListBox>
@@ -51,8 +46,8 @@ export function Select<T extends object>({
 export function SelectItem(props: ListBoxItemProps) {
   return (
     <AriaListBoxItem
-      className="rounded px-3 py-1.5 text-sm font-medium flex items-center gap-2 hover:bg-gray-50 cursor-default"
       {...props}
+      className="rounded px-3 py-1.5 font-medium flex items-center gap-2 hover:bg-gray-50 cursor-default"
     />
   );
 }

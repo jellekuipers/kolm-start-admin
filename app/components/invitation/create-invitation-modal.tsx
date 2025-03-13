@@ -9,7 +9,6 @@ import { FormError } from "~/components/form/form-error";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
-import { Label } from "~/components/ui/field";
 import { Select, SelectItem } from "~/components/ui/select";
 import { Separator } from "~/components/ui/separator";
 import { Text } from "~/components/ui/text";
@@ -145,22 +144,21 @@ export function CreateInvitationModal() {
               name="organizationId"
               children={(field) => {
                 return (
-                  <div className="space-y-1">
-                    <Label htmlFor="organizationId">Organization</Label>
-                    <Select
-                      name={field.name}
-                      onSelectionChange={(key) =>
-                        field.handleChange(key as string)
-                      }
-                      selectedKey={field.state.value}
-                    >
-                      {organizations?.map((organization) => (
-                        <SelectItem key={organization.id} id={organization.id}>
-                          {organization.name}
-                        </SelectItem>
-                      ))}
-                    </Select>
-                  </div>
+                  <Select
+                    errorMessage={getFieldErrorMessage({ field })}
+                    label="Organization"
+                    name={field.name}
+                    onSelectionChange={(key) =>
+                      field.handleChange(key as string)
+                    }
+                    selectedKey={field.state.value}
+                  >
+                    {organizations?.map((organization) => (
+                      <SelectItem key={organization.id} id={organization.id}>
+                        {organization.name}
+                      </SelectItem>
+                    ))}
+                  </Select>
                 );
               }}
             />
@@ -168,20 +166,19 @@ export function CreateInvitationModal() {
               name="role"
               children={(field) => {
                 return (
-                  <div className="space-y-1">
-                    <Label htmlFor="role">Role</Label>
-                    <Select
-                      name={field.name}
-                      onSelectionChange={(key) =>
-                        field.handleChange(key as string)
-                      }
-                      selectedKey={field.state.value}
-                    >
-                      <SelectItem id="admin">Admin</SelectItem>
-                      <SelectItem id="member">Member</SelectItem>
-                      <SelectItem id="owner">Owner</SelectItem>
-                    </Select>
-                  </div>
+                  <Select
+                    errorMessage={getFieldErrorMessage({ field })}
+                    label="Role"
+                    name={field.name}
+                    onSelectionChange={(key) =>
+                      field.handleChange(key as string)
+                    }
+                    selectedKey={field.state.value}
+                  >
+                    <SelectItem id="admin">Admin</SelectItem>
+                    <SelectItem id="member">Member</SelectItem>
+                    <SelectItem id="owner">Owner</SelectItem>
+                  </Select>
                 );
               }}
             />
@@ -194,23 +191,22 @@ export function CreateInvitationModal() {
               name="teamId"
               children={(field) => {
                 return (
-                  <div className="space-y-1">
-                    <Label htmlFor="teamId">Add to team</Label>
-                    <Select
-                      isDisabled={!teams?.length || teamsQuery.isPending}
-                      name={field.name}
-                      onSelectionChange={(key) =>
-                        field.handleChange(key as string)
-                      }
-                      selectedKey={field.state.value}
-                    >
-                      {teams?.map((team) => (
-                        <SelectItem key={team.id} id={team.id}>
-                          {team.name}
-                        </SelectItem>
-                      ))}
-                    </Select>
-                  </div>
+                  <Select
+                    errorMessage={getFieldErrorMessage({ field })}
+                    isDisabled={!teams?.length || teamsQuery.isPending}
+                    label="Add to team"
+                    name={field.name}
+                    onSelectionChange={(key) =>
+                      field.handleChange(key as string)
+                    }
+                    selectedKey={field.state.value}
+                  >
+                    {teams?.map((team) => (
+                      <SelectItem key={team.id} id={team.id}>
+                        {team.name}
+                      </SelectItem>
+                    ))}
+                  </Select>
                 );
               }}
             />

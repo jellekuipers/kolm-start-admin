@@ -9,7 +9,6 @@ import { z } from "zod";
 import { FormError } from "~/components/form/form-error";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
-import { Label } from "~/components/ui/field";
 import { Select, SelectItem } from "~/components/ui/select";
 import { addMember } from "~/lib/member";
 import { organizationsQueryOptions } from "~/lib/organization";
@@ -108,22 +107,20 @@ export function AddUserToOrganizationModal({
               name="organizationId"
               children={(field) => {
                 return (
-                  <div className="space-y-1">
-                    <Label htmlFor="organizationId">Organization</Label>
-                    <Select
-                      name={field.name}
-                      onSelectionChange={(key) =>
-                        field.handleChange(key as string)
-                      }
-                      selectedKey={field.state.value}
-                    >
-                      {organizations?.map((organization) => (
-                        <SelectItem key={organization.id} id={organization.id}>
-                          {organization.name}
-                        </SelectItem>
-                      ))}
-                    </Select>
-                  </div>
+                  <Select
+                    label="Organization"
+                    name={field.name}
+                    onSelectionChange={(key) =>
+                      field.handleChange(key as string)
+                    }
+                    selectedKey={field.state.value}
+                  >
+                    {organizations?.map((organization) => (
+                      <SelectItem key={organization.id} id={organization.id}>
+                        {organization.name}
+                      </SelectItem>
+                    ))}
+                  </Select>
                 );
               }}
             />
@@ -131,20 +128,18 @@ export function AddUserToOrganizationModal({
               name="memberRole"
               children={(field) => {
                 return (
-                  <div className="space-y-1">
-                    <Label htmlFor="memberRole">Member role</Label>
-                    <Select
-                      name={field.name}
-                      onSelectionChange={(key) =>
-                        field.handleChange(key as string)
-                      }
-                      selectedKey={field.state.value}
-                    >
-                      <SelectItem id="admin">Admin</SelectItem>
-                      <SelectItem id="member">Member</SelectItem>
-                      <SelectItem id="owner">Owner</SelectItem>
-                    </Select>
-                  </div>
+                  <Select
+                    label="Member role"
+                    name={field.name}
+                    onSelectionChange={(key) =>
+                      field.handleChange(key as string)
+                    }
+                    selectedKey={field.state.value}
+                  >
+                    <SelectItem id="admin">Admin</SelectItem>
+                    <SelectItem id="member">Member</SelectItem>
+                    <SelectItem id="owner">Owner</SelectItem>
+                  </Select>
                 );
               }}
             />

@@ -100,15 +100,13 @@ export function UpdateOrganizationModal({
               name="name"
               children={(field) => {
                 return (
-                  <div className="space-y-1">
-                    <TextField
-                      defaultValue={field.state.value}
-                      label="Name"
-                      name={field.name}
-                      onBlur={field.handleBlur}
-                      onChange={(value) => field.handleChange(value)}
-                    />
-                  </div>
+                  <TextField
+                    defaultValue={field.state.value}
+                    label="Name"
+                    name={field.name}
+                    onBlur={field.handleBlur}
+                    onChange={(value) => field.handleChange(value)}
+                  />
                 );
               }}
             />
@@ -116,15 +114,13 @@ export function UpdateOrganizationModal({
               name="slug"
               children={(field) => {
                 return (
-                  <div className="space-y-1">
-                    <TextField
-                      defaultValue={field.state.value}
-                      label="Slug"
-                      name={field.name}
-                      onBlur={field.handleBlur}
-                      onChange={(value) => field.handleChange(value)}
-                    />
-                  </div>
+                  <TextField
+                    defaultValue={field.state.value}
+                    label="Slug"
+                    name={field.name}
+                    onBlur={field.handleBlur}
+                    onChange={(value) => field.handleChange(value)}
+                  />
                 );
               }}
             />

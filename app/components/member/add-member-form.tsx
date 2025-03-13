@@ -8,7 +8,6 @@ import { z } from "zod";
 import { FormError } from "~/components/form/form-error";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
-import { Label } from "~/components/ui/field";
 import { Select, SelectItem } from "~/components/ui/select";
 import { addMember } from "~/lib/member";
 import { usersQueryOptions } from "~/lib/user";
@@ -91,22 +90,18 @@ export function AddMemberForm({
           name="userId"
           children={(field) => {
             return (
-              <div className="space-y-1">
-                <Label htmlFor="userId">User</Label>
-                <Select
-                  name={field.name}
-                  onSelectionChange={(key) =>
-                        field.handleChange(key as string)
-                      }
-                  selectedKey={field.state.value}
-                >
-                  {users?.map((user) => (
-                    <SelectItem key={user.id} id={user.id}>
-                      {user.email}
-                    </SelectItem>
-                  ))}
-                </Select>
-              </div>
+              <Select
+                label="User"
+                name={field.name}
+                onSelectionChange={(key) => field.handleChange(key as string)}
+                selectedKey={field.state.value}
+              >
+                {users?.map((user) => (
+                  <SelectItem key={user.id} id={user.id}>
+                    {user.email}
+                  </SelectItem>
+                ))}
+              </Select>
             );
           }}
         />
@@ -114,20 +109,16 @@ export function AddMemberForm({
           name="memberRole"
           children={(field) => {
             return (
-              <div className="space-y-1">
-                <Label htmlFor="memberRole">Member role</Label>
-                <Select
-                  name={field.name}
-                  onSelectionChange={(key) =>
-                        field.handleChange(key as string)
-                      }
-                  selectedKey={field.state.value}
-                >
-                  <SelectItem id="admin">Admin</SelectItem>
-                  <SelectItem id="member">Member</SelectItem>
-                  <SelectItem id="owner">Owner</SelectItem>
-                </Select>
-              </div>
+              <Select
+                label="Member role"
+                name={field.name}
+                onSelectionChange={(key) => field.handleChange(key as string)}
+                selectedKey={field.state.value}
+              >
+                <SelectItem id="admin">Admin</SelectItem>
+                <SelectItem id="member">Member</SelectItem>
+                <SelectItem id="owner">Owner</SelectItem>
+              </Select>
             );
           }}
         />
