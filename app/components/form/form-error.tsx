@@ -8,7 +8,7 @@ export interface FormErrorProps {
 
 export function FormError({ error }: FormErrorProps) {
   return (
-    <Callout.Root color="red">
+    <Callout.Root>
       <Callout.Icon>
         <InfoCircledIcon />
       </Callout.Icon>

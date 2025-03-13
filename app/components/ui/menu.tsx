@@ -28,7 +28,7 @@ export function MenuButton<T extends object>({
       {label}
       <Popover>
         <AriaDialog>
-          <AriaMenu className="space-y-2" {...props}>
+          <AriaMenu className="space-y-2 outline-0" {...props}>
             {children}
           </AriaMenu>
         </AriaDialog>
