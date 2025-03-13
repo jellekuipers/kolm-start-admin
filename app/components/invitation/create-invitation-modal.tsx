@@ -148,14 +148,17 @@ export function CreateInvitationModal() {
             />
             <Field
               name="organizationId"
-              children={({ handleChange, name, state }) => {
+              children={(field) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <FormFieldLabel htmlFor="organizationId" text="Organization" />
+                    <FormFieldLabel
+                      htmlFor="organizationId"
+                      text="Organization"
+                    />
                     <Select.Root
-                      defaultValue={state.value}
-                      name={name}
-                      onValueChange={handleChange}
+                      defaultValue={field.state.value}
+                      name={field.name}
+                      onValueChange={field.handleChange}
                     >
                       <Select.Trigger />
                       <Select.Content>
@@ -175,14 +178,14 @@ export function CreateInvitationModal() {
             />
             <Field
               name="role"
-              children={({ handleChange, name, state }) => {
+              children={(field) => {
                 return (
                   <Flex direction="column" gap="1">
                     <FormFieldLabel htmlFor="role" text="Role" />
                     <Select.Root
-                      defaultValue={state.value}
-                      name={name}
-                      onValueChange={handleChange}
+                      defaultValue={field.state.value}
+                      name={field.name}
+                      onValueChange={field.handleChange}
                     >
                       <Select.Trigger />
                       <Select.Content>
@@ -202,15 +205,15 @@ export function CreateInvitationModal() {
             </Flex>
             <Field
               name="teamId"
-              children={({ handleChange, name, state }) => {
+              children={(field) => {
                 return (
                   <Flex direction="column" gap="1">
                     <FormFieldLabel htmlFor="teamId" text="Add to team" />
                     <Select.Root
-                      defaultValue={state.value}
+                      defaultValue={field.state.value}
                       disabled={!teams?.length || teamsQuery.isPending}
-                      name={name}
-                      onValueChange={handleChange}
+                      name={field.name}
+                      onValueChange={field.handleChange}
                     >
                       <Select.Trigger />
                       <Select.Content>

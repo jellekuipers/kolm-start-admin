@@ -124,14 +124,14 @@ export function InviteMemberForm({
         />
         <Field
           name="role"
-          children={({ handleChange, name, state }) => {
+          children={(field) => {
             return (
               <Flex direction="column" gap="1">
                 <FormFieldLabel htmlFor="role" text="Role" />
                 <Select.Root
-                  defaultValue={state.value}
-                  name={name}
-                  onValueChange={handleChange}
+                  defaultValue={field.state.value}
+                  name={field.name}
+                  onValueChange={field.handleChange}
                 >
                   <Select.Trigger />
                   <Select.Content>
@@ -151,14 +151,14 @@ export function InviteMemberForm({
         </Flex>
         <Field
           name="teamId"
-          children={({ handleChange, name, state }) => {
+          children={(field) => {
             return (
               <Flex direction="column" gap="1">
                 <FormFieldLabel htmlFor="teamId" text="Add to team" />
                 <Select.Root
-                  defaultValue={state.value}
-                  name={name}
-                  onValueChange={handleChange}
+                  defaultValue={field.state.value}
+                  name={field.name}
+                  onValueChange={field.handleChange}
                 >
                   <Select.Trigger />
                   <Select.Content>
