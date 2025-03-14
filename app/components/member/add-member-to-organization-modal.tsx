@@ -8,7 +8,7 @@ import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
 import { Heading } from "~/components/ui/heading";
 import { Modal } from "~/components/ui/modal";
-import { Tabs } from "~/components/ui/tabs";
+import { Tab, TabList, TabPanel, Tabs } from "~/components/ui/tabs";
 
 interface AddMemberToOrganizationModalProps {
   organizationId: string;
@@ -28,31 +28,31 @@ export function AddMemberToOrganizationModal({
       <Modal isDismissable isOpen={open} onOpenChange={setOpen}>
         <Dialog>
           <Heading slot="title">Add member</Heading>
-          <Tabs.Root defaultValue="add">
-            <Tabs.List>
-              <Tabs.Trigger value="add">Existing user</Tabs.Trigger>
-              <Tabs.Trigger value="create">Create user</Tabs.Trigger>
-              <Tabs.Trigger value="invite">Invite user</Tabs.Trigger>
-            </Tabs.List>
-            <Tabs.Content value="add">
+          <Tabs>
+            <TabList>
+              <Tab id="add">Existing user</Tab>
+              <Tab id="create">Create user</Tab>
+              <Tab id="invite">Invite user</Tab>
+            </TabList>
+            <TabPanel id="add">
               <AddMemberForm
                 onSuccess={() => setOpen(false)}
                 organizationId={organizationId}
               />
-            </Tabs.Content>
-            <Tabs.Content value="create">
+            </TabPanel>
+            <TabPanel id="create">
               <CreateMemberForm
                 onSuccess={() => setOpen(false)}
                 organizationId={organizationId}
               />
-            </Tabs.Content>
-            <Tabs.Content value="invite">
+            </TabPanel>
+            <TabPanel id="invite">
               <InviteMemberForm
                 onSuccess={() => setOpen(false)}
                 organizationId={organizationId}
               />
-            </Tabs.Content>
-          </Tabs.Root>
+            </TabPanel>
+          </Tabs>
         </Dialog>
       </Modal>
     </>
