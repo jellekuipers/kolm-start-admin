@@ -18,7 +18,7 @@ export function TextField({
   ...props
 }: TextFieldProps) {
   return (
-    <AriaTextField className="space-y-1" {...props}>
+    <AriaTextField className="flex flex-col space-y-1" {...props}>
       <Label>{label}</Label>
       <Input />
       {description && (

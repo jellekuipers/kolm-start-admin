@@ -21,12 +21,15 @@ export function SearchField({
   ...props
 }: SearchFieldProps) {
   return (
-    <AriaSearchField className="group space-y-1" {...props}>
+    <AriaSearchField
+      className="group space-y-1 border border-gray-300 rounded px-3 py-1.5"
+      {...props}
+    >
       {label && <Label>{label}</Label>}
       <FieldGroup>
-        <MagnifyingGlassIcon className="ml-2" />
+        <MagnifyingGlassIcon aria-hidden className="ml-2" />
         <AriaInput
-          className="[&::-webkit-search-cancel-button]:hidden"
+          className="[&::-webkit-search-cancel-button]:hidden w-full h-full "
           placeholder={placeholder}
         />
         <AriaButton className="group-empty:invisible mr-2">

@@ -50,7 +50,7 @@ export function MenuItem(props: MenuItemProps) {
 
   return (
     <AriaMenuItem
-      className="rounded px-3 py-1.5 font-medium flex items-center gap-2 hover:bg-gray-50 cursor-default"
+      className="rounded px-3 py-1.5 font-medium flex items-center gap-2 hover:bg-gray-800 hover:text-white cursor-default"
       textValue={textValue}
       {...props}
     />
@@ -60,5 +60,5 @@ export function MenuItem(props: MenuItemProps) {
 export function MenuSeparator(
   props: React.HTMLAttributes<HTMLElement> & React.RefAttributes<object>,
 ) {
-  return <AriaSeparator className="bg-gray-300 h-px -mx-2" {...props} />;
+  return <AriaSeparator className="bg-gray-300 h-px" {...props} />;
 }

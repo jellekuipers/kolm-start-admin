@@ -29,7 +29,12 @@ export function FieldGroup(props: GroupProps) {
 }
 
 export function Input(props: InputProps) {
-  return <AriaInput className="border border-gray-300 rounded" {...props} />;
+  return (
+    <AriaInput
+      className="border border-gray-300 rounded px-3 py-1.5"
+      {...props}
+    />
+  );
 }
 
 export function Label(props: LabelProps) {

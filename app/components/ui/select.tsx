@@ -1,5 +1,6 @@
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import {
+  Button as AriaButton,
   ListBox as AriaListBox,
   ListBoxItem as AriaListBoxItem,
   Select as AriaSelect,
@@ -8,7 +9,6 @@ import {
   ListBoxItemProps,
 } from "react-aria-components";
 
-import { Button } from "~/components/ui/button";
 import { FieldError, Label } from "~/components/ui/field";
 import { Popover } from "~/components/ui/popover";
 
@@ -29,12 +29,12 @@ export function Select<T extends object>({
   ...props
 }: SelectProps<T>) {
   return (
-    <AriaSelect className="group flex flex-col gap-4" {...props}>
+    <AriaSelect className="flex flex-col gap-1" {...props}>
       <Label>{label}</Label>
-      <Button>
+      <AriaButton className="border border-gray-300 rounded flex items-center justify-between gap-2 px-3 py-1.5">
         <AriaSelectValue />
         <ChevronDownIcon />
-      </Button>
+      </AriaButton>
       <FieldError>{errorMessage}</FieldError>
       <Popover>
         <AriaListBox items={items}>{children}</AriaListBox>
@@ -47,7 +47,7 @@ export function SelectItem(props: ListBoxItemProps) {
   return (
     <AriaListBoxItem
       {...props}
-      className="rounded px-3 py-1.5 font-medium flex items-center gap-2 hover:bg-gray-50 cursor-default"
+      className="rounded px-3 py-1.5 font-medium flex items-center gap-2 hover:bg-gray-800 hover:text-white cursor-default"
     />
   );
 }
