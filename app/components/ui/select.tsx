@@ -47,7 +47,7 @@ export function SelectItem(props: ListBoxItemProps) {
   return (
     <AriaListBoxItem
       {...props}
-      className="rounded px-3 py-1.5 font-medium flex items-center gap-2 hover:bg-gray-800 hover:text-white cursor-default"
+      className="rounded px-3 py-1.5 font-medium flex items-center gap-2 hover:bg-gray-900 hover:text-white cursor-default"
     />
   );
 }

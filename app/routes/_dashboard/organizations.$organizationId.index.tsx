@@ -4,7 +4,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { CopyValue } from "~/components/misc/copy-value";
 import { Avatar } from "~/components/ui/avatar";
 import { Code } from "~/components/ui/code";
-import { DataList } from "~/components/ui/data-list";
+import {
+  DataList,
+  DataListItem,
+  DataListLabel,
+  DataListValue,
+} from "~/components/ui/data-list";
 import { Link } from "~/components/ui/link";
 import { organizationQueryOptions } from "~/lib/organization";
 
@@ -34,33 +39,31 @@ function RouteComponent() {
   if (!organization) return null;
 
   return (
-    <DataList.Root orientation={{ initial: "vertical", md: "horizontal" }}>
-      <DataList.Item>
-        <DataList.Label>Name</DataList.Label>
-        <DataList.Value>{organization.name}</DataList.Value>
-      </DataList.Item>
-      <DataList.Item>
-        <DataList.Label>Slug</DataList.Label>
-        <DataList.Value>
+    <DataList>
+      <DataListItem>
+        <DataListLabel>Name</DataListLabel>
+        <DataListValue>{organization.name}</DataListValue>
+      </DataListItem>
+      <DataListItem>
+        <DataListLabel>Slug</DataListLabel>
+        <DataListValue>
           <Code>{organization.slug}</Code>
-        </DataList.Value>
-      </DataList.Item>
-      <DataList.Item>
-        <DataList.Label>ID</DataList.Label>
-        <DataList.Value>
+        </DataListValue>
+      </DataListItem>
+      <DataListItem>
+        <DataListLabel>ID</DataListLabel>
+        <DataListValue>
           <CopyValue value={organization.id} />
-        </DataList.Value>
-      </DataList.Item>
-      <DataList.Item>
-        <DataList.Label>Created at</DataList.Label>
-        <DataList.Value>
-          {organization.createdAt.toLocaleString()}
-        </DataList.Value>
-      </DataList.Item>
-      <DataList.Item>
-        <DataList.Label>Owner</DataList.Label>
+        </DataListValue>
+      </DataListItem>
+      <DataListItem>
+        <DataListLabel>Created at</DataListLabel>
+        <DataListValue>{organization.createdAt.toLocaleString()}</DataListValue>
+      </DataListItem>
+      <DataListItem>
+        <DataListLabel>Owner</DataListLabel>
         {organizationOwner ? (
-          <DataList.Value>
+          <DataListValue>
             <Link
               params={{ userId: organizationOwner.userId }}
               to="/users/$userId"
@@ -73,11 +76,11 @@ function RouteComponent() {
                 {organizationOwner.user.email}
               </div>
             </Link>
-          </DataList.Value>
+          </DataListValue>
         ) : (
-          <DataList.Value>No owner</DataList.Value>
+          <DataListValue>No owner</DataListValue>
         )}
-      </DataList.Item>
-    </DataList.Root>
+      </DataListItem>
+    </DataList>
   );
 }

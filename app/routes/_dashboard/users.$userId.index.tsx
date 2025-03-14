@@ -3,7 +3,12 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { CopyValue } from "~/components/misc/copy-value";
 import { Badge } from "~/components/ui/badge";
-import { DataList } from "~/components/ui/data-list";
+import {
+  DataList,
+  DataListItem,
+  DataListLabel,
+  DataListValue,
+} from "~/components/ui/data-list";
 import { UpdateUserRole } from "~/components/user/update-user-role";
 import { userQueryOptions } from "~/lib/user";
 
@@ -23,36 +28,36 @@ function RouteComponent() {
   if (!user) return null;
 
   return (
-    <DataList.Root orientation={{ initial: "vertical", md: "horizontal" }}>
-      <DataList.Item>
-        <DataList.Label>ID</DataList.Label>
-        <DataList.Value>
+    <DataList>
+      <DataListItem>
+        <DataListLabel>ID</DataListLabel>
+        <DataListValue>
           <CopyValue value={user.id} />
-        </DataList.Value>
-      </DataList.Item>
-      <DataList.Item>
-        <DataList.Label>Email</DataList.Label>
-        <DataList.Value>
+        </DataListValue>
+      </DataListItem>
+      <DataListItem>
+        <DataListLabel>Email</DataListLabel>
+        <DataListValue>
           <div className="flex items-center gap-2">
             {user.email}
             {user.emailVerified ? null : <Badge>unverified</Badge>}
           </div>
-        </DataList.Value>
-      </DataList.Item>
-      <DataList.Item>
-        <DataList.Label>Name</DataList.Label>
-        <DataList.Value>{user.name}</DataList.Value>
-      </DataList.Item>
-      <DataList.Item>
-        <DataList.Label>Role</DataList.Label>
-        <DataList.Value>
+        </DataListValue>
+      </DataListItem>
+      <DataListItem>
+        <DataListLabel>Name</DataListLabel>
+        <DataListValue>{user.name}</DataListValue>
+      </DataListItem>
+      <DataListItem>
+        <DataListLabel>Role</DataListLabel>
+        <DataListValue>
           <UpdateUserRole user={user} />
-        </DataList.Value>
-      </DataList.Item>
-      <DataList.Item>
-        <DataList.Label>Created at</DataList.Label>
-        <DataList.Value>{user.createdAt.toLocaleString()}</DataList.Value>
-      </DataList.Item>
-    </DataList.Root>
+        </DataListValue>
+      </DataListItem>
+      <DataListItem>
+        <DataListLabel>Created at</DataListLabel>
+        <DataListValue>{user.createdAt.toLocaleString()}</DataListValue>
+      </DataListItem>
+    </DataList>
   );
 }

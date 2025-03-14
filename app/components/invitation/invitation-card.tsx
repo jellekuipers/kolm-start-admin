@@ -7,7 +7,12 @@ import { InvitationStatus } from "~/components/invitation/invitation-status";
 import { MemberRole } from "~/components/member/member-role";
 import { Button } from "~/components/ui/button";
 import { Callout } from "~/components/ui/callout";
-import { DataList } from "~/components/ui/data-list";
+import {
+  DataList,
+  DataListItem,
+  DataListLabel,
+  DataListValue,
+} from "~/components/ui/data-list";
 import { Separator } from "~/components/ui/separator";
 import { acceptInvitation, rejectInvitation } from "~/lib/invitation";
 import { Invitation } from "~/types";
@@ -61,34 +66,32 @@ export function InvitationCard({ invitation }: InvitationCardProps) {
 
   return (
     <div className="space-y-4">
-      <DataList.Root orientation={{ initial: "vertical", md: "horizontal" }}>
-        <DataList.Item>
-          <DataList.Label>Organization</DataList.Label>
-          <DataList.Value>{invitation.organizationName}</DataList.Value>
-        </DataList.Item>
-        <DataList.Item>
-          <DataList.Label>Inviter email</DataList.Label>
-          <DataList.Value>{invitation.inviterEmail}</DataList.Value>
-        </DataList.Item>
-        <DataList.Item>
-          <DataList.Label>Role</DataList.Label>
-          <DataList.Value>
+      <DataList>
+        <DataListItem>
+          <DataListLabel>Organization</DataListLabel>
+          <DataListValue>{invitation.organizationName}</DataListValue>
+        </DataListItem>
+        <DataListItem>
+          <DataListLabel>Inviter email</DataListLabel>
+          <DataListValue>{invitation.inviterEmail}</DataListValue>
+        </DataListItem>
+        <DataListItem>
+          <DataListLabel>Role</DataListLabel>
+          <DataListValue>
             <MemberRole role={invitation.role} />
-          </DataList.Value>
-        </DataList.Item>
-        <DataList.Item>
-          <DataList.Label>Expires</DataList.Label>
-          <DataList.Value>
-            {invitation.expiresAt.toLocaleString()}
-          </DataList.Value>
-        </DataList.Item>
-        <DataList.Item>
-          <DataList.Label>Status</DataList.Label>
-          <DataList.Value>
+          </DataListValue>
+        </DataListItem>
+        <DataListItem>
+          <DataListLabel>Expires</DataListLabel>
+          <DataListValue>{invitation.expiresAt.toLocaleString()}</DataListValue>
+        </DataListItem>
+        <DataListItem>
+          <DataListLabel>Status</DataListLabel>
+          <DataListValue>
             <InvitationStatus status={invitation.status} />
-          </DataList.Value>
-        </DataList.Item>
-      </DataList.Root>
+          </DataListValue>
+        </DataListItem>
+      </DataList>
       <Separator />
       {error ? (
         <Callout.Root>

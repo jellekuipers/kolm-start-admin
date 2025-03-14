@@ -72,7 +72,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="flex flex-col min-h-screen antialiased text-gray-800">
+      <body className="flex flex-col min-h-screen antialiased text-gray-900">
         <Theme grayColor="slate">{children}</Theme>
         {SHOW_ROUTER_DEVTOOLS ? (
           <TanStackRouterDevtools position="bottom-right" />

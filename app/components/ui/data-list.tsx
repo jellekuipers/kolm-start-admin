@@ -1,30 +1,41 @@
-import { ComponentProps } from "react";
-import { DataList as RadixDataList } from "@radix-ui/themes";
-
-export type DataListItemProps = ComponentProps<typeof RadixDataList.Item>;
-export type DataListLabelProps = ComponentProps<typeof RadixDataList.Label>;
-export type DataListRootProps = ComponentProps<typeof RadixDataList.Root>;
-export type DataListValueProps = ComponentProps<typeof RadixDataList.Value>;
-
-export function Item(props: DataListItemProps) {
-  return <RadixDataList.Item {...props} />;
+interface DataListProps {
+  children: React.ReactNode;
 }
 
-export function Label(props: DataListLabelProps) {
-  return <RadixDataList.Label {...props} />;
+interface DataListItemProps {
+  children: React.ReactNode;
 }
 
-export function Root(props: DataListRootProps) {
-  return <RadixDataList.Root {...props} />;
+interface DataListLabelProps {
+  children: React.ReactNode;
 }
 
-export function Value(props: DataListValueProps) {
-  return <RadixDataList.Value {...props} />;
+interface DataListValueProps {
+  children: React.ReactNode;
 }
 
-export const DataList = {
-  Item,
-  Label,
-  Root,
-  Value,
-};
+export function DataList(props: DataListProps) {
+  return (
+    <dl
+      className="flex flex-col gap-4 md:grid md:grid-cols-[auto_1fr]"
+      {...props}
+    />
+  );
+}
+
+export function DataListItem(props: DataListItemProps) {
+  return (
+    <div
+      className="flex flex-col gap-2 md:grid md:grid-cols-subgrid md:col-span-2 align-baseline"
+      {...props}
+    />
+  );
+}
+
+export function DataListLabel(props: DataListLabelProps) {
+  return <dt className="min-w-32 text-gray-600" {...props} />;
+}
+
+export function DataListValue(props: DataListValueProps) {
+  return <dd {...props} />;
+}
