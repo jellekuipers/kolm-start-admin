@@ -1,8 +1,8 @@
 import {
-  CardStackIcon,
-  DotsVerticalIcon,
-  TrashIcon,
-} from "@radix-ui/react-icons";
+  DotsThreeVertical as DotsThreeVerticalIcon,
+  Network as NetworkIcon,
+  TrashSimple as TrashSimpleIcon,
+} from "@phosphor-icons/react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
@@ -56,7 +56,7 @@ export function MemberActions({
     <MenuButton
       label={
         <IconButton>
-          <DotsVerticalIcon />
+          <DotsThreeVerticalIcon size={20} />
         </IconButton>
       }
     >
@@ -68,7 +68,7 @@ export function MemberActions({
           })
         }
       >
-        <CardStackIcon />
+        <NetworkIcon size={16} />
         View organization
       </MenuItem>
       <MenuSeparator />
@@ -81,7 +81,7 @@ export function MemberActions({
           })
         }
       >
-        <TrashIcon />
+        <TrashSimpleIcon size={16} />
         Remove membership
       </MenuItem>
     </MenuButton>

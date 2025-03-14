@@ -1,4 +1,4 @@
-import { InfoCircledIcon } from "@radix-ui/react-icons";
+import { Info as InfoIcon } from "@phosphor-icons/react";
 
 import { Callout, CalloutIcon, CalloutText } from "~/components/ui/callout";
 
@@ -10,7 +10,7 @@ export function FormError({ error }: FormErrorProps) {
   return (
     <Callout>
       <CalloutIcon>
-        <InfoCircledIcon />
+        <InfoIcon size={16} />
       </CalloutIcon>
       <CalloutText>{error.message}</CalloutText>
     </Callout>

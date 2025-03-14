@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { InfoCircledIcon } from "@radix-ui/react-icons";
+import { Info as InfoIcon } from "@phosphor-icons/react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
@@ -94,7 +94,7 @@ export function InvitationCard({ invitation }: InvitationCardProps) {
       {error ? (
         <Callout>
           <CalloutIcon>
-            <InfoCircledIcon />
+            <InfoIcon size={16} />
           </CalloutIcon>
           <CalloutText>{error.message}</CalloutText>
         </Callout>

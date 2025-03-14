@@ -1,9 +1,9 @@
 import { useState } from "react";
 import {
-  CrossCircledIcon,
-  DotsVerticalIcon,
-  PaperPlaneIcon,
-} from "@radix-ui/react-icons";
+  DotsThreeVertical as DotsThreeVerticalIcon,
+  PaperPlaneRight as PaperPlaneRightIcon,
+  X as XIcon,
+} from "@phosphor-icons/react";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 
@@ -50,7 +50,7 @@ export function InvitationActions({ invitation }: InvitationActionsProps) {
       <MenuButton
         label={
           <IconButton>
-            <DotsVerticalIcon />
+            <DotsThreeVerticalIcon size={20} />
           </IconButton>
         }
       >
@@ -58,7 +58,7 @@ export function InvitationActions({ invitation }: InvitationActionsProps) {
           isDisabled={cancelInvitationMutation.isPending}
           onAction={() => setOpen(true)}
         >
-          <PaperPlaneIcon />
+          <PaperPlaneRightIcon size={16} />
           View invitation
         </MenuItem>
         <MenuSeparator />
@@ -70,8 +70,8 @@ export function InvitationActions({ invitation }: InvitationActionsProps) {
             })
           }
         >
-          <CrossCircledIcon />
-          Cancel
+          <XIcon size={16} />
+          Cancel invitation
         </MenuItem>
       </MenuButton>
     </>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PlusIcon } from "@radix-ui/react-icons";
+import { Plus as PlusIcon } from "@phosphor-icons/react";
 
 import { AddMemberForm } from "~/components/member/add-member-form";
 import { CreateMemberForm } from "~/components/member/create-member-form";
@@ -22,7 +22,7 @@ export function AddMemberToOrganizationModal({
   return (
     <>
       <Button onPress={() => setOpen(true)}>
-        <PlusIcon />
+        <PlusIcon size={16} />
         Add member
       </Button>
       <Modal isDismissable isOpen={open} onOpenChange={setOpen}>

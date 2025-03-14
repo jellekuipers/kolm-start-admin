@@ -5,7 +5,7 @@ import { focusRing } from "~/utils/classes";
 
 export const buttonStyles = tv({
   extend: focusRing,
-  base: "text-white bg-gray-900 rounded px-3 py-1.5 font-medium flex items-center gap-2",
+  base: "text-white bg-gray-900 rounded px-3 py-1.5 font-medium flex items-center gap-3",
 });
 
 export function Button(props: ButtonProps) {

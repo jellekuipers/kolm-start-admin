@@ -1,11 +1,11 @@
 import { useState } from "react";
 import {
-  CardStackIcon,
-  ChevronDownIcon,
-  DotsVerticalIcon,
-  Pencil1Icon,
-  TrashIcon,
-} from "@radix-ui/react-icons";
+  CaretDown as CaretDownIcon,
+  DotsThreeVertical as DotsThreeVerticalIcon,
+  Network as NetworkIcon,
+  PencilSimple as PencilSimpleIcon,
+  TrashSimple as TrashSimpleIcon,
+} from "@phosphor-icons/react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
@@ -59,11 +59,11 @@ export function OrganizationActions({
         label={
           variant === "overview" ? (
             <IconButton>
-              <DotsVerticalIcon />
+              <DotsThreeVerticalIcon size={20} />
             </IconButton>
           ) : (
             <Button>
-              Actions <ChevronDownIcon />
+              Actions <CaretDownIcon size={16} />
             </Button>
           )
         }
@@ -77,12 +77,12 @@ export function OrganizationActions({
               })
             }
           >
-            <CardStackIcon />
+            <NetworkIcon size={16} />
             View organization
           </MenuItem>
         ) : null}
         <MenuItem onAction={() => setOpen(true)}>
-          <Pencil1Icon />
+          <PencilSimpleIcon size={16} />
           Update organization
         </MenuItem>
         <MenuSeparator />
@@ -94,7 +94,7 @@ export function OrganizationActions({
             })
           }
         >
-          <TrashIcon />
+          <TrashSimpleIcon size={16} />
           Delete organization
         </MenuItem>
       </MenuButton>

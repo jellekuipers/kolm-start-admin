@@ -1,9 +1,9 @@
 import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  DoubleArrowLeftIcon,
-  DoubleArrowRightIcon,
-} from "@radix-ui/react-icons";
+  CaretDoubleLeft as CaretDoubleLeftIcon,
+  CaretDoubleRight as CaretDoubleRightIcon,
+  CaretLeft as CaretLeftIcon,
+  CaretRight as CaretRightIcon,
+} from "@phosphor-icons/react";
 import { Table } from "@tanstack/react-table";
 
 import { IconButton } from "~/components/ui/icon-button";
@@ -21,13 +21,13 @@ export function DataTablePagination<TData>({
         isDisabled={!table.getCanPreviousPage()}
         onPress={() => table.firstPage()}
       >
-        <DoubleArrowLeftIcon />
+        <CaretDoubleLeftIcon size={16} />
       </IconButton>
       <IconButton
         isDisabled={!table.getCanPreviousPage()}
         onPress={() => table.previousPage()}
       >
-        <ChevronLeftIcon />
+        <CaretLeftIcon size={16} />
       </IconButton>
       <span className="font-medium tabular-nums">
         {table.getState().pagination.pageIndex + 1} of{" "}
@@ -37,13 +37,13 @@ export function DataTablePagination<TData>({
         isDisabled={!table.getCanNextPage()}
         onPress={() => table.nextPage()}
       >
-        <ChevronRightIcon />
+        <CaretRightIcon size={16} />
       </IconButton>
       <IconButton
         isDisabled={!table.getCanNextPage()}
         onPress={() => table.lastPage()}
       >
-        <DoubleArrowRightIcon />
+        <CaretDoubleRightIcon size={16} />
       </IconButton>
     </div>
   );

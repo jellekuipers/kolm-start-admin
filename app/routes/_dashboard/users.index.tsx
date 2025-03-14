@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { CheckIcon, Cross2Icon } from "@radix-ui/react-icons";
+import { Check as CheckIcon, X as XIcon } from "@phosphor-icons/react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { ColumnDef } from "@tanstack/react-table";
@@ -89,14 +89,22 @@ const dataTableColumns: ColumnDef<User | UserWithRole>[] = [
     id: "emailVerified",
     header: "Email verified",
     cell({ row }) {
-      return row.original.emailVerified ? <CheckIcon /> : <Cross2Icon />;
+      return row.original.emailVerified ? (
+        <CheckIcon size={16} />
+      ) : (
+        <XIcon size={16} />
+      );
     },
   },
   {
     id: "banned",
     header: "Banned",
     cell({ row }) {
-      return row.original.banned ? <CheckIcon /> : <Cross2Icon />;
+      return row.original.banned ? (
+        <CheckIcon size={16} />
+      ) : (
+        <XIcon size={16} />
+      );
     },
   },
   {

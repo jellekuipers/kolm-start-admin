@@ -1,4 +1,7 @@
-import { DotsVerticalIcon, TrashIcon } from "@radix-ui/react-icons";
+import {
+  DotsThreeVertical as DotsThreeVerticalIcon,
+  TrashSimple as TrashSimpleIcon,
+} from "@phosphor-icons/react";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 
@@ -36,7 +39,7 @@ export function SessionActions({ sessionToken }: SessionActionsProps) {
     <MenuButton
       label={
         <IconButton>
-          <DotsVerticalIcon />
+          <DotsThreeVerticalIcon size={20} />
         </IconButton>
       }
     >
@@ -48,7 +51,7 @@ export function SessionActions({ sessionToken }: SessionActionsProps) {
           })
         }
       >
-        <TrashIcon />
+        <TrashSimpleIcon size={16} />
         Revoke session
       </MenuItem>
     </MenuButton>

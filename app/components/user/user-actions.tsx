@@ -1,13 +1,13 @@
 import {
-  ChevronDownIcon,
-  CircleBackslashIcon,
-  CircleIcon,
-  CrossCircledIcon,
-  DotsVerticalIcon,
-  PersonIcon,
-  TrashIcon,
-  UpdateIcon,
-} from "@radix-ui/react-icons";
+  CaretDown as CaretDownIcon,
+  DeviceMobileSlash as DeviceMobileSlashIcon,
+  DotsThreeVertical as DotsThreeVerticalIcon,
+  HandPalm as HandPalmIcon,
+  HandWaving as HandWavingIcon,
+  TrashSimple as TrashSimpleIcon,
+  User as UserIcon,
+  UserSwitch as UserSwitchIcon,
+} from "@phosphor-icons/react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 import { UserWithRole } from "better-auth/plugins";
@@ -86,11 +86,11 @@ export function UserActions({ user, variant }: UserActionsProps) {
       label={
         variant === "overview" ? (
           <IconButton>
-            <DotsVerticalIcon />
+            <DotsThreeVerticalIcon size={20} />
           </IconButton>
         ) : (
           <Button>
-            Actions <ChevronDownIcon />
+            Actions <CaretDownIcon size={16} />
           </Button>
         )
       }
@@ -104,7 +104,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
             })
           }
         >
-          <PersonIcon />
+          <UserIcon size={16} />
           View user
         </MenuItem>
       ) : null}
@@ -115,7 +115,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
             await unbanUserMutation.mutateAsync({ userId: user.id })
           }
         >
-          <CircleIcon />
+          <HandWavingIcon size={16} />
           Unban user
         </MenuItem>
       ) : (
@@ -125,7 +125,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
             await banUserMutation.mutateAsync({ userId: user.id })
           }
         >
-          <CrossCircledIcon />
+          <HandPalmIcon size={16} />
           Ban user
         </MenuItem>
       )}
@@ -135,7 +135,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
           await impersonateUserMutation.mutateAsync({ userId: user.id })
         }
       >
-        <UpdateIcon />
+        <UserSwitchIcon size={16} />
         Impersonate user
       </MenuItem>
       <MenuItem
@@ -144,7 +144,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
           await revokeAllUserSessionsMutation.mutateAsync({ userId: user.id })
         }
       >
-        <CircleBackslashIcon />
+        <DeviceMobileSlashIcon size={16} />
         Revoke all sessions
       </MenuItem>
       <MenuSeparator />
@@ -154,7 +154,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
           await removeUserMutation.mutateAsync({ userId: user.id })
         }
       >
-        <TrashIcon />
+        <TrashSimpleIcon size={16} />
         Remove user
       </MenuItem>
     </MenuButton>

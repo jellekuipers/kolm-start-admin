@@ -1,9 +1,9 @@
 import {
-  ArrowRightIcon,
-  CardStackIcon,
-  DotsVerticalIcon,
-  DrawingPinIcon,
-} from "@radix-ui/react-icons";
+  ArrowRight as ArrowRightIcon,
+  DotsThreeVertical as DotsThreeVerticalIcon,
+  Network as NetworkIcon,
+  PushPin as PushPinIcon,
+} from "@phosphor-icons/react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
@@ -58,7 +58,7 @@ export function SessionUserOrganizationActions({
     <MenuButton
       label={
         <IconButton>
-          <DotsVerticalIcon />
+          <DotsThreeVerticalIcon size={20} />
         </IconButton>
       }
     >
@@ -70,7 +70,7 @@ export function SessionUserOrganizationActions({
           })
         }
       >
-        <CardStackIcon />
+        <NetworkIcon size={16} />
         View organization
       </MenuItem>
       <MenuItem
@@ -80,7 +80,7 @@ export function SessionUserOrganizationActions({
           })
         }
       >
-        <DrawingPinIcon />
+        <PushPinIcon size={16} />
         Set active organization
       </MenuItem>
       <MenuSeparator />
@@ -92,7 +92,7 @@ export function SessionUserOrganizationActions({
           })
         }
       >
-        <ArrowRightIcon />
+        <ArrowRightIcon size={16} />
         Leave organization
       </MenuItem>
     </MenuButton>

@@ -1,4 +1,4 @@
-import { ArrowLeftIcon } from "@radix-ui/react-icons";
+import { ArrowLeft as ArrowLeftIcon } from "@phosphor-icons/react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 
@@ -35,7 +35,7 @@ function RouteComponent() {
     <Container>
       <div className="space-y-6">
         <Link className="flex items-center gap-2" to="/organizations">
-          <ArrowLeftIcon /> Organizations
+          <ArrowLeftIcon size={16} /> Organizations
         </Link>
         <div className="space-y-4">
           <div className="flex justify-between items-start gap-4 flex-wrap">

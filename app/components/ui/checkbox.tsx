@@ -1,4 +1,4 @@
-import { CheckIcon, MinusIcon } from "@radix-ui/react-icons";
+import { Check as CheckIcon, Minus as MinusIcon } from "@phosphor-icons/react";
 import { Checkbox as AriaCheckbox, CheckboxProps } from "react-aria-components";
 
 export function Checkbox({ children, ...props }: CheckboxProps) {
@@ -8,9 +8,9 @@ export function Checkbox({ children, ...props }: CheckboxProps) {
         <>
           <div className="size-5 shrink-0 rounded flex items-center justify-center border border-gray-300">
             {isIndeterminate ? (
-              <MinusIcon aria-hidden />
+              <MinusIcon aria-hidden size={16} />
             ) : isSelected ? (
-              <CheckIcon aria-hidden />
+              <CheckIcon aria-hidden size={16} />
             ) : null}
           </div>
           {children}

@@ -1,4 +1,7 @@
-import { DotsVerticalIcon, PersonIcon } from "@radix-ui/react-icons";
+import {
+  DotsThreeVertical as DotsThreeVerticalIcon,
+  User as UserIcon,
+} from "@phosphor-icons/react";
 import { useNavigate } from "@tanstack/react-router";
 
 import { IconButton } from "~/components/ui/icon-button";
@@ -15,7 +18,7 @@ export function SessionUserActions({ userId }: SessionUserActionsProps) {
     <MenuButton
       label={
         <IconButton>
-          <DotsVerticalIcon />
+          <DotsThreeVerticalIcon size={16} />
         </IconButton>
       }
     >
@@ -27,7 +30,7 @@ export function SessionUserActions({ userId }: SessionUserActionsProps) {
           })
         }
       >
-        <PersonIcon />
+        <UserIcon size={16} />
         View user
       </MenuItem>
     </MenuButton>

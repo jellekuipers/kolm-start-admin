@@ -1,4 +1,4 @@
-import { ArrowLeftIcon } from "@radix-ui/react-icons";
+import { ArrowLeft as ArrowLeftIcon } from "@phosphor-icons/react";
 
 import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
@@ -14,7 +14,7 @@ export function NotFound({ children }: NotFoundProps) {
         <div className="flex items-center flex-col gap-4 justify-center">
           <Heading>404</Heading>
           <Link className="flex items-center gap-2" to="/">
-            <ArrowLeftIcon />
+            <ArrowLeftIcon size={16} />
             Home
           </Link>
         </div>

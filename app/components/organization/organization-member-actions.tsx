@@ -1,4 +1,8 @@
-import { DotsVerticalIcon, PersonIcon, TrashIcon } from "@radix-ui/react-icons";
+import {
+  DotsThreeVertical as DotsThreeVerticalIcon,
+  TrashSimple as TrashSimpleIcon,
+  User as UserIcon,
+} from "@phosphor-icons/react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
@@ -54,7 +58,7 @@ export function OrganizationMemberActions({
     <MenuButton
       label={
         <IconButton>
-          <DotsVerticalIcon />
+          <DotsThreeVerticalIcon size={20} />
         </IconButton>
       }
     >
@@ -66,7 +70,7 @@ export function OrganizationMemberActions({
           })
         }
       >
-        <PersonIcon />
+        <UserIcon size={16} />
         View member
       </MenuItem>
       <MenuSeparator />
@@ -79,7 +83,7 @@ export function OrganizationMemberActions({
           })
         }
       >
-        <TrashIcon />
+        <TrashSimpleIcon size={16} />
         Remove member
       </MenuItem>
     </MenuButton>

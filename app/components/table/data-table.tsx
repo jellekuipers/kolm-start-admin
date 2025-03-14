@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ValueNoneIcon } from "@radix-ui/react-icons";
+import { Empty as EmptyIcon } from "@phosphor-icons/react";
 import { RankingInfo, rankItem } from "@tanstack/match-sorter-utils";
 import {
   FilterFn,
@@ -147,7 +147,7 @@ export function DataTable<TData, TValue>({
       ) : (
         <Callout>
           <CalloutIcon>
-            <ValueNoneIcon />
+            <EmptyIcon size={16} />
           </CalloutIcon>
           <CalloutText>No results</CalloutText>
         </Callout>

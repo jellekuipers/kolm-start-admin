@@ -1,4 +1,4 @@
-import { InfoCircledIcon } from "@radix-ui/react-icons";
+import { Info as InfoIcon } from "@phosphor-icons/react";
 import { type ErrorComponentProps } from "@tanstack/react-router";
 
 import { Callout, CalloutIcon, CalloutText } from "~/components/ui/callout";
@@ -9,7 +9,7 @@ export function DefaultCatchBoundary({ error }: ErrorComponentProps) {
   return (
     <Callout>
       <CalloutIcon>
-        <InfoCircledIcon />
+        <InfoIcon size={16} />
       </CalloutIcon>
       <CalloutText>{error.message}</CalloutText>
     </Callout>

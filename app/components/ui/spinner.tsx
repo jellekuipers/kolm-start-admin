@@ -1,5 +1,5 @@
-import { DividerVerticalIcon } from "@radix-ui/react-icons";
+import { CircleNotch as CircleNotchIcon } from "@phosphor-icons/react";
 
 export function Spinner() {
-  return <DividerVerticalIcon className="animate-spin size-4" />;
+  return <CircleNotchIcon className="animate-spin" size={20} />;
 }

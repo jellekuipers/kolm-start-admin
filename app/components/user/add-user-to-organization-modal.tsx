@@ -1,6 +1,6 @@
 /* eslint-disable react/no-children-prop */
 import { useState } from "react";
-import { PlusIcon } from "@radix-ui/react-icons";
+import { Plus as PlusIcon } from "@phosphor-icons/react";
 import { useForm } from "@tanstack/react-form";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
@@ -90,7 +90,7 @@ export function AddUserToOrganizationModal({
   return (
     <>
       <Button onPress={() => setOpen(true)}>
-        <PlusIcon />
+        <PlusIcon size={16} />
         Add to organization
       </Button>
       <Modal isDismissable isOpen={open} onOpenChange={onOpenChangeHandler}>

@@ -1,4 +1,4 @@
-import { CopyIcon } from "@radix-ui/react-icons";
+import { Copy as CopyIcon } from "@phosphor-icons/react";
 
 import { Code } from "~/components/ui/code";
 import { IconButton } from "~/components/ui/icon-button";
@@ -14,7 +14,7 @@ export function CopyValue({ value }: CopyValueProps) {
       <IconButton
         onPress={async () => await navigator.clipboard.writeText(value)}
       >
-        <CopyIcon />
+        <CopyIcon size={16} />
       </IconButton>
     </div>
   );

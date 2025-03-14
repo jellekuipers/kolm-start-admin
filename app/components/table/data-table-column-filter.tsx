@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from "@radix-ui/react-icons";
+import { CaretDown as CaretDownIcon } from "@phosphor-icons/react";
 import { Table } from "@tanstack/react-table";
 import {
   Dialog,
@@ -23,7 +23,7 @@ export function DataTableColumnFilter<TData>({
   return (
     <DialogTrigger>
       <Button>
-        Column visibility <ChevronDownIcon />
+        Column visibility <CaretDownIcon size={16} />
       </Button>
       <Popover>
         <Dialog className="outline-hidden relative">

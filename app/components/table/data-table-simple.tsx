@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ValueNoneIcon } from "@radix-ui/react-icons";
+import { Empty as EmptyIcon } from "@phosphor-icons/react";
 import {
   flexRender,
   getCoreRowModel,
@@ -87,7 +87,7 @@ export function DataTableSimple<TData, TValue>({
       ) : (
         <Callout>
           <CalloutIcon>
-            <ValueNoneIcon />
+            <EmptyIcon size={16} />
           </CalloutIcon>
           <CalloutText>No results</CalloutText>
         </Callout>

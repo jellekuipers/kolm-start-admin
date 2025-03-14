@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from "@radix-ui/react-icons";
+import { CaretDown as CaretDownIcon } from "@phosphor-icons/react";
 import {
   Button as AriaButton,
   ListBox as AriaListBox,
@@ -50,7 +50,7 @@ export function Select<T extends object>({
             return isPlaceholder ? "Select" : defaultChildren;
           }}
         </AriaSelectValue>
-        <ChevronDownIcon />
+        <CaretDownIcon size={16} />
       </AriaButton>
       <FieldError>{errorMessage}</FieldError>
       <Popover>

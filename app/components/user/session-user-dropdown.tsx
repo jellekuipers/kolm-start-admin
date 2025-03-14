@@ -1,4 +1,8 @@
-import { ExitIcon, PersonIcon, UpdateIcon } from "@radix-ui/react-icons";
+import {
+  SignOut as SignOutIcon,
+  User as UserIcon,
+  UserSwitch as UserSwitchIcon,
+} from "@phosphor-icons/react";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
 import { Avatar } from "~/components/ui/avatar";
@@ -53,18 +57,18 @@ export function SessionUserDropdown() {
           })
         }
       >
-        <PersonIcon />
+        <UserIcon size={16} />
         View profile
       </MenuItem>
       {session?.session.impersonatedBy ? (
         <MenuItem onAction={stopImpersonatingHandler}>
-          <UpdateIcon />
+          <UserSwitchIcon size={16} />
           Stop impersonating
         </MenuItem>
       ) : null}
       <MenuSeparator />
       <MenuItem onAction={signOutHandler}>
-        <ExitIcon />
+        <SignOutIcon size={16} />
         Sign out
       </MenuItem>
     </MenuButton>

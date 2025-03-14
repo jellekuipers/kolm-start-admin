@@ -1,9 +1,9 @@
 import { useState } from "react";
 import {
-  DotsVerticalIcon,
-  Pencil1Icon,
-  TrashIcon,
-} from "@radix-ui/react-icons";
+  DotsThreeVertical as DotsThreeVerticalIcon,
+  PencilSimple as PencilSimpleIcon,
+  TrashSimple as TrashSimpleIcon,
+} from "@phosphor-icons/react";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 
@@ -57,12 +57,12 @@ export function TeamActions({ team }: TeamActionsProps) {
       <MenuButton
         label={
           <IconButton>
-            <DotsVerticalIcon />
+            <DotsThreeVerticalIcon size={20} />
           </IconButton>
         }
       >
         <MenuItem onAction={() => setOpen(true)}>
-          <Pencil1Icon />
+          <PencilSimpleIcon size={16} />
           Update team
         </MenuItem>
         <MenuSeparator />
@@ -75,7 +75,7 @@ export function TeamActions({ team }: TeamActionsProps) {
             })
           }
         >
-          <TrashIcon />
+          <TrashSimpleIcon size={16} />
           Remove team
         </MenuItem>
       </MenuButton>
