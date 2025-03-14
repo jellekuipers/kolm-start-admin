@@ -1,17 +1,17 @@
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 import { type ErrorComponentProps } from "@tanstack/react-router";
 
-import { Callout } from "~/components/ui/callout";
+import { Callout, CalloutIcon, CalloutText } from "~/components/ui/callout";
 
 export function DefaultCatchBoundary({ error }: ErrorComponentProps) {
   console.error(error);
 
   return (
-    <Callout.Root>
-      <Callout.Icon>
+    <Callout>
+      <CalloutIcon>
         <InfoCircledIcon />
-      </Callout.Icon>
-      <Callout.Text>{error.message}</Callout.Text>
-    </Callout.Root>
+      </CalloutIcon>
+      <CalloutText>{error.message}</CalloutText>
+    </Callout>
   );
 }

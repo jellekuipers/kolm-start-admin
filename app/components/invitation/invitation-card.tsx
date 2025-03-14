@@ -6,7 +6,7 @@ import { useNavigate, useRouter } from "@tanstack/react-router";
 import { InvitationStatus } from "~/components/invitation/invitation-status";
 import { MemberRole } from "~/components/member/member-role";
 import { Button } from "~/components/ui/button";
-import { Callout } from "~/components/ui/callout";
+import { Callout, CalloutIcon, CalloutText } from "~/components/ui/callout";
 import {
   DataList,
   DataListItem,
@@ -94,12 +94,12 @@ export function InvitationCard({ invitation }: InvitationCardProps) {
       </DataList>
       <Separator />
       {error ? (
-        <Callout.Root>
-          <Callout.Icon>
+        <Callout>
+          <CalloutIcon>
             <InfoCircledIcon />
-          </Callout.Icon>
-          <Callout.Text>{error.message}</Callout.Text>
-        </Callout.Root>
+          </CalloutIcon>
+          <CalloutText>{error.message}</CalloutText>
+        </Callout>
       ) : null}
       {invitation.status === "pending" ? (
         <div className="flex justify-end">

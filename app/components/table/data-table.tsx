@@ -15,7 +15,7 @@ import {
 } from "@tanstack/react-table";
 
 import { DataTableSearch } from "~/components/table/data-table-search";
-import { Callout } from "~/components/ui/callout";
+import { Callout, CalloutIcon, CalloutText } from "~/components/ui/callout";
 import { Table } from "~/components/ui/table";
 
 import { DataTableColumnFilter } from "./data-table-column-filter";
@@ -144,12 +144,12 @@ export function DataTable<TData, TValue>({
           <DataTablePagination table={table} />
         </div>
       ) : (
-        <Callout.Root>
-          <Callout.Icon>
+        <Callout>
+          <CalloutIcon>
             <ValueNoneIcon />
-          </Callout.Icon>
-          <Callout.Text>No results</Callout.Text>
-        </Callout.Root>
+          </CalloutIcon>
+          <CalloutText>No results</CalloutText>
+        </Callout>
       )}
     </div>
   );

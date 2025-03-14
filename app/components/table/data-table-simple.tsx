@@ -9,7 +9,7 @@ import {
   type ColumnDef,
 } from "@tanstack/react-table";
 
-import { Callout } from "~/components/ui/callout";
+import { Callout, CalloutIcon, CalloutText } from "~/components/ui/callout";
 import { Table } from "~/components/ui/table";
 
 import { DataTableSortButton } from "./data-table-sort-button";
@@ -86,12 +86,12 @@ export function DataTableSimple<TData, TValue>({
           </Table.Body>
         </Table.Root>
       ) : (
-        <Callout.Root>
-          <Callout.Icon>
+        <Callout>
+          <CalloutIcon>
             <ValueNoneIcon />
-          </Callout.Icon>
-          <Callout.Text>No results</Callout.Text>
-        </Callout.Root>
+          </CalloutIcon>
+          <CalloutText>No results</CalloutText>
+        </Callout>
       )}
     </>
   );
