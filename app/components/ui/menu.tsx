@@ -26,9 +26,9 @@ export function MenuButton<T extends object>({
   return (
     <AriaMenuTrigger {...props}>
       {label}
-      <Popover>
+      <Popover placement="bottom right">
         <AriaDialog>
-          <AriaMenu className="space-y-2 outline-hidden" {...props}>
+          <AriaMenu className="outline-hidden" {...props}>
             {children}
           </AriaMenu>
         </AriaDialog>
@@ -50,7 +50,7 @@ export function MenuItem(props: MenuItemProps) {
 
   return (
     <AriaMenuItem
-      className="rounded px-3 py-1.5 font-medium flex items-center gap-3 hover:bg-gray-900 hover:text-white cursor-default"
+      className="rounded-md px-3 py-1.5 font-medium flex items-center gap-3 hover:bg-gray-900 hover:text-white cursor-default"
       textValue={textValue}
       {...props}
     />
@@ -60,5 +60,5 @@ export function MenuItem(props: MenuItemProps) {
 export function MenuSeparator(
   props: React.HTMLAttributes<HTMLElement> & React.RefAttributes<object>,
 ) {
-  return <AriaSeparator className="bg-gray-300 h-px" {...props} />;
+  return <AriaSeparator className="bg-gray-300 h-px my-2" {...props} />;
 }
