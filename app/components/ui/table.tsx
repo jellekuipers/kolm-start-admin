@@ -18,7 +18,7 @@ import {
 import { tv } from "tailwind-variants";
 
 const tableCellStyles = tv({
-  base: "align-middle p-2 whitespace-nowrap first:pl-0 last:pr-0",
+  base: "align-middle px-4 py-2 whitespace-nowrap md:first:pl-0 md:last:pr-0",
   variants: {
     isHeader: {
       true: "font-bold",
