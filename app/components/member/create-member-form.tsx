@@ -7,7 +7,6 @@ import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
 import { Button } from "~/components/ui/button";
-import { Dialog } from "~/components/ui/dialog";
 import { Select, SelectItem } from "~/components/ui/select";
 import { TextField } from "~/components/ui/text-field";
 import { getFieldErrorMessage } from "~/lib/error";
@@ -148,9 +147,7 @@ export function CreateMemberForm({
           selector={(state) => [state.canSubmit, state.isSubmitting]}
           children={([canSubmit, isSubmitting]) => (
             <div className="flex gap-3 justify-end">
-              <Dialog.Close>
-                <Button>Cancel</Button>
-              </Dialog.Close>
+              <Button slot="close">Cancel</Button>
               <Button
                 isDisabled={!canSubmit}
                 isPending={isSubmitting}

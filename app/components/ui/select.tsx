@@ -8,9 +8,11 @@ import {
   SelectValue as AriaSelectValue,
   ListBoxItemProps,
 } from "react-aria-components";
+import { tv } from "tailwind-variants";
 
 import { FieldError, Label } from "~/components/ui/field";
 import { Popover } from "~/components/ui/popover";
+import { focusRing } from "~/utils/classes";
 
 export interface SelectProps<T extends object>
   extends Omit<AriaSelectProps<T>, "children"> {
@@ -21,6 +23,17 @@ export interface SelectProps<T extends object>
   label?: string;
 }
 
+const selectStyles = tv({
+  extend: focusRing,
+  base: "border border-gray-300 rounded flex items-center justify-between gap-2 px-3 py-1.5",
+  variants: {
+    isDisabled: {
+      false: "pressed:bg-gray-50",
+      true: "text-gray-200 border-gray-200",
+    },
+  },
+});
+
 export function Select<T extends object>({
   children,
   errorMessage,
@@ -29,10 +42,14 @@ export function Select<T extends object>({
   ...props
 }: SelectProps<T>) {
   return (
-    <AriaSelect className="flex flex-col gap-1" {...props}>
+    <AriaSelect className="flex flex-col gap-2" {...props}>
       <Label>{label}</Label>
-      <AriaButton className="border border-gray-300 rounded flex items-center justify-between gap-2 px-3 py-1.5">
-        <AriaSelectValue />
+      <AriaButton className={selectStyles}>
+        <AriaSelectValue>
+          {({ defaultChildren, isPlaceholder }) => {
+            return isPlaceholder ? "Select" : defaultChildren;
+          }}
+        </AriaSelectValue>
         <ChevronDownIcon />
       </AriaButton>
       <FieldError>{errorMessage}</FieldError>

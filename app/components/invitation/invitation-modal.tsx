@@ -1,5 +1,7 @@
 import { InvitationCard } from "~/components/invitation/invitation-card";
 import { Dialog } from "~/components/ui/dialog";
+import { Heading } from "~/components/ui/heading";
+import { Modal } from "~/components/ui/modal";
 import { Invitation } from "~/types";
 
 interface InvitationModalProps {
@@ -14,11 +16,11 @@ export function InvitationModal({
   setOpen,
 }: InvitationModalProps) {
   return (
-    <Dialog.Root open={open} onOpenChange={setOpen}>
-      <Dialog.Content>
-        <Dialog.Title>Invitation</Dialog.Title>
+    <Modal isDismissable isOpen={open} onOpenChange={setOpen}>
+      <Dialog>
+        <Heading slot="title">Invitation</Heading>
         <InvitationCard invitation={invitation} />
-      </Dialog.Content>
-    </Dialog.Root>
+      </Dialog>
+    </Modal>
   );
 }

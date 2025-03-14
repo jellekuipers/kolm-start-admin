@@ -6,6 +6,8 @@ import { CreateMemberForm } from "~/components/member/create-member-form";
 import { InviteMemberForm } from "~/components/member/invite-member-form";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
+import { Heading } from "~/components/ui/heading";
+import { Modal } from "~/components/ui/modal";
 import { Tabs } from "~/components/ui/tabs";
 
 interface AddMemberToOrganizationModalProps {
@@ -18,21 +20,20 @@ export function AddMemberToOrganizationModal({
   const [open, setOpen] = useState(false);
 
   return (
-    <Dialog.Root open={open} onOpenChange={setOpen}>
-      <Dialog.Trigger>
-        <Button>
-          <PlusIcon /> Add member
-        </Button>
-      </Dialog.Trigger>
-      <Dialog.Content>
-        <Dialog.Title>Add member</Dialog.Title>
-        <Tabs.Root defaultValue="add">
-          <Tabs.List>
-            <Tabs.Trigger value="add">Existing user</Tabs.Trigger>
-            <Tabs.Trigger value="create">Create user</Tabs.Trigger>
-            <Tabs.Trigger value="invite">Invite user</Tabs.Trigger>
-          </Tabs.List>
-          <div className="pt-4">
+    <>
+      <Button onPress={() => setOpen(true)}>
+        <PlusIcon />
+        Add member
+      </Button>
+      <Modal isDismissable isOpen={open} onOpenChange={setOpen}>
+        <Dialog>
+          <Heading slot="title">Add member</Heading>
+          <Tabs.Root defaultValue="add">
+            <Tabs.List>
+              <Tabs.Trigger value="add">Existing user</Tabs.Trigger>
+              <Tabs.Trigger value="create">Create user</Tabs.Trigger>
+              <Tabs.Trigger value="invite">Invite user</Tabs.Trigger>
+            </Tabs.List>
             <Tabs.Content value="add">
               <AddMemberForm
                 onSuccess={() => setOpen(false)}
@@ -51,9 +52,9 @@ export function AddMemberToOrganizationModal({
                 organizationId={organizationId}
               />
             </Tabs.Content>
-          </div>
-        </Tabs.Root>
-      </Dialog.Content>
-    </Dialog.Root>
+          </Tabs.Root>
+        </Dialog>
+      </Modal>
+    </>
   );
 }

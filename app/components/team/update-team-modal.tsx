@@ -8,6 +8,8 @@ import { z } from "zod";
 import { FormError } from "~/components/form/form-error";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
+import { Heading } from "~/components/ui/heading";
+import { Modal } from "~/components/ui/modal";
 import { TextField } from "~/components/ui/text-field";
 import { updateTeam } from "~/lib/team";
 import { Team } from "~/types";
@@ -72,9 +74,9 @@ export function UpdateTeamModal({ open, team, setOpen }: UpdateTeamModalProps) {
   };
 
   return (
-    <Dialog.Root open={open} onOpenChange={onOpenChangeHandler}>
-      <Dialog.Content>
-        <Dialog.Title>Update team</Dialog.Title>
+    <Modal isDismissable isOpen={open} onOpenChange={onOpenChangeHandler}>
+      <Dialog>
+        <Heading slot="title">Update team</Heading>
         <form
           onSubmit={(event) => {
             event.preventDefault();
@@ -102,9 +104,7 @@ export function UpdateTeamModal({ open, team, setOpen }: UpdateTeamModalProps) {
               selector={(state) => [state.canSubmit, state.isSubmitting]}
               children={([canSubmit, isSubmitting]) => (
                 <div className="flex gap-3 justify-end">
-                  <Dialog.Close>
-                    <Button>Cancel</Button>
-                  </Dialog.Close>
+                  <Button slot="close">Cancel</Button>
                   <Button
                     isDisabled={!canSubmit}
                     isPending={isSubmitting}
@@ -117,7 +117,7 @@ export function UpdateTeamModal({ open, team, setOpen }: UpdateTeamModalProps) {
             />
           </div>
         </form>
-      </Dialog.Content>
-    </Dialog.Root>
+      </Dialog>
+    </Modal>
   );
 }

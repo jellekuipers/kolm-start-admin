@@ -8,6 +8,8 @@ import { z } from "zod";
 import { FormError } from "~/components/form/form-error";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
+import { Heading } from "~/components/ui/heading";
+import { Modal } from "~/components/ui/modal";
 import { TextField } from "~/components/ui/text-field";
 import { getFieldErrorMessage } from "~/lib/error";
 import { createOrganization } from "~/lib/organization";
@@ -66,71 +68,69 @@ export function CreateOrganizationModal() {
   };
 
   return (
-    <Dialog.Root open={open} onOpenChange={onOpenChangeHandler}>
-      <Dialog.Trigger>
-        <Button>Create organization</Button>
-      </Dialog.Trigger>
-      <Dialog.Content>
-        <Dialog.Title>Create organization</Dialog.Title>
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            handleSubmit();
-          }}
-        >
-          <div className="space-y-4">
-            <Field
-              name="name"
-              children={(field) => {
-                return (
-                  <TextField
-                    defaultValue={field.state.value}
-                    errorMessage={getFieldErrorMessage({ field })}
-                    label="Name"
-                    name={field.name}
-                    onBlur={field.handleBlur}
-                    onChange={(value) => field.handleChange(value)}
-                  />
-                );
-              }}
-            />
-            <Field
-              name="slug"
-              children={(field) => {
-                return (
-                  <TextField
-                    defaultValue={field.state.value}
-                    errorMessage={getFieldErrorMessage({ field })}
-                    label="Slug"
-                    name={field.name}
-                    onBlur={field.handleBlur}
-                    onChange={(value) => field.handleChange(value)}
-                  />
-                );
-              }}
-            />
-            {error ? <FormError error={error} /> : null}
-            <Subscribe
-              selector={(state) => [state.canSubmit, state.isSubmitting]}
-              children={([canSubmit, isSubmitting]) => (
-                <div className="flex gap-3 justify-end">
-                  <Dialog.Close>
-                    <Button>Cancel</Button>
-                  </Dialog.Close>
-                  <Button
-                    isDisabled={!canSubmit}
-                    isPending={isSubmitting}
-                    type="submit"
-                  >
-                    Save
-                  </Button>
-                </div>
-              )}
-            />
-          </div>
-        </form>
-      </Dialog.Content>
-    </Dialog.Root>
+    <>
+      <Button onPress={() => setOpen(true)}>Create organization</Button>
+      <Modal isDismissable isOpen={open} onOpenChange={onOpenChangeHandler}>
+        <Dialog>
+          <Heading slot="title">Create organization</Heading>
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              handleSubmit();
+            }}
+          >
+            <div className="space-y-4">
+              <Field
+                name="name"
+                children={(field) => {
+                  return (
+                    <TextField
+                      defaultValue={field.state.value}
+                      errorMessage={getFieldErrorMessage({ field })}
+                      label="Name"
+                      name={field.name}
+                      onBlur={field.handleBlur}
+                      onChange={(value) => field.handleChange(value)}
+                    />
+                  );
+                }}
+              />
+              <Field
+                name="slug"
+                children={(field) => {
+                  return (
+                    <TextField
+                      defaultValue={field.state.value}
+                      errorMessage={getFieldErrorMessage({ field })}
+                      label="Slug"
+                      name={field.name}
+                      onBlur={field.handleBlur}
+                      onChange={(value) => field.handleChange(value)}
+                    />
+                  );
+                }}
+              />
+              {error ? <FormError error={error} /> : null}
+              <Subscribe
+                selector={(state) => [state.canSubmit, state.isSubmitting]}
+                children={([canSubmit, isSubmitting]) => (
+                  <div className="flex gap-3 justify-end">
+                    <Button slot="close">Cancel</Button>
+                    <Button
+                      isDisabled={!canSubmit}
+                      isPending={isSubmitting}
+                      type="submit"
+                    >
+                      Save
+                    </Button>
+                  </div>
+                )}
+              />
+            </div>
+          </form>
+        </Dialog>
+      </Modal>
+    </>
   );
 }

@@ -13,7 +13,6 @@ import {
   DataListLabel,
   DataListValue,
 } from "~/components/ui/data-list";
-import { Separator } from "~/components/ui/separator";
 import { acceptInvitation, rejectInvitation } from "~/lib/invitation";
 import { Invitation } from "~/types";
 
@@ -92,7 +91,6 @@ export function InvitationCard({ invitation }: InvitationCardProps) {
           </DataListValue>
         </DataListItem>
       </DataList>
-      <Separator />
       {error ? (
         <Callout>
           <CalloutIcon>
@@ -102,7 +100,7 @@ export function InvitationCard({ invitation }: InvitationCardProps) {
         </Callout>
       ) : null}
       {invitation.status === "pending" ? (
-        <div className="flex justify-end">
+        <div className="flex justify-end gap-3">
           <Button
             isDisabled={rejectInvitationMutation.isPending}
             isPending={rejectInvitationMutation.isPending}

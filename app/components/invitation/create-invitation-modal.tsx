@@ -9,6 +9,8 @@ import { FormError } from "~/components/form/form-error";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
+import { Heading } from "~/components/ui/heading";
+import { Modal } from "~/components/ui/modal";
 import { Select, SelectItem } from "~/components/ui/select";
 import { Separator } from "~/components/ui/separator";
 import { TextField } from "~/components/ui/text-field";
@@ -110,126 +112,124 @@ export function CreateInvitationModal() {
   const teams = teamsQuery.data;
 
   return (
-    <Dialog.Root open={open} onOpenChange={onOpenChangeHandler}>
-      <Dialog.Trigger>
-        <Button>Create invitation</Button>
-      </Dialog.Trigger>
-      <Dialog.Content>
-        <Dialog.Title>Create invitation</Dialog.Title>
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            handleSubmit();
-          }}
-        >
-          <div className="space-y-4">
-            <Field
-              name="email"
-              children={(field) => {
-                return (
-                  <TextField
-                    defaultValue={field.state.value}
-                    errorMessage={getFieldErrorMessage({ field })}
-                    label="Email"
-                    name={field.name}
-                    onBlur={field.handleBlur}
-                    onChange={(value) => field.handleChange(value)}
-                  />
-                );
-              }}
-            />
-            <Field
-              name="organizationId"
-              children={(field) => {
-                return (
-                  <Select
-                    errorMessage={getFieldErrorMessage({ field })}
-                    label="Organization"
-                    name={field.name}
-                    onSelectionChange={(key) =>
-                      field.handleChange(key as string)
-                    }
-                    selectedKey={field.state.value}
-                  >
-                    {organizations?.map((organization) => (
-                      <SelectItem key={organization.id} id={organization.id}>
-                        {organization.name}
-                      </SelectItem>
-                    ))}
-                  </Select>
-                );
-              }}
-            />
-            <Field
-              name="role"
-              children={(field) => {
-                return (
-                  <Select
-                    errorMessage={getFieldErrorMessage({ field })}
-                    label="Role"
-                    name={field.name}
-                    onSelectionChange={(key) =>
-                      field.handleChange(key as string)
-                    }
-                    selectedKey={field.state.value}
-                  >
-                    <SelectItem id="admin">Admin</SelectItem>
-                    <SelectItem id="member">Member</SelectItem>
-                    <SelectItem id="owner">Owner</SelectItem>
-                  </Select>
-                );
-              }}
-            />
-            <Separator />
-            <div className="flex items-center gap-2">
-              <span className="font-medium">Team</span>
-              <Badge>optional</Badge>
+    <>
+      <Button onPress={() => setOpen(true)}>Create invitation</Button>
+      <Modal isDismissable isOpen={open} onOpenChange={onOpenChangeHandler}>
+        <Dialog>
+          <Heading slot="title">Create invitation</Heading>
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              handleSubmit();
+            }}
+          >
+            <div className="space-y-4">
+              <Field
+                name="email"
+                children={(field) => {
+                  return (
+                    <TextField
+                      defaultValue={field.state.value}
+                      errorMessage={getFieldErrorMessage({ field })}
+                      label="Email"
+                      name={field.name}
+                      onBlur={field.handleBlur}
+                      onChange={(value) => field.handleChange(value)}
+                    />
+                  );
+                }}
+              />
+              <Field
+                name="organizationId"
+                children={(field) => {
+                  return (
+                    <Select
+                      errorMessage={getFieldErrorMessage({ field })}
+                      label="Organization"
+                      name={field.name}
+                      onSelectionChange={(key) =>
+                        field.handleChange(key as string)
+                      }
+                      selectedKey={field.state.value}
+                    >
+                      {organizations?.map((organization) => (
+                        <SelectItem key={organization.id} id={organization.id}>
+                          {organization.name}
+                        </SelectItem>
+                      ))}
+                    </Select>
+                  );
+                }}
+              />
+              <Field
+                name="role"
+                children={(field) => {
+                  return (
+                    <Select
+                      errorMessage={getFieldErrorMessage({ field })}
+                      label="Role"
+                      name={field.name}
+                      onSelectionChange={(key) =>
+                        field.handleChange(key as string)
+                      }
+                      selectedKey={field.state.value}
+                    >
+                      <SelectItem id="admin">Admin</SelectItem>
+                      <SelectItem id="member">Member</SelectItem>
+                      <SelectItem id="owner">Owner</SelectItem>
+                    </Select>
+                  );
+                }}
+              />
+              <Separator />
+              <div className="flex items-center gap-2">
+                <span className="font-medium">Team</span>
+                <Badge>optional</Badge>
+              </div>
+              <Field
+                name="teamId"
+                children={(field) => {
+                  return (
+                    <Select
+                      errorMessage={getFieldErrorMessage({ field })}
+                      isDisabled={!teams?.length || teamsQuery.isPending}
+                      label="Add to team"
+                      name={field.name}
+                      onSelectionChange={(key) =>
+                        field.handleChange(key as string)
+                      }
+                      selectedKey={field.state.value}
+                    >
+                      {teams?.map((team) => (
+                        <SelectItem key={team.id} id={team.id}>
+                          {team.name}
+                        </SelectItem>
+                      ))}
+                    </Select>
+                  );
+                }}
+              />
+              {error ? <FormError error={error} /> : null}
+              <Subscribe
+                selector={(state) => [state.canSubmit, state.isSubmitting]}
+                children={([canSubmit, isSubmitting]) => (
+                  <div className="flex gap-3 justify-end">
+                    <Button slot="close">Cancel</Button>
+                    <Button
+                      isDisabled={!canSubmit}
+                      isPending={isSubmitting}
+                      type="submit"
+                    >
+                      Save
+                    </Button>
+                  </div>
+                )}
+              />
             </div>
-            <Field
-              name="teamId"
-              children={(field) => {
-                return (
-                  <Select
-                    errorMessage={getFieldErrorMessage({ field })}
-                    isDisabled={!teams?.length || teamsQuery.isPending}
-                    label="Add to team"
-                    name={field.name}
-                    onSelectionChange={(key) =>
-                      field.handleChange(key as string)
-                    }
-                    selectedKey={field.state.value}
-                  >
-                    {teams?.map((team) => (
-                      <SelectItem key={team.id} id={team.id}>
-                        {team.name}
-                      </SelectItem>
-                    ))}
-                  </Select>
-                );
-              }}
-            />
-            {error ? <FormError error={error} /> : null}
-            <Subscribe
-              selector={(state) => [state.canSubmit, state.isSubmitting]}
-              children={([canSubmit, isSubmitting]) => (
-                <div className="flex gap-3 justify-end">
-                  <Dialog.Close>
-                    <Button>Cancel</Button>
-                  </Dialog.Close>
-                  <Button
-                    isDisabled={!canSubmit}
-                    isPending={isSubmitting}
-                    type="submit"
-                  >
-                    Save
-                  </Button>
-                </div>
-              )}
-            />
-          </div>
-        </form>
-      </Dialog.Content>
-    </Dialog.Root>
+          </form>
+        </Dialog>
+      </Modal>
+    </>
   );
 }

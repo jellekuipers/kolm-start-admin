@@ -3,12 +3,12 @@ import { useState } from "react";
 import { useForm } from "@tanstack/react-form";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
-import { Dialog } from "react-aria-components";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
+import { Dialog } from "~/components/ui/dialog";
 import { Heading } from "~/components/ui/heading";
 import { Modal } from "~/components/ui/modal";
 import { Select, SelectItem } from "~/components/ui/select";
@@ -100,7 +100,7 @@ export function CreateUserModal() {
     <>
       <Button onPress={() => setOpen(true)}>Create user</Button>
       <Modal isDismissable isOpen={open} onOpenChange={onOpenChangeHandler}>
-        <Dialog className="outline-hidden relative">
+        <Dialog>
           <Heading level={3} slot="title">
             Create user
           </Heading>
