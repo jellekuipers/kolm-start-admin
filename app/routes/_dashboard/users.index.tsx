@@ -151,7 +151,7 @@ function RouteComponent() {
         <div className="space-y-4">
           <div className="flex justify-between items-start gap-4 flex-wrap">
             <div className="flex items-center gap-2">
-              <Heading>Users</Heading>
+              <Heading level={1}>Users</Heading>
               <Badge>{users.length}</Badge>
             </div>
             <CreateUserModal />

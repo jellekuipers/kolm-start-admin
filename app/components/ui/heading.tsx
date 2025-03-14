@@ -1,8 +1,5 @@
-import type { ComponentProps } from "react";
-import { Heading as RadixHeading } from "@radix-ui/themes";
-
-export type HeadingProps = ComponentProps<typeof RadixHeading>;
+import { Heading as AriaHeading, HeadingProps } from "react-aria-components";
 
 export function Heading(props: HeadingProps) {
-  return <RadixHeading {...props} />;
+  return <AriaHeading className="font-bold text-3xl" {...props} />;
 }

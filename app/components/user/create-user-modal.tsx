@@ -102,7 +102,9 @@ export function CreateUserModal() {
       <Button onPress={() => setOpen(true)}>Create user</Button>
       <Modal isDismissable isOpen={open} onOpenChange={onOpenChangeHandler}>
         <Dialog className="outline-hidden relative">
-          <Heading slot="title">Create user</Heading>
+          <Heading level={3} slot="title">
+            Create user
+          </Heading>
           <form
             onSubmit={(event) => {
               event.preventDefault();

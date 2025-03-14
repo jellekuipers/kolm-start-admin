@@ -25,7 +25,7 @@ function RouteComponent() {
     <Container>
       <div className="space-y-6">
         <div className="space-y-4">
-          <Heading>Dashboard</Heading>
+          <Heading level={1}>Dashboard</Heading>
           <Separator />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">

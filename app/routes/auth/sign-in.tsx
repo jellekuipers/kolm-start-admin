@@ -62,9 +62,7 @@ function RouteComponent() {
       <Logo size={48} />
       <Card>
         <div className="space-y-4">
-          <Heading as="h3" size="6">
-            Sign in
-          </Heading>
+          <Heading level={3}>Sign in</Heading>
           <form
             onSubmit={(event) => {
               event.preventDefault();

@@ -167,13 +167,13 @@ function RouteComponent() {
                 <Avatar fallback="@" src={user.image ?? undefined} />
                 {user.name ? (
                   <div className="space-y-0">
-                    <Heading>{user.name}</Heading>
+                    <Heading level={1}>{user.name}</Heading>
                     <Text color="gray" size="1" weight="medium">
                       {user.email}
                     </Text>
                   </div>
                 ) : (
-                  <Heading>{user.email}</Heading>
+                  <Heading level={1}>{user.email}</Heading>
                 )}
               </div>
             </div>
@@ -182,9 +182,7 @@ function RouteComponent() {
           <Separator />
         </div>
         <div className="space-y-4">
-          <Heading as="h2" size="3" weight="medium">
-            Accounts
-          </Heading>
+          <Heading level={2}>Accounts</Heading>
           <DataTableSimple
             columns={accountsColumns}
             data={accounts}
@@ -192,9 +190,7 @@ function RouteComponent() {
           />
         </div>
         <div className="space-y-4">
-          <Heading as="h2" size="3" weight="medium">
-            Organizations
-          </Heading>
+          <Heading level={2}>Organizations</Heading>
           <DataTableSimple
             columns={membersColumns}
             data={members}

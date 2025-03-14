@@ -43,7 +43,7 @@ function RouteComponent() {
             <div className="flex items-center gap-4 flex-wrap">
               <Avatar fallback="@" src={organization.logo ?? undefined} />
               <div className="space-y-0">
-                <Heading>{organization.name}</Heading>
+                <Heading level={1}>{organization.name}</Heading>
                 <Text color="gray" size="1" weight="medium">
                   {organization.members.length}{" "}
                   {organization.members.length === 1 ? "member" : "members"}

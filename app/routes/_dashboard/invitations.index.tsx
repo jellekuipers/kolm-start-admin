@@ -76,7 +76,7 @@ function RouteComponent() {
         <div className="space-y-4">
           <div className="flex justify-between items-start gap-4 flex-wrap">
             <div className="flex items-center gap-2">
-              <Heading>Invitations</Heading>
+              <Heading level={1}>Invitations</Heading>
               <Badge>{invitations.length}</Badge>
             </div>
             <CreateInvitationModal />

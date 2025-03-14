@@ -96,7 +96,7 @@ function RouteComponent() {
         <div className="space-y-4">
           <div className="flex justify-between items-start gap-4 flex-wrap">
             <div className="flex items-center gap-2">
-              <Heading>Organizations</Heading>
+              <Heading level={1}>Organizations</Heading>
               <Badge>{organizations.length}</Badge>
             </div>
             <CreateOrganizationModal />

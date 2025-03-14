@@ -29,7 +29,7 @@ function RouteComponent() {
   return (
     <Container>
       <div className="space-y-4">
-        <Heading>Invitation</Heading>
+        <Heading level={1}>Invitation</Heading>
         <Separator />
         <InvitationCard invitation={invitation} />
       </div>
