@@ -180,19 +180,11 @@ function RouteComponent() {
         </div>
         <div className="space-y-4">
           <Heading level={2}>Accounts</Heading>
-          <DataTableSimple
-            columns={accountsColumns}
-            data={accounts}
-            variant="surface"
-          />
+          <DataTableSimple columns={accountsColumns} data={accounts} />
         </div>
         <div className="space-y-4">
           <Heading level={2}>Organizations</Heading>
-          <DataTableSimple
-            columns={membersColumns}
-            data={members}
-            variant="surface"
-          />
+          <DataTableSimple columns={membersColumns} data={members} />
         </div>
       </div>
     </Container>

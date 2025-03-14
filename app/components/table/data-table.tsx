@@ -16,7 +16,14 @@ import {
 
 import { DataTableSearch } from "~/components/table/data-table-search";
 import { Callout, CalloutIcon, CalloutText } from "~/components/ui/callout";
-import { Table } from "~/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableColumn,
+  TableHeader,
+  TableRow,
+} from "~/components/ui/table";
 
 import { DataTableColumnFilter } from "./data-table-column-filter";
 import { DataTablePagination } from "./data-table-pagination";
@@ -95,15 +102,12 @@ export function DataTable<TData, TValue>({
       </div>
       {table.getRowModel().rows?.length ? (
         <div className="space-y-4">
-          <Table.Root>
-            <Table.Header>
+          <Table>
+            <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (
-                <Table.Row key={headerGroup.id}>
+                <TableRow key={headerGroup.id}>
                   {headerGroup.headers.map((header) => (
-                    <Table.ColumnHeaderCell
-                      key={header.id}
-                      className="whitespace-nowrap"
-                    >
+                    <TableColumn key={header.id}>
                       <div className="flex gap-4 items-center">
                         {header.isPlaceholder
                           ? null
@@ -118,29 +122,26 @@ export function DataTable<TData, TValue>({
                           />
                         ) : null}
                       </div>
-                    </Table.ColumnHeaderCell>
+                    </TableColumn>
                   ))}
-                </Table.Row>
+                </TableRow>
               ))}
-            </Table.Header>
-            <Table.Body>
+            </TableHeader>
+            <TableBody>
               {table.getRowModel().rows.map((row) => (
-                <Table.Row key={row.id}>
+                <TableRow key={row.id}>
                   {row.getVisibleCells().map((cell) => (
-                    <Table.Cell
-                      key={cell.id}
-                      className="whitespace-nowrap align-middle"
-                    >
+                    <TableCell key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext(),
                       )}
-                    </Table.Cell>
+                    </TableCell>
                   ))}
-                </Table.Row>
+                </TableRow>
               ))}
-            </Table.Body>
-          </Table.Root>
+            </TableBody>
+          </Table>
           <DataTablePagination table={table} />
         </div>
       ) : (
