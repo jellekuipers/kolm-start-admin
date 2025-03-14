@@ -6,37 +6,25 @@ import {
   SearchFieldProps as AriaSearchFieldProps,
 } from "react-aria-components";
 
-import { FieldError, FieldGroup, Label } from "~/components/ui/field";
+import { FieldGroup } from "~/components/ui/field";
 
 export interface SearchFieldProps extends AriaSearchFieldProps {
-  errorMessage?: string | null;
-  label?: string;
   placeholder?: string;
 }
 
-export function SearchField({
-  errorMessage,
-  label,
-  placeholder,
-  ...props
-}: SearchFieldProps) {
+export function SearchField({ placeholder, ...props }: SearchFieldProps) {
   return (
-    <AriaSearchField
-      className="group space-y-1 border border-gray-300 rounded px-3 py-1.5"
-      {...props}
-    >
-      {label && <Label>{label}</Label>}
+    <AriaSearchField className="group" {...props}>
       <FieldGroup>
         <MagnifyingGlassIcon aria-hidden className="ml-2" />
         <AriaInput
-          className="[&::-webkit-search-cancel-button]:hidden w-full h-full "
+          className="[&::-webkit-search-cancel-button]:hidden px-3 py-1.5 outline-none"
           placeholder={placeholder}
         />
         <AriaButton className="group-empty:invisible mr-2">
           <Cross1Icon aria-hidden />
         </AriaButton>
       </FieldGroup>
-      <FieldError>{errorMessage}</FieldError>
     </AriaSearchField>
   );
 }
