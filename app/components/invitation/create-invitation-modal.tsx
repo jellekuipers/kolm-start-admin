@@ -11,7 +11,6 @@ import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
 import { Select, SelectItem } from "~/components/ui/select";
 import { Separator } from "~/components/ui/separator";
-import { Text } from "~/components/ui/text";
 import { TextField } from "~/components/ui/text-field";
 import { getFieldErrorMessage } from "~/lib/error";
 import { createInvitation } from "~/lib/invitation";
@@ -184,7 +183,7 @@ export function CreateInvitationModal() {
             />
             <Separator />
             <div className="flex items-center gap-2">
-              <Text weight="medium">Team</Text>
+              <span className="font-medium">Team</span>
               <Badge>optional</Badge>
             </div>
             <Field

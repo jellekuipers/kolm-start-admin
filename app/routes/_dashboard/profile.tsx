@@ -12,7 +12,6 @@ import { Code } from "~/components/ui/code";
 import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
 import { Separator } from "~/components/ui/separator";
-import { Text } from "~/components/ui/text";
 import { SessionUserActiveOrganizationBadge } from "~/components/user/session-user-active-organization-badge";
 import { SessionUserOrganizationActions } from "~/components/user/session-user-organization-actions";
 import { membersQueryOptions } from "~/lib/member";
@@ -166,11 +165,9 @@ function RouteComponent() {
               <div className="flex items-center gap-4 flex-wrap">
                 <Avatar fallback="@" src={user.image ?? undefined} />
                 {user.name ? (
-                  <div className="space-y-0">
+                  <div>
                     <Heading level={1}>{user.name}</Heading>
-                    <Text color="gray" size="1" weight="medium">
-                      {user.email}
-                    </Text>
+                    <span className="text-gray-600 text-sm">{user.email}</span>
                   </div>
                 ) : (
                   <Heading level={1}>{user.email}</Heading>

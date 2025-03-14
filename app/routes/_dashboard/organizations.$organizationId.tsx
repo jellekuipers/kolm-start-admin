@@ -8,7 +8,6 @@ import { OrganizationTabNav } from "~/components/organization/organization-tab-n
 import { Avatar } from "~/components/ui/avatar";
 import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
-import { Text } from "~/components/ui/text";
 import { organizationQueryOptions } from "~/lib/organization";
 
 export const Route = createFileRoute(
@@ -42,12 +41,12 @@ function RouteComponent() {
           <div className="flex justify-between items-start gap-4 flex-wrap">
             <div className="flex items-center gap-4 flex-wrap">
               <Avatar fallback="@" src={organization.logo ?? undefined} />
-              <div className="space-y-0">
+              <div>
                 <Heading level={1}>{organization.name}</Heading>
-                <Text color="gray" size="1" weight="medium">
+                <span className="text-gray-600 text-sm">
                   {organization.members.length}{" "}
                   {organization.members.length === 1 ? "member" : "members"}
-                </Text>
+                </span>
               </div>
             </div>
             <OrganizationActions

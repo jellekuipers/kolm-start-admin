@@ -7,7 +7,6 @@ import {
 import { Table } from "@tanstack/react-table";
 
 import { IconButton } from "~/components/ui/icon-button";
-import { Text } from "~/components/ui/text";
 
 interface DataTablePaginationProps<TData> {
   table: Table<TData>;
@@ -30,16 +29,10 @@ export function DataTablePagination<TData>({
       >
         <ChevronLeftIcon />
       </IconButton>
-      <Text
-        size="2"
-        style={{
-          fontVariantNumeric: "tabular-nums",
-        }}
-        weight="medium"
-      >
+      <span className="font-medium tabular-nums">
         {table.getState().pagination.pageIndex + 1} of{" "}
         {table.getPageCount().toLocaleString()}
-      </Text>
+      </span>
       <IconButton
         isDisabled={!table.getCanNextPage()}
         onPress={() => table.nextPage()}

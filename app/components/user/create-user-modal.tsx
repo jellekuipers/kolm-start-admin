@@ -13,7 +13,6 @@ import { Heading } from "~/components/ui/heading";
 import { Modal } from "~/components/ui/modal";
 import { Select, SelectItem } from "~/components/ui/select";
 import { Separator } from "~/components/ui/separator";
-import { Text } from "~/components/ui/text";
 import { TextField } from "~/components/ui/text-field";
 import { getFieldErrorMessage } from "~/lib/error";
 import { organizationsQueryOptions } from "~/lib/organization";
@@ -145,7 +144,7 @@ export function CreateUserModal() {
               />
               <Separator />
               <div className="flex items-center gap-2">
-                <Text weight="medium">Organization</Text>
+                <span className="font-medium">Organization</span>
                 <Badge>optional</Badge>
               </div>
               <Field
