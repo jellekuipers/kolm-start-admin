@@ -1,11 +1,12 @@
 import { ArrowLeft as ArrowLeftIcon } from "@phosphor-icons/react";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
+import { createFileRoute, Outlet } from "@tanstack/react-router";
 
 import { Container } from "~/components/layout/container";
 import { Avatar } from "~/components/ui/avatar";
 import { Badge } from "~/components/ui/badge";
 import { Heading } from "~/components/ui/heading";
+import { Link } from "~/components/ui/link";
 import { UserActions } from "~/components/user/user-actions";
 import { UserTabNav } from "~/components/user/user-tab-nav";
 import { userQueryOptions } from "~/lib/user";
@@ -30,7 +31,7 @@ function RouteComponent() {
   return (
     <Container>
       <div className="space-y-6">
-        <Link className="flex items-center gap-2" to="/users">
+        <Link to="/users">
           <ArrowLeftIcon size={16} /> Users
         </Link>
         <div className="space-y-4">

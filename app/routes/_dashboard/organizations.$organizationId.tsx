@@ -34,14 +34,18 @@ function RouteComponent() {
   return (
     <Container>
       <div className="space-y-6">
-        <Link className="flex items-center gap-2" to="/organizations">
+        <Link to="/organizations">
           <ArrowLeftIcon size={16} /> Organizations
         </Link>
         <div className="space-y-4">
           <div className="flex justify-between items-start gap-4 flex-wrap">
             <div className="flex items-center gap-4 flex-wrap">
-              <Avatar fallback="@" src={organization.logo ?? undefined} />
-              <div>
+              <Avatar
+                fallback="@"
+                size="20"
+                src={organization.logo ?? undefined}
+              />
+              <div className="space-y-0">
                 <Heading level={1}>{organization.name}</Heading>
                 <span className="text-gray-600 text-sm">
                   {organization.members.length}{" "}

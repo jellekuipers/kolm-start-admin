@@ -160,19 +160,17 @@ function RouteComponent() {
     <Container>
       <div className="space-y-6">
         <div className="space-y-4">
-          <div className="flex justify-between items-center gap-4">
-            <div className="space-y-1">
-              <div className="flex items-center gap-4 flex-wrap">
-                <Avatar fallback="@" src={user.image ?? undefined} />
-                {user.name ? (
-                  <div>
-                    <Heading level={1}>{user.name}</Heading>
-                    <span className="text-gray-600 text-sm">{user.email}</span>
-                  </div>
-                ) : (
-                  <Heading level={1}>{user.email}</Heading>
-                )}
-              </div>
+          <div className="flex justify-between items-start gap-4">
+            <div className="flex items-center gap-4 flex-wrap">
+              <Avatar fallback="@" size="20" src={user.image ?? undefined} />
+              {user.name ? (
+                <div className="space-y-0">
+                  <Heading level={1}>{user.name}</Heading>
+                  <span className="text-gray-600 text-sm">{user.email}</span>
+                </div>
+              ) : (
+                <Heading level={1}>{user.email}</Heading>
+              )}
             </div>
             <UpdateProfileModal user={user} />
           </div>

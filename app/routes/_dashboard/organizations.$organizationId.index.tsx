@@ -71,6 +71,7 @@ function RouteComponent() {
               <div className="flex gap-2 items-center">
                 <Avatar
                   fallback="@"
+                  size="8"
                   src={organizationOwner.user.image ?? undefined}
                 />
                 {organizationOwner.user.email}
