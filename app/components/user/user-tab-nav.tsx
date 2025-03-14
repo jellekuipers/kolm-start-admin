@@ -1,36 +1,34 @@
-import { Link, useMatchRoute } from "@tanstack/react-router";
-import { TabNav } from "~/components/ui/tab-nav";
+import { Link } from "@tanstack/react-router";
 
 interface UserTabNavProps {
   userId: string;
 }
 
 export function UserTabNav({ userId }: UserTabNavProps) {
-  const matchRoute = useMatchRoute();
-
   return (
-    <TabNav.Root>
-      <TabNav.Link active={!!matchRoute({ to: "/users/$userId" })} asChild>
-        <Link params={{ userId }} to="/users/$userId">
-          Profile
-        </Link>
-      </TabNav.Link>
-      <TabNav.Link
-        active={!!matchRoute({ to: "/users/$userId/organizations" })}
-        asChild
+    <div className="flex gap-2">
+      <Link
+        activeOptions={{ exact: true }}
+        activeProps={{ className: "font-bold" }}
+        params={{ userId }}
+        to="/users/$userId"
       >
-        <Link params={{ userId }} to="/users/$userId/organizations">
-          Organizations
-        </Link>
-      </TabNav.Link>
-      <TabNav.Link
-        active={!!matchRoute({ to: "/users/$userId/sessions" })}
-        asChild
+        Profile
+      </Link>
+      <Link
+        activeProps={{ className: "font-bold" }}
+        params={{ userId }}
+        to="/users/$userId/organizations"
       >
-        <Link params={{ userId }} to="/users/$userId/sessions">
-          Sessions
-        </Link>
-      </TabNav.Link>
-    </TabNav.Root>
+        Organizations
+      </Link>
+      <Link
+        activeProps={{ className: "font-bold" }}
+        params={{ userId }}
+        to="/users/$userId/sessions"
+      >
+        Sessions
+      </Link>
+    </div>
   );
 }
