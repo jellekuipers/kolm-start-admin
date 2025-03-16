@@ -102,6 +102,7 @@ export function InvitationCard({ invitation }: InvitationCardProps) {
       {invitation.status === "pending" ? (
         <div className="flex justify-end gap-3">
           <Button
+            color="destructive"
             isDisabled={rejectInvitationMutation.isPending}
             isPending={rejectInvitationMutation.isPending}
             onPress={async () =>
@@ -109,6 +110,7 @@ export function InvitationCard({ invitation }: InvitationCardProps) {
                 invitationId: invitation.id,
               })
             }
+            variant="outline"
           >
             Reject
           </Button>

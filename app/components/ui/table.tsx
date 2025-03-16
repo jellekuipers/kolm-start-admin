@@ -27,7 +27,7 @@ const tableCellStyles = tv({
 
 export function Table(props: TableProps) {
   return (
-    <div className="overflow-x-auto -mx-4 md:mx-0 outline-none">
+    <div className="overflow-x-auto -mx-4 md:mx-0">
       <AriaTable {...props} className="w-full" />
     </div>
   );
@@ -37,7 +37,7 @@ export function TableBody<T extends object>(props: TableBodyProps<T>) {
   return (
     <AriaTableBody
       {...props}
-      className="align-middle divide-y divide-gray-200 border-y border-gray-300"
+      className="align-middle divide-y divide-slate-200 border-y border-slate-200"
     />
   );
 }

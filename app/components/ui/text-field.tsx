@@ -19,11 +19,11 @@ export function TextField({
 }: TextFieldProps) {
   return (
     <AriaTextField className="flex flex-col space-y-1" {...props}>
-      <Label>{label}</Label>
+      {label ? <Label>{label}</Label> : null}
       <Input />
-      {description && (
+      {description ? (
         <Description slot="description">{description}</Description>
-      )}
+      ) : null}
       <FieldError>{errorMessage}</FieldError>
     </AriaTextField>
   );

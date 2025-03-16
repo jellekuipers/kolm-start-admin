@@ -47,7 +47,7 @@ function RouteComponent() {
               />
               <div className="space-y-0">
                 <Heading level={1}>{organization.name}</Heading>
-                <span className="text-gray-600 text-sm">
+                <span className="text-slate-600 text-sm">
                   {organization.members.length}{" "}
                   {organization.members.length === 1 ? "member" : "members"}
                 </span>

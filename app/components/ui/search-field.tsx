@@ -20,7 +20,7 @@ export function SearchField({ placeholder, ...props }: SearchFieldProps) {
       <FieldGroup>
         <MagnifyingGlassIcon aria-hidden className="ml-2" />
         <Input
-          className="[&::-webkit-search-cancel-button]:hidden outline-none border-none"
+          className="[&::-webkit-search-cancel-button]:hidden border-none"
           placeholder={placeholder}
         />
         <AriaButton className="group-empty:invisible mr-2">

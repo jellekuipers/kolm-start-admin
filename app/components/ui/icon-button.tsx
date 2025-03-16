@@ -5,7 +5,7 @@ import { focusRing } from "~/utils/classes";
 
 const iconButtonStyles = tv({
   extend: focusRing,
-  base: "rounded size-9 justify-center flex items-center hover:bg-gray-100",
+  base: "rounded size-8 justify-center flex items-center hover:bg-slate-100",
 });
 
 export function IconButton(props: ButtonProps) {

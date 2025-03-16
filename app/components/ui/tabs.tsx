@@ -65,11 +65,11 @@ export const tabStyles = tv({
   variants: {
     isSelected: {
       false:
-        "text-gray-600 hover:text-gray-700 pressed:text-gray-700 hover:bg-gray-200 pressed:bg-gray-200",
-      true: "text-white bg-gray-900",
+        "text-slate-600 hover:text-slate-700 pressed:text-slate-700 hover:bg-slate-200 pressed:bg-slate-200",
+      true: "text-white bg-slate-900",
     },
     isDisabled: {
-      true: "bg-gray-50 text-gray-200",
+      true: "bg-slate-50 text-slate-200",
     },
   },
 });
@@ -87,7 +87,7 @@ export function Tab({ className, ...props }: TabProps) {
 
 const tabPanelStyles = tv({
   extend: focusRing,
-  base: "flex-1 p-4",
+  base: "flex-1",
 });
 
 export function TabPanel({ className, ...props }: TabPanelProps) {

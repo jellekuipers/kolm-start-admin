@@ -18,7 +18,7 @@ export function Avatar({
   return (
     <div
       className={twMerge(
-        "rounded-lg flex items-center justify-center bg-indigo-50 text-indigo-800/50 shrink-0 overflow-hidden",
+        "rounded-lg flex items-center justify-center bg-indigo-100 text-indigo-800 shrink-0 overflow-hidden",
         size === "8" && "size-8 text-sm",
         size === "10" && "size-10 text-base",
         size === "12" && "size-12 text-lg",

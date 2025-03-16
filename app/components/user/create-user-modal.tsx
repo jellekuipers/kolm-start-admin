@@ -194,7 +194,9 @@ export function CreateUserModal() {
                 selector={(state) => [state.canSubmit, state.isSubmitting]}
                 children={([canSubmit, isSubmitting]) => (
                   <div className="flex gap-3 justify-end">
-                    <Button slot="close">Cancel</Button>
+                    <Button color="tertiary" slot="close">
+                      Cancel
+                    </Button>
                     <Button
                       isDisabled={!canSubmit}
                       isPending={isSubmitting}

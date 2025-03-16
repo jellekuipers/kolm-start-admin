@@ -22,7 +22,7 @@ export function DataTableColumnFilter<TData>({
 
   return (
     <AriaDialogTrigger>
-      <Button variant="secondary">
+      <Button color="secondary">
         Column visibility <CaretDownIcon />
       </Button>
       <Popover className="w-48 p-4">

@@ -27,21 +27,21 @@ export const fieldBorderStyles = tv({
   extend: focusRing,
   variants: {
     isFocusWithin: {
-      false: "border-gray-300",
+      false: "border-slate-200",
       true: "border-indigo-700",
     },
     isInvalid: {
       true: "border-red-500",
     },
     isDisabled: {
-      true: "border-gray-300",
+      true: "border-slate-200",
     },
   },
 });
 
 export const fieldGroupStyles = tv({
   extend: focusRing,
-  base: "group flex items-center border border-gray-300 rounded overflow-hidden",
+  base: "group flex items-center border border-slate-200 rounded overflow-hidden",
   variants: fieldBorderStyles.variants,
 });
 
@@ -58,7 +58,7 @@ export function FieldGroup({ className, ...props }: GroupProps) {
 
 const inputStyles = tv({
   extend: focusRing,
-  base: "px-3 h-9 rounded border border-gray-300",
+  base: "px-3 h-9 rounded border border-slate-200",
   variants: fieldBorderStyles.variants,
 });
 

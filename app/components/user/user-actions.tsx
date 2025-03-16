@@ -89,7 +89,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
             <DotsThreeVerticalIcon size={20} />
           </IconButton>
         ) : (
-          <Button>
+          <Button color="secondary">
             Actions <CaretDownIcon size={16} />
           </Button>
         )

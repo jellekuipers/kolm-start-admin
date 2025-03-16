@@ -18,7 +18,7 @@ export function DataList(props: DataListProps) {
   return (
     <dl
       {...props}
-      className="flex flex-col gap-4 md:grid md:grid-cols-[auto_1fr]"
+      className="flex flex-col gap-4 md:grid md:grid-cols-[auto_1fr] md:auto-rows-fr"
     />
   );
 }
@@ -27,13 +27,13 @@ export function DataListItem(props: DataListItemProps) {
   return (
     <div
       {...props}
-      className="flex flex-col gap-2 md:grid md:grid-cols-subgrid md:col-span-2 align-baseline"
+      className="flex flex-col gap-2 md:grid md:grid-cols-subgrid md:col-span-2 align-center"
     />
   );
 }
 
 export function DataListLabel(props: DataListLabelProps) {
-  return <dt {...props} className="min-w-32 text-gray-600" />;
+  return <dt {...props} className="min-w-32 text-slate-600" />;
 }
 
 export function DataListValue(props: DataListValueProps) {

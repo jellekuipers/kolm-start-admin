@@ -57,7 +57,7 @@ function RouteComponent() {
   return (
     <div
       className="flex flex-col items-center justify-center gap-6 p-4"
-      style={{ backgroundColor: "var(--gray-1)", minHeight: "inherit" }}
+      style={{ backgroundColor: "var(--slate-1)", minHeight: "inherit" }}
     >
       <Logo size={48} />
       <Card>

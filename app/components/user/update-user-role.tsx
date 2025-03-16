@@ -42,6 +42,7 @@ export function UpdateUserRole({ user }: UpdateUserRoleProps) {
         })
       }
       selectedKey={user.role ?? "user"}
+      variant="ghost"
     >
       <SelectItem id="admin">
         <UserRole role="admin" />

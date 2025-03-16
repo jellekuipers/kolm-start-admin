@@ -14,7 +14,7 @@ export function Callout(props: CalloutProps) {
   return (
     <div
       {...props}
-      className="bg-gray-900 rounded p-4 text-white flex gap-4 items-center"
+      className="bg-indigo-50 rounded p-4 text-indigo-700 flex gap-4 items-center"
     />
   );
 }

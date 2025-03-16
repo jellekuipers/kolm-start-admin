@@ -4,7 +4,7 @@ interface CodeProps {
 
 export function Code({ children }: CodeProps) {
   return (
-    <code className="bg-gray-100 rounded px-2 py-1 text-sm inline-flex">
+    <code className="bg-slate-100 rounded px-2 py-1 text-sm inline-flex">
       {children}
     </code>
   );

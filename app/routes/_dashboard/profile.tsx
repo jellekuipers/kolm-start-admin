@@ -166,7 +166,7 @@ function RouteComponent() {
               {user.name ? (
                 <div className="space-y-0">
                   <Heading level={1}>{user.name}</Heading>
-                  <span className="text-gray-600 text-sm">{user.email}</span>
+                  <span className="text-slate-600 text-sm">{user.email}</span>
                 </div>
               ) : (
                 <Heading level={1}>{user.email}</Heading>
