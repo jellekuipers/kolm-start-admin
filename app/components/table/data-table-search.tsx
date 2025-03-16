@@ -6,5 +6,7 @@ interface DataTableSearchProps {
 }
 
 export function DataTableSearch({ onChange, value }: DataTableSearchProps) {
-  return <SearchField onChange={onChange} value={value} />;
+  return (
+    <SearchField onChange={onChange} placeholder="Search.." value={value} />
+  );
 }

@@ -5,11 +5,11 @@ import {
   Label as AriaLabel,
   Text as AriaText,
   composeRenderProps,
-  FieldErrorProps,
-  GroupProps,
-  InputProps,
-  LabelProps,
-  TextProps,
+  type FieldErrorProps,
+  type GroupProps,
+  type InputProps,
+  type LabelProps,
+  type TextProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 
@@ -48,10 +48,10 @@ export const fieldGroupStyles = tv({
 export function FieldGroup({ className, ...props }: GroupProps) {
   return (
     <AriaGroup
+      {...props}
       className={composeRenderProps(className, (className, renderProps) =>
         fieldGroupStyles({ ...renderProps, className }),
       )}
-      {...props}
     />
   );
 }

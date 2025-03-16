@@ -5,10 +5,10 @@ import {
   TabPanel as AriaTabPanel,
   Tabs as AriaTabs,
   composeRenderProps,
-  TabListProps,
-  TabPanelProps,
-  TabProps,
-  TabsProps,
+  type TabListProps,
+  type TabPanelProps,
+  type TabProps,
+  type TabsProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 

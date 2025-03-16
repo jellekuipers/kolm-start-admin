@@ -1,4 +1,4 @@
-import { Button as AriaButton, ButtonProps } from "react-aria-components";
+import { Button as AriaButton, type ButtonProps } from "react-aria-components";
 import { tv } from "tailwind-variants";
 
 import { focusRing } from "~/utils/classes";
@@ -9,5 +9,5 @@ const iconButtonStyles = tv({
 });
 
 export function IconButton(props: ButtonProps) {
-  return <AriaButton className={iconButtonStyles} {...props} />;
+  return <AriaButton {...props} className={iconButtonStyles} />;
 }

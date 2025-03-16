@@ -5,13 +5,13 @@ import {
   Table as AriaTable,
   TableBody as AriaTableBody,
   TableHeader as AriaTableHeader,
-  CellProps,
-  ColumnProps,
   composeRenderProps,
-  RowProps,
-  TableBodyProps,
-  TableHeaderProps,
-  TableProps,
+  type CellProps,
+  type ColumnProps,
+  type RowProps,
+  type TableBodyProps,
+  type TableHeaderProps,
+  type TableProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 
@@ -28,7 +28,7 @@ const tableCellStyles = tv({
 export function Table(props: TableProps) {
   return (
     <div className="overflow-x-auto -mx-4 md:mx-0 outline-none">
-      <AriaTable className="w-full" {...props} />
+      <AriaTable {...props} className="w-full" />
     </div>
   );
 }
@@ -36,8 +36,8 @@ export function Table(props: TableProps) {
 export function TableBody<T extends object>(props: TableBodyProps<T>) {
   return (
     <AriaTableBody
-      className="align-middle divide-y divide-gray-200 border-y border-gray-200"
       {...props}
+      className="align-middle divide-y divide-gray-200 border-y border-gray-200"
     />
   );
 }
@@ -45,10 +45,10 @@ export function TableBody<T extends object>(props: TableBodyProps<T>) {
 export function TableCell({ className, ...props }: CellProps) {
   return (
     <AriaCell
+      {...props}
       className={composeRenderProps(className, (className, renderProps) =>
         tableCellStyles({ ...renderProps, className }),
       )}
-      {...props}
     />
   );
 }
@@ -56,18 +56,18 @@ export function TableCell({ className, ...props }: CellProps) {
 export function TableColumn({ className, ...props }: ColumnProps) {
   return (
     <AriaColumn
+      {...props}
       className={composeRenderProps(className, (className, renderProps) =>
         tableCellStyles({ ...renderProps, className, isHeader: true }),
       )}
-      {...props}
     />
   );
 }
 
 export function TableHeader<T extends object>(props: TableHeaderProps<T>) {
-  return <AriaTableHeader className="align-middle" {...props} />;
+  return <AriaTableHeader {...props} className="align-middle" />;
 }
 
 export function TableRow<T extends object>(props: RowProps<T>) {
-  return <AriaRow className="align-middle" {...props} />;
+  return <AriaRow {...props} className="align-middle" />;
 }

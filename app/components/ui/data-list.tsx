@@ -17,8 +17,8 @@ interface DataListValueProps {
 export function DataList(props: DataListProps) {
   return (
     <dl
-      className="flex flex-col gap-4 md:grid md:grid-cols-[auto_1fr]"
       {...props}
+      className="flex flex-col gap-4 md:grid md:grid-cols-[auto_1fr]"
     />
   );
 }
@@ -26,14 +26,14 @@ export function DataList(props: DataListProps) {
 export function DataListItem(props: DataListItemProps) {
   return (
     <div
-      className="flex flex-col gap-2 md:grid md:grid-cols-subgrid md:col-span-2 align-baseline"
       {...props}
+      className="flex flex-col gap-2 md:grid md:grid-cols-subgrid md:col-span-2 align-baseline"
     />
   );
 }
 
 export function DataListLabel(props: DataListLabelProps) {
-  return <dt className="min-w-32 text-gray-600" {...props} />;
+  return <dt {...props} className="min-w-32 text-gray-600" />;
 }
 
 export function DataListValue(props: DataListValueProps) {

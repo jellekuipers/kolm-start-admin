@@ -13,8 +13,8 @@ interface CalloutTextProps {
 export function Callout(props: CalloutProps) {
   return (
     <div
-      className="bg-gray-900 rounded p-4 text-white flex gap-4 items-center"
       {...props}
+      className="bg-gray-900 rounded p-4 text-white flex gap-4 items-center"
     />
   );
 }

@@ -4,9 +4,9 @@ import {
   ListBox as AriaListBox,
   ListBoxItem as AriaListBoxItem,
   Select as AriaSelect,
-  SelectProps as AriaSelectProps,
   SelectValue as AriaSelectValue,
-  ListBoxItemProps,
+  type SelectProps as AriaSelectProps,
+  type ListBoxItemProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 
@@ -43,7 +43,7 @@ export function Select<T extends object>({
   ...props
 }: SelectProps<T>) {
   return (
-    <AriaSelect className="flex flex-col gap-2" {...props}>
+    <AriaSelect {...props} className="flex flex-col gap-2">
       <Label>{label}</Label>
       <AriaButton className={selectStyles}>
         <AriaSelectValue>

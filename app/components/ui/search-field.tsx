@@ -6,7 +6,7 @@ import {
   Button as AriaButton,
   Input as AriaInput,
   SearchField as AriaSearchField,
-  SearchFieldProps as AriaSearchFieldProps,
+  type SearchFieldProps as AriaSearchFieldProps,
 } from "react-aria-components";
 
 import { FieldGroup } from "~/components/ui/field";
@@ -17,7 +17,7 @@ export interface SearchFieldProps extends AriaSearchFieldProps {
 
 export function SearchField({ placeholder, ...props }: SearchFieldProps) {
   return (
-    <AriaSearchField className="group" {...props}>
+    <AriaSearchField {...props} className="group">
       <FieldGroup>
         <MagnifyingGlassIcon aria-hidden className="ml-2" size={16} />
         <AriaInput

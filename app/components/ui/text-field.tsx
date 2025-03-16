@@ -1,6 +1,6 @@
 import {
   TextField as AriaTextField,
-  TextFieldProps as AriaTextFieldProps,
+  type TextFieldProps as AriaTextFieldProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 
