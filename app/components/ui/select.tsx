@@ -10,7 +10,7 @@ import {
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 
-import { FieldError, Label } from "~/components/ui/field";
+import { Description, FieldError, Label } from "~/components/ui/field";
 import { Popover } from "~/components/ui/popover";
 import { focusRing } from "~/utils/classes";
 
@@ -25,7 +25,7 @@ export interface SelectProps<T extends object>
 
 const selectStyles = tv({
   extend: focusRing,
-  base: "border border-gray-300 rounded flex items-center justify-between gap-2 px-3 py-1.5",
+  base: "border border-gray-200 rounded flex items-center justify-between gap-2 px-3 py-1.5",
   variants: {
     isDisabled: {
       false: "pressed:bg-gray-50",
@@ -36,6 +36,7 @@ const selectStyles = tv({
 
 export function Select<T extends object>({
   children,
+  description,
   errorMessage,
   items,
   label,
@@ -52,8 +53,9 @@ export function Select<T extends object>({
         </AriaSelectValue>
         <CaretDownIcon size={16} />
       </AriaButton>
+      {description && <Description>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>
-      <Popover>
+      <Popover className="min-w-(--trigger-width)">
         <AriaListBox items={items}>{children}</AriaListBox>
       </Popover>
     </AriaSelect>

@@ -35,7 +35,7 @@ export function TextField({
   ...props
 }: TextFieldProps) {
   return (
-    <AriaTextField className="flex flex-col space-y-2" {...props}>
+    <AriaTextField className="flex flex-col space-y-1" {...props}>
       <Label>{label}</Label>
       <Input className={inputStyles} />
       {description && (

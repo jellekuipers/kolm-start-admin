@@ -24,9 +24,10 @@ export function FieldError(props: FieldErrorProps) {
 }
 
 export const fieldBorderStyles = tv({
+  extend: focusRing,
   variants: {
     isFocusWithin: {
-      false: "border-gray-300",
+      false: "border-gray-200",
       true: "border-gray-900",
     },
     isInvalid: {
@@ -40,7 +41,7 @@ export const fieldBorderStyles = tv({
 
 export const fieldGroupStyles = tv({
   extend: focusRing,
-  base: "group flex items-center border border-gray-300 rounded overflow-hidden",
+  base: "group flex items-center border border-gray-200 rounded overflow-hidden",
   variants: fieldBorderStyles.variants,
 });
 
@@ -61,12 +62,12 @@ export function Input({ className, ...props }: InputProps) {
       {...props}
       className={composeTailwindRenderProps(
         className,
-        "border border-gray-300 rounded px-3 py-1.5",
+        "border border-gray-200 rounded px-3 py-1.5",
       )}
     />
   );
 }
 
 export function Label(props: LabelProps) {
-  return <AriaLabel className="font-medium text-sm" {...props} />;
+  return <AriaLabel className="font-medium" {...props} />;
 }

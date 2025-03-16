@@ -40,11 +40,5 @@ AriaLinkComponent.displayName = "AriaLinkComponent";
 const CreatedLinkComponent = createLink(AriaLinkComponent);
 
 export const Link: LinkComponent<typeof AriaLinkComponent> = (props) => {
-  return (
-    <CreatedLinkComponent
-      className="text-sky-700 hover:underline flex items-center gap-2"
-      preload="intent"
-      {...props}
-    />
-  );
+  return <CreatedLinkComponent preload="intent" {...props} />;
 };

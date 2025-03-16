@@ -6,9 +6,7 @@ import {
   TableBody as AriaTableBody,
   TableHeader as AriaTableHeader,
   CellProps,
-  CellRenderProps,
   ColumnProps,
-  ColumnRenderProps,
   composeRenderProps,
   RowProps,
   TableBodyProps,
@@ -18,7 +16,7 @@ import {
 import { tv } from "tailwind-variants";
 
 const tableCellStyles = tv({
-  base: "align-middle px-4 py-2 whitespace-nowrap md:first:pl-0 md:last:pr-0",
+  base: "align-middle px-4 py-2 whitespace-nowrap",
   variants: {
     isHeader: {
       true: "font-bold",
@@ -29,7 +27,7 @@ const tableCellStyles = tv({
 
 export function Table(props: TableProps) {
   return (
-    <div className="overflow-x-auto -mx-4 md:mx-0">
+    <div className="overflow-x-auto -mx-4 md:mx-0 outline-none">
       <AriaTable className="w-full" {...props} />
     </div>
   );
@@ -38,7 +36,7 @@ export function Table(props: TableProps) {
 export function TableBody<T extends object>(props: TableBodyProps<T>) {
   return (
     <AriaTableBody
-      className="align-middle divide-y divide-gray-300 border-y border-gray-300"
+      className="align-middle divide-y divide-gray-200 border-y border-gray-200"
       {...props}
     />
   );
@@ -47,10 +45,8 @@ export function TableBody<T extends object>(props: TableBodyProps<T>) {
 export function TableCell({ className, ...props }: CellProps) {
   return (
     <AriaCell
-      className={composeRenderProps(
-        className,
-        (className: string | undefined, renderProps: CellRenderProps) =>
-          tableCellStyles({ ...renderProps, className }),
+      className={composeRenderProps(className, (className, renderProps) =>
+        tableCellStyles({ ...renderProps, className }),
       )}
       {...props}
     />
@@ -60,10 +56,8 @@ export function TableCell({ className, ...props }: CellProps) {
 export function TableColumn({ className, ...props }: ColumnProps) {
   return (
     <AriaColumn
-      className={composeRenderProps(
-        className,
-        (className: string | undefined, renderProps: ColumnRenderProps) =>
-          tableCellStyles({ ...renderProps, className, isHeader: true }),
+      className={composeRenderProps(className, (className, renderProps) =>
+        tableCellStyles({ ...renderProps, className, isHeader: true }),
       )}
       {...props}
     />

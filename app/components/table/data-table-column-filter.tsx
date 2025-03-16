@@ -1,8 +1,8 @@
 import { CaretDown as CaretDownIcon } from "@phosphor-icons/react";
 import { Table } from "@tanstack/react-table";
 import {
+  DialogTrigger as AriaDialogTrigger,
   Dialog,
-  DialogTrigger,
   GridList,
   GridListItem,
 } from "react-aria-components";
@@ -21,13 +21,14 @@ export function DataTableColumnFilter<TData>({
   const columns = table.getAllColumns().filter((column) => column.getCanHide());
 
   return (
-    <DialogTrigger>
+    <AriaDialogTrigger>
       <Button>
         Column visibility <CaretDownIcon size={16} />
       </Button>
-      <Popover>
+      <Popover className="w-48 p-4">
         <Dialog className="outline-hidden relative">
           <GridList
+            className="space-y-1"
             items={columns}
             onSelectionChange={(column) => console.log(column)}
             selectionMode="multiple"
@@ -45,6 +46,6 @@ export function DataTableColumnFilter<TData>({
           </GridList>
         </Dialog>
       </Popover>
-    </DialogTrigger>
+    </AriaDialogTrigger>
   );
 }

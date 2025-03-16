@@ -60,5 +60,5 @@ export function MenuItem(props: MenuItemProps) {
 export function MenuSeparator(
   props: React.HTMLAttributes<HTMLElement> & React.RefAttributes<object>,
 ) {
-  return <AriaSeparator className="bg-gray-300 h-px my-2" {...props} />;
+  return <AriaSeparator className="bg-gray-200 h-px my-2" {...props} />;
 }
