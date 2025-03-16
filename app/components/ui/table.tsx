@@ -37,7 +37,7 @@ export function TableBody<T extends object>(props: TableBodyProps<T>) {
   return (
     <AriaTableBody
       {...props}
-      className="align-middle divide-y divide-gray-200 border-y border-gray-200"
+      className="align-middle divide-y divide-gray-200 border-y border-gray-300"
     />
   );
 }

@@ -25,11 +25,11 @@ export interface SelectProps<T extends object>
 
 const selectStyles = tv({
   extend: focusRing,
-  base: "border border-gray-200 rounded flex items-center justify-between gap-2 px-3 py-1.5",
+  base: "border border-gray-300 rounded flex items-center justify-between gap-2 px-3 py-1.5",
   variants: {
     isDisabled: {
       false: "pressed:bg-gray-50",
-      true: "text-gray-200 border-gray-200",
+      true: "text-gray-200 border-gray-300",
     },
   },
 });

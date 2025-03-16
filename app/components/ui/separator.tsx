@@ -4,5 +4,5 @@ import {
 } from "react-aria-components";
 
 export function Separator(props: SeparatorProps) {
-  return <AriaSeparator {...props} className="border-gray-200" />;
+  return <AriaSeparator {...props} className="border-gray-300" />;
 }

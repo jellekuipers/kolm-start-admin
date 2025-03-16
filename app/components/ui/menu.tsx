@@ -51,7 +51,7 @@ export function MenuItem(props: MenuItemProps) {
   return (
     <AriaMenuItem
       {...props}
-      className="rounded-md px-3 py-1.5 font-medium flex items-center gap-3 hover:bg-gray-900 hover:text-white cursor-default"
+      className="rounded-md px-3 h-9 font-medium flex items-center gap-3 hover:bg-gray-900 hover:text-white cursor-default"
       textValue={textValue}
     />
   );

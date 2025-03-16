@@ -2,6 +2,20 @@
 @plugin "tailwindcss-react-aria-components";
 @plugin "tailwindcss-animate";
 
+@theme {
+  --color-indigo-50: #f7f9ff;
+  --color-indigo-100: #edf2fe;
+  --color-indigo-200: #e1e9ff;
+  --color-indigo-300: #d2deff;
+  --color-indigo-400: #c1d0ff;
+  --color-indigo-500: #abbdf9;
+  --color-indigo-600: #8da4ef;
+  --color-indigo-700: #3e63dd;
+  --color-indigo-800: #3358d4;
+  --color-indigo-900: #3a5bc7;
+  --color-indigo-950: #1f2d5c;
+}
+
 html {
   font-size: 14px;
 }

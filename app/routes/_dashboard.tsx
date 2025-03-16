@@ -39,7 +39,7 @@ function LayoutComponent() {
       <Separator />
       <div className="flex gap-4 items-center overflow-x-auto p-4">
         {routes.map((route) => (
-          <Link key={route.to} className="font-medium" to={route.to}>
+          <Link key={route.to} to={route.to}>
             {route.label}
           </Link>
         ))}

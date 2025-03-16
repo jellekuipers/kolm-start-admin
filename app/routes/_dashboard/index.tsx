@@ -1,3 +1,7 @@
+import {
+  Network as NetworkIcon,
+  Users as UsersIcon,
+} from "@phosphor-icons/react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
@@ -29,8 +33,12 @@ function RouteComponent() {
           <Separator />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <StatCard count={users} title="Users" />
-          <StatCard count={organizations} title="Organizations" />
+          <StatCard count={users} icon={UsersIcon} title="Users" />
+          <StatCard
+            count={organizations}
+            icon={NetworkIcon}
+            title="Organizations"
+          />
         </div>
       </div>
     </Container>
