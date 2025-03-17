@@ -2,14 +2,6 @@ interface CalloutProps {
   children: React.ReactNode;
 }
 
-interface CalloutIconProps {
-  children: React.ReactNode;
-}
-
-interface CalloutTextProps {
-  children: React.ReactNode;
-}
-
 export function Callout(props: CalloutProps) {
   return (
     <div
@@ -19,8 +11,16 @@ export function Callout(props: CalloutProps) {
   );
 }
 
+interface CalloutIconProps {
+  children: React.ReactNode;
+}
+
 export function CalloutIcon(props: CalloutIconProps) {
   return <div {...props} />;
+}
+
+interface CalloutTextProps {
+  children: React.ReactNode;
 }
 
 export function CalloutText(props: CalloutTextProps) {

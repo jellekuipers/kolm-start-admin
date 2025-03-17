@@ -8,14 +8,22 @@ import {
   useObjectRef,
   type AriaLinkOptions,
 } from "react-aria";
+import { tv } from "tailwind-variants";
+
+import { focusRing } from "~/utils/classes";
 
 interface AriaLinkProps extends Omit<AriaLinkOptions, "href"> {
   className?: string;
   children?: React.ReactNode;
 }
 
+const linkStyles = tv({
+  extend: focusRing,
+  base: "flex gap-2 items-center text-indigo-700 hover:underline",
+});
+
 const AriaLinkComponent = forwardRef<HTMLAnchorElement, AriaLinkProps>(
-  (props, forwardedRef) => {
+  ({ className, ...props }, forwardedRef) => {
     const ref = useObjectRef(forwardedRef);
 
     const { isPressed, linkProps } = useLink(props, ref);
@@ -30,6 +38,10 @@ const AriaLinkComponent = forwardRef<HTMLAnchorElement, AriaLinkProps>(
         data-pressed={isPressed || undefined}
         data-focus-visible={isFocusVisible || undefined}
         data-focused={isFocused || undefined}
+        className={linkStyles({
+          isFocusVisible,
+          className,
+        })}
       />
     );
   },
@@ -40,11 +52,5 @@ AriaLinkComponent.displayName = "AriaLinkComponent";
 const CreatedLinkComponent = createLink(AriaLinkComponent);
 
 export const Link: LinkComponent<typeof AriaLinkComponent> = (props) => {
-  return (
-    <CreatedLinkComponent
-      className="flex gap-2 items-center text-indigo-700 hover:underline"
-      preload="intent"
-      {...props}
-    />
-  );
+  return <CreatedLinkComponent preload="intent" {...props} />;
 };

@@ -41,7 +41,7 @@ function LayoutComponent() {
         {routes.map((route) => (
           <Link
             key={route.to}
-            className="font-medium text-indigo-700 px-3 h-9 flex items-center justify-center rounded hover:bg-indigo-50 hover:border-indigo-50 -mx-1.5"
+            className="text-indigo-700 px-3 h-9 flex items-center justify-center rounded hover:bg-indigo-50 hover:border-indigo-50 -mx-1.5"
             to={route.to}
           >
             {route.label}

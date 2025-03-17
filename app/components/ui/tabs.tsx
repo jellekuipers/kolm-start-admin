@@ -14,7 +14,7 @@ import { tv } from "tailwind-variants";
 
 import { focusRing } from "~/utils/classes";
 
-export const tabsStyles = tv({
+const tabsStyles = tv({
   base: "flex gap-4",
   variants: {
     orientation: {
@@ -35,7 +35,7 @@ export function Tabs({ className, ...props }: TabsProps) {
   );
 }
 
-export const tabListStyles = tv({
+const tabListStyles = tv({
   base: "flex gap-1",
   variants: {
     orientation: {
@@ -59,7 +59,7 @@ export function TabList<T extends object>({
   );
 }
 
-export const tabStyles = tv({
+const tabStyles = tv({
   extend: focusRing,
   base: "rounded px-3 py-1.5 font-medium flex items-center gap-2 cursor-default",
   variants: {

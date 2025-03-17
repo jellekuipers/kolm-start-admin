@@ -18,12 +18,12 @@ export function Avatar({
   return (
     <div
       className={twMerge(
-        "rounded-lg flex items-center justify-center bg-indigo-100 text-indigo-800 shrink-0 overflow-hidden",
-        size === "8" && "size-8 text-sm",
-        size === "10" && "size-10 text-base",
-        size === "12" && "size-12 text-lg",
-        size === "16" && "size-16 text-2xl",
-        size === "20" && "size-20 text-3xl",
+        "flex items-center justify-center bg-indigo-50 text-indigo-700 shrink-0 overflow-hidden",
+        size === "8" && "size-8 text-sm rounded-sm",
+        size === "10" && "size-10 text-base rounded",
+        size === "12" && "size-12 text-lg rounded-lg",
+        size === "16" && "size-16 text-2xl rounded-lg",
+        size === "20" && "size-20 text-3xl rounded-lg",
         className,
       )}
     >

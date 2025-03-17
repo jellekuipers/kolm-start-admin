@@ -14,7 +14,7 @@ import { Description, FieldError, Label } from "~/components/ui/field";
 import { Popover } from "~/components/ui/popover";
 import { focusRing } from "~/utils/classes";
 
-export interface SelectProps<T extends object>
+interface SelectProps<T extends object>
   extends Omit<AriaSelectProps<T>, "children"> {
   children: React.ReactNode | ((item: T) => React.ReactNode);
   description?: string;

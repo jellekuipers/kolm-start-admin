@@ -23,7 +23,7 @@ export function FieldError(props: FieldErrorProps) {
   return <AriaFieldError className="text-red-500 font-medium" {...props} />;
 }
 
-export const fieldBorderStyles = tv({
+const fieldBorderStyles = tv({
   extend: focusRing,
   variants: {
     isFocusWithin: {
@@ -39,7 +39,7 @@ export const fieldBorderStyles = tv({
   },
 });
 
-export const fieldGroupStyles = tv({
+const fieldGroupStyles = tv({
   extend: focusRing,
   base: "group flex items-center border border-slate-200 rounded overflow-hidden",
   variants: fieldBorderStyles.variants,

@@ -7,12 +7,12 @@ import { tv } from "tailwind-variants";
 
 import { focusRing } from "~/utils/classes";
 
-export interface ButtonProps extends AriaButtonProps {
+interface ButtonProps extends AriaButtonProps {
   color?: "primary" | "secondary" | "tertiary" | "destructive";
   variant?: "default" | "outline";
 }
 
-export const buttonStyles = tv({
+const buttonStyles = tv({
   extend: focusRing,
   base: "rounded px-3 font-medium flex items-center gap-3 h-9 border",
   variants: {
