@@ -9,7 +9,12 @@ import { useRouter } from "@tanstack/react-router";
 
 import { UpdateTeamModal } from "~/components/team/update-team-modal";
 import { IconButton } from "~/components/ui/icon-button";
-import { MenuButton, MenuItem, MenuSeparator } from "~/components/ui/menu";
+import {
+  Menu,
+  MenuItem,
+  MenuSeparator,
+  MenuTrigger,
+} from "~/components/ui/menu";
 import { removeTeam } from "~/lib/team";
 import { Team } from "~/types";
 
@@ -54,31 +59,30 @@ export function TeamActions({ team }: TeamActionsProps) {
   return (
     <>
       <UpdateTeamModal open={open} setOpen={setOpen} team={team} />
-      <MenuButton
-        label={
-          <IconButton>
-            <DotsThreeVerticalIcon size={20} />
-          </IconButton>
-        }
-      >
-        <MenuItem onAction={() => setOpen(true)}>
-          <PencilSimpleIcon size={16} />
-          Update team
-        </MenuItem>
-        <MenuSeparator />
-        <MenuItem
-          isDisabled={removeTeamMutation.isPending}
-          onAction={async () =>
-            await removeTeamMutation.mutateAsync({
-              organizationId: team.organizationId,
-              teamId: team.id,
-            })
-          }
-        >
-          <TrashSimpleIcon size={16} />
-          Remove team
-        </MenuItem>
-      </MenuButton>
+      <MenuTrigger>
+        <IconButton>
+          <DotsThreeVerticalIcon size={20} />
+        </IconButton>
+        <Menu>
+          <MenuItem onAction={() => setOpen(true)}>
+            <PencilSimpleIcon size={16} />
+            Update team
+          </MenuItem>
+          <MenuSeparator />
+          <MenuItem
+            isDisabled={removeTeamMutation.isPending}
+            onAction={async () =>
+              await removeTeamMutation.mutateAsync({
+                organizationId: team.organizationId,
+                teamId: team.id,
+              })
+            }
+          >
+            <TrashSimpleIcon size={16} />
+            Remove team
+          </MenuItem>
+        </Menu>
+      </MenuTrigger>
     </>
   );
 }

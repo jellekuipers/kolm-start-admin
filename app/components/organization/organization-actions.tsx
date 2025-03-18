@@ -12,7 +12,12 @@ import { useNavigate, useRouter } from "@tanstack/react-router";
 import { UpdateOrganizationModal } from "~/components/organization/update-organization-modal";
 import { Button } from "~/components/ui/button";
 import { IconButton } from "~/components/ui/icon-button";
-import { MenuButton, MenuItem, MenuSeparator } from "~/components/ui/menu";
+import {
+  Menu,
+  MenuItem,
+  MenuSeparator,
+  MenuTrigger,
+} from "~/components/ui/menu";
 import { deleteOrganization } from "~/lib/organization";
 import { AuthOrganization, ORMOrganization } from "~/types";
 
@@ -55,49 +60,48 @@ export function OrganizationActions({
         setOpen={setOpen}
         organization={organization}
       />
-      <MenuButton
-        label={
-          variant === "overview" ? (
-            <IconButton>
-              <DotsThreeVerticalIcon size={20} />
-            </IconButton>
-          ) : (
-            <Button color="secondary">
-              Actions <CaretDownIcon size={16} />
-            </Button>
-          )
-        }
-      >
+      <MenuTrigger>
         {variant === "overview" ? (
+          <IconButton>
+            <DotsThreeVerticalIcon size={20} />
+          </IconButton>
+        ) : (
+          <Button color="secondary">
+            Actions <CaretDownIcon size={16} />
+          </Button>
+        )}
+        <Menu>
+          {variant === "overview" ? (
+            <MenuItem
+              onAction={() =>
+                navigate({
+                  params: { organizationId: organization.id },
+                  to: "/organizations/$organizationId",
+                })
+              }
+            >
+              <NetworkIcon size={16} />
+              View organization
+            </MenuItem>
+          ) : null}
+          <MenuItem onAction={() => setOpen(true)}>
+            <PencilSimpleIcon size={16} />
+            Update organization
+          </MenuItem>
+          <MenuSeparator />
           <MenuItem
-            onAction={() =>
-              navigate({
-                params: { organizationId: organization.id },
-                to: "/organizations/$organizationId",
+            isDisabled={deleteOrganizationMutation.isPending}
+            onAction={async () =>
+              await deleteOrganizationMutation.mutateAsync({
+                organizationId: organization.id,
               })
             }
           >
-            <NetworkIcon size={16} />
-            View organization
+            <TrashSimpleIcon size={16} />
+            Delete organization
           </MenuItem>
-        ) : null}
-        <MenuItem onAction={() => setOpen(true)}>
-          <PencilSimpleIcon size={16} />
-          Update organization
-        </MenuItem>
-        <MenuSeparator />
-        <MenuItem
-          isDisabled={deleteOrganizationMutation.isPending}
-          onAction={async () =>
-            await deleteOrganizationMutation.mutateAsync({
-              organizationId: organization.id,
-            })
-          }
-        >
-          <TrashSimpleIcon size={16} />
-          Delete organization
-        </MenuItem>
-      </MenuButton>
+        </Menu>
+      </MenuTrigger>
     </>
   );
 }

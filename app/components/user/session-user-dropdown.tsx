@@ -8,10 +8,11 @@ import { useNavigate, useRouter } from "@tanstack/react-router";
 import { Avatar } from "~/components/ui/avatar";
 import { IconButton } from "~/components/ui/icon-button";
 import {
-  MenuButton,
+  Menu,
   MenuHeader,
   MenuItem,
   MenuSeparator,
+  MenuTrigger,
 } from "~/components/ui/menu";
 import { authClient, signOut, useSession } from "~/lib/auth-client";
 
@@ -42,39 +43,34 @@ export function SessionUserDropdown() {
   if (isPendingSession || !session) return null;
 
   return (
-    <MenuButton
-      label={
-        <IconButton>
-          <Avatar
-            fallback="@"
-            size="10"
-            src={session?.user.image ?? undefined}
-          />
-        </IconButton>
-      }
-    >
-      <MenuHeader>{session?.user.email}</MenuHeader>
-      <MenuItem
-        onAction={() =>
-          navigate({
-            to: "/profile",
-          })
-        }
-      >
-        <UserIcon size={16} />
-        View profile
-      </MenuItem>
-      {session?.session.impersonatedBy ? (
-        <MenuItem onAction={stopImpersonatingHandler}>
-          <UserSwitchIcon size={16} />
-          Stop impersonating
+    <MenuTrigger>
+      <IconButton>
+        <Avatar fallback="@" size="10" src={session?.user.image ?? undefined} />
+      </IconButton>
+      <Menu>
+        <MenuHeader>{session?.user.email}</MenuHeader>
+        <MenuItem
+          onAction={() =>
+            navigate({
+              to: "/profile",
+            })
+          }
+        >
+          <UserIcon size={16} />
+          View profile
         </MenuItem>
-      ) : null}
-      <MenuSeparator />
-      <MenuItem onAction={signOutHandler}>
-        <SignOutIcon size={16} />
-        Sign out
-      </MenuItem>
-    </MenuButton>
+        {session?.session.impersonatedBy ? (
+          <MenuItem onAction={stopImpersonatingHandler}>
+            <UserSwitchIcon size={16} />
+            Stop impersonating
+          </MenuItem>
+        ) : null}
+        <MenuSeparator />
+        <MenuItem onAction={signOutHandler}>
+          <SignOutIcon size={16} />
+          Sign out
+        </MenuItem>
+      </Menu>
+    </MenuTrigger>
   );
 }

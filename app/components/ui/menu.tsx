@@ -5,35 +5,27 @@ import {
   MenuItem as AriaMenuItem,
   MenuTrigger as AriaMenuTrigger,
   Separator as AriaSeparator,
+  composeRenderProps,
+  type MenuProps as AriaMenuProps,
   type MenuItemProps,
-  type MenuProps,
   type MenuTriggerProps,
 } from "react-aria-components";
+import { tv } from "tailwind-variants";
 
 import { Popover } from "~/components/ui/popover";
+import { focusRing } from "~/utils/classes";
 
-interface MenuButtonProps<T>
-  extends MenuProps<T>,
-    Omit<MenuTriggerProps, "children"> {
-  label?: React.ReactNode;
-}
+interface MenuProps<T>
+  extends AriaMenuProps<T>,
+    Omit<MenuTriggerProps, "children"> {}
 
-export function MenuButton<T extends object>({
-  children,
-  label,
-  ...props
-}: MenuButtonProps<T>) {
+export function Menu<T extends object>(props: MenuProps<T>) {
   return (
-    <AriaMenuTrigger {...props}>
-      {label}
-      <Popover placement="bottom right">
-        <AriaDialog>
-          <AriaMenu {...props} className="outline-hidden">
-            {children}
-          </AriaMenu>
-        </AriaDialog>
-      </Popover>
-    </AriaMenuTrigger>
+    <Popover placement="bottom right">
+      <AriaDialog>
+        <AriaMenu {...props} className="outline-hidden" />
+      </AriaDialog>
+    </Popover>
   );
 }
 
@@ -48,7 +40,12 @@ export function MenuHeader(
   );
 }
 
-export function MenuItem(props: MenuItemProps) {
+const menuItemStyles = tv({
+  extend: focusRing,
+  base: "rounded px-3 h-9 flex items-center gap-3 hover:bg-indigo-700 hover:text-white cursor-default",
+});
+
+export function MenuItem({ className, ...props }: MenuItemProps) {
   const textValue =
     props.textValue ||
     (typeof props.children === "string" ? props.children : undefined);
@@ -56,7 +53,9 @@ export function MenuItem(props: MenuItemProps) {
   return (
     <AriaMenuItem
       {...props}
-      className="rounded px-3 h-9 flex items-center gap-3 hover:bg-indigo-700 hover:text-white cursor-default"
+      className={composeRenderProps(className, (className, renderProps) =>
+        menuItemStyles({ ...renderProps, className }),
+      )}
       textValue={textValue}
     />
   );
@@ -66,4 +65,8 @@ export function MenuSeparator(
   props: React.HTMLAttributes<HTMLElement> & React.RefAttributes<object>,
 ) {
   return <AriaSeparator {...props} className="bg-slate-200 h-px my-2" />;
+}
+
+export function MenuTrigger(props: MenuTriggerProps) {
+  return <AriaMenuTrigger {...props} />;
 }

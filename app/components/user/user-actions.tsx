@@ -11,10 +11,11 @@ import {
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 import { UserWithRole } from "better-auth/plugins";
+import { MenuTrigger } from "react-aria-components";
 
 import { Button } from "~/components/ui/button";
 import { IconButton } from "~/components/ui/icon-button";
-import { MenuButton, MenuItem, MenuSeparator } from "~/components/ui/menu";
+import { Menu, MenuItem, MenuSeparator } from "~/components/ui/menu";
 import { authClient, useSession } from "~/lib/auth-client";
 import {
   banUser,
@@ -82,81 +83,80 @@ export function UserActions({ user, variant }: UserActionsProps) {
   });
 
   return (
-    <MenuButton
-      label={
-        variant === "overview" ? (
-          <IconButton>
-            <DotsThreeVerticalIcon size={20} />
-          </IconButton>
-        ) : (
-          <Button color="secondary">
-            Actions <CaretDownIcon size={16} />
-          </Button>
-        )
-      }
-    >
+    <MenuTrigger>
       {variant === "overview" ? (
-        <MenuItem
-          onAction={() =>
-            navigate({
-              params: { userId: user.id },
-              to: "/users/$userId",
-            })
-          }
-        >
-          <UserIcon size={16} />
-          View user
-        </MenuItem>
-      ) : null}
-      {user.banned ? (
-        <MenuItem
-          isDisabled={unbanUserMutation.isPending}
-          onAction={async () =>
-            await unbanUserMutation.mutateAsync({ userId: user.id })
-          }
-        >
-          <HandWavingIcon size={16} />
-          Unban user
-        </MenuItem>
+        <IconButton>
+          <DotsThreeVerticalIcon size={20} />
+        </IconButton>
       ) : (
+        <Button color="secondary">
+          Actions <CaretDownIcon size={16} />
+        </Button>
+      )}
+      <Menu>
+        {variant === "overview" ? (
+          <MenuItem
+            onAction={() =>
+              navigate({
+                params: { userId: user.id },
+                to: "/users/$userId",
+              })
+            }
+          >
+            <UserIcon size={16} />
+            View user
+          </MenuItem>
+        ) : null}
+        {user.banned ? (
+          <MenuItem
+            isDisabled={unbanUserMutation.isPending}
+            onAction={async () =>
+              await unbanUserMutation.mutateAsync({ userId: user.id })
+            }
+          >
+            <HandWavingIcon size={16} />
+            Unban user
+          </MenuItem>
+        ) : (
+          <MenuItem
+            isDisabled={banUserMutation.isPending}
+            onAction={async () =>
+              await banUserMutation.mutateAsync({ userId: user.id })
+            }
+          >
+            <HandPalmIcon size={16} />
+            Ban user
+          </MenuItem>
+        )}
         <MenuItem
-          isDisabled={banUserMutation.isPending}
+          isDisabled={impersonateUserMutation.isPending || !!user.banned}
           onAction={async () =>
-            await banUserMutation.mutateAsync({ userId: user.id })
+            await impersonateUserMutation.mutateAsync({ userId: user.id })
           }
         >
-          <HandPalmIcon size={16} />
-          Ban user
+          <UserSwitchIcon size={16} />
+          Impersonate user
         </MenuItem>
-      )}
-      <MenuItem
-        isDisabled={impersonateUserMutation.isPending || !!user.banned}
-        onAction={async () =>
-          await impersonateUserMutation.mutateAsync({ userId: user.id })
-        }
-      >
-        <UserSwitchIcon size={16} />
-        Impersonate user
-      </MenuItem>
-      <MenuItem
-        isDisabled={revokeAllUserSessionsMutation.isPending}
-        onAction={async () =>
-          await revokeAllUserSessionsMutation.mutateAsync({ userId: user.id })
-        }
-      >
-        <DeviceMobileSlashIcon size={16} />
-        Revoke all sessions
-      </MenuItem>
-      <MenuSeparator />
-      <MenuItem
-        isDisabled={removeUserMutation.isPending}
-        onAction={async () =>
-          await removeUserMutation.mutateAsync({ userId: user.id })
-        }
-      >
-        <TrashSimpleIcon size={16} />
-        Remove user
-      </MenuItem>
-    </MenuButton>
+        <MenuItem
+          isDisabled={revokeAllUserSessionsMutation.isPending}
+          onAction={async () =>
+            await revokeAllUserSessionsMutation.mutateAsync({ userId: user.id })
+          }
+        >
+          <DeviceMobileSlashIcon size={16} />
+          Revoke all sessions
+        </MenuItem>
+        <MenuSeparator />
+        <MenuItem
+          isDisabled={removeUserMutation.isPending}
+          onAction={async () =>
+            await removeUserMutation.mutateAsync({ userId: user.id })
+          }
+        >
+          <TrashSimpleIcon size={16} />
+          Remove user
+        </MenuItem>
+      </Menu>
+    </MenuTrigger>
   );
 }

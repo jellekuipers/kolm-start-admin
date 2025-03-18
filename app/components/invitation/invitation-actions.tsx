@@ -9,7 +9,12 @@ import { useRouter } from "@tanstack/react-router";
 
 import { InvitationModal } from "~/components/invitation/invitation-modal";
 import { IconButton } from "~/components/ui/icon-button";
-import { MenuButton, MenuItem, MenuSeparator } from "~/components/ui/menu";
+import {
+  Menu,
+  MenuItem,
+  MenuSeparator,
+  MenuTrigger,
+} from "~/components/ui/menu";
 import { cancelInvitation } from "~/lib/invitation";
 import { Invitation } from "~/types";
 
@@ -47,33 +52,32 @@ export function InvitationActions({ invitation }: InvitationActionsProps) {
   return (
     <>
       <InvitationModal invitation={invitation} open={open} setOpen={setOpen} />
-      <MenuButton
-        label={
-          <IconButton>
-            <DotsThreeVerticalIcon size={20} />
-          </IconButton>
-        }
-      >
-        <MenuItem
-          isDisabled={cancelInvitationMutation.isPending}
-          onAction={() => setOpen(true)}
-        >
-          <PaperPlaneRightIcon size={16} />
-          View invitation
-        </MenuItem>
-        <MenuSeparator />
-        <MenuItem
-          isDisabled={cancelInvitationMutation.isPending}
-          onAction={async () =>
-            await cancelInvitationMutation.mutateAsync({
-              invitationId: invitation.id,
-            })
-          }
-        >
-          <XIcon size={16} />
-          Cancel invitation
-        </MenuItem>
-      </MenuButton>
+      <MenuTrigger>
+        <IconButton>
+          <DotsThreeVerticalIcon size={20} />
+        </IconButton>
+        <Menu>
+          <MenuItem
+            isDisabled={cancelInvitationMutation.isPending}
+            onAction={() => setOpen(true)}
+          >
+            <PaperPlaneRightIcon size={16} />
+            View invitation
+          </MenuItem>
+          <MenuSeparator />
+          <MenuItem
+            isDisabled={cancelInvitationMutation.isPending}
+            onAction={async () =>
+              await cancelInvitationMutation.mutateAsync({
+                invitationId: invitation.id,
+              })
+            }
+          >
+            <XIcon size={16} />
+            Cancel invitation
+          </MenuItem>
+        </Menu>
+      </MenuTrigger>
     </>
   );
 }

@@ -7,7 +7,12 @@ import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
 import { IconButton } from "~/components/ui/icon-button";
-import { MenuButton, MenuItem, MenuSeparator } from "~/components/ui/menu";
+import {
+  Menu,
+  MenuItem,
+  MenuSeparator,
+  MenuTrigger,
+} from "~/components/ui/menu";
 import { removeMember } from "~/lib/organization";
 
 interface MemberActionsProps {
@@ -53,37 +58,36 @@ export function MemberActions({
   });
 
   return (
-    <MenuButton
-      label={
-        <IconButton>
-          <DotsThreeVerticalIcon size={20} />
-        </IconButton>
-      }
-    >
-      <MenuItem
-        onAction={() =>
-          navigate({
-            params: { organizationId },
-            to: "/organizations/$organizationId",
-          })
-        }
-      >
-        <NetworkIcon size={16} />
-        View organization
-      </MenuItem>
-      <MenuSeparator />
-      <MenuItem
-        isDisabled={removeMemberMutation.isPending}
-        onAction={async () =>
-          await removeMemberMutation.mutateAsync({
-            memberIdOrEmail: memberId,
-            organizationId,
-          })
-        }
-      >
-        <TrashSimpleIcon size={16} />
-        Remove membership
-      </MenuItem>
-    </MenuButton>
+    <MenuTrigger>
+      <IconButton>
+        <DotsThreeVerticalIcon size={20} />
+      </IconButton>
+      <Menu>
+        <MenuItem
+          onAction={() =>
+            navigate({
+              params: { organizationId },
+              to: "/organizations/$organizationId",
+            })
+          }
+        >
+          <NetworkIcon size={16} />
+          View organization
+        </MenuItem>
+        <MenuSeparator />
+        <MenuItem
+          isDisabled={removeMemberMutation.isPending}
+          onAction={async () =>
+            await removeMemberMutation.mutateAsync({
+              memberIdOrEmail: memberId,
+              organizationId,
+            })
+          }
+        >
+          <TrashSimpleIcon size={16} />
+          Remove membership
+        </MenuItem>
+      </Menu>
+    </MenuTrigger>
   );
 }

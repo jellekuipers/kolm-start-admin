@@ -6,7 +6,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 
 import { IconButton } from "~/components/ui/icon-button";
-import { MenuButton, MenuItem } from "~/components/ui/menu";
+import { Menu, MenuItem, MenuTrigger } from "~/components/ui/menu";
 import { revokeUserSession } from "~/lib/user";
 
 interface SessionActionsProps {
@@ -36,24 +36,23 @@ export function SessionActions({ sessionToken }: SessionActionsProps) {
   });
 
   return (
-    <MenuButton
-      label={
-        <IconButton>
-          <DotsThreeVerticalIcon size={20} />
-        </IconButton>
-      }
-    >
-      <MenuItem
-        isDisabled={revokeUserSessionMutation.isPending}
-        onAction={async () =>
-          await revokeUserSessionMutation.mutateAsync({
-            sessionToken,
-          })
-        }
-      >
-        <TrashSimpleIcon size={16} />
-        Revoke session
-      </MenuItem>
-    </MenuButton>
+    <MenuTrigger>
+      <IconButton>
+        <DotsThreeVerticalIcon size={20} />
+      </IconButton>
+      <Menu>
+        <MenuItem
+          isDisabled={revokeUserSessionMutation.isPending}
+          onAction={async () =>
+            await revokeUserSessionMutation.mutateAsync({
+              sessionToken,
+            })
+          }
+        >
+          <TrashSimpleIcon size={16} />
+          Revoke session
+        </MenuItem>
+      </Menu>
+    </MenuTrigger>
   );
 }
