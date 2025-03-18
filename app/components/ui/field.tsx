@@ -28,7 +28,7 @@ const fieldBorderStyles = tv({
   variants: {
     isFocusWithin: {
       false: "border-slate-200",
-      true: "border-indigo-700",
+      true: "outline-2",
     },
     isInvalid: {
       true: "border-red-500",
@@ -59,7 +59,6 @@ export function FieldGroup({ className, ...props }: GroupProps) {
 const inputStyles = tv({
   extend: focusRing,
   base: "px-3 h-9 rounded border border-slate-200",
-  variants: fieldBorderStyles.variants,
 });
 
 export function Input({ className, ...props }: InputProps) {

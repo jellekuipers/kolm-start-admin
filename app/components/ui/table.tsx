@@ -15,16 +15,6 @@ import {
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 
-const tableCellStyles = tv({
-  base: "align-middle px-4 py-2 whitespace-nowrap",
-  variants: {
-    isHeader: {
-      true: "font-bold",
-      false: "font-normal",
-    },
-  },
-});
-
 export function Table(props: TableProps) {
   return (
     <div className="overflow-x-auto -mx-4 md:mx-0">
@@ -41,6 +31,16 @@ export function TableBody<T extends object>(props: TableBodyProps<T>) {
     />
   );
 }
+
+const tableCellStyles = tv({
+  base: "align-middle px-4 py-2 whitespace-nowrap outline-none",
+  variants: {
+    isHeader: {
+      true: "font-bold",
+      false: "font-normal",
+    },
+  },
+});
 
 export function TableCell({ className, ...props }: CellProps) {
   return (
@@ -69,5 +69,5 @@ export function TableHeader<T extends object>(props: TableHeaderProps<T>) {
 }
 
 export function TableRow<T extends object>(props: RowProps<T>) {
-  return <AriaRow {...props} className="align-middle" />;
+  return <AriaRow {...props} className="align-middle outline-none" />;
 }
