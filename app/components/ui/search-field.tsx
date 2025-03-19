@@ -3,30 +3,55 @@ import {
   X as XIcon,
 } from "@phosphor-icons/react";
 import {
-  Button as AriaButton,
   SearchField as AriaSearchField,
-  type SearchFieldProps as AriaSearchFieldProps,
+  SearchFieldProps as AriaSearchFieldProps,
+  ValidationResult,
 } from "react-aria-components";
 
-import { FieldGroup, Input } from "~/components/ui/field";
+import { Button } from "~/components/ui/button";
+import {
+  Description,
+  FieldError,
+  FieldGroup,
+  Input,
+  Label,
+} from "~/components/ui/field";
+import { composeTailwindRenderProps } from "~/utils/classes";
 
 export interface SearchFieldProps extends AriaSearchFieldProps {
-  placeholder?: string;
+  label?: string;
+  description?: string;
+  errorMessage?: string | ((validation: ValidationResult) => string);
 }
 
-export function SearchField({ placeholder, ...props }: SearchFieldProps) {
+export function SearchField({
+  label,
+  className,
+  description,
+  errorMessage,
+  ...props
+}: SearchFieldProps) {
   return (
-    <AriaSearchField {...props} className="group">
+    <AriaSearchField
+      {...props}
+      className={composeTailwindRenderProps(
+        className,
+        "group flex flex-col gap-1 min-w-[40px]",
+      )}
+    >
+      {label && <Label>{label}</Label>}
       <FieldGroup>
-        <MagnifyingGlassIcon aria-hidden className="ml-2" />
-        <Input
-          className="[&::-webkit-search-cancel-button]:hidden border-none"
-          placeholder={placeholder}
+        <MagnifyingGlassIcon
+          aria-hidden
+          className="ml-2 fill-slate-500 group-disabled:fill-slate-200"
         />
-        <AriaButton className="group-empty:invisible mr-2">
+        <Input className="[&::-webkit-search-cancel-button]:hidden" />
+        <Button className="mr-1 w-6 group-empty:invisible">
           <XIcon aria-hidden />
-        </AriaButton>
+        </Button>
       </FieldGroup>
+      {description && <Description>{description}</Description>}
+      <FieldError>{errorMessage}</FieldError>
     </AriaSearchField>
   );
 }

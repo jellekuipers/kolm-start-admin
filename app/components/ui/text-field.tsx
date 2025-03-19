@@ -1,29 +1,50 @@
 import {
   TextField as AriaTextField,
-  type TextFieldProps as AriaTextFieldProps,
+  TextFieldProps as AriaTextFieldProps,
+  ValidationResult,
 } from "react-aria-components";
+import { tv } from "tailwind-variants";
 
-import { Description, FieldError, Input, Label } from "~/components/ui/field";
+import {
+  Description,
+  fieldBorderStyles,
+  FieldError,
+  Input,
+  Label,
+} from "~/components/ui/field";
+import { composeTailwindRenderProps, focusRing } from "~/utils/classes";
+
+const inputStyles = tv({
+  extend: focusRing,
+  base: "border rounded",
+  variants: {
+    isFocused: fieldBorderStyles.variants.isFocusWithin,
+    isInvalid: fieldBorderStyles.variants.isInvalid,
+    isDisabled: fieldBorderStyles.variants.isDisabled,
+  },
+});
 
 export interface TextFieldProps extends AriaTextFieldProps {
-  description?: string;
-  errorMessage?: string | null;
   label?: string;
+  description?: string;
+  errorMessage?: string | ((validation: ValidationResult) => string);
 }
 
 export function TextField({
+  className,
   description,
   errorMessage,
   label,
   ...props
 }: TextFieldProps) {
   return (
-    <AriaTextField className="flex flex-col space-y-1" {...props}>
+    <AriaTextField
+      {...props}
+      className={composeTailwindRenderProps(className, "flex flex-col gap-1")}
+    >
       {label ? <Label>{label}</Label> : null}
-      <Input />
-      {description ? (
-        <Description slot="description">{description}</Description>
-      ) : null}
+      <Input className={inputStyles} />
+      {description ? <Description>{description}</Description> : null}
       <FieldError>{errorMessage}</FieldError>
     </AriaTextField>
   );
