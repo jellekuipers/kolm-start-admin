@@ -9,9 +9,9 @@ interface NotFoundProps {
 
 export function NotFound({ children }: NotFoundProps) {
   return (
-    <div className="flex items-center justify-center p-4 flex-col gap-6 bg-slate-50">
+    <div className="flex flex-col items-center justify-center gap-6 bg-slate-50 p-4">
       {children || (
-        <div className="flex items-center flex-col gap-4 justify-center">
+        <div className="flex flex-col items-center justify-center gap-4">
           <Heading>404</Heading>
           <Link className="flex items-center gap-2" to="/">
             <ArrowLeftIcon size={16} />

@@ -68,7 +68,7 @@ function RouteComponent() {
               params={{ userId: organizationOwner.userId }}
               to="/users/$userId"
             >
-              <div className="flex gap-2 items-center">
+              <div className="flex items-center gap-2">
                 <Avatar
                   fallback="@"
                   size="8"

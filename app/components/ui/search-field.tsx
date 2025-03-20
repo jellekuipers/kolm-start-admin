@@ -36,7 +36,7 @@ export function SearchField({
       {...props}
       className={composeTailwindRenderProps(
         className,
-        "group flex flex-col gap-1 min-w-[40px]",
+        "group flex min-w-[40px] flex-col gap-1",
       )}
     >
       {label && <Label>{label}</Label>}
@@ -45,7 +45,10 @@ export function SearchField({
           aria-hidden
           className="ml-2 fill-slate-500 group-disabled:fill-slate-200"
         />
-        <Input className="[&::-webkit-search-cancel-button]:hidden" />
+        <Input
+          className="[&::-webkit-search-cancel-button]:hidden"
+          placeholder="Search.."
+        />
         <Button className="mr-1 w-6 group-empty:invisible">
           <XIcon aria-hidden />
         </Button>

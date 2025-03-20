@@ -6,7 +6,7 @@ export function DataList(props: DataListProps) {
   return (
     <dl
       {...props}
-      className="flex flex-col gap-4 md:grid md:grid-cols-[auto_1fr] md:auto-rows-fr"
+      className="flex flex-col gap-4 md:grid md:auto-rows-fr md:grid-cols-[auto_1fr]"
     />
   );
 }
@@ -19,7 +19,7 @@ export function DataListItem(props: DataListItemProps) {
   return (
     <div
       {...props}
-      className="flex flex-col gap-2 md:grid md:grid-cols-subgrid md:col-span-2 align-center"
+      className="align-center flex flex-col gap-2 md:col-span-2 md:grid md:grid-cols-subgrid"
     />
   );
 }

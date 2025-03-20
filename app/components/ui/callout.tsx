@@ -6,7 +6,7 @@ export function Callout(props: CalloutProps) {
   return (
     <div
       {...props}
-      className="bg-indigo-50 rounded p-4 text-indigo-700 flex gap-4 items-center"
+      className="flex items-center gap-4 rounded bg-indigo-50 p-4 text-indigo-700"
     />
   );
 }

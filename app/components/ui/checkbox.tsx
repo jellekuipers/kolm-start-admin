@@ -6,10 +6,10 @@ import {
 
 export function Checkbox({ children, ...props }: CheckboxProps) {
   return (
-    <AriaCheckbox {...props} className="flex gap-2 items-center font-medium">
+    <AriaCheckbox {...props} className="flex items-center gap-2 font-medium">
       {({ isIndeterminate, isSelected }) => (
         <>
-          <div className="size-5 shrink-0 rounded flex items-center justify-center border border-slate-200">
+          <div className="flex size-5 shrink-0 items-center justify-center rounded border border-slate-200">
             {isIndeterminate ? (
               <MinusIcon aria-hidden size={16} />
             ) : isSelected ? (

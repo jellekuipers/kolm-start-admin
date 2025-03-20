@@ -71,7 +71,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="flex flex-col min-h-screen antialiased text-slate-800">
+      <body className="flex min-h-screen flex-col text-slate-800 antialiased">
         {children}
         {SHOW_ROUTER_DEVTOOLS ? (
           <TanStackRouterDevtools position="bottom-right" />

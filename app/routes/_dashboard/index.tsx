@@ -32,7 +32,7 @@ function RouteComponent() {
           <Heading level={1}>Dashboard</Heading>
           <Separator />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
           <StatCard count={users} icon={UsersIcon} title="Users" />
           <StatCard
             count={organizations}

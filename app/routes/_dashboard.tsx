@@ -27,7 +27,7 @@ function LayoutComponent() {
 
   return (
     <>
-      <header className="px-4 py-3 flex items-center gap-2 justify-between bg-slate-50">
+      <header className="flex items-center justify-between gap-2 bg-slate-50 px-4 py-3">
         <div className="flex items-center gap-2">
           <Link to="/">
             <Logo size={32} />
@@ -37,11 +37,11 @@ function LayoutComponent() {
         <SessionUserDropdown />
       </header>
       <Separator />
-      <div className="flex gap-1.5 items-center overflow-x-auto p-4">
+      <div className="flex items-center gap-1.5 overflow-x-auto p-4">
         {routes.map((route) => (
           <Link
             key={route.to}
-            className="text-indigo-700 px-3 h-9 flex items-center justify-center rounded hover:bg-indigo-50 hover:border-indigo-50 -mx-1.5"
+            className="-mx-1.5 flex h-9 items-center justify-center rounded px-3 text-indigo-700 hover:border-indigo-50 hover:bg-indigo-50"
             to={route.to}
           >
             {route.label}

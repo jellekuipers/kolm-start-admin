@@ -38,8 +38,8 @@ function RouteComponent() {
           <ArrowLeftIcon size={16} /> Organizations
         </Link>
         <div className="space-y-4">
-          <div className="flex justify-between items-start gap-4 flex-wrap">
-            <div className="flex items-center gap-4 flex-wrap">
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div className="flex flex-wrap items-center gap-4">
               <Avatar
                 fallback="@"
                 size="20"
@@ -47,7 +47,7 @@ function RouteComponent() {
               />
               <div className="space-y-0">
                 <Heading level={1}>{organization.name}</Heading>
-                <span className="text-slate-600 text-sm">
+                <span className="text-sm text-slate-600">
                   {organization.members.length}{" "}
                   {organization.members.length === 1 ? "member" : "members"}
                 </span>

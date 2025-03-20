@@ -17,7 +17,7 @@ import { tv } from "tailwind-variants";
 
 export function Table(props: TableProps) {
   return (
-    <div className="overflow-x-auto -mx-4 md:mx-0">
+    <div className="-mx-4 overflow-x-auto md:mx-0">
       <AriaTable {...props} className="w-full" />
     </div>
   );
@@ -27,7 +27,7 @@ export function TableBody<T extends object>(props: TableBodyProps<T>) {
   return (
     <AriaTableBody
       {...props}
-      className="align-middle divide-y divide-slate-200 border-y border-slate-200"
+      className="divide-y divide-slate-200 border-y border-slate-200 align-middle"
     />
   );
 }

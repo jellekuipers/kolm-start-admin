@@ -4,7 +4,7 @@ export function Dialog(props: DialogProps) {
   return (
     <AriaDialog
       {...props}
-      className="outline-hidden relative flex flex-col space-y-4"
+      className="relative flex flex-col space-y-4 outline-hidden"
     />
   );
 }

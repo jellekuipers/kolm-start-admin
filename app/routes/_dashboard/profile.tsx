@@ -160,13 +160,13 @@ function RouteComponent() {
     <Container>
       <div className="space-y-6">
         <div className="space-y-4">
-          <div className="flex justify-between items-start gap-4">
-            <div className="flex items-center gap-4 flex-wrap">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex flex-wrap items-center gap-4">
               <Avatar fallback="@" size="20" src={user.image ?? undefined} />
               {user.name ? (
                 <div className="space-y-0">
                   <Heading level={1}>{user.name}</Heading>
-                  <span className="text-slate-600 text-sm">{user.email}</span>
+                  <span className="text-sm text-slate-600">{user.email}</span>
                 </div>
               ) : (
                 <Heading level={1}>{user.email}</Heading>

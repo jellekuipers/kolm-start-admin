@@ -94,7 +94,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="space-y-4">
-      <div className="flex gap-4 justify-between flex-wrap">
+      <div className="flex flex-wrap justify-between gap-4">
         <DataTableSearch onChange={setGlobalFilter} value={globalFilter} />
         {defaultColumnVisibility ? (
           <DataTableColumnFilter table={table} />
@@ -108,7 +108,7 @@ export function DataTable<TData, TValue>({
                 <TableRow key={headerGroup.id}>
                   {headerGroup.headers.map((header) => (
                     <TableColumn key={header.id}>
-                      <div className="flex gap-4 items-center">
+                      <div className="flex items-center gap-4">
                         {header.isPlaceholder
                           ? null
                           : flexRender(

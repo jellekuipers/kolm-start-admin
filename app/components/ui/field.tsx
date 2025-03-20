@@ -73,7 +73,7 @@ export function Input({ className, ...props }: InputProps) {
       {...props}
       className={composeTailwindRenderProps(
         className,
-        "px-3 h-9 min-w-0 outline-0 bg-white disabled:text-slate-200",
+        "h-9 min-w-0 bg-white px-3 outline-0 disabled:text-slate-200",
       )}
     />
   );
@@ -84,7 +84,7 @@ export function Label({ className, ...props }: LabelProps) {
     <AriaLabel
       {...props}
       className={twMerge(
-        "text-slate-600 font-medium cursor-default w-fit",
+        "w-fit cursor-default font-medium text-slate-600",
         className,
       )}
     />

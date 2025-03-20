@@ -35,7 +35,7 @@ export function MenuHeader(
   return (
     <AriaHeader
       {...props}
-      className="px-3 py-1.5 font-medium text-slate-600 text-sm"
+      className="px-3 py-1.5 text-sm font-medium text-slate-600"
     />
   );
 }
@@ -64,7 +64,7 @@ export function MenuItem({ className, ...props }: MenuItemProps) {
 export function MenuSeparator(
   props: React.HTMLAttributes<HTMLElement> & React.RefAttributes<object>,
 ) {
-  return <AriaSeparator {...props} className="bg-slate-200 h-px my-2" />;
+  return <AriaSeparator {...props} className="my-2 h-px bg-slate-200" />;
 }
 
 export function MenuTrigger(props: MenuTriggerProps) {

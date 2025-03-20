@@ -15,12 +15,12 @@ export function StatCard({ count, icon, title }: StatCardProps) {
     <Card>
       <div className="space-y-4">
         <div className="flex justify-between">
-          <div className="text-slate-600 font-medium uppercase text-sm">
+          <div className="text-sm font-medium text-slate-600 uppercase">
             {title}
           </div>
           <Icon className="[svg]:fill-slate-500" size={18} />
         </div>
-        <div className="font-bold text-2xl">{count}</div>
+        <div className="text-2xl font-bold">{count}</div>
       </div>
     </Card>
   );

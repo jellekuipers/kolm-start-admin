@@ -148,7 +148,7 @@ export function AddUserToOrganizationModal({
               <Subscribe
                 selector={(state) => [state.canSubmit, state.isSubmitting]}
                 children={([canSubmit, isSubmitting]) => (
-                  <div className="flex gap-3 justify-end">
+                  <div className="flex justify-end gap-3">
                     <Button slot="close">Cancel</Button>
                     <Button
                       isDisabled={!canSubmit}

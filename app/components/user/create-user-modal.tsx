@@ -193,7 +193,7 @@ export function CreateUserModal() {
               <Subscribe
                 selector={(state) => [state.canSubmit, state.isSubmitting]}
                 children={([canSubmit, isSubmitting]) => (
-                  <div className="flex gap-3 justify-end">
+                  <div className="flex justify-end gap-3">
                     <Button color="tertiary" slot="close">
                       Cancel
                     </Button>

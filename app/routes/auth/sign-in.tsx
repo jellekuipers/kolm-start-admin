@@ -92,7 +92,7 @@ function RouteComponent() {
                 children={(field) => {
                   return (
                     <div className="space-y-1">
-                      <div className="flex items-baseline justify-between mb-1">
+                      <div className="mb-1 flex items-baseline justify-between">
                         <Label htmlFor="password">Password</Label>
                         <Link className="font-medium" to="/">
                           Forgot password?
