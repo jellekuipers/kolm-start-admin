@@ -19,7 +19,12 @@ interface AriaLinkProps extends Omit<AriaLinkOptions, "href"> {
 
 const linkStyles = tv({
   extend: focusRing,
-  base: "flex gap-2 items-center text-indigo-700 hover:underline",
+  base: "flex gap-2 items-center text-indigo-700",
+  variants: {
+    isHovered: {
+      true: "underline",
+    },
+  },
 });
 
 const AriaLinkComponent = forwardRef<HTMLAnchorElement, AriaLinkProps>(
@@ -39,8 +44,9 @@ const AriaLinkComponent = forwardRef<HTMLAnchorElement, AriaLinkProps>(
         data-focus-visible={isFocusVisible || undefined}
         data-focused={isFocused || undefined}
         className={linkStyles({
-          isFocusVisible,
           className,
+          isFocusVisible,
+          isHovered,
         })}
       />
     );

@@ -3,12 +3,12 @@ import {
   X as XIcon,
 } from "@phosphor-icons/react";
 import {
+  Button as AriaButton,
   SearchField as AriaSearchField,
   SearchFieldProps as AriaSearchFieldProps,
   ValidationResult,
 } from "react-aria-components";
 
-import { Button } from "~/components/ui/button";
 import {
   Description,
   FieldError,
@@ -49,9 +49,9 @@ export function SearchField({
           className="[&::-webkit-search-cancel-button]:hidden"
           placeholder="Search.."
         />
-        <Button className="mr-1 w-6 group-empty:invisible">
+        <AriaButton className="mr-1 w-6 group-empty:invisible">
           <XIcon aria-hidden />
-        </Button>
+        </AriaButton>
       </FieldGroup>
       {description && <Description>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>

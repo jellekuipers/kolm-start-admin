@@ -5,6 +5,7 @@ import {
   ListBoxItem as AriaListBoxItem,
   Select as AriaSelect,
   SelectValue as AriaSelectValue,
+  composeRenderProps,
   type SelectProps as AriaSelectProps,
   type ListBoxItemProps,
 } from "react-aria-components";
@@ -21,7 +22,7 @@ interface SelectProps<T extends object>
   errorMessage?: string | null;
   items?: Iterable<T>;
   label?: string;
-  variant?: "default" | "ghost";
+  variant?: "default" | "unstyled";
 }
 
 const selectStyles = tv({
@@ -29,12 +30,10 @@ const selectStyles = tv({
   base: "flex items-center justify-between gap-2",
   variants: {
     variant: {
-      default:
-        "border border-slate-200 rounded px-3 py-1.5 pressed:bg-slate-50",
-      ghost: "hover:bg-slate-50 rounded w-fit",
+      default: "border border-slate-200 rounded px-3 py-1.5",
+      unstyled: "rounded w-fit",
     },
     isDisabled: {
-      false: "",
       true: "text-slate-200 border-slate-200",
     },
   },
@@ -72,11 +71,23 @@ export function Select<T extends object>({
   );
 }
 
-export function SelectItem(props: ListBoxItemProps) {
+const selectItemStyles = tv({
+  extend: focusRing,
+  base: "flex cursor-default items-center gap-2 rounded px-3 py-1.5 font-medium",
+  variants: {
+    isHovered: {
+      true: "bg-indigo-700 text-white",
+    },
+  },
+});
+
+export function SelectItem({ className, ...props }: ListBoxItemProps) {
   return (
     <AriaListBoxItem
       {...props}
-      className="flex cursor-default items-center gap-2 rounded px-3 py-1.5 font-medium hover:bg-indigo-700 hover:text-white"
+      className={composeRenderProps(className, (className, renderProps) =>
+        selectItemStyles({ ...renderProps, className }),
+      )}
     />
   );
 }

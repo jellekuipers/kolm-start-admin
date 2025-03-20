@@ -63,13 +63,15 @@ const tabStyles = tv({
   extend: focusRing,
   base: "rounded px-3 py-1.5 font-medium flex items-center gap-2 cursor-default",
   variants: {
-    isSelected: {
-      false:
-        "text-slate-600 hover:text-slate-700 pressed:text-slate-700 hover:bg-slate-200 pressed:bg-slate-200",
-      true: "text-white bg-slate-900",
-    },
     isDisabled: {
       true: "bg-slate-50 text-slate-200",
+    },
+    isHovered: {
+      true: "text-slate-700 bg-slate-200",
+    },
+    isSelected: {
+      false: "text-slate-600",
+      true: "text-white bg-slate-900",
     },
   },
 });

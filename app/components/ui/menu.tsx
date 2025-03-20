@@ -42,7 +42,12 @@ export function MenuHeader(
 
 const menuItemStyles = tv({
   extend: focusRing,
-  base: "rounded px-3 h-9 flex items-center gap-3 hover:bg-indigo-700 hover:text-white cursor-default",
+  base: "rounded px-3 h-9 flex items-center gap-3 cursor-default font-medium",
+  variants: {
+    isHovered: {
+      true: "bg-indigo-700 text-white",
+    },
+  },
 });
 
 export function MenuItem({ className, ...props }: MenuItemProps) {
