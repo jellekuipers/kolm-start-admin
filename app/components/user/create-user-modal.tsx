@@ -190,7 +190,7 @@ export function CreateUserModal() {
               children={(field) => {
                 return (
                   <Flex direction="column" gap="1">
-                    <FormFieldLabel htmlFor="role" text="memberRole" />
+                    <FormFieldLabel htmlFor="role" text="Role" />
                     <Select.Root
                       defaultValue={field.state.value}
                       name={field.name}
