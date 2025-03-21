@@ -20,4 +20,5 @@ export default {
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
   importOrderTypeScriptVersion: "5.0.0",
   importOrderCaseSensitive: false,
+  tailwindFunctions: ["tv"],
 };

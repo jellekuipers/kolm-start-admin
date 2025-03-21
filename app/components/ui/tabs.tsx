@@ -19,7 +19,7 @@ const tabsStyles = tv({
   variants: {
     orientation: {
       horizontal: "flex-col",
-      vertical: "flex-row w-[800px]",
+      vertical: "w-[800px] flex-row",
     },
   },
 });
@@ -61,17 +61,17 @@ export function TabList<T extends object>({
 
 const tabStyles = tv({
   extend: focusRing,
-  base: "rounded px-3 py-1.5 font-medium flex items-center gap-2 cursor-default",
+  base: "flex cursor-default items-center gap-2 rounded px-3 py-1.5 font-medium",
   variants: {
     isDisabled: {
       true: "bg-slate-50 text-slate-200",
     },
     isHovered: {
-      true: "text-slate-700 bg-slate-200",
+      true: "bg-slate-200 text-slate-700",
     },
     isSelected: {
       false: "text-slate-600",
-      true: "text-white bg-slate-900",
+      true: "bg-slate-900 text-white",
     },
   },
 });

@@ -19,7 +19,7 @@ interface AriaLinkProps extends Omit<AriaLinkOptions, "href"> {
 
 const linkStyles = tv({
   extend: focusRing,
-  base: "flex gap-2 items-center text-indigo-700",
+  base: "flex items-center gap-2 text-indigo-700",
   variants: {
     isHovered: {
       true: "underline",

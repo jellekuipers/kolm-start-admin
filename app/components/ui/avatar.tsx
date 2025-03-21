@@ -12,14 +12,14 @@ interface AvatarProps {
 
 const avatarStyles = tv({
   extend: focusRing,
-  base: "flex items-center justify-center bg-indigo-50 text-indigo-700 shrink-0 overflow-hidden",
+  base: "flex shrink-0 items-center justify-center overflow-hidden bg-indigo-50 text-indigo-700",
   variants: {
     size: {
-      "8": "size-8 text-sm rounded-sm",
-      "10": "size-10 text-base rounded",
-      "12": "size-12 text-lg rounded-lg",
-      "16": "size-16 text-2xl rounded-lg",
-      "20": "size-20 text-3xl rounded-lg",
+      "8": "size-8 rounded-sm text-sm",
+      "10": "size-10 rounded text-base",
+      "12": "size-12 rounded-lg text-lg",
+      "16": "size-16 rounded-lg text-2xl",
+      "20": "size-20 rounded-lg text-3xl",
     },
   },
   defaultVariants: {

@@ -9,7 +9,7 @@ import { focusRing } from "~/utils/classes";
 
 const iconButtonStyles = tv({
   extend: focusRing,
-  base: "rounded size-8 justify-center flex items-center",
+  base: "flex size-8 items-center justify-center rounded",
   variants: {
     isDisabled: {
       true: "opacity-25",

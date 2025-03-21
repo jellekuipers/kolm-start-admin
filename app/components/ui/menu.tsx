@@ -42,7 +42,7 @@ export function MenuHeader(
 
 const menuItemStyles = tv({
   extend: focusRing,
-  base: "rounded px-3 h-9 flex items-center gap-3 cursor-default font-medium",
+  base: "flex h-9 cursor-default items-center gap-3 rounded px-3 font-medium",
   variants: {
     isHovered: {
       true: "bg-indigo-700 text-white",

@@ -30,11 +30,11 @@ const selectStyles = tv({
   base: "flex items-center justify-between gap-2",
   variants: {
     variant: {
-      default: "border border-slate-200 rounded px-3 py-1.5",
-      unstyled: "rounded w-fit",
+      default: "rounded border border-slate-200 px-3 py-1.5",
+      unstyled: "w-fit rounded",
     },
     isDisabled: {
-      true: "text-slate-200 border-slate-200",
+      true: "border-slate-200 text-slate-200",
     },
   },
   defaultVariants: {

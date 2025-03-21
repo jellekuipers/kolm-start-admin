@@ -14,7 +14,7 @@ interface ButtonProps extends AriaButtonProps {
 
 const buttonStyles = tv({
   extend: focusRing,
-  base: "rounded px-3 font-medium flex items-center gap-3 h-9 border",
+  base: "flex h-9 items-center gap-3 rounded border px-3 font-medium",
   variants: {
     color: {
       primary: "",
@@ -31,42 +31,42 @@ const buttonStyles = tv({
     {
       variant: "default",
       color: "primary",
-      class: "text-white bg-indigo-700 border-indigo-700",
+      class: "border-indigo-700 bg-indigo-700 text-white",
     },
     {
       variant: "default",
       color: "secondary",
-      class: "bg-indigo-50 text-indigo-700 border-indigo-50",
+      class: "border-indigo-50 bg-indigo-50 text-indigo-700",
     },
     {
       variant: "default",
       color: "tertiary",
-      class: "bg-slate-100 text-slate-700 border-slate-100",
+      class: "border-slate-100 bg-slate-100 text-slate-700",
     },
     {
       variant: "default",
       color: "destructive",
-      class: "text-white bg-red-600 border-red-600",
+      class: "border-red-600 bg-red-600 text-white",
     },
     {
       variant: "outline",
       color: "primary",
-      class: "text-indigo-700 bg-transparent border-indigo-700",
+      class: "border-indigo-700 bg-transparent text-indigo-700",
     },
     {
       variant: "outline",
       color: "secondary",
-      class: "bg-transparent text-indigo-700 border-indigo-300",
+      class: "border-indigo-300 bg-transparent text-indigo-700",
     },
     {
       variant: "outline",
       color: "tertiary",
-      class: "bg-transparent text-slate-700 border-slate-200",
+      class: "border-slate-200 bg-transparent text-slate-700",
     },
     {
       variant: "outline",
       color: "destructive",
-      class: "text-red-600 bg-transparent border-red-600",
+      class: "border-red-600 bg-transparent text-red-600",
     },
   ],
   defaultVariants: {

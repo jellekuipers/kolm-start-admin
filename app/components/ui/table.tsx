@@ -33,7 +33,7 @@ export function TableBody<T extends object>(props: TableBodyProps<T>) {
 }
 
 const tableCellStyles = tv({
-  base: "align-middle px-4 py-2 whitespace-nowrap outline-none",
+  base: "px-4 py-2 align-middle whitespace-nowrap outline-none",
   variants: {
     isHeader: {
       true: "font-bold",
