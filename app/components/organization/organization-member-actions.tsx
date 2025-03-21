@@ -78,6 +78,7 @@ export function OrganizationMemberActions({
         </MenuItem>
         <MenuSeparator />
         <MenuItem
+          color="red"
           isDisabled={removeMemberMutation.isPending}
           onAction={async () =>
             await removeMemberMutation.mutateAsync({

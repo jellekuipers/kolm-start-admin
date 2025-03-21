@@ -141,7 +141,7 @@ export function CreateUserModal() {
               />
               <Separator />
               <div className="flex items-center gap-2">
-                <span className="font-medium">Organization</span>
+                <span className="text-lg font-medium">Organization</span>
                 <Badge>optional</Badge>
               </div>
               <Field

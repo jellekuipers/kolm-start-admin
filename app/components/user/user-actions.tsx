@@ -148,6 +148,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
         </MenuItem>
         <MenuSeparator />
         <MenuItem
+          color="red"
           isDisabled={removeUserMutation.isPending}
           onAction={async () =>
             await removeUserMutation.mutateAsync({ userId: user.id })

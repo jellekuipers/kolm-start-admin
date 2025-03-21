@@ -33,7 +33,7 @@ function RouteComponent() {
 
   return (
     <Container>
-      <div className="space-y-6">
+      <div className="space-y-8">
         <Link to="/organizations">
           <ArrowLeftIcon size={16} /> Organizations
         </Link>

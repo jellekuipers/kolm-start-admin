@@ -66,7 +66,7 @@ export function DataTable<TData, TValue>({
   const [sorting, setSorting] = useState<SortingState>([]);
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
-    pageSize: 50,
+    pageSize: 25,
   });
 
   const table = useReactTable({
@@ -145,7 +145,7 @@ export function DataTable<TData, TValue>({
           <DataTablePagination table={table} />
         </div>
       ) : (
-        <Callout color="indigo">
+        <Callout>
           <CalloutIcon>
             <EmptyIcon size={16} />
           </CalloutIcon>

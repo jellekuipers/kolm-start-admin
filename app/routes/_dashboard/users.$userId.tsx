@@ -30,7 +30,7 @@ function RouteComponent() {
 
   return (
     <Container>
-      <div className="space-y-6">
+      <div className="space-y-8">
         <Link to="/users">
           <ArrowLeftIcon size={16} /> Users
         </Link>
@@ -41,7 +41,7 @@ function RouteComponent() {
               <div className="flex items-center gap-2">
                 <Heading level={1}>{user.name ?? user.email}</Heading>
                 {session.user.id === user.id ? <Badge>you</Badge> : null}
-                {user.banned ? <Badge>banned</Badge> : null}
+                {user.banned ? <Badge color="red">banned</Badge> : null}
               </div>
             </div>
             {session.user.id !== user.id ? (

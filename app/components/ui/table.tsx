@@ -12,43 +12,78 @@ import {
   type TableHeaderProps,
   type TableProps,
 } from "react-aria-components";
+import { twMerge } from "tailwind-merge";
 
-export function Table(props: TableProps) {
+export function Table({ className, ...props }: TableProps) {
   return (
     <div className="-mx-4 overflow-x-auto md:mx-0">
-      <AriaTable {...props} className="w-full" />
+      <AriaTable
+        {...props}
+        className={twMerge("w-full", className as string)}
+      />
     </div>
   );
 }
 
-export function TableBody<T extends object>(props: TableBodyProps<T>) {
+export function TableBody<T extends object>({
+  className,
+  ...props
+}: TableBodyProps<T>) {
   return (
     <AriaTableBody
       {...props}
-      className="divide-y divide-slate-200 border-y border-slate-200 align-middle"
+      className={twMerge(
+        "divide-y divide-slate-200 border-y border-slate-200 align-middle",
+        className as string,
+      )}
     />
   );
 }
 
-export function TableCell(props: CellProps) {
+export function TableCell({ className, ...props }: CellProps) {
   return (
-    <AriaCell {...props} className="px-4 py-2 align-middle whitespace-nowrap" />
+    <AriaCell
+      {...props}
+      className={twMerge(
+        "px-4 py-2 align-middle whitespace-nowrap",
+        className as string,
+      )}
+    />
   );
 }
 
-export function TableColumn(props: ColumnProps) {
+export function TableColumn({ className, ...props }: ColumnProps) {
   return (
     <AriaColumn
       {...props}
-      className="px-4 py-2 align-middle whitespace-nowrap"
+      className={twMerge(
+        "px-4 py-2 align-middle whitespace-nowrap",
+        className as string,
+      )}
     />
   );
 }
 
-export function TableHeader<T extends object>(props: TableHeaderProps<T>) {
-  return <AriaTableHeader {...props} className="align-middle font-bold" />;
+export function TableHeader<T extends object>({
+  className,
+  ...props
+}: TableHeaderProps<T>) {
+  return (
+    <AriaTableHeader
+      {...props}
+      className={twMerge("align-middle font-bold", className as string)}
+    />
+  );
 }
 
-export function TableRow<T extends object>(props: RowProps<T>) {
-  return <AriaRow {...props} className="align-middle" />;
+export function TableRow<T extends object>({
+  className,
+  ...props
+}: RowProps<T>) {
+  return (
+    <AriaRow
+      {...props}
+      className={twMerge("align-middle", className as string)}
+    />
+  );
 }

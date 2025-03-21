@@ -70,6 +70,7 @@ export function TeamActions({ team }: TeamActionsProps) {
           </MenuItem>
           <MenuSeparator />
           <MenuItem
+            color="red"
             isDisabled={removeTeamMutation.isPending}
             onAction={async () =>
               await removeTeamMutation.mutateAsync({

@@ -27,7 +27,7 @@ function RouteComponent() {
 
   return (
     <Container>
-      <div className="space-y-6">
+      <div className="space-y-8">
         <div className="space-y-4">
           <Heading level={1}>Dashboard</Heading>
           <Separator />

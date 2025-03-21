@@ -1,4 +1,6 @@
-import { Link } from "@tanstack/react-router";
+import { twMerge } from "tailwind-merge";
+
+import { Link } from "~/components/ui/link";
 
 interface UserTabNavProps {
   userId: string;
@@ -6,28 +8,49 @@ interface UserTabNavProps {
 
 export function UserTabNav({ userId }: UserTabNavProps) {
   return (
-    <div className="flex gap-2">
+    <div className="flex border-b border-slate-200">
       <Link
         activeOptions={{ exact: true }}
-        activeProps={{ className: "font-bold" }}
+        className={twMerge(
+          "group -mb-px flex cursor-default items-center gap-2 border-b-2 border-transparent px-3 pb-1.5 font-medium text-slate-800 hover:no-underline",
+          "data-[status=active]:border-indigo-500",
+        )}
         params={{ userId }}
         to="/users/$userId"
       >
-        Profile
+        <span
+          className={twMerge("rounded px-3 py-1", "group-hover:bg-slate-100")}
+        >
+          Profile
+        </span>
       </Link>
       <Link
-        activeProps={{ className: "font-bold" }}
+        className={twMerge(
+          "group -mb-px flex cursor-default items-center gap-2 border-b-2 border-transparent px-3 pb-1.5 font-medium text-slate-800 hover:no-underline",
+          "data-[status=active]:border-indigo-500",
+        )}
         params={{ userId }}
         to="/users/$userId/organizations"
       >
-        Organizations
+        <span
+          className={twMerge("rounded px-3 py-1", "group-hover:bg-slate-100")}
+        >
+          Organizations
+        </span>
       </Link>
       <Link
-        activeProps={{ className: "font-bold" }}
+        className={twMerge(
+          "group -mb-px flex cursor-default items-center gap-2 border-b-2 border-transparent px-3 pb-1.5 font-medium text-slate-800 hover:no-underline",
+          "data-[status=active]:border-indigo-500",
+        )}
         params={{ userId }}
         to="/users/$userId/sessions"
       >
-        Sessions
+        <span
+          className={twMerge("rounded px-3 py-1", "group-hover:bg-slate-100")}
+        >
+          Sessions
+        </span>
       </Link>
     </div>
   );

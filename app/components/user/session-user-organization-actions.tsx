@@ -88,6 +88,7 @@ export function SessionUserOrganizationActions({
         </MenuItem>
         <MenuSeparator />
         <MenuItem
+          color="red"
           isDisabled={leaveOrganizationMutation.isPending}
           onAction={async () =>
             await leaveOrganizationMutation.mutateAsync({

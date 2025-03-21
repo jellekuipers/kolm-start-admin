@@ -6,6 +6,7 @@ import {
   GridList,
   GridListItem,
 } from "react-aria-components";
+import { twMerge } from "tailwind-merge";
 
 import { Button } from "~/components/ui/button";
 import { Checkbox } from "~/components/ui/checkbox";
@@ -28,13 +29,18 @@ export function DataTableColumnFilter<TData>({
       <Popover>
         <Dialog>
           <GridList
-            className="space-y-1"
+            className="space-y-[1px]"
             items={columns}
-            onSelectionChange={(column) => console.log(column)}
+            onSelectionChange={(columns) => console.log(columns)}
             selectionMode="multiple"
           >
             {(column) => (
               <GridListItem
+                className={twMerge(
+                  "flex h-9 items-center gap-3 rounded border border-transparent px-2 font-medium",
+                  "hover:bg-indigo-50",
+                  "selected:bg-indigo-50",
+                )}
                 key={column.id}
                 textValue={column.columnDef.header?.toString()}
               >

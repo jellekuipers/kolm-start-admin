@@ -8,9 +8,9 @@ export function MemberRole({ role }: MemberRoleProps) {
   const renderBadge = (role: string) => {
     switch (role) {
       case "admin":
-        return <Badge>admin</Badge>;
+        return <Badge color="pink">admin</Badge>;
       case "member":
-        return <Badge>member</Badge>;
+        return <Badge color="slate">member</Badge>;
       case "owner":
         return <Badge>owner</Badge>;
       default:

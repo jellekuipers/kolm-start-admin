@@ -10,7 +10,7 @@ export function UserRole({ role }: UserRoleProps) {
       case "admin":
         return <Badge>admin</Badge>;
       case "user":
-        return <Badge>user</Badge>;
+        return <Badge color="slate">user</Badge>;
       default:
         return;
     }

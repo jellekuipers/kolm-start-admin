@@ -9,7 +9,6 @@ import {
   type ListBoxItemProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
-import { tv } from "tailwind-variants";
 
 import { Description, FieldError, Label } from "~/components/ui/field";
 import { Popover } from "~/components/ui/popover";
@@ -21,35 +20,29 @@ interface SelectProps<T extends object>
   errorMessage?: string | null;
   items?: Iterable<T>;
   label?: string;
-  variant?: "default" | "unstyled";
 }
-
-const selectStyles = tv({
-  base: "flex items-center justify-between gap-2 disabled:border-slate-100 disabled:text-slate-100",
-  variants: {
-    variant: {
-      default: "rounded border border-slate-200 px-3 py-1.5",
-      unstyled: "w-fit rounded",
-    },
-  },
-  defaultVariants: {
-    variant: "default",
-  },
-});
 
 export function Select<T extends object>({
   children,
+  className,
   description,
   errorMessage,
   items,
   label,
-  variant,
   ...props
 }: SelectProps<T>) {
   return (
-    <AriaSelect {...props} className="flex flex-col gap-2">
+    <AriaSelect
+      {...props}
+      className={twMerge("flex flex-col gap-2", className as string)}
+    >
       {label ? <Label>{label}</Label> : null}
-      <AriaButton className={selectStyles({ variant })}>
+      <AriaButton
+        className={twMerge(
+          "flex items-center justify-between gap-2 rounded border border-slate-200 px-3 py-1.5",
+          "disabled:border-slate-100 disabled:bg-slate-50 disabled:text-slate-300",
+        )}
+      >
         <AriaSelectValue>
           {({ defaultChildren, isPlaceholder }) => {
             return isPlaceholder ? "Select" : defaultChildren;

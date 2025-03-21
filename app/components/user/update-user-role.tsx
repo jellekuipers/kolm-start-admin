@@ -2,7 +2,6 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 
 import { Select, SelectItem } from "~/components/ui/select";
-import { UserRole } from "~/components/user/user-role";
 import { setUserRole } from "~/lib/user";
 import { User } from "~/types";
 
@@ -34,6 +33,7 @@ export function UpdateUserRole({ user }: UpdateUserRoleProps) {
 
   return (
     <Select
+      className="w-48"
       isDisabled={setUserRoleMutation.isPending}
       onSelectionChange={async (key) =>
         await setUserRoleMutation.mutateAsync({
@@ -42,14 +42,9 @@ export function UpdateUserRole({ user }: UpdateUserRoleProps) {
         })
       }
       selectedKey={user.role ?? "user"}
-      variant="unstyled"
     >
-      <SelectItem id="admin">
-        <UserRole role="admin" />
-      </SelectItem>
-      <SelectItem id="user">
-        <UserRole role="user" />
-      </SelectItem>
+      <SelectItem id="admin">Admin</SelectItem>
+      <SelectItem id="user">User</SelectItem>
     </Select>
   );
 }

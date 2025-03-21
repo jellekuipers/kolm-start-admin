@@ -16,5 +16,5 @@ export function SessionUserActiveOrganizationBadge({
     return null;
   }
 
-  return <Badge>active</Badge>;
+  return <Badge color="green">active</Badge>;
 }

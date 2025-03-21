@@ -9,7 +9,7 @@ export function Checkbox({ children, ...props }: CheckboxProps) {
     <AriaCheckbox {...props} className="flex items-center gap-2 font-medium">
       {({ isIndeterminate, isSelected }) => (
         <>
-          <div className="flex size-5 shrink-0 items-center justify-center rounded border border-slate-200">
+          <div className="flex size-5 shrink-0 items-center justify-center rounded border border-slate-200 bg-white">
             {isIndeterminate ? (
               <MinusIcon aria-hidden size={16} />
             ) : isSelected ? (

@@ -10,7 +10,7 @@ import {
   type MenuTriggerProps,
   type SeparatorProps,
 } from "react-aria-components";
-import { tv } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 
 import { Popover } from "~/components/ui/popover";
 
@@ -39,15 +39,20 @@ export function MenuHeader(
   );
 }
 
-const menuItemStyles = tv({
-  base: [
-    "flex h-9 cursor-default items-center gap-3 rounded px-3",
-    "hover:bg-indigo-700 hover:text-white",
-  ],
-});
-
-export function MenuItem(props: MenuItemProps) {
-  return <AriaMenuItem {...props} className={menuItemStyles} />;
+export function MenuItem({
+  color = "indigo",
+  ...props
+}: MenuItemProps & { color?: "indigo" | "red" }) {
+  return (
+    <AriaMenuItem
+      {...props}
+      className={twMerge(
+        "flex h-9 cursor-default items-center gap-3 rounded px-3",
+        color === "indigo" && "hover:bg-indigo-700 hover:text-white",
+        color === "red" && "text-red-600 hover:bg-red-600 hover:text-white",
+      )}
+    />
+  );
 }
 
 export function MenuSeparator(props: SeparatorProps) {

@@ -183,7 +183,7 @@ export function CreateInvitationModal() {
               />
               <Separator />
               <div className="flex items-center gap-2">
-                <span className="font-medium">Team</span>
+                <span className="text-lg font-medium">Team</span>
                 <Badge>optional</Badge>
               </div>
               <Field
@@ -214,7 +214,9 @@ export function CreateInvitationModal() {
                 selector={(state) => [state.canSubmit, state.isSubmitting]}
                 children={([canSubmit, isSubmitting]) => (
                   <div className="flex justify-end gap-3">
-                    <Button slot="close">Cancel</Button>
+                    <Button color="tertiary" slot="close">
+                      Cancel
+                    </Button>
                     <Button
                       isDisabled={!canSubmit}
                       isPending={isSubmitting}

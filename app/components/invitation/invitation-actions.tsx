@@ -66,6 +66,7 @@ export function InvitationActions({ invitation }: InvitationActionsProps) {
           </MenuItem>
           <MenuSeparator />
           <MenuItem
+            color="red"
             isDisabled={cancelInvitationMutation.isPending}
             onAction={async () =>
               await cancelInvitationMutation.mutateAsync({
