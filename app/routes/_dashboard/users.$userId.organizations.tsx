@@ -34,7 +34,7 @@ const dataTableColumns: ColumnDef<
       return (
         <Avatar
           fallback="@"
-          size="10"
+          size={10}
           src={row.original.organization.logo ?? undefined}
         />
       );

@@ -39,7 +39,7 @@ export function Input({ className, ...props }: InputProps) {
   return (
     <AriaInput
       {...props}
-      className={twMerge("h-9 min-w-0 bg-white px-3", className)}
+      className={twMerge("h-9 min-w-0 bg-white px-3", className as string)}
     />
   );
 }

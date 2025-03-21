@@ -37,7 +37,7 @@ function RouteComponent() {
         <div className="space-y-4">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div className="flex items-center gap-4">
-              <Avatar fallback="@" size="16" src={user.image ?? undefined} />
+              <Avatar fallback="@" size={16} src={user.image ?? undefined} />
               <div className="flex items-center gap-2">
                 <Heading level={1}>{user.name ?? user.email}</Heading>
                 {session.user.id === user.id ? <Badge>you</Badge> : null}

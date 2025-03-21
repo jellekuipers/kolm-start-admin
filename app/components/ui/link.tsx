@@ -13,6 +13,7 @@ import { tv } from "tailwind-variants";
 interface AriaLinkProps extends Omit<AriaLinkOptions, "href"> {
   className?: string;
   children?: React.ReactNode;
+  variant?: "default" | "ghost";
 }
 
 const linkStyles = tv({
@@ -35,9 +36,7 @@ const AriaLinkComponent = forwardRef<HTMLAnchorElement, AriaLinkProps>(
         data-pressed={isPressed || undefined}
         data-focus-visible={isFocusVisible || undefined}
         data-focused={isFocused || undefined}
-        className={linkStyles({
-          className,
-        })}
+        className={linkStyles({ className })}
       />
     );
   },

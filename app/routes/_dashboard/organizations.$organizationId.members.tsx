@@ -30,7 +30,7 @@ const dataTableColumns: ColumnDef<OrganizationMember>[] = [
       return (
         <Avatar
           fallback="@"
-          size="10"
+          size={10}
           src={row.original.user.image ?? undefined}
         />
       );

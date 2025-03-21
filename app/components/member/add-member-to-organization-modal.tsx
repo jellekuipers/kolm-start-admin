@@ -6,8 +6,7 @@ import { CreateMemberForm } from "~/components/member/create-member-form";
 import { InviteMemberForm } from "~/components/member/invite-member-form";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
-import { Heading } from "~/components/ui/heading";
-import { Modal } from "~/components/ui/modal";
+import { Modal, ModalHeading } from "~/components/ui/modal";
 import { Tab, TabList, TabPanel, Tabs } from "~/components/ui/tabs";
 
 interface AddMemberToOrganizationModalProps {
@@ -27,7 +26,7 @@ export function AddMemberToOrganizationModal({
       </Button>
       <Modal isDismissable isOpen={open} onOpenChange={setOpen}>
         <Dialog>
-          <Heading slot="title">Add member</Heading>
+          <ModalHeading slot="title">Add member</ModalHeading>
           <Tabs>
             <TabList>
               <Tab id="add">Existing user</Tab>

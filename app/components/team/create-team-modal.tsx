@@ -8,8 +8,7 @@ import { z } from "zod";
 import { FormError } from "~/components/form/form-error";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
-import { Heading } from "~/components/ui/heading";
-import { Modal } from "~/components/ui/modal";
+import { Modal, ModalHeading } from "~/components/ui/modal";
 import { TextField } from "~/components/ui/text-field";
 import { getFieldErrorMessage } from "~/lib/error";
 import { createTeam } from "~/lib/team";
@@ -79,7 +78,7 @@ export function CreateTeamModal({ organizationId }: CreateTeamModalProps) {
       <Button onPress={() => setOpen(true)}>Create team</Button>
       <Modal isDismissable isOpen={open} onOpenChange={onOpenChangeHandler}>
         <Dialog>
-          <Heading slot="title">Create team</Heading>
+          <ModalHeading slot="title">Create team</ModalHeading>
           <form
             onSubmit={(event) => {
               event.preventDefault();

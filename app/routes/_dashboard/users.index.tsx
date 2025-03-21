@@ -32,7 +32,7 @@ const dataTableColumns: ColumnDef<User | UserWithRole>[] = [
     header: undefined,
     cell({ row }) {
       return (
-        <Avatar fallback="@" size="10" src={row.original.image ?? undefined} />
+        <Avatar fallback="@" size={10} src={row.original.image ?? undefined} />
       );
     },
   },

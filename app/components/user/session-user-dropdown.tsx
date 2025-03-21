@@ -45,7 +45,7 @@ export function SessionUserDropdown() {
   return (
     <MenuTrigger>
       <IconButton>
-        <Avatar fallback="@" size="10" src={session?.user.image ?? undefined} />
+        <Avatar fallback="@" size={10} src={session?.user.image ?? undefined} />
       </IconButton>
       <Menu>
         <MenuHeader>{session?.user.email}</MenuHeader>

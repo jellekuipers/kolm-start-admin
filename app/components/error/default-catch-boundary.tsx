@@ -7,7 +7,7 @@ export function DefaultCatchBoundary({ error }: ErrorComponentProps) {
   console.error(error);
 
   return (
-    <Callout>
+    <Callout color="red">
       <CalloutIcon>
         <InfoIcon size={16} />
       </CalloutIcon>

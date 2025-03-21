@@ -29,7 +29,7 @@ const dataTableColumns: ColumnDef<AuthOrganization | ORMOrganization>[] = [
     header: undefined,
     cell({ row }) {
       return (
-        <Avatar fallback="@" size="10" src={row.original.logo ?? undefined} />
+        <Avatar fallback="@" size={10} src={row.original.logo ?? undefined} />
       );
     },
   },

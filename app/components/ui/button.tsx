@@ -1,5 +1,6 @@
 import {
   Button as AriaButton,
+  composeRenderProps,
   type ButtonProps as AriaButtonProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
@@ -71,6 +72,13 @@ const buttonStyles = tv({
   },
 });
 
-export function Button({ color, variant, ...props }: ButtonProps) {
-  return <AriaButton {...props} className={buttonStyles({ color, variant })} />;
+export function Button({ className, color, variant, ...props }: ButtonProps) {
+  return (
+    <AriaButton
+      {...props}
+      className={composeRenderProps(className, (className, renderProps) =>
+        buttonStyles({ ...renderProps, color, variant, className }),
+      )}
+    />
+  );
 }

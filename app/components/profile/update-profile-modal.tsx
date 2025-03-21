@@ -9,8 +9,7 @@ import { z } from "zod";
 import { FormError } from "~/components/form/form-error";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
-import { Heading } from "~/components/ui/heading";
-import { Modal } from "~/components/ui/modal";
+import { Modal, ModalHeading } from "~/components/ui/modal";
 import { TextField } from "~/components/ui/text-field";
 import { authClient, useSession } from "~/lib/auth-client";
 import { getFieldErrorMessage } from "~/lib/error";
@@ -80,7 +79,7 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
       <Button onPress={() => setOpen(true)}>Update profile</Button>
       <Modal isDismissable isOpen={open} onOpenChange={onOpenChangeHandler}>
         <Dialog>
-          <Heading slot="title">Update profile</Heading>
+          <ModalHeading slot="title">Update profile</ModalHeading>
           <form
             onSubmit={(event) => {
               event.preventDefault();

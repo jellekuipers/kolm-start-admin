@@ -1,6 +1,8 @@
 import {
+  Heading as AriaHeading,
   Modal as AriaModal,
   ModalOverlay as AriaModalOverlay,
+  type HeadingProps,
   type ModalOverlayProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
@@ -25,4 +27,8 @@ export function Modal(props: ModalOverlayProps) {
       />
     </AriaModalOverlay>
   );
+}
+
+export function ModalHeading(props: HeadingProps) {
+  return <AriaHeading {...props} className="text-2xl font-bold" />;
 }

@@ -8,8 +8,7 @@ import { z } from "zod";
 import { FormError } from "~/components/form/form-error";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
-import { Heading } from "~/components/ui/heading";
-import { Modal } from "~/components/ui/modal";
+import { Modal, ModalHeading } from "~/components/ui/modal";
 import { TextField } from "~/components/ui/text-field";
 import { updateTeam } from "~/lib/team";
 import { Team } from "~/types";
@@ -76,7 +75,7 @@ export function UpdateTeamModal({ open, team, setOpen }: UpdateTeamModalProps) {
   return (
     <Modal isDismissable isOpen={open} onOpenChange={onOpenChangeHandler}>
       <Dialog>
-        <Heading slot="title">Update team</Heading>
+        <ModalHeading slot="title">Update team</ModalHeading>
         <form
           onSubmit={(event) => {
             event.preventDefault();

@@ -29,7 +29,7 @@ export function DataTablePagination<TData>({
       >
         <CaretLeftIcon size={16} />
       </IconButton>
-      <span className="font-medium tabular-nums">
+      <span className="font-semibold tabular-nums">
         {(table.getState().pagination.pageIndex + 1).toString()} of{" "}
         {table.getPageCount().toString()}
       </span>

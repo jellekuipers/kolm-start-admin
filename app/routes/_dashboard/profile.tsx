@@ -78,7 +78,7 @@ const membersDataTableColumns: ColumnDef<
       return (
         <Avatar
           fallback="@"
-          size="10"
+          size={10}
           src={row.original.organization.logo ?? undefined}
         />
       );
@@ -163,7 +163,7 @@ function RouteComponent() {
         <div className="space-y-4">
           <div className="flex items-start justify-between gap-4">
             <div className="flex flex-wrap items-center gap-4">
-              <Avatar fallback="@" size="16" src={user.image ?? undefined} />
+              <Avatar fallback="@" size={16} src={user.image ?? undefined} />
               {user.name ? (
                 <div className="space-y-0">
                   <Heading level={1}>{user.name}</Heading>

@@ -92,7 +92,7 @@ export function InvitationCard({ invitation }: InvitationCardProps) {
         </DataListItem>
       </DataList>
       {error ? (
-        <Callout>
+        <Callout color="indigo">
           <CalloutIcon>
             <InfoIcon size={16} />
           </CalloutIcon>

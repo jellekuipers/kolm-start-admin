@@ -9,8 +9,7 @@ import { z } from "zod";
 import { FormError } from "~/components/form/form-error";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
-import { Heading } from "~/components/ui/heading";
-import { Modal } from "~/components/ui/modal";
+import { Modal, ModalHeading } from "~/components/ui/modal";
 import { Select, SelectItem } from "~/components/ui/select";
 import { addMember } from "~/lib/member";
 import { organizationsQueryOptions } from "~/lib/organization";
@@ -95,7 +94,7 @@ export function AddUserToOrganizationModal({
       </Button>
       <Modal isDismissable isOpen={open} onOpenChange={onOpenChangeHandler}>
         <Dialog>
-          <Heading slot="title">Add to organization</Heading>
+          <ModalHeading slot="title">Add to organization</ModalHeading>
           <form
             onSubmit={(event) => {
               event.preventDefault();
