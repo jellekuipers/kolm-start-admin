@@ -5,7 +5,6 @@ import {
   Table as AriaTable,
   TableBody as AriaTableBody,
   TableHeader as AriaTableHeader,
-  composeRenderProps,
   type CellProps,
   type ColumnProps,
   type RowProps,
@@ -13,7 +12,6 @@ import {
   type TableHeaderProps,
   type TableProps,
 } from "react-aria-components";
-import { tv } from "tailwind-variants";
 
 export function Table(props: TableProps) {
   return (
@@ -32,42 +30,25 @@ export function TableBody<T extends object>(props: TableBodyProps<T>) {
   );
 }
 
-const tableCellStyles = tv({
-  base: "px-4 py-2 align-middle whitespace-nowrap outline-none",
-  variants: {
-    isHeader: {
-      true: "font-bold",
-      false: "font-normal",
-    },
-  },
-});
-
-export function TableCell({ className, ...props }: CellProps) {
+export function TableCell(props: CellProps) {
   return (
-    <AriaCell
-      {...props}
-      className={composeRenderProps(className, (className, renderProps) =>
-        tableCellStyles({ ...renderProps, className }),
-      )}
-    />
+    <AriaCell {...props} className="px-4 py-2 align-middle whitespace-nowrap" />
   );
 }
 
-export function TableColumn({ className, ...props }: ColumnProps) {
+export function TableColumn(props: ColumnProps) {
   return (
     <AriaColumn
       {...props}
-      className={composeRenderProps(className, (className, renderProps) =>
-        tableCellStyles({ ...renderProps, className, isHeader: true }),
-      )}
+      className="px-4 py-2 align-middle whitespace-nowrap"
     />
   );
 }
 
 export function TableHeader<T extends object>(props: TableHeaderProps<T>) {
-  return <AriaTableHeader {...props} className="align-middle" />;
+  return <AriaTableHeader {...props} className="align-middle font-bold" />;
 }
 
 export function TableRow<T extends object>(props: RowProps<T>) {
-  return <AriaRow {...props} className="align-middle outline-none" />;
+  return <AriaRow {...props} className="align-middle" />;
 }

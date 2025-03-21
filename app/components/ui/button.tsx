@@ -1,11 +1,8 @@
 import {
   Button as AriaButton,
-  composeRenderProps,
   type ButtonProps as AriaButtonProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
-
-import { focusRing } from "~/utils/classes";
 
 interface ButtonProps extends AriaButtonProps {
   color?: "primary" | "secondary" | "tertiary" | "destructive";
@@ -13,7 +10,6 @@ interface ButtonProps extends AriaButtonProps {
 }
 
 const buttonStyles = tv({
-  extend: focusRing,
   base: "flex h-9 items-center gap-3 rounded border px-3 font-medium",
   variants: {
     color: {
@@ -75,13 +71,6 @@ const buttonStyles = tv({
   },
 });
 
-export function Button({ className, color, variant, ...props }: ButtonProps) {
-  return (
-    <AriaButton
-      {...props}
-      className={composeRenderProps(className, (className, renderProps) =>
-        buttonStyles({ ...renderProps, color, variant, className }),
-      )}
-    />
-  );
+export function Button({ color, variant, ...props }: ButtonProps) {
+  return <AriaButton {...props} className={buttonStyles({ color, variant })} />;
 }

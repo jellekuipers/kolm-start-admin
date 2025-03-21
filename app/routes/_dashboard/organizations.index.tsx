@@ -28,7 +28,9 @@ const dataTableColumns: ColumnDef<AuthOrganization | ORMOrganization>[] = [
     id: "logo",
     header: undefined,
     cell({ row }) {
-      return <Avatar fallback="@" src={row.original.logo ?? undefined} />;
+      return (
+        <Avatar fallback="@" size="10" src={row.original.logo ?? undefined} />
+      );
     },
   },
   {
@@ -69,7 +71,7 @@ const dataTableColumns: ColumnDef<AuthOrganization | ORMOrganization>[] = [
     accessorKey: "createdAt",
     header: "Created at",
     cell({ row }) {
-      return row.original.createdAt.toLocaleString();
+      return row.original.createdAt.toDateString();
     },
   },
   {

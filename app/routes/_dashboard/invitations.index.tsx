@@ -41,7 +41,7 @@ const dataTableColumns: ColumnDef<Invitation>[] = [
     accessorKey: "expiresAt",
     header: "Expires",
     cell({ row }) {
-      return row.original.expiresAt.toLocaleString();
+      return row.original.expiresAt.toDateString();
     },
   },
   {

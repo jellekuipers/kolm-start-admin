@@ -34,6 +34,7 @@ const dataTableColumns: ColumnDef<
       return (
         <Avatar
           fallback="@"
+          size="10"
           src={row.original.organization.logo ?? undefined}
         />
       );
@@ -69,7 +70,7 @@ const dataTableColumns: ColumnDef<
     accessorKey: "createdAt",
     header: "Member since",
     cell({ row }) {
-      return row.original.createdAt.toLocaleString();
+      return row.original.createdAt.toDateString();
     },
   },
   {

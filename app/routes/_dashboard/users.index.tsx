@@ -31,7 +31,9 @@ const dataTableColumns: ColumnDef<User | UserWithRole>[] = [
     enableHiding: false,
     header: undefined,
     cell({ row }) {
-      return <Avatar fallback="@" src={row.original.image ?? undefined} />;
+      return (
+        <Avatar fallback="@" size="10" src={row.original.image ?? undefined} />
+      );
     },
   },
   {
@@ -75,14 +77,14 @@ const dataTableColumns: ColumnDef<User | UserWithRole>[] = [
     id: "createdAt",
     header: "Created at",
     cell({ row }) {
-      return row.original.createdAt.toLocaleString();
+      return row.original.createdAt.toDateString();
     },
   },
   {
     id: "updatedAt",
     header: "Updated at",
     cell({ row }) {
-      return row.original.updatedAt.toLocaleString();
+      return row.original.updatedAt.toDateString();
     },
   },
   {
@@ -118,7 +120,7 @@ const dataTableColumns: ColumnDef<User | UserWithRole>[] = [
     id: "banExpires",
     header: "Ban expires",
     cell({ row }) {
-      return row.original.banExpires?.toLocaleString() ?? "-";
+      return row.original.banExpires?.toDateString() ?? "-";
     },
   },
   {

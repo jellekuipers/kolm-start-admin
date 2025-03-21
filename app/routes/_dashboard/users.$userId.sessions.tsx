@@ -30,14 +30,14 @@ export const dataTableColumns: ColumnDef<Session>[] = [
     id: "createdAt",
     header: "Created at",
     cell({ row }) {
-      return row.original.createdAt.toLocaleString();
+      return row.original.createdAt.toDateString();
     },
   },
   {
     id: "expiresAt",
     header: "Expires at",
     cell({ row }) {
-      return row.original.expiresAt.toLocaleString();
+      return row.original.expiresAt.toDateString();
     },
   },
   {

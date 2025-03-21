@@ -10,21 +10,13 @@ import {
 } from "react-aria";
 import { tv } from "tailwind-variants";
 
-import { focusRing } from "~/utils/classes";
-
 interface AriaLinkProps extends Omit<AriaLinkOptions, "href"> {
   className?: string;
   children?: React.ReactNode;
 }
 
 const linkStyles = tv({
-  extend: focusRing,
-  base: "flex items-center gap-2 text-indigo-700",
-  variants: {
-    isHovered: {
-      true: "underline",
-    },
-  },
+  base: ["flex items-center gap-2 text-indigo-700", "hover:underline"],
 });
 
 const AriaLinkComponent = forwardRef<HTMLAnchorElement, AriaLinkProps>(
@@ -45,8 +37,6 @@ const AriaLinkComponent = forwardRef<HTMLAnchorElement, AriaLinkProps>(
         data-focused={isFocused || undefined}
         className={linkStyles({
           className,
-          isFocusVisible,
-          isHovered,
         })}
       />
     );

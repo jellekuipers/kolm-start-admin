@@ -30,8 +30,8 @@ export function DataTablePagination<TData>({
         <CaretLeftIcon size={16} />
       </IconButton>
       <span className="font-medium tabular-nums">
-        {table.getState().pagination.pageIndex + 1} of{" "}
-        {table.getPageCount().toLocaleString()}
+        {(table.getState().pagination.pageIndex + 1).toString()} of{" "}
+        {table.getPageCount().toString()}
       </span>
       <IconButton
         isDisabled={!table.getCanNextPage()}

@@ -27,7 +27,13 @@ const dataTableColumns: ColumnDef<OrganizationMember>[] = [
     id: "image",
     header: undefined,
     cell({ row }) {
-      return <Avatar fallback="@" src={row.original.user.image ?? undefined} />;
+      return (
+        <Avatar
+          fallback="@"
+          size="10"
+          src={row.original.user.image ?? undefined}
+        />
+      );
     },
   },
   {
@@ -59,7 +65,7 @@ const dataTableColumns: ColumnDef<OrganizationMember>[] = [
     id: "createdAt",
     header: "Member since",
     cell({ row }) {
-      return row.original.createdAt.toLocaleString();
+      return row.original.createdAt.toDateString();
     },
   },
   {

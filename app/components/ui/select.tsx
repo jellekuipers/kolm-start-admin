@@ -5,15 +5,14 @@ import {
   ListBoxItem as AriaListBoxItem,
   Select as AriaSelect,
   SelectValue as AriaSelectValue,
-  composeRenderProps,
   type SelectProps as AriaSelectProps,
   type ListBoxItemProps,
 } from "react-aria-components";
+import { twMerge } from "tailwind-merge";
 import { tv } from "tailwind-variants";
 
 import { Description, FieldError, Label } from "~/components/ui/field";
 import { Popover } from "~/components/ui/popover";
-import { focusRing } from "~/utils/classes";
 
 interface SelectProps<T extends object>
   extends Omit<AriaSelectProps<T>, "children"> {
@@ -26,15 +25,11 @@ interface SelectProps<T extends object>
 }
 
 const selectStyles = tv({
-  extend: focusRing,
-  base: "flex items-center justify-between gap-2",
+  base: "flex items-center justify-between gap-2 disabled:border-slate-100 disabled:text-slate-100",
   variants: {
     variant: {
       default: "rounded border border-slate-200 px-3 py-1.5",
       unstyled: "w-fit rounded",
-    },
-    isDisabled: {
-      true: "border-slate-200 text-slate-200",
     },
   },
   defaultVariants: {
@@ -71,22 +66,13 @@ export function Select<T extends object>({
   );
 }
 
-const selectItemStyles = tv({
-  extend: focusRing,
-  base: "flex cursor-default items-center gap-2 rounded px-3 py-1.5 font-medium",
-  variants: {
-    isHovered: {
-      true: "bg-indigo-700 text-white",
-    },
-  },
-});
-
-export function SelectItem({ className, ...props }: ListBoxItemProps) {
+export function SelectItem(props: ListBoxItemProps) {
   return (
     <AriaListBoxItem
       {...props}
-      className={composeRenderProps(className, (className, renderProps) =>
-        selectItemStyles({ ...renderProps, className }),
+      className={twMerge(
+        "flex cursor-default items-center gap-2 rounded px-3 py-1.5",
+        "hover:bg-indigo-700 hover:text-white",
       )}
     />
   );

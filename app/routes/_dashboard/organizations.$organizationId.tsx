@@ -42,7 +42,7 @@ function RouteComponent() {
             <div className="flex flex-wrap items-center gap-4">
               <Avatar
                 fallback="@"
-                size="20"
+                size="16"
                 src={organization.logo ?? undefined}
               />
               <div className="space-y-0">

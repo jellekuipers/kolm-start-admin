@@ -5,15 +5,14 @@ import {
   MenuItem as AriaMenuItem,
   MenuTrigger as AriaMenuTrigger,
   Separator as AriaSeparator,
-  composeRenderProps,
   type MenuProps as AriaMenuProps,
   type MenuItemProps,
   type MenuTriggerProps,
+  type SeparatorProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 
 import { Popover } from "~/components/ui/popover";
-import { focusRing } from "~/utils/classes";
 
 interface MenuProps<T>
   extends AriaMenuProps<T>,
@@ -22,8 +21,8 @@ interface MenuProps<T>
 export function Menu<T extends object>(props: MenuProps<T>) {
   return (
     <Popover placement="bottom right">
-      <AriaDialog>
-        <AriaMenu {...props} className="outline-hidden" />
+      <AriaDialog className="outline-none">
+        <AriaMenu {...props} />
       </AriaDialog>
     </Popover>
   );
@@ -41,34 +40,17 @@ export function MenuHeader(
 }
 
 const menuItemStyles = tv({
-  extend: focusRing,
-  base: "flex h-9 cursor-default items-center gap-3 rounded px-3 font-medium",
-  variants: {
-    isHovered: {
-      true: "bg-indigo-700 text-white",
-    },
-  },
+  base: [
+    "flex h-9 cursor-default items-center gap-3 rounded px-3",
+    "hover:bg-indigo-700 hover:text-white",
+  ],
 });
 
-export function MenuItem({ className, ...props }: MenuItemProps) {
-  const textValue =
-    props.textValue ||
-    (typeof props.children === "string" ? props.children : undefined);
-
-  return (
-    <AriaMenuItem
-      {...props}
-      className={composeRenderProps(className, (className, renderProps) =>
-        menuItemStyles({ ...renderProps, className }),
-      )}
-      textValue={textValue}
-    />
-  );
+export function MenuItem(props: MenuItemProps) {
+  return <AriaMenuItem {...props} className={menuItemStyles} />;
 }
 
-export function MenuSeparator(
-  props: React.HTMLAttributes<HTMLElement> & React.RefAttributes<object>,
-) {
+export function MenuSeparator(props: SeparatorProps) {
   return <AriaSeparator {...props} className="my-2 h-px bg-slate-200" />;
 }
 

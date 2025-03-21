@@ -25,8 +25,8 @@ export function DataTableColumnFilter<TData>({
       <Button color="secondary">
         Column visibility <CaretDownIcon />
       </Button>
-      <Popover className="w-48 p-4">
-        <Dialog className="relative outline-hidden">
+      <Popover>
+        <Dialog>
           <GridList
             className="space-y-1"
             items={columns}

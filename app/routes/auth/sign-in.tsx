@@ -93,7 +93,7 @@ function RouteComponent() {
                   return (
                     <div className="space-y-1">
                       <div className="mb-1 flex items-baseline justify-between">
-                        <Label htmlFor="password">Password</Label>
+                        <Label>Password</Label>
                         <Link className="font-medium" to="/">
                           Forgot password?
                         </Link>

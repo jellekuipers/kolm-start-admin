@@ -1,68 +1,36 @@
 import {
   FieldError as AriaFieldError,
+  Group as AriaGroup,
   Input as AriaInput,
   Label as AriaLabel,
-  composeRenderProps,
-  FieldErrorProps,
-  Group,
-  GroupProps,
-  InputProps,
-  LabelProps,
-  Text,
-  TextProps,
+  Text as AriaText,
+  type FieldErrorProps,
+  type GroupProps,
+  type InputProps,
+  type LabelProps,
+  type TextProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
-import { tv } from "tailwind-variants";
 
-import { composeTailwindRenderProps, focusRing } from "~/utils/classes";
-
-export function Description({ className, ...props }: TextProps) {
+export function Description(props: TextProps) {
   return (
-    <Text
+    <AriaText
       {...props}
       slot="description"
-      className={twMerge("text-sm text-slate-600", className)}
+      className="text-sm text-slate-600"
     />
   );
 }
 
-export function FieldError({ className, ...props }: FieldErrorProps) {
-  return (
-    <AriaFieldError
-      {...props}
-      className={composeTailwindRenderProps(className, "text-sm text-red-600")}
-    />
-  );
+export function FieldError(props: FieldErrorProps) {
+  return <AriaFieldError {...props} className="text-sm text-red-600" />;
 }
 
-export const fieldBorderStyles = tv({
-  variants: {
-    isFocusWithin: {
-      false: "border-slate-300",
-      true: "border-slate-600",
-    },
-    isInvalid: {
-      true: "border-red-600",
-    },
-    isDisabled: {
-      true: "border-slate-200",
-    },
-  },
-});
-
-export const fieldGroupStyles = tv({
-  extend: focusRing,
-  base: "group flex h-9 items-center overflow-hidden rounded border bg-white",
-  variants: fieldBorderStyles.variants,
-});
-
-export function FieldGroup({ className, ...props }: GroupProps) {
+export function FieldGroup(props: GroupProps) {
   return (
-    <Group
+    <AriaGroup
       {...props}
-      className={composeRenderProps(className, (className, renderProps) =>
-        fieldGroupStyles({ ...renderProps, className }),
-      )}
+      className="group flex h-9 items-center overflow-hidden rounded border border-slate-300 bg-white"
     />
   );
 }
@@ -71,22 +39,16 @@ export function Input({ className, ...props }: InputProps) {
   return (
     <AriaInput
       {...props}
-      className={composeTailwindRenderProps(
-        className,
-        "h-9 min-w-0 bg-white px-3 outline-0 disabled:text-slate-200",
-      )}
+      className={twMerge("h-9 min-w-0 bg-white px-3", className)}
     />
   );
 }
 
-export function Label({ className, ...props }: LabelProps) {
+export function Label(props: LabelProps) {
   return (
     <AriaLabel
       {...props}
-      className={twMerge(
-        "w-fit cursor-default font-medium text-slate-600",
-        className,
-      )}
+      className="w-fit cursor-default font-medium text-slate-600"
     />
   );
 }

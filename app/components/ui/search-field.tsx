@@ -5,8 +5,8 @@ import {
 import {
   Button as AriaButton,
   SearchField as AriaSearchField,
-  SearchFieldProps as AriaSearchFieldProps,
-  ValidationResult,
+  type SearchFieldProps as AriaSearchFieldProps,
+  type ValidationResult,
 } from "react-aria-components";
 
 import {
@@ -16,7 +16,6 @@ import {
   Input,
   Label,
 } from "~/components/ui/field";
-import { composeTailwindRenderProps } from "~/utils/classes";
 
 export interface SearchFieldProps extends AriaSearchFieldProps {
   label?: string;
@@ -26,7 +25,6 @@ export interface SearchFieldProps extends AriaSearchFieldProps {
 
 export function SearchField({
   label,
-  className,
   description,
   errorMessage,
   ...props
@@ -34,10 +32,7 @@ export function SearchField({
   return (
     <AriaSearchField
       {...props}
-      className={composeTailwindRenderProps(
-        className,
-        "group flex min-w-[40px] flex-col gap-1",
-      )}
+      className="group flex min-w-[40px] flex-col gap-1"
     >
       {label && <Label>{label}</Label>}
       <FieldGroup>
@@ -46,7 +41,7 @@ export function SearchField({
           className="ml-2 fill-slate-500 group-disabled:fill-slate-200"
         />
         <Input
-          className="[&::-webkit-search-cancel-button]:hidden"
+          className="outline-none [&::-webkit-search-cancel-button]:hidden"
           placeholder="Search.."
         />
         <AriaButton className="mr-1 w-6 group-empty:invisible">

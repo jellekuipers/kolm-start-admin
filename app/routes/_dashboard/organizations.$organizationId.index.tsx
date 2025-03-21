@@ -58,7 +58,7 @@ function RouteComponent() {
       </DataListItem>
       <DataListItem>
         <DataListLabel>Created at</DataListLabel>
-        <DataListValue>{organization.createdAt.toLocaleString()}</DataListValue>
+        <DataListValue>{organization.createdAt.toDateString()}</DataListValue>
       </DataListItem>
       <DataListItem>
         <DataListLabel>Owner</DataListLabel>

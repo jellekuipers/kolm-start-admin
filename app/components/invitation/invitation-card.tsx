@@ -82,7 +82,7 @@ export function InvitationCard({ invitation }: InvitationCardProps) {
         </DataListItem>
         <DataListItem>
           <DataListLabel>Expires</DataListLabel>
-          <DataListValue>{invitation.expiresAt.toLocaleString()}</DataListValue>
+          <DataListValue>{invitation.expiresAt.toDateString()}</DataListValue>
         </DataListItem>
         <DataListItem>
           <DataListLabel>Status</DataListLabel>
