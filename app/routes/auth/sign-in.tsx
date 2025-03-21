@@ -55,14 +55,11 @@ function RouteComponent() {
   });
 
   return (
-    <div
-      className="flex flex-col items-center justify-center gap-6 p-4"
-      style={{ backgroundColor: "var(--slate-1)", minHeight: "inherit" }}
-    >
-      <Logo size={48} />
-      <Card>
+    <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-slate-50 p-4">
+      <Logo size={40} />
+      <Card className="w-96 p-4">
         <div className="space-y-4">
-          <Heading level={3}>Sign in</Heading>
+          <Heading level={2}>Sign in</Heading>
           <form
             onSubmit={(event) => {
               event.preventDefault();
