@@ -11,7 +11,7 @@ interface ButtonProps extends AriaButtonProps {
 }
 
 const buttonStyles = tv({
-  base: "flex h-9 items-center gap-3 rounded border px-3 font-medium",
+  base: "flex h-8 items-center gap-2 rounded border px-2 text-sm font-medium",
   variants: {
     color: {
       primary: "",
@@ -53,7 +53,7 @@ const buttonStyles = tv({
     {
       variant: "outline",
       color: "secondary",
-      class: "border-indigo-300 bg-transparent text-indigo-700",
+      class: "border-indigo-200 bg-transparent text-indigo-700",
     },
     {
       variant: "outline",

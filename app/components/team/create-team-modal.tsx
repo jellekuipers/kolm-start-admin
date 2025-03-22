@@ -106,7 +106,7 @@ export function CreateTeamModal({ organizationId }: CreateTeamModalProps) {
               <Subscribe
                 selector={(state) => [state.canSubmit, state.isSubmitting]}
                 children={([canSubmit, isSubmitting]) => (
-                  <div className="flex justify-end gap-3">
+                  <div className="flex justify-end gap-2">
                     <Button color="tertiary" slot="close">Cancel</Button>
                     <Button
                       isDisabled={!canSubmit}

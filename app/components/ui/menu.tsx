@@ -34,7 +34,7 @@ export function MenuHeader(
   return (
     <AriaHeader
       {...props}
-      className="px-3 py-1.5 text-sm font-medium text-slate-600"
+      className="px-2 py-1 text-sm font-medium text-slate-600"
     />
   );
 }
@@ -47,7 +47,7 @@ export function MenuItem({
     <AriaMenuItem
       {...props}
       className={twMerge(
-        "flex h-9 cursor-default items-center gap-3 rounded px-3",
+        "flex h-8 cursor-default items-center gap-2 rounded px-2 text-sm",
         color === "indigo" && "hover:bg-indigo-700 hover:text-white",
         color === "red" && "text-red-600 hover:bg-red-600 hover:text-white",
       )}

@@ -21,7 +21,7 @@ export function DataList(props: DataListProps) {
     <dl
       {...props}
       className={twMerge(
-        "flex flex-col gap-4",
+        "flex flex-col gap-2 text-sm",
         "md:grid md:auto-rows-fr md:grid-cols-[auto_1fr]",
       )}
     />
@@ -33,7 +33,7 @@ export function DataListItem(props: DataListItemProps) {
     <div
       {...props}
       className={twMerge(
-        "align-center flex flex-col gap-2",
+        "items-center flex flex-col gap-2",
         "md:col-span-2 md:grid md:grid-cols-subgrid",
       )}
     />
@@ -41,7 +41,7 @@ export function DataListItem(props: DataListItemProps) {
 }
 
 export function DataListLabel(props: DataListLabelProps) {
-  return <dt {...props} className="min-w-32 text-slate-600" />;
+  return <dt {...props} className="min-w-22 text-slate-600" />;
 }
 
 export function DataListValue(props: DataListValueProps) {

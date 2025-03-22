@@ -10,7 +10,7 @@ export function Heading({ level, ...props }: HeadingProps) {
       {...props}
       className={twMerge(
         "font-bold",
-        level === 1 && "text-3xl",
+        level === 1 && "text-2xl",
         level === 2 && "text-xl",
         level === 3 && "text-lg",
       )}

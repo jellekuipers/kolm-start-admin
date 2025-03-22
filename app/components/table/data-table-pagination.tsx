@@ -16,7 +16,7 @@ export function DataTablePagination<TData>({
   table,
 }: DataTablePaginationProps<TData>) {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-1">
       <IconButton
         isDisabled={!table.getCanPreviousPage()}
         onPress={() => table.firstPage()}
@@ -29,7 +29,7 @@ export function DataTablePagination<TData>({
       >
         <CaretLeftIcon size={16} />
       </IconButton>
-      <span className="font-semibold tabular-nums">
+      <span className="text-sm font-semibold tabular-nums px-2">
         {(table.getState().pagination.pageIndex + 1).toString()} of{" "}
         {table.getPageCount().toString()}
       </span>

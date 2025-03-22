@@ -28,7 +28,7 @@ export function Tab(props: TabProps) {
     <AriaTab
       {...props}
       className={twMerge(
-        "flex cursor-default items-center gap-2 rounded px-3 py-1.5 font-medium",
+        "flex cursor-default items-center gap-2 rounded px-2 py-1 font-medium",
         "hover:bg-slate-100",
         "selected:bg-slate-100",
       )}

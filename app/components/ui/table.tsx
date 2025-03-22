@@ -45,7 +45,7 @@ export function TableCell({ className, ...props }: CellProps) {
     <AriaCell
       {...props}
       className={twMerge(
-        "px-4 py-2 align-middle whitespace-nowrap",
+        "px-4 py-2 align-middle text-sm whitespace-nowrap",
         className as string,
       )}
     />
@@ -71,7 +71,7 @@ export function TableHeader<T extends object>({
   return (
     <AriaTableHeader
       {...props}
-      className={twMerge("align-middle font-bold", className as string)}
+      className={twMerge("align-middle text-sm font-bold", className as string)}
     />
   );
 }

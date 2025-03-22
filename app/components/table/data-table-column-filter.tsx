@@ -37,7 +37,7 @@ export function DataTableColumnFilter<TData>({
             {(column) => (
               <GridListItem
                 className={twMerge(
-                  "flex h-9 items-center gap-3 rounded border border-transparent px-2 font-medium",
+                  "flex h-8 items-center gap-2 rounded border border-transparent px-2 text-sm font-medium",
                   "hover:bg-indigo-50",
                   "selected:bg-indigo-50",
                 )}

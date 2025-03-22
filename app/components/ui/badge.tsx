@@ -9,7 +9,7 @@ export function Badge({ children, color = "indigo" }: BadgeProps) {
   return (
     <div
       className={twMerge(
-        "inline-flex rounded px-2 py-0.5 text-sm font-medium",
+        "inline-flex rounded px-1.5 py-0.5 text-xs font-medium",
         color === "green" && "bg-green-50 text-green-700",
         color === "indigo" && "bg-indigo-50 text-indigo-700",
         color === "pink" && "bg-pink-50 text-pink-700",

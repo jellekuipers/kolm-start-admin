@@ -30,7 +30,7 @@ export function FieldGroup(props: GroupProps) {
   return (
     <AriaGroup
       {...props}
-      className="group flex h-9 items-center overflow-hidden rounded border border-slate-300 bg-white"
+      className="group flex h-8 items-center overflow-hidden rounded border border-slate-200 bg-white"
     />
   );
 }
@@ -39,7 +39,7 @@ export function Input({ className, ...props }: InputProps) {
   return (
     <AriaInput
       {...props}
-      className={twMerge("h-9 min-w-0 bg-white px-3", className as string)}
+      className={twMerge("h-8 min-w-0 bg-white px-2", className as string)}
     />
   );
 }
@@ -48,7 +48,7 @@ export function Label(props: LabelProps) {
   return (
     <AriaLabel
       {...props}
-      className="w-fit cursor-default font-medium text-slate-600"
+      className="w-fit cursor-default text-sm font-medium text-slate-600"
     />
   );
 }

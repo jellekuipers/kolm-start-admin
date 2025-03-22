@@ -18,7 +18,7 @@ export function Callout({ color = "indigo", ...props }: CalloutProps) {
     <div
       {...props}
       className={twMerge(
-        "flex items-center gap-4 rounded p-4",
+        "flex items-center gap-2 rounded p-4 text-sm",
         color === "indigo" && "bg-indigo-50 text-indigo-700",
         color === "red" && "bg-red-50 text-red-600",
       )}
