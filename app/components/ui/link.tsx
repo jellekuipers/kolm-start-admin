@@ -10,13 +10,15 @@ import {
 } from "react-aria";
 import { tv } from "tailwind-variants";
 
-interface AriaLinkProps extends Omit<AriaLinkOptions, "href"> {
+export interface AriaLinkProps extends Omit<AriaLinkOptions, "href"> {
   className?: string;
   children?: React.ReactNode;
 }
+
 const linkStyles = tv({
   base: ["flex items-center gap-2 text-sm text-indigo-700", "hover:underline"],
 });
+
 const AriaLinkComponent = forwardRef<HTMLAnchorElement, AriaLinkProps>(
   ({ className, ...props }, forwardedRef) => {
     const ref = useObjectRef(forwardedRef);

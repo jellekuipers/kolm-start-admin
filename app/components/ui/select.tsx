@@ -39,7 +39,7 @@ export function Select<T extends object>({
       {label ? <Label>{label}</Label> : null}
       <AriaButton
         className={twMerge(
-          "flex items-center justify-between gap-2 rounded border border-slate-200 px-2 py-1",
+          "flex h-8 items-center justify-between gap-2 rounded border border-slate-200 px-2 py-1 text-sm",
           "disabled:border-slate-100 disabled:bg-slate-50 disabled:text-slate-200",
         )}
       >

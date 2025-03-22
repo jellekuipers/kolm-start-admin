@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { TabNav, TabNavLink } from "~/components/ui/tab-nav";
 
 interface OrganizationTabNavProps {
   organizationId: string;
@@ -8,29 +8,26 @@ export function OrganizationTabNav({
   organizationId,
 }: OrganizationTabNavProps) {
   return (
-    <div className="flex gap-2">
-      <Link
+    <TabNav>
+      <TabNavLink
         activeOptions={{ exact: true }}
-        activeProps={{ className: "font-bold" }}
         params={{ organizationId }}
         to="/organizations/$organizationId"
       >
         Profile
-      </Link>
-      <Link
-        activeProps={{ className: "font-bold" }}
+      </TabNavLink>
+      <TabNavLink
         params={{ organizationId }}
         to="/organizations/$organizationId/members"
       >
         Members
-      </Link>
-      <Link
-        activeProps={{ className: "font-bold" }}
+      </TabNavLink>
+      <TabNavLink
         params={{ organizationId }}
         to="/organizations/$organizationId/teams"
       >
         Teams
-      </Link>
-    </div>
+      </TabNavLink>
+    </TabNav>
   );
 }

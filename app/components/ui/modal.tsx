@@ -30,5 +30,5 @@ export function Modal(props: ModalOverlayProps) {
 }
 
 export function ModalHeading(props: HeadingProps) {
-  return <AriaHeading {...props} className="text-2xl font-bold" />;
+  return <AriaHeading {...props} className="text-xl font-bold" />;
 }

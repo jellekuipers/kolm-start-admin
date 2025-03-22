@@ -32,10 +32,7 @@ export function MenuHeader(
   props: React.HTMLAttributes<HTMLElement> & React.RefAttributes<object>,
 ) {
   return (
-    <AriaHeader
-      {...props}
-      className="px-2 py-1 text-sm font-medium text-slate-600"
-    />
+    <AriaHeader {...props} className="mb-1 px-2 py-1 text-sm font-medium" />
   );
 }
 
