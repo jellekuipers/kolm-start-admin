@@ -136,7 +136,7 @@ export function InviteMemberForm({
         />
         <Separator />
         <div className="flex items-center gap-2">
-          <span className="text-lg font-medium">Team</span>
+          <span className="font-medium">Team</span>
           <Badge>optional</Badge>
         </div>
         <Field
