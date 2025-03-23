@@ -36,6 +36,11 @@ export function MenuHeader(
   );
 }
 
+const menuItemColors = {
+  indigo: "hover:bg-indigo-700 hover:text-white",
+  red: "text-red-600 hover:bg-red-600 hover:text-white",
+};
+
 export function MenuItem({
   color = "indigo",
   ...props
@@ -45,8 +50,7 @@ export function MenuItem({
       {...props}
       className={twMerge(
         "flex h-8 cursor-default items-center gap-2 rounded px-2 text-sm",
-        color === "indigo" && "hover:bg-indigo-700 hover:text-white",
-        color === "red" && "text-red-600 hover:bg-red-600 hover:text-white",
+        menuItemColors[color],
       )}
     />
   );
