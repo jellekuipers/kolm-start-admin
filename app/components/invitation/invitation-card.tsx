@@ -13,6 +13,7 @@ import {
   DataListLabel,
   DataListValue,
 } from "~/components/ui/data-list";
+import { Separator } from "~/components/ui/separator";
 import { acceptInvitation, rejectInvitation } from "~/lib/invitation";
 import { Invitation } from "~/types";
 
@@ -65,7 +66,7 @@ export function InvitationCard({ invitation }: InvitationCardProps) {
 
   return (
     <div className="space-y-4">
-      <DataList>
+      <DataList className="gap-4">
         <DataListItem>
           <DataListLabel>Organization</DataListLabel>
           <DataListValue>{invitation.organizationName}</DataListValue>
@@ -100,31 +101,34 @@ export function InvitationCard({ invitation }: InvitationCardProps) {
         </Callout>
       ) : null}
       {invitation.status === "pending" ? (
-        <div className="flex justify-end gap-2">
-          <Button
-            color="red"
-            isDisabled={rejectInvitationMutation.isPending}
-            isPending={rejectInvitationMutation.isPending}
-            onPress={async () =>
-              await rejectInvitationMutation.mutateAsync({
-                invitationId: invitation.id,
-              })
-            }
-            variant="outline"
-          >
-            Reject
-          </Button>
-          <Button
-            isDisabled={acceptInvitationMutation.isPending}
-            isPending={acceptInvitationMutation.isPending}
-            onPress={async () =>
-              await acceptInvitationMutation.mutateAsync({
-                invitationId: invitation.id,
-              })
-            }
-          >
-            Accept
-          </Button>
+        <div className="flex flex-col gap-4">
+          <Separator />
+          <div className="flex justify-end gap-2">
+            <Button
+              color="red"
+              isDisabled={rejectInvitationMutation.isPending}
+              isPending={rejectInvitationMutation.isPending}
+              onPress={async () =>
+                await rejectInvitationMutation.mutateAsync({
+                  invitationId: invitation.id,
+                })
+              }
+              variant="outline"
+            >
+              Reject invitation
+            </Button>
+            <Button
+              isDisabled={acceptInvitationMutation.isPending}
+              isPending={acceptInvitationMutation.isPending}
+              onPress={async () =>
+                await acceptInvitationMutation.mutateAsync({
+                  invitationId: invitation.id,
+                })
+              }
+            >
+              Accept invitation
+            </Button>
+          </div>
         </div>
       ) : null}
     </div>

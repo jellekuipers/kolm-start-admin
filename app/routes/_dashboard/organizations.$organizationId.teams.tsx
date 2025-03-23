@@ -59,11 +59,10 @@ function RouteComponent() {
   const columns = useMemo(() => dataTableColumns, []);
 
   return (
-    <div className="space-y-4">
-      <div className="flex justify-end">
-        <CreateTeamModal organizationId={organizationId} />
-      </div>
-      <DataTable columns={columns} data={teams} />
-    </div>
+    <DataTable
+      actions={<CreateTeamModal organizationId={organizationId} />}
+      columns={columns}
+      data={teams}
+    />
   );
 }

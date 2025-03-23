@@ -5,7 +5,7 @@ import { ColumnDef } from "@tanstack/react-table";
 
 import { MemberActions } from "~/components/member/member-actions";
 import { UpdateMemberRole } from "~/components/member/update-member-role";
-import { DataTableSimple } from "~/components/table/data-table-simple";
+import { DataTable } from "~/components/table/data-table";
 import { Avatar } from "~/components/ui/avatar";
 import { Link } from "~/components/ui/link";
 import { AddUserToOrganizationModal } from "~/components/user/add-user-to-organization-modal";
@@ -97,11 +97,10 @@ function RouteComponent() {
   const columns = useMemo(() => dataTableColumns, []);
 
   return (
-    <div className="space-y-4">
-      <div className="flex justify-end">
-        <AddUserToOrganizationModal userId={userId} />
-      </div>
-      <DataTableSimple columns={columns} data={members} />
-    </div>
+    <DataTable
+      actions={<AddUserToOrganizationModal userId={userId} />}
+      columns={columns}
+      data={members}
+    />
   );
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Empty as EmptyIcon } from "@phosphor-icons/react";
 import { RankingInfo, rankItem } from "@tanstack/match-sorter-utils";
 import {
@@ -39,6 +39,7 @@ declare module "@tanstack/react-table" {
 }
 
 interface DataTableProps<TData, TValue> {
+  actions?: React.ReactNode;
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   defaultColumnVisibility?: Record<string, boolean>;
@@ -55,6 +56,7 @@ const fuzzyFilter: FilterFn<unknown> = (row, columnId, value, addMeta) => {
 };
 
 export function DataTable<TData, TValue>({
+  actions,
   columns,
   data,
   defaultColumnVisibility,
@@ -99,6 +101,7 @@ export function DataTable<TData, TValue>({
         {defaultColumnVisibility ? (
           <DataTableColumnFilter table={table} />
         ) : null}
+        {actions}
       </div>
       {table.getRowModel().rows?.length ? (
         <div className="space-y-4">

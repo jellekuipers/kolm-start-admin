@@ -21,7 +21,7 @@ export function TextField({
   return (
     <AriaTextField {...props} className="flex flex-col gap-1">
       {label ? <Label>{label}</Label> : null}
-      <Input className="rounded border border-slate-200" />
+      <Input className="rounded border border-slate-300" />
       {description ? <Description>{description}</Description> : null}
       <FieldError>{errorMessage}</FieldError>
     </AriaTextField>

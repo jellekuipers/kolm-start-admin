@@ -99,11 +99,10 @@ function RouteComponent() {
   if (!organization) return null;
 
   return (
-    <div className="space-y-4">
-      <div className="flex justify-end">
-        <AddMemberToOrganizationModal organizationId={organizationId} />
-      </div>
-      <DataTable columns={columns} data={organization.members} />
-    </div>
+    <DataTable
+      actions={<AddMemberToOrganizationModal organizationId={organizationId} />}
+      columns={columns}
+      data={organization.members}
+    />
   );
 }

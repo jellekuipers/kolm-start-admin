@@ -30,7 +30,7 @@ export function FieldGroup(props: GroupProps) {
   return (
     <AriaGroup
       {...props}
-      className="group flex h-8 items-center overflow-hidden rounded border border-slate-200 bg-white"
+      className="group flex h-8 items-center overflow-hidden rounded border border-slate-300 bg-white"
     />
   );
 }

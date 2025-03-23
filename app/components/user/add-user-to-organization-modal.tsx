@@ -1,6 +1,5 @@
 /* eslint-disable react/no-children-prop */
 import { useState } from "react";
-import { Plus as PlusIcon } from "@phosphor-icons/react";
 import { useForm } from "@tanstack/react-form";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
@@ -88,10 +87,7 @@ export function AddUserToOrganizationModal({
 
   return (
     <>
-      <Button onPress={() => setOpen(true)}>
-        <PlusIcon size={16} />
-        Add to organization
-      </Button>
+      <Button onPress={() => setOpen(true)}>Add to organization</Button>
       <Modal isDismissable isOpen={open} onOpenChange={onOpenChangeHandler}>
         <Dialog>
           <ModalHeading slot="title">Add to organization</ModalHeading>
@@ -148,7 +144,9 @@ export function AddUserToOrganizationModal({
                 selector={(state) => [state.canSubmit, state.isSubmitting]}
                 children={([canSubmit, isSubmitting]) => (
                   <div className="flex justify-end gap-2">
-                    <Button color="slate" slot="close" variant="light">Cancel</Button>
+                    <Button color="slate" slot="close" variant="light">
+                      Cancel
+                    </Button>
                     <Button
                       isDisabled={!canSubmit}
                       isPending={isSubmitting}

@@ -16,7 +16,12 @@ import { twMerge } from "tailwind-merge";
 
 export function Table({ className, ...props }: TableProps) {
   return (
-    <div className="-mx-4 overflow-x-auto md:mx-0">
+    <div
+      className={twMerge(
+        "-mx-4 overflow-x-auto",
+        "lg:mx-0 lg:overflow-x-visible",
+      )}
+    >
       <AriaTable
         {...props}
         className={twMerge("w-full", className as string)}
@@ -33,7 +38,7 @@ export function TableBody<T extends object>({
     <AriaTableBody
       {...props}
       className={twMerge(
-        "divide-y divide-slate-200 border-y border-slate-200 align-middle",
+        "divide-y divide-slate-300 border-y border-slate-300 align-middle",
         className as string,
       )}
     />

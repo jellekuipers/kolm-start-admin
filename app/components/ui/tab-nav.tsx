@@ -15,7 +15,7 @@ interface TabNavLinkProps {
 }
 
 export function TabNav(props: TabNavProps) {
-  return <nav {...props} className="flex border-b border-slate-200" />;
+  return <nav {...props} className="flex border-b border-slate-300" />;
 }
 
 export function TabNavLink({ children, ...props }: TabNavLinkProps) {

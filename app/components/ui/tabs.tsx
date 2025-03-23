@@ -15,7 +15,7 @@ export function Tabs(props: TabsProps) {
 }
 
 export function TabList<T extends object>(props: TabListProps<T>) {
-  return <AriaTabList {...props} className="flex border-b border-slate-200" />;
+  return <AriaTabList {...props} className="flex border-b border-slate-300" />;
 }
 
 export function Tab({ children, ...props }: TabProps) {
