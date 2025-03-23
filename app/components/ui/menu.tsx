@@ -37,14 +37,14 @@ export function MenuHeader(
 }
 
 const menuItemColors = {
-  indigo: "hover:bg-indigo-700 hover:text-white",
+  default: "text-slate-800 hover:bg-indigo-700 hover:text-white",
   red: "text-red-600 hover:bg-red-600 hover:text-white",
 };
 
 export function MenuItem({
-  color = "indigo",
+  color = "default",
   ...props
-}: MenuItemProps & { color?: "indigo" | "red" }) {
+}: MenuItemProps & { color?: "default" | "red" }) {
   return (
     <AriaMenuItem
       {...props}
