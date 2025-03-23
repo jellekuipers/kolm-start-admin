@@ -29,7 +29,7 @@ export function Tab({ children, ...props }: TabProps) {
     >
       <span
         className={twMerge(
-          "rounded px-2 py-1 text-sm font-medium text-slate-800",
+          "flex h-8 items-center rounded px-2 text-sm font-medium text-slate-800",
           "group-hover:bg-slate-100",
         )}
       >

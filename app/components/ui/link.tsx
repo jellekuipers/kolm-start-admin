@@ -26,16 +26,16 @@ const AriaLinkComponent = forwardRef<HTMLAnchorElement, AriaLinkProps>(
     return (
       <a
         {...mergeProps(linkProps, hoverProps, focusProps, props)}
-        ref={ref}
-        data-hovered={isHovered || undefined}
-        data-pressed={isPressed || undefined}
-        data-focus-visible={isFocusVisible || undefined}
-        data-focused={isFocused || undefined}
         className={twMerge(
           "flex items-center gap-2 text-sm text-indigo-700",
           "hover:underline",
           className,
         )}
+        data-focus-visible={isFocusVisible || undefined}
+        data-focused={isFocused || undefined}
+        data-hovered={isHovered || undefined}
+        data-pressed={isPressed || undefined}
+        ref={ref}
       />
     );
   },

@@ -30,7 +30,7 @@ export function TabNavLink({ children, ...props }: TabNavLinkProps) {
     >
       <span
         className={twMerge(
-          "rounded px-2 py-1 font-medium text-slate-800",
+          "flex h-8 items-center rounded px-2 text-sm font-medium text-slate-800",
           "group-hover:bg-slate-100",
         )}
       >

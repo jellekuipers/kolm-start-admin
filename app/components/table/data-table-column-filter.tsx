@@ -23,11 +23,11 @@ export function DataTableColumnFilter<TData>({
 
   return (
     <AriaDialogTrigger>
-      <Button color="indigo" variant="light">
+      <Button color="indigo" variant="outline">
         Column visibility <CaretDownIcon />
       </Button>
       <Popover>
-        <Dialog>
+        <Dialog aria-label="Column visibility">
           <GridList
             className="space-y-[1px]"
             items={columns}

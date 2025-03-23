@@ -39,7 +39,7 @@ export function Select<T extends object>({
       {label ? <Label>{label}</Label> : null}
       <AriaButton
         className={twMerge(
-          "flex h-8 items-center justify-between gap-2 rounded border border-slate-200 px-2 py-1 text-sm",
+          "flex h-8 items-center justify-between gap-2 rounded border border-slate-200 px-2 text-sm",
           "disabled:border-slate-100 disabled:bg-slate-50 disabled:text-slate-200",
         )}
       >
@@ -64,7 +64,7 @@ export function SelectItem(props: ListBoxItemProps) {
     <AriaListBoxItem
       {...props}
       className={twMerge(
-        "flex cursor-default items-center gap-2 rounded px-2 py-1 text-sm",
+        "flex h-8 cursor-default items-center gap-2 rounded px-2 text-sm",
         "hover:bg-indigo-700 hover:text-white",
       )}
     />
