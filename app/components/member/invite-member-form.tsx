@@ -164,7 +164,7 @@ export function InviteMemberForm({
           selector={(state) => [state.canSubmit, state.isSubmitting]}
           children={([canSubmit, isSubmitting]) => (
             <div className="flex justify-end gap-2">
-              <Button color="tertiary" slot="close">
+              <Button color="slate" slot="close" variant="light">
                 Cancel
               </Button>
               <Button

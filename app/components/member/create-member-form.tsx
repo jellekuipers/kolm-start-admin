@@ -147,7 +147,7 @@ export function CreateMemberForm({
           selector={(state) => [state.canSubmit, state.isSubmitting]}
           children={([canSubmit, isSubmitting]) => (
             <div className="flex justify-end gap-2">
-              <Button color="tertiary" slot="close">Cancel</Button>
+              <Button color="slate" slot="close" variant="light">Cancel</Button>
               <Button
                 isDisabled={!canSubmit}
                 isPending={isSubmitting}

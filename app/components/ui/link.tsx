@@ -8,16 +8,12 @@ import {
   useObjectRef,
   type AriaLinkOptions,
 } from "react-aria";
-import { tv } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 
 export interface AriaLinkProps extends Omit<AriaLinkOptions, "href"> {
   className?: string;
   children?: React.ReactNode;
 }
-
-const linkStyles = tv({
-  base: ["flex items-center gap-2 text-sm text-indigo-700", "hover:underline"],
-});
 
 const AriaLinkComponent = forwardRef<HTMLAnchorElement, AriaLinkProps>(
   ({ className, ...props }, forwardedRef) => {
@@ -35,7 +31,11 @@ const AriaLinkComponent = forwardRef<HTMLAnchorElement, AriaLinkProps>(
         data-pressed={isPressed || undefined}
         data-focus-visible={isFocusVisible || undefined}
         data-focused={isFocused || undefined}
-        className={linkStyles({ className })}
+        className={twMerge(
+          "flex items-center gap-2 text-sm text-indigo-700",
+          "hover:underline",
+          className,
+        )}
       />
     );
   },

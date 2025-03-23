@@ -66,7 +66,7 @@ export function OrganizationActions({
             <DotsThreeVerticalIcon size={20} />
           </IconButton>
         ) : (
-          <Button color="secondary">
+          <Button color="indigo" variant="light">
             Actions <CaretDownIcon size={16} />
           </Button>
         )}

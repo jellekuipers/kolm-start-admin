@@ -1,83 +1,45 @@
 import {
   Button as AriaButton,
-  composeRenderProps,
   type ButtonProps as AriaButtonProps,
 } from "react-aria-components";
-import { tv } from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 
 interface ButtonProps extends AriaButtonProps {
-  color?: "primary" | "secondary" | "tertiary" | "destructive";
-  variant?: "default" | "outline";
+  color?: "indigo" | "slate" | "red";
+  variant?: "default" | "light" | "outline";
 }
 
-const buttonStyles = tv({
-  base: "flex h-8 items-center gap-2 rounded border px-2 text-sm font-medium",
-  variants: {
-    color: {
-      primary: "",
-      secondary: "",
-      tertiary: "",
-      destructive: "",
-    },
-    variant: {
-      default: "",
-      outline: "",
-    },
+const buttonStyles = {
+  default: {
+    indigo: "border-indigo-700 bg-indigo-700 text-white",
+    slate: "border-slate-700 bg-slate-700 text-white",
+    red: "border-red-600 bg-red-600 text-white",
   },
-  compoundVariants: [
-    {
-      variant: "default",
-      color: "primary",
-      class: "border-indigo-700 bg-indigo-700 text-white",
-    },
-    {
-      variant: "default",
-      color: "secondary",
-      class: "border-indigo-50 bg-indigo-50 text-indigo-700",
-    },
-    {
-      variant: "default",
-      color: "tertiary",
-      class: "border-slate-100 bg-slate-100 text-slate-700",
-    },
-    {
-      variant: "default",
-      color: "destructive",
-      class: "border-red-600 bg-red-600 text-white",
-    },
-    {
-      variant: "outline",
-      color: "primary",
-      class: "border-indigo-700 bg-transparent text-indigo-700",
-    },
-    {
-      variant: "outline",
-      color: "secondary",
-      class: "border-indigo-200 bg-transparent text-indigo-700",
-    },
-    {
-      variant: "outline",
-      color: "tertiary",
-      class: "border-slate-200 bg-transparent text-slate-700",
-    },
-    {
-      variant: "outline",
-      color: "destructive",
-      class: "border-red-600 bg-transparent text-red-600",
-    },
-  ],
-  defaultVariants: {
-    variant: "default",
-    color: "primary",
+  light: {
+    indigo: "border-indigo-50 bg-indigo-50 text-indigo-700",
+    slate: "border-slate-100 bg-slate-100 text-slate-700",
+    red: "bg-red-50 border-red-50 text-red-600",
   },
-});
+  outline: {
+    indigo: "border-indigo-700 bg-transparent text-indigo-700",
+    slate: "border-slate-700 text-slate-700 bg-transparent",
+    red: "border-red-600 bg-transparent text-red-600",
+  },
+};
 
-export function Button({ className, color, variant, ...props }: ButtonProps) {
+export function Button({
+  className,
+  color = "indigo",
+  variant = "default",
+  ...props
+}: ButtonProps) {
   return (
     <AriaButton
       {...props}
-      className={composeRenderProps(className, (className, renderProps) =>
-        buttonStyles({ ...renderProps, color, variant, className }),
+      className={twMerge(
+        "flex h-8 items-center gap-2 rounded border px-2 text-sm font-medium",
+        buttonStyles[variant][color],
+        className as string,
       )}
     />
   );
