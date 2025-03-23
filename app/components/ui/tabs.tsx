@@ -11,7 +11,7 @@ import {
 import { twMerge } from "tailwind-merge";
 
 export function Tabs(props: TabsProps) {
-  return <AriaTabs {...props} />;
+  return <AriaTabs {...props} className="flex flex-col gap-4" />;
 }
 
 export function TabList<T extends object>(props: TabListProps<T>) {
@@ -23,13 +23,13 @@ export function Tab({ children, ...props }: TabProps) {
     <AriaTab
       {...props}
       className={twMerge(
-        "group -mb-px flex cursor-default items-center gap-2 border-b-2 border-transparent px-2 pb-1",
+        "group -mb-px flex cursor-pointer items-center gap-2 border-b-2 border-transparent px-2 pb-1",
         "selected:border-indigo-500",
       )}
     >
       <span
         className={twMerge(
-          "rounded px-2 py-1 text-sm font-medium text-slate-800 hover:no-underline",
+          "rounded px-2 py-1 text-sm font-medium text-slate-800",
           "group-hover:bg-slate-100",
         )}
       >

@@ -1,4 +1,5 @@
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
+import { twMerge } from "tailwind-merge";
 
 import { Logo } from "~/components/logo";
 import { Code } from "~/components/ui/code";
@@ -41,7 +42,10 @@ function LayoutComponent() {
         {routes.map((route) => (
           <Link
             key={route.to}
-            className="-mx-1 flex h-8 items-center justify-center rounded px-2 text-indigo-700 hover:border-indigo-50 hover:bg-indigo-50"
+            className={twMerge(
+              "-mx-1 flex h-8 items-center justify-center rounded px-2 text-indigo-700",
+              "hover:border-indigo-50 hover:bg-indigo-50 hover:no-underline",
+            )}
             to={route.to}
           >
             {route.label}

@@ -23,7 +23,8 @@ export function TabNavLink({ children, ...props }: TabNavLinkProps) {
     <Link
       {...props}
       className={twMerge(
-        "group -mb-px flex cursor-default items-center gap-2 border-b-2 border-transparent px-2 pb-1 hover:no-underline",
+        "group -mb-px flex cursor-pointer items-center gap-2 border-b-2 border-transparent px-2 pb-1",
+        "hover:no-underline",
         "data-[status=active]:border-indigo-500",
       )}
     >
