@@ -41,7 +41,7 @@ export function SearchField({
           className="ml-2 fill-slate-500 group-disabled:fill-slate-200"
         />
         <Input
-          className="text-sm outline-none [&::-webkit-search-cancel-button]:hidden"
+          className="outline-none [&::-webkit-search-cancel-button]:hidden"
           placeholder="Search.."
         />
         <AriaButton className="mr-1 w-6 group-empty:invisible">

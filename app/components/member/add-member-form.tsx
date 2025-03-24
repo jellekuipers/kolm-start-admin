@@ -7,6 +7,7 @@ import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
 import { Button } from "~/components/ui/button";
+import { ComboBox, ComboBoxItem } from "~/components/ui/combo-box";
 import { Select, SelectItem } from "~/components/ui/select";
 import { addMember } from "~/lib/member";
 import { usersQueryOptions } from "~/lib/user";
@@ -89,18 +90,19 @@ export function AddMemberForm({
           name="userId"
           children={(field) => {
             return (
-              <Select
+              <ComboBox
+                items={users}
                 label="User"
                 name={field.name}
                 onSelectionChange={(key) => field.handleChange(key as string)}
                 selectedKey={field.state.value}
               >
-                {users?.map((user) => (
-                  <SelectItem key={user.id} id={user.id}>
-                    {user.email}
-                  </SelectItem>
-                ))}
-              </Select>
+                {(item) => (
+                  <ComboBoxItem key={item.id} id={item.id}>
+                    {item.email}
+                  </ComboBoxItem>
+                )}
+              </ComboBox>
             );
           }}
         />

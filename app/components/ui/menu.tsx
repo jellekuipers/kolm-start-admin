@@ -57,7 +57,7 @@ export function MenuItem({
 }
 
 export function MenuSeparator(props: SeparatorProps) {
-  return <AriaSeparator {...props} className="my-2 h-px bg-slate-200" />;
+  return <AriaSeparator {...props} className="my-2 h-px bg-slate-300" />;
 }
 
 export function MenuTrigger(props: MenuTriggerProps) {
