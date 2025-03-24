@@ -27,11 +27,24 @@ export function DataTableColumnFilter<TData>({
         Column visibility <CaretDownIcon />
       </Button>
       <Popover>
-        <Dialog aria-label="Column visibility">
+        <Dialog>
           <GridList
             className="space-y-[1px]"
             items={columns}
-            onSelectionChange={(columns) => console.log(columns)}
+            onSelectionChange={(selectedIds) => {
+              const visibilityState: Record<string, boolean> = {};
+
+              for (const column of columns) {
+                if (selectedIds === "all") {
+                  visibilityState[column.id] = true;
+                } else if (typeof selectedIds?.has === "function") {
+                  visibilityState[column.id] = selectedIds.has(column.id);
+                }
+              }
+
+              table.setColumnVisibility(visibilityState);
+            }}
+            selectedKeys={table.getVisibleLeafColumns().map(({ id }) => id)}
             selectionMode="multiple"
           >
             {(column) => (
@@ -41,8 +54,7 @@ export function DataTableColumnFilter<TData>({
                   "hover:bg-indigo-50",
                   "selected:bg-indigo-50",
                 )}
-                key={column.id}
-                textValue={column.columnDef.header?.toString()}
+                textValue={column.id}
               >
                 <Checkbox slot="selection">
                   {column.columnDef.header?.toString()}

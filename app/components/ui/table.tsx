@@ -43,12 +43,7 @@ export interface TableRowProps<T extends object>
 
 export function Table({ className, ...props }: TableProps) {
   return (
-    <div
-      className={twMerge(
-        "-mx-4 overflow-x-auto",
-        "lg:mx-0 lg:overflow-x-visible",
-      )}
-    >
+    <div className={twMerge("-mx-4 overflow-x-auto", "lg:mx-0")}>
       <AriaTable {...props} className={twMerge("w-full", className)} />
     </div>
   );
