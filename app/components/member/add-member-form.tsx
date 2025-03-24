@@ -7,8 +7,8 @@ import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
 import { Button } from "~/components/ui/button";
-import { ComboBox, ComboBoxItem } from "~/components/ui/combo-box";
 import { Select, SelectItem } from "~/components/ui/select";
+import { getFieldErrorMessage } from "~/lib/error";
 import { addMember } from "~/lib/member";
 import { usersQueryOptions } from "~/lib/user";
 
@@ -90,7 +90,8 @@ export function AddMemberForm({
           name="userId"
           children={(field) => {
             return (
-              <ComboBox
+              <Select
+                errorMessage={getFieldErrorMessage({ field })}
                 items={users}
                 label="User"
                 name={field.name}
@@ -98,11 +99,11 @@ export function AddMemberForm({
                 selectedKey={field.state.value}
               >
                 {(item) => (
-                  <ComboBoxItem key={item.id} id={item.id}>
+                  <SelectItem key={item.id} id={item.id}>
                     {item.email}
-                  </ComboBoxItem>
+                  </SelectItem>
                 )}
-              </ComboBox>
+              </Select>
             );
           }}
         />
@@ -111,6 +112,7 @@ export function AddMemberForm({
           children={(field) => {
             return (
               <Select
+                errorMessage={getFieldErrorMessage({ field })}
                 label="Member role"
                 name={field.name}
                 onSelectionChange={(key) => field.handleChange(key as string)}

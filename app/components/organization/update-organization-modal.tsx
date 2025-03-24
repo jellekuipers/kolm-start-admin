@@ -10,6 +10,7 @@ import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
 import { Modal, ModalHeading } from "~/components/ui/modal";
 import { TextField } from "~/components/ui/text-field";
+import { getFieldErrorMessage } from "~/lib/error";
 import { updateOrganization } from "~/lib/organization";
 import { AuthOrganization, ORMOrganization } from "~/types";
 
@@ -103,6 +104,7 @@ export function UpdateOrganizationModal({
                 return (
                   <TextField
                     defaultValue={field.state.value}
+                    errorMessage={getFieldErrorMessage({ field })}
                     label="Name"
                     name={field.name}
                     onBlur={field.handleBlur}
@@ -117,6 +119,7 @@ export function UpdateOrganizationModal({
                 return (
                   <TextField
                     defaultValue={field.state.value}
+                    errorMessage={getFieldErrorMessage({ field })}
                     label="Slug"
                     name={field.name}
                     onBlur={field.handleBlur}

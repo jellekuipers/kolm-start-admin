@@ -10,6 +10,7 @@ import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
 import { Modal, ModalHeading } from "~/components/ui/modal";
 import { Select, SelectItem } from "~/components/ui/select";
+import { getFieldErrorMessage } from "~/lib/error";
 import { addMember } from "~/lib/member";
 import { organizationsQueryOptions } from "~/lib/organization";
 
@@ -104,6 +105,8 @@ export function AddUserToOrganizationModal({
                 children={(field) => {
                   return (
                     <Select
+                      errorMessage={getFieldErrorMessage({ field })}
+                      items={organizations}
                       label="Organization"
                       name={field.name}
                       onSelectionChange={(key) =>
@@ -111,11 +114,9 @@ export function AddUserToOrganizationModal({
                       }
                       selectedKey={field.state.value}
                     >
-                      {organizations?.map((organization) => (
-                        <SelectItem key={organization.id} id={organization.id}>
-                          {organization.name}
-                        </SelectItem>
-                      ))}
+                      {(item) => (
+                        <SelectItem id={item.id}>{item.name}</SelectItem>
+                      )}
                     </Select>
                   );
                 }}
@@ -125,6 +126,7 @@ export function AddUserToOrganizationModal({
                 children={(field) => {
                   return (
                     <Select
+                      errorMessage={getFieldErrorMessage({ field })}
                       label="Member role"
                       name={field.name}
                       onSelectionChange={(key) =>

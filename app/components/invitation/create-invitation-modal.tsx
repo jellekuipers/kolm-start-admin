@@ -145,6 +145,7 @@ export function CreateInvitationModal() {
                   return (
                     <Select
                       errorMessage={getFieldErrorMessage({ field })}
+                      items={organizations}
                       label="Organization"
                       name={field.name}
                       onSelectionChange={(key) =>
@@ -152,11 +153,9 @@ export function CreateInvitationModal() {
                       }
                       selectedKey={field.state.value}
                     >
-                      {organizations?.map((organization) => (
-                        <SelectItem key={organization.id} id={organization.id}>
-                          {organization.name}
-                        </SelectItem>
-                      ))}
+                      {(item) => (
+                        <SelectItem id={item.id}>{item.name}</SelectItem>
+                      )}
                     </Select>
                   );
                 }}
@@ -193,6 +192,7 @@ export function CreateInvitationModal() {
                     <Select
                       errorMessage={getFieldErrorMessage({ field })}
                       isDisabled={!teams?.length || teamsQuery.isPending}
+                      items={teams}
                       label="Add to team"
                       name={field.name}
                       onSelectionChange={(key) =>
@@ -200,11 +200,9 @@ export function CreateInvitationModal() {
                       }
                       selectedKey={field.state.value}
                     >
-                      {teams?.map((team) => (
-                        <SelectItem key={team.id} id={team.id}>
-                          {team.name}
-                        </SelectItem>
-                      ))}
+                      {(item) => (
+                        <SelectItem id={item.id}>{item.name}</SelectItem>
+                      )}
                     </Select>
                   );
                 }}

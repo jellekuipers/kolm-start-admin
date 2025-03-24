@@ -4,7 +4,8 @@ import {
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 
-interface ButtonProps extends AriaButtonProps {
+interface ButtonProps extends Omit<AriaButtonProps, "className"> {
+  className?: string;
   color?:
     | "amber"
     | "blue"
@@ -318,7 +319,7 @@ export function Button({
       className={twMerge(
         "flex h-8 items-center gap-2 rounded border px-2 text-sm font-medium",
         buttonStyles[variant][color],
-        className as string,
+        className,
       )}
     />
   );

@@ -145,16 +145,13 @@ export function InviteMemberForm({
             return (
               <Select
                 errorMessage={getFieldErrorMessage({ field })}
+                items={teams}
                 label="Add to team"
                 name={field.name}
                 onSelectionChange={(key) => field.handleChange(key as string)}
                 selectedKey={field.state.value}
               >
-                {teams?.map((team) => (
-                  <SelectItem key={team.id} id={team.id}>
-                    {team.name}
-                  </SelectItem>
-                ))}
+                {(item) => <SelectItem id={item.id}>{item.name}</SelectItem>}
               </Select>
             );
           }}

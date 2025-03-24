@@ -150,6 +150,7 @@ export function CreateUserModal() {
                   return (
                     <Select
                       errorMessage={getFieldErrorMessage({ field })}
+                      items={organizations}
                       label="Add to organization"
                       name={field.name}
                       onSelectionChange={(key) =>
@@ -157,11 +158,9 @@ export function CreateUserModal() {
                       }
                       selectedKey={field.state.value}
                     >
-                      {organizations?.map((organization) => (
-                        <SelectItem key={organization.id} id={organization.id}>
-                          {organization.name}
-                        </SelectItem>
-                      ))}
+                      {(item) => (
+                        <SelectItem id={item.id}>{item.name}</SelectItem>
+                      )}
                     </Select>
                   );
                 }}

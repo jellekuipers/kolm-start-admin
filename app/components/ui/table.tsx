@@ -5,14 +5,41 @@ import {
   Table as AriaTable,
   TableBody as AriaTableBody,
   TableHeader as AriaTableHeader,
-  type CellProps,
-  type ColumnProps,
-  type RowProps,
-  type TableBodyProps,
-  type TableHeaderProps,
-  type TableProps,
+  type TableBodyProps as AriaTableBodyProps,
+  type CellProps as AriaTableCellProps,
+  type ColumnProps as AriaTableColumnProps,
+  type TableHeaderProps as AriaTableHeaderProps,
+  type TableProps as AriaTableProps,
+  type RowProps as AriaTableRowProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
+
+interface TableProps extends Omit<AriaTableProps, "className"> {
+  className?: string;
+}
+
+export interface TableBodyProps<T extends object>
+  extends Omit<AriaTableBodyProps<T>, "className"> {
+  className?: string;
+}
+
+interface TableCellProps extends Omit<AriaTableCellProps, "className"> {
+  className?: string;
+}
+
+interface TableColumnProps extends Omit<AriaTableColumnProps, "className"> {
+  className?: string;
+}
+
+export interface TableHeaderProps<T extends object>
+  extends Omit<AriaTableHeaderProps<T>, "className"> {
+  className?: string;
+}
+
+export interface TableRowProps<T extends object>
+  extends Omit<AriaTableRowProps<T>, "className"> {
+  className?: string;
+}
 
 export function Table({ className, ...props }: TableProps) {
   return (
@@ -22,10 +49,7 @@ export function Table({ className, ...props }: TableProps) {
         "lg:mx-0 lg:overflow-x-visible",
       )}
     >
-      <AriaTable
-        {...props}
-        className={twMerge("w-full", className as string)}
-      />
+      <AriaTable {...props} className={twMerge("w-full", className)} />
     </div>
   );
 }
@@ -39,32 +63,29 @@ export function TableBody<T extends object>({
       {...props}
       className={twMerge(
         "divide-y divide-slate-300 border-y border-slate-300 align-middle",
-        className as string,
+        className,
       )}
     />
   );
 }
 
-export function TableCell({ className, ...props }: CellProps) {
+export function TableCell({ className, ...props }: TableCellProps) {
   return (
     <AriaCell
       {...props}
       className={twMerge(
         "px-4 py-2 align-middle text-sm whitespace-nowrap",
-        className as string,
+        className,
       )}
     />
   );
 }
 
-export function TableColumn({ className, ...props }: ColumnProps) {
+export function TableColumn({ className, ...props }: TableColumnProps) {
   return (
     <AriaColumn
       {...props}
-      className={twMerge(
-        "px-4 py-2 align-middle whitespace-nowrap",
-        className as string,
-      )}
+      className={twMerge("px-4 py-2 align-middle whitespace-nowrap", className)}
     />
   );
 }
@@ -76,7 +97,7 @@ export function TableHeader<T extends object>({
   return (
     <AriaTableHeader
       {...props}
-      className={twMerge("align-middle text-sm font-bold", className as string)}
+      className={twMerge("align-middle text-sm font-bold", className)}
     />
   );
 }
@@ -84,11 +105,6 @@ export function TableHeader<T extends object>({
 export function TableRow<T extends object>({
   className,
   ...props
-}: RowProps<T>) {
-  return (
-    <AriaRow
-      {...props}
-      className={twMerge("align-middle", className as string)}
-    />
-  );
+}: TableRowProps<T>) {
+  return <AriaRow {...props} className={twMerge("align-middle", className)} />;
 }

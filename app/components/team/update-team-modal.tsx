@@ -10,6 +10,7 @@ import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
 import { Modal, ModalHeading } from "~/components/ui/modal";
 import { TextField } from "~/components/ui/text-field";
+import { getFieldErrorMessage } from "~/lib/error";
 import { updateTeam } from "~/lib/team";
 import { Team } from "~/types";
 
@@ -90,6 +91,7 @@ export function UpdateTeamModal({ open, team, setOpen }: UpdateTeamModalProps) {
                 return (
                   <TextField
                     defaultValue={field.state.value}
+                    errorMessage={getFieldErrorMessage({ field })}
                     label="Name"
                     name={field.name}
                     onBlur={field.handleBlur}
@@ -103,7 +105,9 @@ export function UpdateTeamModal({ open, team, setOpen }: UpdateTeamModalProps) {
               selector={(state) => [state.canSubmit, state.isSubmitting]}
               children={([canSubmit, isSubmitting]) => (
                 <div className="flex justify-end gap-2">
-                  <Button color="slate" slot="close" variant="light">Cancel</Button>
+                  <Button color="slate" slot="close" variant="light">
+                    Cancel
+                  </Button>
                   <Button
                     isDisabled={!canSubmit}
                     isPending={isSubmitting}

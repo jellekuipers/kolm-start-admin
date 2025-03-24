@@ -14,8 +14,9 @@ import { Description, FieldError, Label } from "~/components/ui/field";
 import { Popover } from "~/components/ui/popover";
 
 interface SelectProps<T extends object>
-  extends Omit<AriaSelectProps<T>, "children"> {
+  extends Omit<AriaSelectProps<T>, "children" | "className"> {
   children: React.ReactNode | ((item: T) => React.ReactNode);
+  className?: string;
   description?: string;
   errorMessage?: string | null;
   items?: Iterable<T>;
@@ -34,7 +35,7 @@ export function Select<T extends object>({
   return (
     <AriaSelect
       {...props}
-      className={twMerge("flex flex-col gap-2", className as string)}
+      className={twMerge("flex flex-col gap-2", className)}
     >
       {label ? <Label>{label}</Label> : null}
       <AriaButton
@@ -52,7 +53,7 @@ export function Select<T extends object>({
       </AriaButton>
       {description ? <Description>{description}</Description> : null}
       <FieldError>{errorMessage}</FieldError>
-      <Popover className="min-w-(--trigger-width)">
+      <Popover className="w-(--trigger-width)">
         <AriaListBox items={items}>{children}</AriaListBox>
       </Popover>
     </AriaSelect>

@@ -4,13 +4,21 @@ import {
   Input as AriaInput,
   Label as AriaLabel,
   Text as AriaText,
+  type GroupProps as AriaGroupProps,
+  type InputProps as AriaInputProps,
   type FieldErrorProps,
-  type GroupProps,
-  type InputProps,
   type LabelProps,
   type TextProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
+
+interface GroupProps extends Omit<AriaGroupProps, "className"> {
+  className?: string;
+}
+
+interface InputProps extends Omit<AriaInputProps, "className"> {
+  className?: string;
+}
 
 export function Description(props: TextProps) {
   return (
@@ -26,11 +34,14 @@ export function FieldError(props: FieldErrorProps) {
   return <AriaFieldError {...props} className="text-sm text-red-600" />;
 }
 
-export function FieldGroup(props: GroupProps) {
+export function FieldGroup({ className, ...props }: GroupProps) {
   return (
     <AriaGroup
       {...props}
-      className="group flex h-8 items-center overflow-hidden rounded border border-slate-300 bg-white"
+      className={twMerge(
+        "group flex h-8 items-center overflow-hidden rounded border border-slate-300 bg-white",
+        className,
+      )}
     />
   );
 }
@@ -41,7 +52,7 @@ export function Input({ className, ...props }: InputProps) {
       {...props}
       className={twMerge(
         "h-8 min-w-0 bg-white px-2 text-base lg:text-sm",
-        className as string,
+        className,
       )}
     />
   );

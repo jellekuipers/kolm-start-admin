@@ -1,3 +1,5 @@
+// WIP
+
 import { CaretDown as CaretDownIcon } from "@phosphor-icons/react";
 import {
   Button as AriaButton,
@@ -5,8 +7,6 @@ import {
   ComboBoxProps as AriaComboBoxProps,
   ListBox as AriaListBox,
   ListBoxItem as AriaListBoxItem,
-  Virtualizer as AriaVirtualizer,
-  ListLayout,
   ValidationResult,
   type ListBoxItemProps,
 } from "react-aria-components";
@@ -22,11 +22,12 @@ import {
 import { Popover } from "~/components/ui/popover";
 
 export interface ComboBoxProps<T extends object>
-  extends Omit<AriaComboBoxProps<T>, "children"> {
-  label?: string;
+  extends Omit<AriaComboBoxProps<T>, "children" | "className"> {
+  children: React.ReactNode | ((item: T) => React.ReactNode);
+  className?: string;
   description?: string | null;
   errorMessage?: string | ((validation: ValidationResult) => string);
-  children: React.ReactNode | ((item: T) => React.ReactNode);
+  label?: string;
 }
 
 export function ComboBox<T extends object>({
@@ -41,28 +42,20 @@ export function ComboBox<T extends object>({
   return (
     <AriaComboBox
       {...props}
-      className={twMerge("flex flex-col gap-2", className as string)}
+      className={twMerge("flex flex-col gap-2", className)}
+      onInputChange={(value) => console.log(value)}
     >
       {label ? <Label>{label}</Label> : null}
-      <FieldGroup>
+      <FieldGroup className="relative">
         <Input className="flex-1 outline-none" />
-        <AriaButton className="h-8 px-2">
+        <AriaButton className="absolute right-0 h-8 px-2">
           <CaretDownIcon aria-hidden size={16} />
         </AriaButton>
       </FieldGroup>
       {description ? <Description>{description}</Description> : null}
       <FieldError>{errorMessage}</FieldError>
-      <Popover className="min-w-(--trigger-width)">
-        <AriaVirtualizer
-          layout={ListLayout}
-          layoutOptions={{
-            rowHeight: 32,
-            padding: 4,
-            gap: 4,
-          }}
-        >
-          <AriaListBox items={items}>{children}</AriaListBox>
-        </AriaVirtualizer>
+      <Popover className="h-60 w-(--trigger-width) overflow-y-auto" isNonModal>
+        <AriaListBox items={items}>{children}</AriaListBox>
       </Popover>
     </AriaComboBox>
   );
