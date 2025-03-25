@@ -33,6 +33,8 @@ I've kept this as minimal and unopinionated as possible, relying primarily on th
 
 Check out <a href="https://github.com/jellekuipers/kolm-start">kolm-start</a>, for a `@tanstack/react-start` starter with `tRPC`, `drizzle-orm`, `better-auth` and `tailwindcss`.
 
+For a version with `@radix-ui/themes`, check out the `radix-themes` branch.
+
 ## Getting Started
 
 ### Prerequisites
@@ -115,4 +117,5 @@ Don't forget to give the project a star! Thanks again!
 - [tRPC](https://trpc.io/docs)
 - [Drizzle ORM](https://orm.drizzle.team/)
 - [better-auth](https://www.better-auth.com/)
+- [React Aria](https://react-spectrum.adobe.com/react-aria/index.html)
 - [Best-README-Template](https://github.com/othneildrew/Best-README-Template)

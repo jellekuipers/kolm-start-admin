@@ -2,7 +2,7 @@
   "name": "kolm-start-admin",
   "description": "A TanStack Start + better-auth admin starter, with Drizzle ORM, tRPC, React Aria.",
   "author": "Jelle Kuipers <info@jellekuipers.com> (https://jellekuipers.com)",
-  "version": "0.9.1",
+  "version": "1.0.0",
   "type": "module",
   "keywords": [
     "better-auth",
@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@phosphor-icons/react": "2.1.7",
-    "@tailwindcss/postcss": "4.0.15",
+    "@tailwindcss/postcss": "4.0.16",
     "@tanstack/match-sorter-utils": "8.19.4",
     "@tanstack/react-form": "1.1.2",
     "@tanstack/react-query": "5.69.0",
@@ -61,7 +61,7 @@
     "@eslint/js": "9.23.0",
     "@faker-js/faker": "9.6.0",
     "@ianvs/prettier-plugin-sort-imports": "4.4.1",
-    "@types/node": "22.13.11",
+    "@types/node": "22.13.13",
     "@types/pg": "8.11.11",
     "@types/react": "19.0.12",
     "@types/react-dom": "19.0.4",
@@ -72,12 +72,12 @@
     "eslint-plugin-react-hooks": "5.2.0",
     "prettier": "3.5.3",
     "prettier-plugin-tailwindcss": "0.6.11",
-    "tailwindcss": "4.0.15",
+    "tailwindcss": "4.0.16",
     "tailwindcss-animate": "1.0.7",
     "tailwindcss-react-aria-components": "2.0.0",
     "tsx": "4.19.3",
     "typescript": "5.8.2",
-    "typescript-eslint": "8.27.0",
+    "typescript-eslint": "8.28.0",
     "vite-tsconfig-paths": "5.1.4"
   }
 }
