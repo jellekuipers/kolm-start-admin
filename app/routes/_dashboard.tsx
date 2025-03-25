@@ -22,8 +22,6 @@ function LayoutComponent() {
   const routes = [
     { to: "/", label: "Dashboard" },
     { to: "/users", label: "Users" },
-    { to: "/organizations", label: "Organizations" },
-    { to: "/invitations", label: "Invitations" },
   ];
 
   return (

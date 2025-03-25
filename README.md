@@ -35,6 +35,8 @@ Check out <a href="https://github.com/jellekuipers/kolm-start">kolm-start</a>, f
 
 For a version with `@radix-ui/themes`, check out the `radix-themes` branch.
 
+Check out the `user-management-only` branch for a version without the `better-auth` organization plugin implemented.
+
 ## Getting Started
 
 ### Prerequisites

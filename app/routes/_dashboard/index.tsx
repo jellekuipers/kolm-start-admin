@@ -1,7 +1,4 @@
-import {
-  Network as NetworkIcon,
-  Users as UsersIcon,
-} from "@phosphor-icons/react";
+import { Users as UsersIcon } from "@phosphor-icons/react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
@@ -22,7 +19,7 @@ export const Route = createFileRoute("/_dashboard/")({
 function RouteComponent() {
   const trpc = useTRPC();
   const {
-    data: { organizations, users },
+    data: { users },
   } = useSuspenseQuery(trpc.stats.getStats.queryOptions());
 
   return (
@@ -34,11 +31,6 @@ function RouteComponent() {
         </div>
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
           <StatCard count={users} icon={UsersIcon} title="Users" />
-          <StatCard
-            count={organizations}
-            icon={NetworkIcon}
-            title="Organizations"
-          />
         </div>
       </div>
     </Container>
