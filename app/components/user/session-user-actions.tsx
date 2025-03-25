@@ -1,8 +1,11 @@
-import { DotsVerticalIcon, PersonIcon } from "@radix-ui/react-icons";
+import {
+  DotsThreeVertical as DotsThreeVerticalIcon,
+  User as UserIcon,
+} from "@phosphor-icons/react";
 import { useNavigate } from "@tanstack/react-router";
 
-import { DropdownMenu } from "~/components/ui/dropdown-menu";
 import { IconButton } from "~/components/ui/icon-button";
+import { Menu, MenuItem, MenuTrigger } from "~/components/ui/menu";
 
 interface SessionUserActionsProps {
   userId: string;
@@ -12,25 +15,23 @@ export function SessionUserActions({ userId }: SessionUserActionsProps) {
   const navigate = useNavigate();
 
   return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger>
-        <IconButton variant="ghost">
-          <DotsVerticalIcon />
-        </IconButton>
-      </DropdownMenu.Trigger>
-      <DropdownMenu.Content align="end">
-        <DropdownMenu.Item
-          onClick={() =>
+    <MenuTrigger>
+      <IconButton>
+        <DotsThreeVerticalIcon size={16} />
+      </IconButton>
+      <Menu>
+        <MenuItem
+          onAction={() =>
             navigate({
               params: { userId },
               to: "/users/$userId",
             })
           }
         >
-          <PersonIcon />
+          <UserIcon size={16} />
           View user
-        </DropdownMenu.Item>
-      </DropdownMenu.Content>
-    </DropdownMenu.Root>
+        </MenuItem>
+      </Menu>
+    </MenuTrigger>
   );
 }

@@ -1,18 +1,16 @@
 /* eslint-disable react/no-children-prop */
 import { useState } from "react";
-import { PlusIcon } from "@radix-ui/react-icons";
 import { useForm } from "@tanstack/react-form";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
-import { FormFieldInfo } from "~/components/form/form-field-info";
-import { FormFieldLabel } from "~/components/form/form-field-label";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
-import { Flex } from "~/components/ui/flex";
-import { Select } from "~/components/ui/select";
+import { Modal, ModalHeading } from "~/components/ui/modal";
+import { Select, SelectItem } from "~/components/ui/select";
+import { getFieldErrorMessage } from "~/lib/error";
 import { addMember } from "~/lib/member";
 import { organizationsQueryOptions } from "~/lib/organization";
 
@@ -89,92 +87,82 @@ export function AddUserToOrganizationModal({
   const organizations = organizationsQuery.data;
 
   return (
-    <Dialog.Root open={open} onOpenChange={onOpenChangeHandler}>
-      <Dialog.Trigger>
-        <Button>
-          <PlusIcon /> Add organization
-        </Button>
-      </Dialog.Trigger>
-      <Dialog.Content>
-        <Dialog.Title>Add organization</Dialog.Title>
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            handleSubmit();
-          }}
-        >
-          <Flex direction="column" gap="4">
-            <Field
-              name="organizationId"
-              children={(field) => {
-                return (
-                  <Flex direction="column" gap="1">
-                    <FormFieldLabel htmlFor="organizationId" text="Organization" />
-                    <Select.Root
-                      defaultValue={field.state.value}
+    <>
+      <Button onPress={() => setOpen(true)}>Add to organization</Button>
+      <Modal isDismissable isOpen={open} onOpenChange={onOpenChangeHandler}>
+        <Dialog>
+          <ModalHeading slot="title">Add to organization</ModalHeading>
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              handleSubmit();
+            }}
+          >
+            <div className="space-y-4">
+              <Field
+                name="organizationId"
+                children={(field) => {
+                  return (
+                    <Select
+                      errorMessage={getFieldErrorMessage({ field })}
+                      items={organizations}
+                      label="Organization"
                       name={field.name}
-                      onValueChange={field.handleChange}
+                      onSelectionChange={(key) =>
+                        field.handleChange(key as string)
+                      }
+                      selectedKey={field.state.value}
                     >
-                      <Select.Trigger />
-                      <Select.Content>
-                        {organizations?.map((organization) => (
-                          <Select.Item
-                            key={organization.id}
-                            value={organization.id}
-                          >
-                            {organization.name}
-                          </Select.Item>
-                        ))}
-                      </Select.Content>
-                    </Select.Root>
-                    <FormFieldInfo field={field} />
-                  </Flex>
-                );
-              }}
-            />
-            <Field
-              name="memberRole"
-              children={(field) => {
-                return (
-                  <Flex direction="column" gap="1">
-                    <FormFieldLabel htmlFor="memberRole" text="Member role" />
-                    <Select.Root
-                      defaultValue={field.state.value}
+                      {(item) => (
+                        <SelectItem id={item.id}>{item.name}</SelectItem>
+                      )}
+                    </Select>
+                  );
+                }}
+              />
+              <Field
+                name="memberRole"
+                children={(field) => {
+                  return (
+                    <Select
+                      errorMessage={getFieldErrorMessage({ field })}
+                      label="Member role"
                       name={field.name}
-                      onValueChange={field.handleChange}
+                      onSelectionChange={(key) =>
+                        field.handleChange(key as string)
+                      }
+                      selectedKey={field.state.value}
                     >
-                      <Select.Trigger />
-                      <Select.Content>
-                        <Select.Item value="admin">Admin</Select.Item>
-                        <Select.Item value="member">Member</Select.Item>
-                        <Select.Item value="owner">Owner</Select.Item>
-                      </Select.Content>
-                    </Select.Root>
-                    <FormFieldInfo field={field} />
-                  </Flex>
-                );
-              }}
-            />
-            {error ? <FormError error={error} /> : null}
-            <Subscribe
-              selector={(state) => [state.canSubmit, state.isSubmitting]}
-              children={([canSubmit, isSubmitting]) => (
-                <Flex gap="3" justify="end">
-                  <Dialog.Close>
-                    <Button variant="soft" color="gray">
+                      <SelectItem id="admin">Admin</SelectItem>
+                      <SelectItem id="member">Member</SelectItem>
+                      <SelectItem id="owner">Owner</SelectItem>
+                    </Select>
+                  );
+                }}
+              />
+              {error ? <FormError error={error} /> : null}
+              <Subscribe
+                selector={(state) => [state.canSubmit, state.isSubmitting]}
+                children={([canSubmit, isSubmitting]) => (
+                  <div className="flex justify-end gap-2">
+                    <Button color="slate" slot="close" variant="light">
                       Cancel
                     </Button>
-                  </Dialog.Close>
-                  <Button disabled={!canSubmit} loading={isSubmitting}>
-                    Save
-                  </Button>
-                </Flex>
-              )}
-            />
-          </Flex>
-        </form>
-      </Dialog.Content>
-    </Dialog.Root>
+                    <Button
+                      isDisabled={!canSubmit}
+                      isPending={isSubmitting}
+                      type="submit"
+                    >
+                      Save
+                    </Button>
+                  </div>
+                )}
+              />
+            </div>
+          </form>
+        </Dialog>
+      </Modal>
+    </>
   );
 }

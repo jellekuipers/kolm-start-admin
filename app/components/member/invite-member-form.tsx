@@ -6,16 +6,12 @@ import { useRouter } from "@tanstack/react-router";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
-import { FormFieldInfo } from "~/components/form/form-field-info";
-import { FormFieldLabel } from "~/components/form/form-field-label";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
-import { Dialog } from "~/components/ui/dialog";
-import { Flex } from "~/components/ui/flex";
-import { Select } from "~/components/ui/select";
+import { Select, SelectItem } from "~/components/ui/select";
 import { Separator } from "~/components/ui/separator";
-import { Text } from "~/components/ui/text";
 import { TextField } from "~/components/ui/text-field";
+import { getFieldErrorMessage } from "~/lib/error";
 import { createInvitation } from "~/lib/invitation";
 import { teamsQueryOptions } from "~/lib/team";
 
@@ -104,21 +100,19 @@ export function InviteMemberForm({
         handleSubmit();
       }}
     >
-      <Flex direction="column" gap="4">
+      <div className="space-y-4">
         <Field
           name="email"
           children={(field) => {
             return (
-              <Flex direction="column" gap="1">
-                <FormFieldLabel htmlFor="email" text="Email" />
-                <TextField.Root
-                  defaultValue={field.state.value}
-                  onBlur={field.handleBlur}
-                  name={field.name}
-                  onChange={(event) => field.handleChange(event.target.value)}
-                />
-                <FormFieldInfo field={field} />
-              </Flex>
+              <TextField
+                defaultValue={field.state.value}
+                errorMessage={getFieldErrorMessage({ field })}
+                label="Email"
+                name={field.name}
+                onBlur={field.handleBlur}
+                onChange={(value) => field.handleChange(value)}
+              />
             );
           }}
         />
@@ -126,50 +120,39 @@ export function InviteMemberForm({
           name="role"
           children={(field) => {
             return (
-              <Flex direction="column" gap="1">
-                <FormFieldLabel htmlFor="role" text="Role" />
-                <Select.Root
-                  defaultValue={field.state.value}
-                  name={field.name}
-                  onValueChange={field.handleChange}
-                >
-                  <Select.Trigger />
-                  <Select.Content>
-                    <Select.Item value="admin">Admin</Select.Item>
-                    <Select.Item value="member">Member</Select.Item>
-                    <Select.Item value="owner">Owner</Select.Item>
-                  </Select.Content>
-                </Select.Root>
-              </Flex>
+              <Select
+                errorMessage={getFieldErrorMessage({ field })}
+                label="Role"
+                name={field.name}
+                onSelectionChange={(key) => field.handleChange(key as string)}
+                selectedKey={field.state.value}
+              >
+                <SelectItem id="admin">Admin</SelectItem>
+                <SelectItem id="member">Member</SelectItem>
+                <SelectItem id="owner">Owner</SelectItem>
+              </Select>
             );
           }}
         />
-        <Separator size="4" />
-        <Flex align="center" gap="2">
-          <Text weight="medium">Team</Text>
+        <Separator />
+        <div className="flex items-center gap-2">
+          <span className="font-medium">Team</span>
           <Badge>optional</Badge>
-        </Flex>
+        </div>
         <Field
           name="teamId"
           children={(field) => {
             return (
-              <Flex direction="column" gap="1">
-                <FormFieldLabel htmlFor="teamId" text="Add to team" />
-                <Select.Root
-                  defaultValue={field.state.value}
-                  name={field.name}
-                  onValueChange={field.handleChange}
-                >
-                  <Select.Trigger />
-                  <Select.Content>
-                    {teams?.map((team) => (
-                      <Select.Item key={team.id} value={team.id}>
-                        {team.name}
-                      </Select.Item>
-                    ))}
-                  </Select.Content>
-                </Select.Root>
-              </Flex>
+              <Select
+                errorMessage={getFieldErrorMessage({ field })}
+                items={teams}
+                label="Add to team"
+                name={field.name}
+                onSelectionChange={(key) => field.handleChange(key as string)}
+                selectedKey={field.state.value}
+              >
+                {(item) => <SelectItem id={item.id}>{item.name}</SelectItem>}
+              </Select>
             );
           }}
         />
@@ -177,19 +160,21 @@ export function InviteMemberForm({
         <Subscribe
           selector={(state) => [state.canSubmit, state.isSubmitting]}
           children={([canSubmit, isSubmitting]) => (
-            <Flex gap="3" justify="end">
-              <Dialog.Close>
-                <Button variant="soft" color="gray">
-                  Cancel
-                </Button>
-              </Dialog.Close>
-              <Button disabled={!canSubmit} loading={isSubmitting}>
+            <div className="flex justify-end gap-2">
+              <Button color="slate" slot="close" variant="light">
+                Cancel
+              </Button>
+              <Button
+                isDisabled={!canSubmit}
+                isPending={isSubmitting}
+                type="submit"
+              >
                 Save
               </Button>
-            </Flex>
+            </div>
           )}
         />
-      </Flex>
+      </div>
     </form>
   );
 }

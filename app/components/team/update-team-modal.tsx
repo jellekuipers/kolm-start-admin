@@ -6,11 +6,11 @@ import { useRouter } from "@tanstack/react-router";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
-import { FormFieldLabel } from "~/components/form/form-field-label";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
-import { Flex } from "~/components/ui/flex";
+import { Modal, ModalHeading } from "~/components/ui/modal";
 import { TextField } from "~/components/ui/text-field";
+import { getFieldErrorMessage } from "~/lib/error";
 import { updateTeam } from "~/lib/team";
 import { Team } from "~/types";
 
@@ -74,9 +74,9 @@ export function UpdateTeamModal({ open, team, setOpen }: UpdateTeamModalProps) {
   };
 
   return (
-    <Dialog.Root open={open} onOpenChange={onOpenChangeHandler}>
-      <Dialog.Content>
-        <Dialog.Title>Update team</Dialog.Title>
+    <Modal isDismissable isOpen={open} onOpenChange={onOpenChangeHandler}>
+      <Dialog>
+        <ModalHeading slot="title">Update team</ModalHeading>
         <form
           onSubmit={(event) => {
             event.preventDefault();
@@ -84,20 +84,19 @@ export function UpdateTeamModal({ open, team, setOpen }: UpdateTeamModalProps) {
             handleSubmit();
           }}
         >
-          <Flex direction="column" gap="4">
+          <div className="space-y-4">
             <Field
               name="name"
-              children={({ handleBlur, handleChange, name, state }) => {
+              children={(field) => {
                 return (
-                  <Flex direction="column" gap="1">
-                    <FormFieldLabel htmlFor="name" text="Name" />
-                    <TextField.Root
-                      defaultValue={state.value}
-                      onBlur={handleBlur}
-                      name={name}
-                      onChange={(event) => handleChange(event.target.value)}
-                    />
-                  </Flex>
+                  <TextField
+                    defaultValue={field.state.value}
+                    errorMessage={getFieldErrorMessage({ field })}
+                    label="Name"
+                    name={field.name}
+                    onBlur={field.handleBlur}
+                    onChange={(value) => field.handleChange(value)}
+                  />
                 );
               }}
             />
@@ -105,21 +104,23 @@ export function UpdateTeamModal({ open, team, setOpen }: UpdateTeamModalProps) {
             <Subscribe
               selector={(state) => [state.canSubmit, state.isSubmitting]}
               children={([canSubmit, isSubmitting]) => (
-                <Flex gap="3" justify="end">
-                  <Dialog.Close>
-                    <Button variant="soft" color="gray">
-                      Cancel
-                    </Button>
-                  </Dialog.Close>
-                  <Button disabled={!canSubmit} loading={isSubmitting}>
+                <div className="flex justify-end gap-2">
+                  <Button color="slate" slot="close" variant="light">
+                    Cancel
+                  </Button>
+                  <Button
+                    isDisabled={!canSubmit}
+                    isPending={isSubmitting}
+                    type="submit"
+                  >
                     Save
                   </Button>
-                </Flex>
+                </div>
               )}
             />
-          </Flex>
+          </div>
         </form>
-      </Dialog.Content>
-    </Dialog.Root>
+      </Dialog>
+    </Modal>
   );
 }

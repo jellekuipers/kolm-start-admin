@@ -6,12 +6,9 @@ import { useRouter } from "@tanstack/react-router";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
-import { FormFieldInfo } from "~/components/form/form-field-info";
-import { FormFieldLabel } from "~/components/form/form-field-label";
 import { Button } from "~/components/ui/button";
-import { Dialog } from "~/components/ui/dialog";
-import { Flex } from "~/components/ui/flex";
-import { Select } from "~/components/ui/select";
+import { Select, SelectItem } from "~/components/ui/select";
+import { getFieldErrorMessage } from "~/lib/error";
 import { addMember } from "~/lib/member";
 import { usersQueryOptions } from "~/lib/user";
 
@@ -88,29 +85,25 @@ export function AddMemberForm({
         handleSubmit();
       }}
     >
-      <Flex direction="column" gap="4">
+      <div className="space-y-4">
         <Field
           name="userId"
           children={(field) => {
             return (
-              <Flex direction="column" gap="1">
-                <FormFieldLabel htmlFor="userId" text="User" />
-                <Select.Root
-                  defaultValue={field.state.value}
-                  name={field.name}
-                  onValueChange={field.handleChange}
-                >
-                  <Select.Trigger />
-                  <Select.Content>
-                    {users?.map((user) => (
-                      <Select.Item key={user.id} value={user.id}>
-                        {user.email}
-                      </Select.Item>
-                    ))}
-                  </Select.Content>
-                </Select.Root>
-                <FormFieldInfo field={field} />
-              </Flex>
+              <Select
+                errorMessage={getFieldErrorMessage({ field })}
+                items={users}
+                label="User"
+                name={field.name}
+                onSelectionChange={(key) => field.handleChange(key as string)}
+                selectedKey={field.state.value}
+              >
+                {(item) => (
+                  <SelectItem key={item.id} id={item.id}>
+                    {item.email}
+                  </SelectItem>
+                )}
+              </Select>
             );
           }}
         />
@@ -118,22 +111,17 @@ export function AddMemberForm({
           name="memberRole"
           children={(field) => {
             return (
-              <Flex direction="column" gap="1">
-                <FormFieldLabel htmlFor="memberRole" text="Member role" />
-                <Select.Root
-                  defaultValue={field.state.value}
-                  name={field.name}
-                  onValueChange={field.handleChange}
-                >
-                  <Select.Trigger />
-                  <Select.Content>
-                    <Select.Item value="admin">Admin</Select.Item>
-                    <Select.Item value="member">Member</Select.Item>
-                    <Select.Item value="owner">Owner</Select.Item>
-                  </Select.Content>
-                </Select.Root>
-                <FormFieldInfo field={field} />
-              </Flex>
+              <Select
+                errorMessage={getFieldErrorMessage({ field })}
+                label="Member role"
+                name={field.name}
+                onSelectionChange={(key) => field.handleChange(key as string)}
+                selectedKey={field.state.value}
+              >
+                <SelectItem id="admin">Admin</SelectItem>
+                <SelectItem id="member">Member</SelectItem>
+                <SelectItem id="owner">Owner</SelectItem>
+              </Select>
             );
           }}
         />
@@ -141,19 +129,21 @@ export function AddMemberForm({
         <Subscribe
           selector={(state) => [state.canSubmit, state.isSubmitting]}
           children={([canSubmit, isSubmitting]) => (
-            <Flex gap="3" justify="end">
-              <Dialog.Close>
-                <Button variant="soft" color="gray">
-                  Cancel
-                </Button>
-              </Dialog.Close>
-              <Button disabled={!canSubmit} loading={isSubmitting}>
+            <div className="flex justify-end gap-2">
+              <Button color="slate" slot="close" variant="light">
+                Cancel
+              </Button>
+              <Button
+                isDisabled={!canSubmit}
+                isPending={isSubmitting}
+                type="submit"
+              >
                 Save
               </Button>
-            </Flex>
+            </div>
           )}
         />
-      </Flex>
+      </div>
     </form>
   );
 }

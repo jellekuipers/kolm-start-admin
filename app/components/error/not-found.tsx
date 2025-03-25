@@ -1,9 +1,7 @@
-import { ArrowLeftIcon } from "@radix-ui/react-icons";
+import { ArrowLeft as ArrowLeftIcon } from "@phosphor-icons/react";
 
-import { Button } from "~/components/ui/button";
-import { Flex } from "~/components/ui/flex";
+import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
-import { Text } from "~/components/ui/text";
 
 interface NotFoundProps {
   children?: React.ReactNode;
@@ -11,25 +9,16 @@ interface NotFoundProps {
 
 export function NotFound({ children }: NotFoundProps) {
   return (
-    <Flex
-      align="center"
-      direction="column"
-      gap="6"
-      justify="center"
-      p="4"
-      style={{ backgroundColor: "var(--gray-1)", minHeight: "inherit" }}
-    >
+    <div className="flex flex-col items-center justify-center gap-6 bg-slate-50 p-4">
       {children || (
-        <Flex align="center" direction="column" gap="4" justify="center">
-          <Text size="9">404</Text>
-          <Button asChild variant="outline">
-            <Link to="/">
-              <ArrowLeftIcon />
-              Home
-            </Link>
-          </Button>
-        </Flex>
+        <div className="flex flex-col items-center justify-center gap-4">
+          <Heading level={1}>404</Heading>
+          <Link className="flex items-center gap-2" to="/">
+            <ArrowLeftIcon size={16} />
+            Home
+          </Link>
+        </div>
       )}
-    </Flex>
+    </div>
   );
 }

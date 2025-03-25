@@ -4,8 +4,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { CopyValue } from "~/components/misc/copy-value";
 import { Avatar } from "~/components/ui/avatar";
 import { Code } from "~/components/ui/code";
-import { DataList } from "~/components/ui/data-list";
-import { Flex } from "~/components/ui/flex";
+import {
+  DataList,
+  DataListItem,
+  DataListLabel,
+  DataListValue,
+} from "~/components/ui/data-list";
 import { Link } from "~/components/ui/link";
 import { organizationQueryOptions } from "~/lib/organization";
 
@@ -35,51 +39,49 @@ function RouteComponent() {
   if (!organization) return null;
 
   return (
-    <DataList.Root orientation={{ initial: "vertical", md: "horizontal" }}>
-      <DataList.Item>
-        <DataList.Label>Name</DataList.Label>
-        <DataList.Value>{organization.name}</DataList.Value>
-      </DataList.Item>
-      <DataList.Item>
-        <DataList.Label>Slug</DataList.Label>
-        <DataList.Value>
-          <Code variant="ghost">{organization.slug}</Code>
-        </DataList.Value>
-      </DataList.Item>
-      <DataList.Item>
-        <DataList.Label>ID</DataList.Label>
-        <DataList.Value>
+    <DataList>
+      <DataListItem>
+        <DataListLabel>Name</DataListLabel>
+        <DataListValue>{organization.name}</DataListValue>
+      </DataListItem>
+      <DataListItem>
+        <DataListLabel>Slug</DataListLabel>
+        <DataListValue>
+          <Code>{organization.slug}</Code>
+        </DataListValue>
+      </DataListItem>
+      <DataListItem>
+        <DataListLabel>ID</DataListLabel>
+        <DataListValue>
           <CopyValue value={organization.id} />
-        </DataList.Value>
-      </DataList.Item>
-      <DataList.Item>
-        <DataList.Label>Created at</DataList.Label>
-        <DataList.Value>
-          {organization.createdAt.toLocaleString()}
-        </DataList.Value>
-      </DataList.Item>
-      <DataList.Item>
-        <DataList.Label>Owner</DataList.Label>
+        </DataListValue>
+      </DataListItem>
+      <DataListItem>
+        <DataListLabel>Created at</DataListLabel>
+        <DataListValue>{organization.createdAt.toDateString()}</DataListValue>
+      </DataListItem>
+      <DataListItem>
+        <DataListLabel>Owner</DataListLabel>
         {organizationOwner ? (
-          <DataList.Value>
+          <DataListValue>
             <Link
               params={{ userId: organizationOwner.userId }}
               to="/users/$userId"
             >
-              <Flex align="center" gap="2">
+              <div className="flex items-center gap-2">
                 <Avatar
                   fallback="@"
+                  size={8}
                   src={organizationOwner.user.image ?? undefined}
-                  size="1"
                 />
                 {organizationOwner.user.email}
-              </Flex>
+              </div>
             </Link>
-          </DataList.Value>
+          </DataListValue>
         ) : (
-          <DataList.Value>No owner</DataList.Value>
+          <DataListValue>No owner</DataListValue>
         )}
-      </DataList.Item>
-    </DataList.Root>
+      </DataListItem>
+    </DataList>
   );
 }

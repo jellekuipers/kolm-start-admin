@@ -6,16 +6,14 @@ import { useRouter } from "@tanstack/react-router";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
-import { FormFieldInfo } from "~/components/form/form-field-info";
-import { FormFieldLabel } from "~/components/form/form-field-label";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
-import { Flex } from "~/components/ui/flex";
-import { Select } from "~/components/ui/select";
+import { Modal, ModalHeading } from "~/components/ui/modal";
+import { Select, SelectItem } from "~/components/ui/select";
 import { Separator } from "~/components/ui/separator";
-import { Text } from "~/components/ui/text";
 import { TextField } from "~/components/ui/text-field";
+import { getFieldErrorMessage } from "~/lib/error";
 import { organizationsQueryOptions } from "~/lib/organization";
 import { createUser } from "~/lib/user";
 
@@ -98,134 +96,117 @@ export function CreateUserModal() {
   const organizations = organizationsQuery.data;
 
   return (
-    <Dialog.Root open={open} onOpenChange={onOpenChangeHandler}>
-      <Dialog.Trigger>
-        <Button>Create user</Button>
-      </Dialog.Trigger>
-      <Dialog.Content>
-        <Dialog.Title>Create user</Dialog.Title>
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            handleSubmit();
-          }}
-        >
-          <Flex direction="column" gap="4">
-            <Field
-              name="email"
-              children={(field) => {
-                return (
-                  <Flex direction="column" gap="1">
-                    <FormFieldLabel htmlFor="email" text="Email" />
-                    <TextField.Root
+    <>
+      <Button onPress={() => setOpen(true)}>Create user</Button>
+      <Modal isDismissable isOpen={open} onOpenChange={onOpenChangeHandler}>
+        <Dialog>
+          <ModalHeading slot="title">Create user</ModalHeading>
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              handleSubmit();
+            }}
+          >
+            <div className="space-y-4">
+              <Field
+                name="email"
+                children={(field) => {
+                  return (
+                    <TextField
                       defaultValue={field.state.value}
+                      errorMessage={getFieldErrorMessage({ field })}
+                      label="Email"
+                      name={field.name}
                       onBlur={field.handleBlur}
-                      name={field.name}
-                      onChange={(event) =>
-                        field.handleChange(event.target.value)
-                      }
+                      onChange={(value) => field.handleChange(value)}
                     />
-                    <FormFieldInfo field={field} />
-                  </Flex>
-                );
-              }}
-            />
-            <Field
-              name="name"
-              children={(field) => {
-                return (
-                  <Flex direction="column" gap="1">
-                    <FormFieldLabel htmlFor="name" text="Name" />
-                    <TextField.Root
+                  );
+                }}
+              />
+              <Field
+                name="name"
+                children={(field) => {
+                  return (
+                    <TextField
                       defaultValue={field.state.value}
+                      errorMessage={getFieldErrorMessage({ field })}
+                      label="Name"
+                      name={field.name}
                       onBlur={field.handleBlur}
+                      onChange={(value) => field.handleChange(value)}
+                    />
+                  );
+                }}
+              />
+              <Separator />
+              <div className="flex items-center gap-2">
+                <span className="font-medium">Organization</span>
+                <Badge>optional</Badge>
+              </div>
+              <Field
+                name="organizationId"
+                children={(field) => {
+                  return (
+                    <Select
+                      errorMessage={getFieldErrorMessage({ field })}
+                      items={organizations}
+                      label="Add to organization"
                       name={field.name}
-                      onChange={(event) =>
-                        field.handleChange(event.target.value)
+                      onSelectionChange={(key) =>
+                        field.handleChange(key as string)
                       }
-                    />
-                    <FormFieldInfo field={field} />
-                  </Flex>
-                );
-              }}
-            />
-            <Separator size="4" />
-            <Flex align="center" gap="2">
-              <Text weight="medium">Organization</Text>
-              <Badge>optional</Badge>
-            </Flex>
-            <Field
-              name="organizationId"
-              children={(field) => {
-                return (
-                  <Flex direction="column" gap="1">
-                    <FormFieldLabel
-                      htmlFor="organizationId"
-                      text="Add to organization"
-                    />
-                    <Select.Root
-                      defaultValue={field.state.value}
-                      name={field.name}
-                      onValueChange={field.handleChange}
+                      selectedKey={field.state.value}
                     >
-                      <Select.Trigger />
-                      <Select.Content>
-                        {organizations?.map((organization) => (
-                          <Select.Item
-                            key={organization.id}
-                            value={organization.id}
-                          >
-                            {organization.name}
-                          </Select.Item>
-                        ))}
-                      </Select.Content>
-                    </Select.Root>
-                  </Flex>
-                );
-              }}
-            />
-            <Field
-              name="memberRole"
-              children={(field) => {
-                return (
-                  <Flex direction="column" gap="1">
-                    <FormFieldLabel htmlFor="role" text="Role" />
-                    <Select.Root
-                      defaultValue={field.state.value}
+                      {(item) => (
+                        <SelectItem id={item.id}>{item.name}</SelectItem>
+                      )}
+                    </Select>
+                  );
+                }}
+              />
+              <Field
+                name="memberRole"
+                children={(field) => {
+                  return (
+                    <Select
+                      errorMessage={getFieldErrorMessage({ field })}
+                      label="Role"
                       name={field.name}
-                      onValueChange={field.handleChange}
+                      onSelectionChange={(key) =>
+                        field.handleChange(key as string)
+                      }
+                      selectedKey={field.state.value}
                     >
-                      <Select.Trigger />
-                      <Select.Content>
-                        <Select.Item value="admin">Admin</Select.Item>
-                        <Select.Item value="member">Member</Select.Item>
-                        <Select.Item value="owner">Owner</Select.Item>
-                      </Select.Content>
-                    </Select.Root>
-                  </Flex>
-                );
-              }}
-            />
-            {error ? <FormError error={error} /> : null}
-            <Subscribe
-              selector={(state) => [state.canSubmit, state.isSubmitting]}
-              children={([canSubmit, isSubmitting]) => (
-                <Flex gap="3" justify="end">
-                  <Dialog.Close>
-                    <Button variant="soft" color="gray">
+                      <SelectItem id="admin">Admin</SelectItem>
+                      <SelectItem id="member">Member</SelectItem>
+                      <SelectItem id="owner">Owner</SelectItem>
+                    </Select>
+                  );
+                }}
+              />
+              {error ? <FormError error={error} /> : null}
+              <Subscribe
+                selector={(state) => [state.canSubmit, state.isSubmitting]}
+                children={([canSubmit, isSubmitting]) => (
+                  <div className="flex justify-end gap-2">
+                    <Button color="slate" slot="close" variant="light">
                       Cancel
                     </Button>
-                  </Dialog.Close>
-                  <Button disabled={!canSubmit} loading={isSubmitting}>
-                    Save
-                  </Button>
-                </Flex>
-              )}
-            />
-          </Flex>
-        </form>
-      </Dialog.Content>
-    </Dialog.Root>
+                    <Button
+                      isDisabled={!canSubmit}
+                      isPending={isSubmitting}
+                      type="submit"
+                    >
+                      Save
+                    </Button>
+                  </div>
+                )}
+              />
+            </div>
+          </form>
+        </Dialog>
+      </Modal>
+    </>
   );
 }

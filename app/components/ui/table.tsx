@@ -1,52 +1,119 @@
-import type { ComponentProps } from "react";
-import { Table as RadixTable } from "@radix-ui/themes";
+import {
+  Cell as AriaCell,
+  Column as AriaColumn,
+  Row as AriaRow,
+  Table as AriaTable,
+  TableBody as AriaTableBody,
+  TableHeader as AriaTableHeader,
+  type TableBodyProps as AriaTableBodyProps,
+  type CellProps as AriaTableCellProps,
+  type ColumnProps as AriaTableColumnProps,
+  type TableHeaderProps as AriaTableHeaderProps,
+  type TableProps as AriaTableProps,
+  type RowProps as AriaTableRowProps,
+} from "react-aria-components";
+import { twMerge } from "tailwind-merge";
 
-export type TableBodyProps = ComponentProps<typeof RadixTable.Body>;
-export type TableCellProps = ComponentProps<typeof RadixTable.Cell>;
-export type TableColumnHeaderCellProps = ComponentProps<
-  typeof RadixTable.ColumnHeaderCell
->;
-export type TableHeaderProps = ComponentProps<typeof RadixTable.Header>;
-export type TableRootProps = ComponentProps<typeof RadixTable.Root>;
-export type TableRowHeaderCellProps = ComponentProps<
-  typeof RadixTable.RowHeaderCell
->;
-export type TableRowProps = ComponentProps<typeof RadixTable.Row>;
-
-export function Body(props: TableBodyProps) {
-  return <RadixTable.Body {...props} />;
+interface TableProps extends Omit<AriaTableProps, "className"> {
+  className?: string;
 }
 
-export function Cell(props: TableCellProps) {
-  return <RadixTable.Cell {...props} />;
+export interface TableBodyProps<T extends object>
+  extends Omit<AriaTableBodyProps<T>, "className"> {
+  className?: string;
 }
 
-export function ColumnHeaderCell(props: TableColumnHeaderCellProps) {
-  return <RadixTable.ColumnHeaderCell {...props} />;
+interface TableCellProps extends Omit<AriaTableCellProps, "className"> {
+  className?: string;
 }
 
-export function Header(props: TableHeaderProps) {
-  return <RadixTable.Header {...props} />;
+interface TableColumnProps extends Omit<AriaTableColumnProps, "className"> {
+  className?: string;
 }
 
-export function Root(props: TableRootProps) {
-  return <RadixTable.Root {...props} />;
+export interface TableHeaderProps<T extends object>
+  extends Omit<AriaTableHeaderProps<T>, "className"> {
+  className?: string;
 }
 
-export function Row(props: TableRowProps) {
-  return <RadixTable.Row {...props} />;
+export interface TableRowProps<T extends object>
+  extends Omit<AriaTableRowProps<T>, "className"> {
+  className?: string;
 }
 
-export function RowHeaderCell(props: TableRowHeaderCellProps) {
-  return <RadixTable.RowHeaderCell {...props} />;
+export function Table({ className, ...props }: TableProps) {
+  return (
+    <div className={twMerge("-mx-4 overflow-x-auto", "lg:mx-0")}>
+      <AriaTable {...props} className={twMerge("w-full", className)} />
+    </div>
+  );
 }
 
-export const Table = {
-  Body,
-  Cell,
-  ColumnHeaderCell,
-  Header,
-  Root,
-  Row,
-  RowHeaderCell,
-};
+export function TableBody<T extends object>({
+  className,
+  ...props
+}: TableBodyProps<T>) {
+  return (
+    <AriaTableBody
+      {...props}
+      className={twMerge(
+        "divide-y divide-slate-300 border-y border-slate-300 align-middle",
+        className,
+      )}
+    />
+  );
+}
+
+export function TableCell({ className, ...props }: TableCellProps) {
+  return (
+    <AriaCell
+      {...props}
+      className={twMerge(
+        "px-4 py-2 align-middle text-sm whitespace-nowrap",
+        "outline-0 -outline-offset-2 outline-indigo-700 focus-visible:outline-2",
+        className,
+      )}
+    />
+  );
+}
+
+export function TableColumn({ className, ...props }: TableColumnProps) {
+  return (
+    <AriaColumn
+      {...props}
+      className={twMerge(
+        "px-4 py-2 align-middle whitespace-nowrap",
+        "outline-0 -outline-offset-2 outline-indigo-700 focus-visible:outline-2",
+        className,
+      )}
+    />
+  );
+}
+
+export function TableHeader<T extends object>({
+  className,
+  ...props
+}: TableHeaderProps<T>) {
+  return (
+    <AriaTableHeader
+      {...props}
+      className={twMerge("align-middle text-sm font-bold", className)}
+    />
+  );
+}
+
+export function TableRow<T extends object>({
+  className,
+  ...props
+}: TableRowProps<T>) {
+  return (
+    <AriaRow
+      {...props}
+      className={twMerge(
+        "align-middle",
+        "outline-0 -outline-offset-2 outline-indigo-700 focus-visible:outline-2",
+        className,
+      )}
+    />
+  );
+}

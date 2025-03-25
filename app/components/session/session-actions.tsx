@@ -1,9 +1,12 @@
-import { DotsVerticalIcon, TrashIcon } from "@radix-ui/react-icons";
+import {
+  DotsThreeVertical as DotsThreeVerticalIcon,
+  TrashSimple as TrashSimpleIcon,
+} from "@phosphor-icons/react";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 
-import { DropdownMenu } from "~/components/ui/dropdown-menu";
 import { IconButton } from "~/components/ui/icon-button";
+import { Menu, MenuItem, MenuTrigger } from "~/components/ui/menu";
 import { revokeUserSession } from "~/lib/user";
 
 interface SessionActionsProps {
@@ -33,26 +36,24 @@ export function SessionActions({ sessionToken }: SessionActionsProps) {
   });
 
   return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger>
-        <IconButton variant="ghost">
-          <DotsVerticalIcon />
-        </IconButton>
-      </DropdownMenu.Trigger>
-      <DropdownMenu.Content align="end">
-        <DropdownMenu.Item
+    <MenuTrigger>
+      <IconButton>
+        <DotsThreeVerticalIcon size={20} />
+      </IconButton>
+      <Menu>
+        <MenuItem
           color="red"
-          disabled={revokeUserSessionMutation.isPending}
-          onClick={async () =>
+          isDisabled={revokeUserSessionMutation.isPending}
+          onAction={async () =>
             await revokeUserSessionMutation.mutateAsync({
               sessionToken,
             })
           }
         >
-          <TrashIcon />
+          <TrashSimpleIcon size={16} />
           Revoke session
-        </DropdownMenu.Item>
-      </DropdownMenu.Content>
-    </DropdownMenu.Root>
+        </MenuItem>
+      </Menu>
+    </MenuTrigger>
   );
 }

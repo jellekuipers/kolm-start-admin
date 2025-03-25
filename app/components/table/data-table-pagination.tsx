@@ -1,14 +1,12 @@
 import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  DoubleArrowLeftIcon,
-  DoubleArrowRightIcon,
-} from "@radix-ui/react-icons";
+  CaretDoubleLeft as CaretDoubleLeftIcon,
+  CaretDoubleRight as CaretDoubleRightIcon,
+  CaretLeft as CaretLeftIcon,
+  CaretRight as CaretRightIcon,
+} from "@phosphor-icons/react";
 import { Table } from "@tanstack/react-table";
 
-import { Flex } from "~/components/ui/flex";
 import { IconButton } from "~/components/ui/icon-button";
-import { Text } from "~/components/ui/text";
 
 interface DataTablePaginationProps<TData> {
   table: Table<TData>;
@@ -18,49 +16,35 @@ export function DataTablePagination<TData>({
   table,
 }: DataTablePaginationProps<TData>) {
   return (
-    <Flex align="center" gap="4">
+    <div className="flex items-center gap-1">
       <IconButton
-        color="gray"
-        disabled={!table.getCanPreviousPage()}
-        onClick={() => table.firstPage()}
-        variant="ghost"
+        isDisabled={!table.getCanPreviousPage()}
+        onPress={() => table.firstPage()}
       >
-        <DoubleArrowLeftIcon />
+        <CaretDoubleLeftIcon size={16} />
       </IconButton>
       <IconButton
-        color="gray"
-        disabled={!table.getCanPreviousPage()}
-        onClick={() => table.previousPage()}
-        variant="ghost"
+        isDisabled={!table.getCanPreviousPage()}
+        onPress={() => table.previousPage()}
       >
-        <ChevronLeftIcon />
+        <CaretLeftIcon size={16} />
       </IconButton>
-      <Text
-        size="2"
-        style={{
-          fontVariantNumeric: "tabular-nums",
-        }}
-        weight="medium"
-      >
-        {table.getState().pagination.pageIndex + 1} of{" "}
-        {table.getPageCount().toLocaleString()}
-      </Text>
+      <span className="text-sm font-semibold tabular-nums px-2">
+        {(table.getState().pagination.pageIndex + 1).toString()} of{" "}
+        {table.getPageCount().toString()}
+      </span>
       <IconButton
-        color="gray"
-        disabled={!table.getCanNextPage()}
-        onClick={() => table.nextPage()}
-        variant="ghost"
+        isDisabled={!table.getCanNextPage()}
+        onPress={() => table.nextPage()}
       >
-        <ChevronRightIcon />
+        <CaretRightIcon size={16} />
       </IconButton>
       <IconButton
-        color="gray"
-        disabled={!table.getCanNextPage()}
-        onClick={() => table.lastPage()}
-        variant="ghost"
+        isDisabled={!table.getCanNextPage()}
+        onPress={() => table.lastPage()}
       >
-        <DoubleArrowRightIcon />
+        <CaretDoubleRightIcon size={16} />
       </IconButton>
-    </Flex>
+    </div>
   );
 }

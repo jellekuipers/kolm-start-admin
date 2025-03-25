@@ -1,8 +1,8 @@
-import type { ComponentProps } from "react";
-import { Separator as RadixSeparator } from "@radix-ui/themes";
+import {
+  Separator as AriaSeparator,
+  type SeparatorProps as AriaSeparatorProps,
+} from "react-aria-components";
 
-export type SeparatorProps = ComponentProps<typeof RadixSeparator>;
-
-export function Separator(props: SeparatorProps) {
-  return <RadixSeparator {...props} />;
+export function Separator(props: AriaSeparatorProps) {
+  return <AriaSeparator {...props} className="border-slate-300" />;
 }

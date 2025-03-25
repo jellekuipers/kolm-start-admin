@@ -1,15 +1,9 @@
-import {
-  createFileRoute,
-  Link,
-  Outlet,
-  redirect,
-} from "@tanstack/react-router";
+import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
+import { twMerge } from "tailwind-merge";
 
 import { Logo } from "~/components/logo";
-import { Box } from "~/components/ui/box";
-import { Button } from "~/components/ui/button";
 import { Code } from "~/components/ui/code";
-import { Flex } from "~/components/ui/flex";
+import { Link } from "~/components/ui/link";
 import { Separator } from "~/components/ui/separator";
 import { SessionUserDropdown } from "~/components/user/session-user-dropdown";
 
@@ -34,42 +28,33 @@ function LayoutComponent() {
 
   return (
     <>
-      <Flex
-        align="center"
-        gap="4"
-        justify="between"
-        px="4"
-        py="3"
-        style={{
-          backgroundColor: "var(--gray-1)",
-        }}
-      >
-        <Flex align="center" gap="2">
-          <Link style={{ display: "flex" }} to="/">
+      <header className="flex items-center justify-between gap-2 bg-slate-50 px-4 py-2">
+        <div className="flex items-center gap-2">
+          <Link className="rounded" to="/">
             <Logo size={32} />
           </Link>
-          <Code color="gray" size="1">
-            v0.9.0
-          </Code>
-        </Flex>
+          <Code>v0.9.0</Code>
+        </div>
         <SessionUserDropdown />
-      </Flex>
-      <Separator size="4" />
-      <Flex align="center" gap="4" p="4" overflowX="auto">
+      </header>
+      <Separator />
+      <div className="flex items-center gap-1 overflow-x-auto p-4">
         {routes.map((route) => (
-          <Button
+          <Link
             key={route.to}
-            asChild
-            style={{ fontWeight: "var(--font-weight-medium)" }}
-            variant="ghost"
+            className={twMerge(
+              "-mx-1 flex h-8 items-center justify-center rounded px-2 text-indigo-700",
+              "hover:border-indigo-50 hover:bg-indigo-50 hover:no-underline",
+            )}
+            to={route.to}
           >
-            <Link to={route.to}>{route.label}</Link>
-          </Button>
+            {route.label}
+          </Link>
         ))}
-      </Flex>
-      <Box p="4">
+      </div>
+      <div className="p-4">
         <Outlet />
-      </Box>
+      </div>
     </>
   );
 }

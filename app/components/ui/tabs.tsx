@@ -1,30 +1,57 @@
-import { ComponentProps } from "react";
-import { Tabs as RadixTabs } from "@radix-ui/themes";
+import {
+  Tab as AriaTab,
+  TabList as AriaTabList,
+  TabPanel as AriaTabPanel,
+  Tabs as AriaTabs,
+  type TabListProps as AriaTabListProps,
+  type TabPanelProps as AriaTabPanelProps,
+  type TabProps as AriaTabProps,
+  type TabsProps as AriaTabsProps,
+} from "react-aria-components";
+import { twMerge } from "tailwind-merge";
 
-export type TabsContentProps = ComponentProps<typeof RadixTabs.Content>;
-export type TabsListProps = ComponentProps<typeof RadixTabs.List>;
-export type TabsRootProps = ComponentProps<typeof RadixTabs.Root>;
-export type TabsTriggerProps = ComponentProps<typeof RadixTabs.Trigger>;
-
-export function Content(props: TabsContentProps) {
-  return <RadixTabs.Content {...props} />;
+interface TabProps extends AriaTabProps, Omit<AriaTabProps, "children"> {
+  children: React.ReactNode;
 }
 
-export function List(props: TabsListProps) {
-  return <RadixTabs.List {...props} />;
+export function Tabs(props: AriaTabsProps) {
+  return <AriaTabs {...props} className="flex flex-col gap-4" />;
 }
 
-export function Root(props: TabsRootProps) {
-  return <RadixTabs.Root {...props} />;
+export function TabList<T extends object>(props: AriaTabListProps<T>) {
+  return <AriaTabList {...props} className="flex border-b border-slate-300" />;
 }
 
-export function Trigger(props: TabsTriggerProps) {
-  return <RadixTabs.Trigger {...props} />;
+export function Tab({ children, ...props }: TabProps) {
+  return (
+    <AriaTab
+      {...props}
+      className={twMerge(
+        "group -mb-px flex cursor-pointer items-center gap-2 border-b-2 border-transparent px-2 pb-1",
+        "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
+        "selected:border-indigo-500",
+      )}
+    >
+      <span
+        className={twMerge(
+          "flex h-8 items-center rounded px-2 text-sm font-medium text-slate-800",
+          "group-hover:bg-slate-100",
+        )}
+      >
+        {children}
+      </span>
+    </AriaTab>
+  );
 }
 
-export const Tabs = {
-  Content,
-  List,
-  Root,
-  Trigger,
-};
+export function TabPanel(props: AriaTabPanelProps) {
+  return (
+    <AriaTabPanel
+      {...props}
+      className={twMerge(
+        "flex-1",
+        "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
+      )}
+    />
+  );
+}

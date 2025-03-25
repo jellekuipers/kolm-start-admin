@@ -1,16 +1,14 @@
-import { ArrowLeftIcon } from "@radix-ui/react-icons";
+import { ArrowLeft as ArrowLeftIcon } from "@phosphor-icons/react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Outlet } from "@tanstack/react-router";
+import { twMerge } from "tailwind-merge";
 
+import { Container } from "~/components/layout/container";
 import { OrganizationActions } from "~/components/organization/organization-actions";
 import { OrganizationTabNav } from "~/components/organization/organization-tab-nav";
 import { Avatar } from "~/components/ui/avatar";
-import { Button } from "~/components/ui/button";
-import { Container } from "~/components/ui/container";
-import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
-import { Text } from "~/components/ui/text";
 import { organizationQueryOptions } from "~/lib/organization";
 
 export const Route = createFileRoute(
@@ -35,44 +33,42 @@ function RouteComponent() {
   if (!organization) return null;
 
   return (
-    <Container size="3">
-      <Flex direction="column" gap="6">
-        <Flex justify="start">
-          <Button
-            asChild
-            variant="ghost"
-            style={{ fontWeight: "var(--font-weight-medium)" }}
-          >
-            <Link to="/organizations">
-              <ArrowLeftIcon /> Organizations
-            </Link>
-          </Button>
-        </Flex>
-        <Flex direction="column" gap="4">
-          <Flex justify="between" gap="4" wrap="wrap">
-            <Flex align="center" gap="4" wrap="wrap">
+    <Container>
+      <div className="space-y-8">
+        <Link
+          className={twMerge(
+            "-mx-1 inline-flex h-8 items-center justify-center rounded px-2 text-indigo-700",
+            "hover:border-indigo-50 hover:bg-indigo-50 hover:no-underline",
+          )}
+          to="/organizations"
+        >
+          <ArrowLeftIcon size={16} /> Organizations
+        </Link>
+        <div className="space-y-6">
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div className="flex flex-wrap items-center gap-4">
               <Avatar
                 fallback="@"
-                size="4"
+                size={16}
                 src={organization.logo ?? undefined}
               />
-              <Flex direction="column">
-                <Heading>{organization.name}</Heading>
-                <Text color="gray" size="1" weight="medium">
+              <div className="space-y-0">
+                <Heading level={1}>{organization.name}</Heading>
+                <span className="text-sm text-slate-600">
                   {organization.members.length}{" "}
                   {organization.members.length === 1 ? "member" : "members"}
-                </Text>
-              </Flex>
-            </Flex>
+                </span>
+              </div>
+            </div>
             <OrganizationActions
               organization={organization}
               variant="profile"
             />
-          </Flex>
+          </div>
           <OrganizationTabNav organizationId={organization.id} />
-        </Flex>
+        </div>
         <Outlet />
-      </Flex>
+      </div>
     </Container>
   );
 }

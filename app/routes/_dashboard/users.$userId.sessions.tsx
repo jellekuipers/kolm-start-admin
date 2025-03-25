@@ -7,7 +7,6 @@ import { Session } from "better-auth";
 import { CopyValue } from "~/components/misc/copy-value";
 import { SessionActions } from "~/components/session/session-actions";
 import { DataTable } from "~/components/table/data-table";
-import { Flex } from "~/components/ui/flex";
 import { userSessionsQueryOptions } from "~/lib/user";
 
 export const Route = createFileRoute("/_dashboard/users/$userId/sessions")({
@@ -31,14 +30,14 @@ export const dataTableColumns: ColumnDef<Session>[] = [
     id: "createdAt",
     header: "Created at",
     cell({ row }) {
-      return row.original.createdAt.toLocaleString();
+      return row.original.createdAt.toDateString();
     },
   },
   {
     id: "expiresAt",
     header: "Expires at",
     cell({ row }) {
-      return row.original.expiresAt.toLocaleString();
+      return row.original.expiresAt.toDateString();
     },
   },
   {
@@ -47,9 +46,9 @@ export const dataTableColumns: ColumnDef<Session>[] = [
     header: undefined,
     cell({ row }) {
       return (
-        <Flex justify="end">
+        <div className="flex justify-end">
           <SessionActions sessionToken={row.original.token} />
-        </Flex>
+        </div>
       );
     },
   },
@@ -64,5 +63,7 @@ function RouteComponent() {
 
   const columns = useMemo(() => dataTableColumns, []);
 
-  return <DataTable columns={columns} data={userSessions} />;
+  return (
+    <DataTable columns={columns} data={userSessions} label="User sessions" />
+  );
 }

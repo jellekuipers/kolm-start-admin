@@ -1,8 +1,19 @@
-import type { ComponentProps } from "react";
-import { Heading as RadixHeading } from "@radix-ui/themes";
+import {
+  Heading as AriaHeading,
+  type HeadingProps as AriaHeadingProps,
+} from "react-aria-components";
+import { twMerge } from "tailwind-merge";
 
-export type HeadingProps = ComponentProps<typeof RadixHeading>;
-
-export function Heading(props: HeadingProps) {
-  return <RadixHeading {...props} />;
+export function Heading({ level, ...props }: AriaHeadingProps) {
+  return (
+    <AriaHeading
+      {...props}
+      className={twMerge(
+        "font-bold",
+        level === 1 && "text-2xl",
+        level === 2 && "text-xl",
+        level === 3 && "text-lg",
+      )}
+    />
+  );
 }

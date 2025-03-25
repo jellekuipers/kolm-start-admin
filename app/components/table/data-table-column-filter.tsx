@@ -1,12 +1,11 @@
-import { ChevronDownIcon } from "@radix-ui/react-icons";
+import { CaretDown as CaretDownIcon } from "@phosphor-icons/react";
 import { Table } from "@tanstack/react-table";
-import { Label } from "radix-ui";
 
 import { Button } from "~/components/ui/button";
 import { Checkbox } from "~/components/ui/checkbox";
-import { Flex } from "~/components/ui/flex";
+import { Dialog, DialogTrigger } from "~/components/ui/dialog";
+import { GridList, GridListItem } from "~/components/ui/grid-list";
 import { Popover } from "~/components/ui/popover";
-import { Text } from "~/components/ui/text";
 
 interface DataTableColumnFilterProps<TData> {
   table: Table<TData>;
@@ -15,46 +14,43 @@ interface DataTableColumnFilterProps<TData> {
 export function DataTableColumnFilter<TData>({
   table,
 }: DataTableColumnFilterProps<TData>) {
+  const columns = table.getAllColumns().filter((column) => column.getCanHide());
+
   return (
-    <Popover.Root>
-      <Popover.Trigger>
-        <Button variant="soft">
-          Column visibility <ChevronDownIcon />
-        </Button>
-      </Popover.Trigger>
-      <Popover.Content>
-        <Flex direction="column" gap="2">
-          {table
-            .getAllColumns()
-            .filter((column) => column.getCanHide())
-            .map((column) => {
-              return (
-                <Flex
-                  key={column.id}
-                  align="center"
-                  style={{ cursor: "var(--cursor-button)" }}
-                >
-                  <Checkbox
-                    checked={column.getIsVisible()}
-                    id={column.id}
-                    onCheckedChange={(checked) =>
-                      column.toggleVisibility(!!checked)
-                    }
-                  />
-                  <Label.Root
-                    asChild
-                    htmlFor={column.id}
-                    style={{ paddingLeft: "var(--space-2)" }}
-                  >
-                    <Text as="label" size="2" weight="medium">
-                      {column.columnDef.header?.toString()}
-                    </Text>
-                  </Label.Root>
-                </Flex>
-              );
-            })}
-        </Flex>
-      </Popover.Content>
-    </Popover.Root>
+    <DialogTrigger>
+      <Button color="indigo" variant="light">
+        Column visibility <CaretDownIcon />
+      </Button>
+      <Popover>
+        <Dialog>
+          <GridList
+            items={columns}
+            onSelectionChange={(selectedIds) => {
+              const visibilityState: Record<string, boolean> = {};
+
+              for (const column of columns) {
+                if (selectedIds === "all") {
+                  visibilityState[column.id] = true;
+                } else if (typeof selectedIds?.has === "function") {
+                  visibilityState[column.id] = selectedIds.has(column.id);
+                }
+              }
+
+              table.setColumnVisibility(visibilityState);
+            }}
+            selectedKeys={table.getVisibleLeafColumns().map(({ id }) => id)}
+            selectionMode="multiple"
+          >
+            {(column) => (
+              <GridListItem textValue={column.id}>
+                <Checkbox slot="selection">
+                  {column.columnDef.header?.toString()}
+                </Checkbox>
+              </GridListItem>
+            )}
+          </GridList>
+        </Dialog>
+      </Popover>
+    </DialogTrigger>
   );
 }

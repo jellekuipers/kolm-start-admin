@@ -5,16 +5,15 @@ import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
-import { FormFieldInfo } from "~/components/form/form-field-info";
-import { FormFieldLabel } from "~/components/form/form-field-label";
 import { Logo } from "~/components/logo";
 import { Button } from "~/components/ui/button";
 import { Card } from "~/components/ui/card";
-import { Flex } from "~/components/ui/flex";
+import { Label } from "~/components/ui/field";
 import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
 import { TextField } from "~/components/ui/text-field";
 import { signIn } from "~/lib/auth-client";
+import { getFieldErrorMessage } from "~/lib/error";
 
 const signInSchema = z.object({
   email: z.string().email(),
@@ -56,20 +55,11 @@ function RouteComponent() {
   });
 
   return (
-    <Flex
-      align="center"
-      direction="column"
-      gap="6"
-      justify="center"
-      p="4"
-      style={{ backgroundColor: "var(--gray-1)", minHeight: "inherit" }}
-    >
-      <Logo size={48} />
-      <Card size="4" style={{ width: 400 }}>
-        <Flex direction="column" gap="5">
-          <Heading as="h3" size="6">
-            Sign in
-          </Heading>
+    <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-slate-50 p-4">
+      <Logo size={40} />
+      <Card className="w-96 p-4">
+        <div className="space-y-4">
+          <Heading level={2}>Sign in</Heading>
           <form
             onSubmit={(event) => {
               event.preventDefault();
@@ -77,23 +67,20 @@ function RouteComponent() {
               handleSubmit();
             }}
           >
-            <Flex direction="column" gap="5">
+            <div className="space-y-4">
               <Field
                 name="email"
                 children={(field) => {
                   return (
-                    <Flex direction="column" gap="1">
-                      <FormFieldLabel htmlFor="email" text="Email" />
-                      <TextField.Root
-                        defaultValue={field.state.value}
-                        onBlur={field.handleBlur}
-                        name={field.name}
-                        onChange={(event) =>
-                          field.handleChange(event.target.value)
-                        }
-                      />
-                      <FormFieldInfo field={field} />
-                    </Flex>
+                    <TextField
+                      defaultValue={field.state.value}
+                      errorMessage={getFieldErrorMessage({ field })}
+                      label="Email"
+                      name={field.name}
+                      onBlur={field.handleBlur}
+                      onChange={(value) => field.handleChange(value)}
+                      type="email"
+                    />
                   );
                 }}
               />
@@ -101,24 +88,22 @@ function RouteComponent() {
                 name="password"
                 children={(field) => {
                   return (
-                    <Flex direction="column" gap="1">
-                      <Flex align="baseline" justify="between" mb="1">
-                        <FormFieldLabel htmlFor="password" text="password" />
-                        <Link to="/" size="2">
+                    <div className="space-y-1">
+                      <div className="mb-1 flex items-baseline justify-between">
+                        <Label>Password</Label>
+                        <Link className="font-medium" to="/">
                           Forgot password?
                         </Link>
-                      </Flex>
-                      <TextField.Root
+                      </div>
+                      <TextField
                         defaultValue={field.state.value}
-                        onBlur={field.handleBlur}
+                        errorMessage={getFieldErrorMessage({ field })}
                         name={field.name}
-                        onChange={(event) =>
-                          field.handleChange(event.target.value)
-                        }
+                        onBlur={field.handleBlur}
+                        onChange={(value) => field.handleChange(value)}
                         type="password"
                       />
-                      <FormFieldInfo field={field} />
-                    </Flex>
+                    </div>
                   );
                 }}
               />
@@ -126,17 +111,21 @@ function RouteComponent() {
               <Subscribe
                 selector={(state) => [state.canSubmit, state.isSubmitting]}
                 children={([canSubmit, isSubmitting]) => (
-                  <Flex justify="end">
-                    <Button disabled={!canSubmit} loading={isSubmitting}>
+                  <div className="flex justify-end">
+                    <Button
+                      isDisabled={!canSubmit}
+                      isPending={isSubmitting}
+                      type="submit"
+                    >
                       Sign in
                     </Button>
-                  </Flex>
+                  </div>
                 )}
               />
-            </Flex>
+            </div>
           </form>
-        </Flex>
+        </div>
       </Card>
-    </Flex>
+    </div>
   );
 }

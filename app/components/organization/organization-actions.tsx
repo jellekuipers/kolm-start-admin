@@ -1,18 +1,23 @@
 import { useState } from "react";
 import {
-  CardStackIcon,
-  ChevronDownIcon,
-  DotsVerticalIcon,
-  Pencil1Icon,
-  TrashIcon,
-} from "@radix-ui/react-icons";
+  CaretDown as CaretDownIcon,
+  DotsThreeVertical as DotsThreeVerticalIcon,
+  Network as NetworkIcon,
+  PencilSimple as PencilSimpleIcon,
+  TrashSimple as TrashSimpleIcon,
+} from "@phosphor-icons/react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
 import { UpdateOrganizationModal } from "~/components/organization/update-organization-modal";
 import { Button } from "~/components/ui/button";
-import { DropdownMenu } from "~/components/ui/dropdown-menu";
 import { IconButton } from "~/components/ui/icon-button";
+import {
+  Menu,
+  MenuItem,
+  MenuSeparator,
+  MenuTrigger,
+} from "~/components/ui/menu";
 import { deleteOrganization } from "~/lib/organization";
 import { AuthOrganization, ORMOrganization } from "~/types";
 
@@ -55,51 +60,49 @@ export function OrganizationActions({
         setOpen={setOpen}
         organization={organization}
       />
-      <DropdownMenu.Root>
-        <DropdownMenu.Trigger>
+      <MenuTrigger>
+        {variant === "overview" ? (
+          <IconButton>
+            <DotsThreeVerticalIcon size={20} />
+          </IconButton>
+        ) : (
+          <Button color="indigo" variant="light">
+            Actions <CaretDownIcon size={16} />
+          </Button>
+        )}
+        <Menu>
           {variant === "overview" ? (
-            <IconButton variant="ghost">
-              <DotsVerticalIcon />
-            </IconButton>
-          ) : (
-            <Button variant="soft">
-              Actions <ChevronDownIcon />
-            </Button>
-          )}
-        </DropdownMenu.Trigger>
-        <DropdownMenu.Content align="end">
-          {variant === "overview" ? (
-            <DropdownMenu.Item
-              onClick={() =>
+            <MenuItem
+              onAction={() =>
                 navigate({
                   params: { organizationId: organization.id },
                   to: "/organizations/$organizationId",
                 })
               }
             >
-              <CardStackIcon />
+              <NetworkIcon size={16} />
               View organization
-            </DropdownMenu.Item>
+            </MenuItem>
           ) : null}
-          <DropdownMenu.Item onClick={() => setOpen(true)}>
-            <Pencil1Icon />
+          <MenuItem onAction={() => setOpen(true)}>
+            <PencilSimpleIcon size={16} />
             Update organization
-          </DropdownMenu.Item>
-          <DropdownMenu.Separator />
-          <DropdownMenu.Item
+          </MenuItem>
+          <MenuSeparator />
+          <MenuItem
             color="red"
-            disabled={deleteOrganizationMutation.isPending}
-            onClick={async () =>
+            isDisabled={deleteOrganizationMutation.isPending}
+            onAction={async () =>
               await deleteOrganizationMutation.mutateAsync({
                 organizationId: organization.id,
               })
             }
           >
-            <TrashIcon />
+            <TrashSimpleIcon size={16} />
             Delete organization
-          </DropdownMenu.Item>
-        </DropdownMenu.Content>
-      </DropdownMenu.Root>
+          </MenuItem>
+        </Menu>
+      </MenuTrigger>
     </>
   );
 }

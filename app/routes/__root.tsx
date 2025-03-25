@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Theme } from "@radix-ui/themes";
 import type { QueryClient } from "@tanstack/react-query";
 import {
   createRootRouteWithContext,
@@ -40,7 +39,7 @@ export const Route = createRootRouteWithContext<{
       ...seo({
         title: "kolm start admin",
         description:
-          "A TanStack Start + better-auth admin starter with Drizzle ORM, tRPC, Radix Themes + Icons",
+          "A TanStack Start + better-auth admin starter with Drizzle ORM, tRPC, React Aria",
       }),
     ],
     links: [
@@ -72,8 +71,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body>
-        <Theme grayColor="slate">{children}</Theme>
+      <body className="flex min-h-screen flex-col text-slate-800 antialiased">
+        {children}
         {SHOW_ROUTER_DEVTOOLS ? (
           <TanStackRouterDevtools position="bottom-right" />
         ) : null}

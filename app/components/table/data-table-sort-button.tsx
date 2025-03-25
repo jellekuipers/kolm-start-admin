@@ -1,8 +1,8 @@
 import {
-  CaretDownIcon,
-  CaretSortIcon,
-  CaretUpIcon,
-} from "@radix-ui/react-icons";
+  CaretDown as CaretDownIcon,
+  CaretUpDown as CaretUpDownIcon,
+  CaretUp as CaretUpIcon,
+} from "@phosphor-icons/react";
 import { SortDirection } from "@tanstack/react-table";
 
 import { IconButton } from "~/components/ui/icon-button";
@@ -15,11 +15,11 @@ interface DataTableSortButtonProps {
 const renderIcon = (isSorted: SortDirection | false) => {
   switch (isSorted) {
     case "asc":
-      return <CaretDownIcon />;
+      return <CaretDownIcon size={16} />;
     case "desc":
-      return <CaretUpIcon />;
+      return <CaretUpIcon size={16} />;
     default:
-      return <CaretSortIcon />;
+      return <CaretUpDownIcon size={16} />;
   }
 };
 
@@ -30,7 +30,7 @@ export function DataTableSortButton({
   const icon = renderIcon(isSorted);
 
   return (
-    <IconButton color="gray" onClick={onClick} variant="ghost">
+    <IconButton aria-label="Sort column" onPress={onClick}>
       {icon}
     </IconButton>
   );

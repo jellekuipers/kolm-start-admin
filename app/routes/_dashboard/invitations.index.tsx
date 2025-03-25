@@ -6,10 +6,9 @@ import { ColumnDef } from "@tanstack/react-table";
 import { CreateInvitationModal } from "~/components/invitation/create-invitation-modal";
 import { InvitationActions } from "~/components/invitation/invitation-actions";
 import { InvitationStatus } from "~/components/invitation/invitation-status";
+import { Container } from "~/components/layout/container";
 import { DataTable } from "~/components/table/data-table";
 import { Badge } from "~/components/ui/badge";
-import { Container } from "~/components/ui/container";
-import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { Separator } from "~/components/ui/separator";
 import { invitationsQueryOptions } from "~/lib/invitation";
@@ -42,7 +41,7 @@ const dataTableColumns: ColumnDef<Invitation>[] = [
     accessorKey: "expiresAt",
     header: "Expires",
     cell({ row }) {
-      return row.original.expiresAt.toLocaleString();
+      return row.original.expiresAt.toDateString();
     },
   },
   {
@@ -58,9 +57,9 @@ const dataTableColumns: ColumnDef<Invitation>[] = [
     header: undefined,
     cell({ row }) {
       return (
-        <Flex justify="end">
+        <div className="flex justify-end">
           <InvitationActions invitation={row.original} />
-        </Flex>
+        </div>
       );
     },
   },
@@ -72,20 +71,20 @@ function RouteComponent() {
   const columns = useMemo(() => dataTableColumns, []);
 
   return (
-    <Container size="3">
-      <Flex direction="column" gap="6">
-        <Flex direction="column" gap="4">
-          <Flex justify="between" gap="4" wrap="wrap">
-            <Flex align="center" gap="2">
-              <Heading>Invitations</Heading>
+    <Container>
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <Heading level={1}>Invitations</Heading>
               <Badge>{invitations.length}</Badge>
-            </Flex>
+            </div>
             <CreateInvitationModal />
-          </Flex>
-          <Separator size="4" />
-        </Flex>
-        <DataTable columns={columns} data={invitations} />
-      </Flex>
+          </div>
+          <Separator />
+        </div>
+        <DataTable label="Invitations" columns={columns} data={invitations} />
+      </div>
     </Container>
   );
 }

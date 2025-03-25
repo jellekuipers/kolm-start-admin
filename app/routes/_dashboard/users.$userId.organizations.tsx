@@ -5,9 +5,8 @@ import { ColumnDef } from "@tanstack/react-table";
 
 import { MemberActions } from "~/components/member/member-actions";
 import { UpdateMemberRole } from "~/components/member/update-member-role";
-import { DataTableSimple } from "~/components/table/data-table-simple";
+import { DataTable } from "~/components/table/data-table";
 import { Avatar } from "~/components/ui/avatar";
-import { Flex } from "~/components/ui/flex";
 import { Link } from "~/components/ui/link";
 import { AddUserToOrganizationModal } from "~/components/user/add-user-to-organization-modal";
 import { membersQueryOptions } from "~/lib/member";
@@ -35,6 +34,7 @@ const dataTableColumns: ColumnDef<
       return (
         <Avatar
           fallback="@"
+          size={10}
           src={row.original.organization.logo ?? undefined}
         />
       );
@@ -70,7 +70,7 @@ const dataTableColumns: ColumnDef<
     accessorKey: "createdAt",
     header: "Member since",
     cell({ row }) {
-      return row.original.createdAt.toLocaleString();
+      return row.original.createdAt.toDateString();
     },
   },
   {
@@ -78,12 +78,12 @@ const dataTableColumns: ColumnDef<
     header: undefined,
     cell({ row }) {
       return (
-        <Flex justify="end">
+        <div className="flex justify-end">
           <MemberActions
             memberId={row.original.id}
             organizationId={row.original.organizationId}
           />
-        </Flex>
+        </div>
       );
     },
   },
@@ -97,11 +97,11 @@ function RouteComponent() {
   const columns = useMemo(() => dataTableColumns, []);
 
   return (
-    <Flex direction="column" gap="4">
-      <Flex justify="end">
-        <AddUserToOrganizationModal userId={userId} />
-      </Flex>
-      <DataTableSimple columns={columns} data={members} />
-    </Flex>
+    <DataTable
+      actions={<AddUserToOrganizationModal userId={userId} />}
+      columns={columns}
+      data={members}
+      label="User organizations"
+    />
   );
 }

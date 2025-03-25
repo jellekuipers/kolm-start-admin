@@ -1,13 +1,18 @@
 import {
-  CardStackIcon,
-  DotsVerticalIcon,
-  TrashIcon,
-} from "@radix-ui/react-icons";
+  DotsThreeVertical as DotsThreeVerticalIcon,
+  Network as NetworkIcon,
+  TrashSimple as TrashSimpleIcon,
+} from "@phosphor-icons/react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
-import { DropdownMenu } from "~/components/ui/dropdown-menu";
 import { IconButton } from "~/components/ui/icon-button";
+import {
+  Menu,
+  MenuItem,
+  MenuSeparator,
+  MenuTrigger,
+} from "~/components/ui/menu";
 import { removeMember } from "~/lib/organization";
 
 interface MemberActionsProps {
@@ -53,39 +58,37 @@ export function MemberActions({
   });
 
   return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger>
-        <IconButton variant="ghost">
-          <DotsVerticalIcon />
-        </IconButton>
-      </DropdownMenu.Trigger>
-      <DropdownMenu.Content align="end">
-        <DropdownMenu.Item
-          onClick={() =>
+    <MenuTrigger>
+      <IconButton>
+        <DotsThreeVerticalIcon size={20} />
+      </IconButton>
+      <Menu>
+        <MenuItem
+          onAction={() =>
             navigate({
               params: { organizationId },
               to: "/organizations/$organizationId",
             })
           }
         >
-          <CardStackIcon />
+          <NetworkIcon size={16} />
           View organization
-        </DropdownMenu.Item>
-        <DropdownMenu.Separator />
-        <DropdownMenu.Item
+        </MenuItem>
+        <MenuSeparator />
+        <MenuItem
           color="red"
-          disabled={removeMemberMutation.isPending}
-          onClick={async () =>
+          isDisabled={removeMemberMutation.isPending}
+          onAction={async () =>
             await removeMemberMutation.mutateAsync({
               memberIdOrEmail: memberId,
               organizationId,
             })
           }
         >
-          <TrashIcon />
+          <TrashSimpleIcon size={16} />
           Remove membership
-        </DropdownMenu.Item>
-      </DropdownMenu.Content>
-    </DropdownMenu.Root>
+        </MenuItem>
+      </Menu>
+    </MenuTrigger>
   );
 }

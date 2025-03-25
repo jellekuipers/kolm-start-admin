@@ -7,7 +7,6 @@ import { CopyValue } from "~/components/misc/copy-value";
 import { DataTable } from "~/components/table/data-table";
 import { CreateTeamModal } from "~/components/team/create-team-modal";
 import { TeamActions } from "~/components/team/team-actions";
-import { Flex } from "~/components/ui/flex";
 import { teamsQueryOptions } from "~/lib/team";
 import { Team } from "~/types";
 
@@ -40,9 +39,9 @@ const dataTableColumns: ColumnDef<Team>[] = [
     header: undefined,
     cell({ row }) {
       return (
-        <Flex justify="end">
+        <div className="flex justify-end">
           <TeamActions team={row.original} />
-        </Flex>
+        </div>
       );
     },
   },
@@ -60,11 +59,11 @@ function RouteComponent() {
   const columns = useMemo(() => dataTableColumns, []);
 
   return (
-    <Flex direction="column" gap="4">
-      <Flex justify="end">
-        <CreateTeamModal organizationId={organizationId} />
-      </Flex>
-      <DataTable columns={columns} data={teams} />
-    </Flex>
+    <DataTable
+      actions={<CreateTeamModal organizationId={organizationId} />}
+      columns={columns}
+      data={teams}
+      label="Organization teams"
+    />
   );
 }

@@ -8,9 +8,9 @@ export function UserRole({ role }: UserRoleProps) {
   const renderBadge = (role?: string | null) => {
     switch (role) {
       case "admin":
-        return <Badge color="pink">admin</Badge>;
+        return <Badge>admin</Badge>;
       case "user":
-        return <Badge color="indigo">user</Badge>;
+        return <Badge color="slate">user</Badge>;
       default:
         return;
     }

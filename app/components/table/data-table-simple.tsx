@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ValueNoneIcon } from "@radix-ui/react-icons";
+import { Empty as EmptyIcon } from "@phosphor-icons/react";
 import {
   flexRender,
   getCoreRowModel,
@@ -9,22 +9,28 @@ import {
   type ColumnDef,
 } from "@tanstack/react-table";
 
-import { Callout } from "~/components/ui/callout";
-import { Flex } from "~/components/ui/flex";
-import { Table } from "~/components/ui/table";
+import { Callout, CalloutIcon, CalloutText } from "~/components/ui/callout";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableColumn,
+  TableHeader,
+  TableRow,
+} from "~/components/ui/table";
 
 import { DataTableSortButton } from "./data-table-sort-button";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-  variant?: "surface" | "ghost" | undefined;
+  label: string;
 }
 
 export function DataTableSimple<TData, TValue>({
   columns,
   data,
-  variant,
+  label,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
 
@@ -43,18 +49,13 @@ export function DataTableSimple<TData, TValue>({
   return (
     <>
       {table.getRowModel().rows?.length ? (
-        <Table.Root variant={variant}>
-          <Table.Header>
+        <Table aria-label={label}>
+          <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <Table.Row key={headerGroup.id}>
+              <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <Table.ColumnHeaderCell
-                    key={header.id}
-                    style={{
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    <Flex gap="4" align="center">
+                  <TableColumn key={header.id}>
+                    <div className="flex items-center gap-2">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -67,37 +68,31 @@ export function DataTableSimple<TData, TValue>({
                           onClick={header.column.getToggleSortingHandler()}
                         />
                       ) : null}
-                    </Flex>
-                  </Table.ColumnHeaderCell>
+                    </div>
+                  </TableColumn>
                 ))}
-              </Table.Row>
+              </TableRow>
             ))}
-          </Table.Header>
-          <Table.Body>
+          </TableHeader>
+          <TableBody>
             {table.getRowModel().rows.map((row) => (
-              <Table.Row key={row.id}>
+              <TableRow key={row.id}>
                 {row.getVisibleCells().map((cell) => (
-                  <Table.Cell
-                    key={cell.id}
-                    style={{
-                      verticalAlign: "middle",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
+                  <TableCell key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </Table.Cell>
+                  </TableCell>
                 ))}
-              </Table.Row>
+              </TableRow>
             ))}
-          </Table.Body>
-        </Table.Root>
+          </TableBody>
+        </Table>
       ) : (
-        <Callout.Root>
-          <Callout.Icon>
-            <ValueNoneIcon />
-          </Callout.Icon>
-          <Callout.Text>No results</Callout.Text>
-        </Callout.Root>
+        <Callout>
+          <CalloutIcon>
+            <EmptyIcon size={16} />
+          </CalloutIcon>
+          <CalloutText>No results</CalloutText>
+        </Callout>
       )}
     </>
   );

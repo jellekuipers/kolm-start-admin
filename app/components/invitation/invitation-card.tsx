@@ -1,14 +1,18 @@
 import { useState } from "react";
-import { InfoCircledIcon } from "@radix-ui/react-icons";
+import { Info as InfoIcon } from "@phosphor-icons/react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
 import { InvitationStatus } from "~/components/invitation/invitation-status";
 import { MemberRole } from "~/components/member/member-role";
 import { Button } from "~/components/ui/button";
-import { Callout } from "~/components/ui/callout";
-import { DataList } from "~/components/ui/data-list";
-import { Flex } from "~/components/ui/flex";
+import { Callout, CalloutIcon, CalloutText } from "~/components/ui/callout";
+import {
+  DataList,
+  DataListItem,
+  DataListLabel,
+  DataListValue,
+} from "~/components/ui/data-list";
 import { Separator } from "~/components/ui/separator";
 import { acceptInvitation, rejectInvitation } from "~/lib/invitation";
 import { Invitation } from "~/types";
@@ -61,72 +65,72 @@ export function InvitationCard({ invitation }: InvitationCardProps) {
   });
 
   return (
-    <Flex direction="column" gap="4">
-      <DataList.Root orientation={{ initial: "vertical", md: "horizontal" }}>
-        <DataList.Item>
-          <DataList.Label>Organization</DataList.Label>
-          <DataList.Value>{invitation.organizationName}</DataList.Value>
-        </DataList.Item>
-        <DataList.Item>
-          <DataList.Label>Inviter email</DataList.Label>
-          <DataList.Value>{invitation.inviterEmail}</DataList.Value>
-        </DataList.Item>
-        <DataList.Item>
-          <DataList.Label>Role</DataList.Label>
-          <DataList.Value>
+    <div className="space-y-4">
+      <DataList className="gap-4">
+        <DataListItem>
+          <DataListLabel>Organization</DataListLabel>
+          <DataListValue>{invitation.organizationName}</DataListValue>
+        </DataListItem>
+        <DataListItem>
+          <DataListLabel>Inviter email</DataListLabel>
+          <DataListValue>{invitation.inviterEmail}</DataListValue>
+        </DataListItem>
+        <DataListItem>
+          <DataListLabel>Role</DataListLabel>
+          <DataListValue>
             <MemberRole role={invitation.role} />
-          </DataList.Value>
-        </DataList.Item>
-        <DataList.Item>
-          <DataList.Label>Expires</DataList.Label>
-          <DataList.Value>
-            {invitation.expiresAt.toLocaleString()}
-          </DataList.Value>
-        </DataList.Item>
-        <DataList.Item>
-          <DataList.Label>Status</DataList.Label>
-          <DataList.Value>
+          </DataListValue>
+        </DataListItem>
+        <DataListItem>
+          <DataListLabel>Expires</DataListLabel>
+          <DataListValue>{invitation.expiresAt.toDateString()}</DataListValue>
+        </DataListItem>
+        <DataListItem>
+          <DataListLabel>Status</DataListLabel>
+          <DataListValue>
             <InvitationStatus status={invitation.status} />
-          </DataList.Value>
-        </DataList.Item>
-      </DataList.Root>
-      <Separator size="4" />
+          </DataListValue>
+        </DataListItem>
+      </DataList>
       {error ? (
-        <Callout.Root color="red">
-          <Callout.Icon>
-            <InfoCircledIcon />
-          </Callout.Icon>
-          <Callout.Text>{error.message}</Callout.Text>
-        </Callout.Root>
+        <Callout>
+          <CalloutIcon>
+            <InfoIcon size={16} />
+          </CalloutIcon>
+          <CalloutText>{error.message}</CalloutText>
+        </Callout>
       ) : null}
       {invitation.status === "pending" ? (
-        <Flex align="center" gap="4" justify="end" wrap="wrap">
-          <Button
-            color="red"
-            disabled={rejectInvitationMutation.isPending}
-            loading={rejectInvitationMutation.isPending}
-            onClick={async () =>
-              await rejectInvitationMutation.mutateAsync({
-                invitationId: invitation.id,
-              })
-            }
-            variant="outline"
-          >
-            Reject
-          </Button>
-          <Button
-            disabled={acceptInvitationMutation.isPending}
-            loading={acceptInvitationMutation.isPending}
-            onClick={async () =>
-              await acceptInvitationMutation.mutateAsync({
-                invitationId: invitation.id,
-              })
-            }
-          >
-            Accept
-          </Button>
-        </Flex>
+        <div className="flex flex-col gap-4">
+          <Separator />
+          <div className="flex justify-end gap-2">
+            <Button
+              color="red"
+              isDisabled={rejectInvitationMutation.isPending}
+              isPending={rejectInvitationMutation.isPending}
+              onPress={async () =>
+                await rejectInvitationMutation.mutateAsync({
+                  invitationId: invitation.id,
+                })
+              }
+              variant="outline"
+            >
+              Reject invitation
+            </Button>
+            <Button
+              isDisabled={acceptInvitationMutation.isPending}
+              isPending={acceptInvitationMutation.isPending}
+              onPress={async () =>
+                await acceptInvitationMutation.mutateAsync({
+                  invitationId: invitation.id,
+                })
+              }
+            >
+              Accept invitation
+            </Button>
+          </div>
+        </div>
       ) : null}
-    </Flex>
+    </div>
   );
 }

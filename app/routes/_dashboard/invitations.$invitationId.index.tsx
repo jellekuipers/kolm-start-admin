@@ -2,8 +2,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { InvitationCard } from "~/components/invitation/invitation-card";
-import { Container } from "~/components/ui/container";
-import { Flex } from "~/components/ui/flex";
+import { Container } from "~/components/layout/container";
 import { Heading } from "~/components/ui/heading";
 import { Separator } from "~/components/ui/separator";
 import { invitationQueryOptions } from "~/lib/invitation";
@@ -28,12 +27,12 @@ function RouteComponent() {
   if (!invitation) return null;
 
   return (
-    <Container size="3">
-      <Flex direction="column" gap="4">
-        <Heading>Invitation</Heading>
-        <Separator size="4" />
+    <Container>
+      <div className="space-y-4">
+        <Heading level={1}>Invitation</Heading>
+        <Separator />
         <InvitationCard invitation={invitation} />
-      </Flex>
+      </div>
     </Container>
   );
 }

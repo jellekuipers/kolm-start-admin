@@ -6,7 +6,7 @@
   <h3 align="center">kolm start admin</h3>
 
   <p align="center">
-    A TanStack Start + better-auth admin starter with Drizzle ORM, tRPC, Radix Themes + Icons.
+    A TanStack Start + better-auth admin starter with Drizzle ORM, tRPC, React Aria.
     <br />
     <a href="https://github.com/jellekuipers/kolm-start-admin/issues/new?labels=bug">Report Bug</a>
     ·
@@ -16,7 +16,7 @@
 
 ## About The Project
 
-A `@tanstack/react-start` + `better-auth` admin starter, with `drizzle-orm`, `tRPC`, `@radix-ui/themes`.
+A `@tanstack/react-start` + `better-auth` admin starter, with `drizzle-orm`, `tRPC`, `react-aria-components`.
 
 This project is built with the `better-auth` framework, using its admin and organizations plugins as a starting point for user, organization, team and invitation management. While being fairly complete, it provides basic building blocks that can be customized to fit different needs.
 
@@ -29,14 +29,11 @@ I've kept this as minimal and unopinionated as possible, relying primarily on th
 - `drizzle-orm`
 - `tRPC`
 - `@tanstack/react-form`
-- `@radix-ui/themes`
+- `react-aria-components`
 
 Check out <a href="https://github.com/jellekuipers/kolm-start">kolm-start</a>, for a `@tanstack/react-start` starter with `tRPC`, `drizzle-orm`, `better-auth` and `tailwindcss`.
 
-## Known issues
-
-- `@radix-ui/themes` [CSS/bundle size](https://github.com/radix-ui/themes/issues/655)
-  While I really love the look and feel of `@radix-ui/themes`, the CSS bundle size might be too much.
+For a version with `@radix-ui/themes`, check out the `radix-themes` branch.
 
 ## Getting Started
 
@@ -120,5 +117,5 @@ Don't forget to give the project a star! Thanks again!
 - [tRPC](https://trpc.io/docs)
 - [Drizzle ORM](https://orm.drizzle.team/)
 - [better-auth](https://www.better-auth.com/)
-- [Radix](https://www.radix-ui.com/)
+- [React Aria](https://react-spectrum.adobe.com/react-aria/index.html)
 - [Best-README-Template](https://github.com/othneildrew/Best-README-Template)

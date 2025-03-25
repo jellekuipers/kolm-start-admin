@@ -1,8 +1,19 @@
-import type { ComponentProps } from "react";
-import { Card as RadixCard } from "@radix-ui/themes";
+import { twMerge } from "tailwind-merge";
 
-export type CardProps = ComponentProps<typeof RadixCard>;
+interface CardProps {
+  children: React.ReactNode;
+  className?: string;
+}
 
-export function Card(props: CardProps) {
-  return <RadixCard {...props} />;
+export function Card({ children, className }: CardProps) {
+  return (
+    <div
+      className={twMerge(
+        "rounded-lg border border-slate-300 bg-white p-4",
+        className,
+      )}
+    >
+      {children}
+    </div>
+  );
 }

@@ -6,13 +6,10 @@ import { useRouter } from "@tanstack/react-router";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
-import { FormFieldInfo } from "~/components/form/form-field-info";
-import { FormFieldLabel } from "~/components/form/form-field-label";
 import { Button } from "~/components/ui/button";
-import { Dialog } from "~/components/ui/dialog";
-import { Flex } from "~/components/ui/flex";
-import { Select } from "~/components/ui/select";
+import { Select, SelectItem } from "~/components/ui/select";
 import { TextField } from "~/components/ui/text-field";
+import { getFieldErrorMessage } from "~/lib/error";
 import { createUser } from "~/lib/user";
 
 interface CreateMemberFormProps {
@@ -96,21 +93,19 @@ export function CreateMemberForm({
         handleSubmit();
       }}
     >
-      <Flex direction="column" gap="4">
+      <div className="space-y-4">
         <Field
           name="email"
           children={(field) => {
             return (
-              <Flex direction="column" gap="1">
-                <FormFieldLabel htmlFor="email" text="Email" />
-                <TextField.Root
-                  defaultValue={field.state.value}
-                  onBlur={field.handleBlur}
-                  name={field.name}
-                  onChange={(event) => field.handleChange(event.target.value)}
-                />
-                <FormFieldInfo field={field} />
-              </Flex>
+              <TextField
+                defaultValue={field.state.value}
+                errorMessage={getFieldErrorMessage({ field })}
+                label="Email"
+                name={field.name}
+                onBlur={field.handleBlur}
+                onChange={(value) => field.handleChange(value)}
+              />
             );
           }}
         />
@@ -118,16 +113,14 @@ export function CreateMemberForm({
           name="name"
           children={(field) => {
             return (
-              <Flex direction="column" gap="1">
-                <FormFieldLabel htmlFor="name" text="Name" />
-                <TextField.Root
-                  defaultValue={field.state.value}
-                  onBlur={field.handleBlur}
-                  name={field.name}
-                  onChange={(event) => field.handleChange(event.target.value)}
-                />
-                <FormFieldInfo field={field} />
-              </Flex>
+              <TextField
+                defaultValue={field.state.value}
+                errorMessage={getFieldErrorMessage({ field })}
+                label="Name"
+                name={field.name}
+                onBlur={field.handleBlur}
+                onChange={(value) => field.handleChange(value)}
+              />
             );
           }}
         />
@@ -135,21 +128,17 @@ export function CreateMemberForm({
           name="memberRole"
           children={(field) => {
             return (
-              <Flex direction="column" gap="1">
-                <FormFieldLabel htmlFor="memberRole" text="Role" />
-                <Select.Root
-                  defaultValue={field.state.value}
-                  name={field.name}
-                  onValueChange={field.handleChange}
-                >
-                  <Select.Trigger />
-                  <Select.Content>
-                    <Select.Item value="admin">Admin</Select.Item>
-                    <Select.Item value="member">Member</Select.Item>
-                    <Select.Item value="owner">Owner</Select.Item>
-                  </Select.Content>
-                </Select.Root>
-              </Flex>
+              <Select
+                errorMessage={getFieldErrorMessage({ field })}
+                label="Role"
+                name={field.name}
+                onSelectionChange={(key) => field.handleChange(key as string)}
+                selectedKey={field.state.value}
+              >
+                <SelectItem id="admin">Admin</SelectItem>
+                <SelectItem id="member">Member</SelectItem>
+                <SelectItem id="owner">Owner</SelectItem>
+              </Select>
             );
           }}
         />
@@ -157,19 +146,19 @@ export function CreateMemberForm({
         <Subscribe
           selector={(state) => [state.canSubmit, state.isSubmitting]}
           children={([canSubmit, isSubmitting]) => (
-            <Flex gap="3" justify="end">
-              <Dialog.Close>
-                <Button variant="soft" color="gray">
-                  Cancel
-                </Button>
-              </Dialog.Close>
-              <Button disabled={!canSubmit} loading={isSubmitting}>
+            <div className="flex justify-end gap-2">
+              <Button color="slate" slot="close" variant="light">Cancel</Button>
+              <Button
+                isDisabled={!canSubmit}
+                isPending={isSubmitting}
+                type="submit"
+              >
                 Save
               </Button>
-            </Flex>
+            </div>
           )}
         />
-      </Flex>
+      </div>
     </form>
   );
 }

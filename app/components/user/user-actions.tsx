@@ -1,20 +1,21 @@
 import {
-  ChevronDownIcon,
-  CircleBackslashIcon,
-  CircleIcon,
-  CrossCircledIcon,
-  DotsVerticalIcon,
-  PersonIcon,
-  TrashIcon,
-  UpdateIcon,
-} from "@radix-ui/react-icons";
+  CaretDown as CaretDownIcon,
+  DeviceMobileSlash as DeviceMobileSlashIcon,
+  DotsThreeVertical as DotsThreeVerticalIcon,
+  HandPalm as HandPalmIcon,
+  HandWaving as HandWavingIcon,
+  TrashSimple as TrashSimpleIcon,
+  User as UserIcon,
+  UserSwitch as UserSwitchIcon,
+} from "@phosphor-icons/react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 import { UserWithRole } from "better-auth/plugins";
+import { MenuTrigger } from "react-aria-components";
 
 import { Button } from "~/components/ui/button";
-import { DropdownMenu } from "~/components/ui/dropdown-menu";
 import { IconButton } from "~/components/ui/icon-button";
+import { Menu, MenuItem, MenuSeparator } from "~/components/ui/menu";
 import { authClient, useSession } from "~/lib/auth-client";
 import {
   banUser,
@@ -82,84 +83,81 @@ export function UserActions({ user, variant }: UserActionsProps) {
   });
 
   return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger>
+    <MenuTrigger>
+      {variant === "overview" ? (
+        <IconButton>
+          <DotsThreeVerticalIcon size={20} />
+        </IconButton>
+      ) : (
+        <Button color="indigo" variant="light">
+          Actions <CaretDownIcon size={16} />
+        </Button>
+      )}
+      <Menu>
         {variant === "overview" ? (
-          <IconButton variant="ghost">
-            <DotsVerticalIcon />
-          </IconButton>
-        ) : (
-          <Button variant="soft">
-            Actions <ChevronDownIcon />
-          </Button>
-        )}
-      </DropdownMenu.Trigger>
-      <DropdownMenu.Content align="end">
-        {variant === "overview" ? (
-          <DropdownMenu.Item
-            onClick={() =>
+          <MenuItem
+            onAction={() =>
               navigate({
                 params: { userId: user.id },
                 to: "/users/$userId",
               })
             }
           >
-            <PersonIcon />
+            <UserIcon size={16} />
             View user
-          </DropdownMenu.Item>
+          </MenuItem>
         ) : null}
-        {variant === "overview" ? <DropdownMenu.Separator /> : null}
         {user.banned ? (
-          <DropdownMenu.Item
-            disabled={unbanUserMutation.isPending}
-            onClick={async () =>
+          <MenuItem
+            isDisabled={unbanUserMutation.isPending}
+            onAction={async () =>
               await unbanUserMutation.mutateAsync({ userId: user.id })
             }
           >
-            <CircleIcon />
+            <HandWavingIcon size={16} />
             Unban user
-          </DropdownMenu.Item>
+          </MenuItem>
         ) : (
-          <DropdownMenu.Item
-            disabled={banUserMutation.isPending}
-            onClick={async () =>
+          <MenuItem
+            isDisabled={banUserMutation.isPending}
+            onAction={async () =>
               await banUserMutation.mutateAsync({ userId: user.id })
             }
           >
-            <CrossCircledIcon />
+            <HandPalmIcon size={16} />
             Ban user
-          </DropdownMenu.Item>
+          </MenuItem>
         )}
-        <DropdownMenu.Item
-          disabled={impersonateUserMutation.isPending || !!user.banned}
-          onClick={async () =>
+        <MenuItem
+          isDisabled={impersonateUserMutation.isPending || !!user.banned}
+          onAction={async () =>
             await impersonateUserMutation.mutateAsync({ userId: user.id })
           }
         >
-          <UpdateIcon />
+          <UserSwitchIcon size={16} />
           Impersonate user
-        </DropdownMenu.Item>
-        <DropdownMenu.Item
-          disabled={revokeAllUserSessionsMutation.isPending}
-          onClick={async () =>
+        </MenuItem>
+        <MenuItem
+          isDisabled={revokeAllUserSessionsMutation.isPending}
+          onAction={async () =>
             await revokeAllUserSessionsMutation.mutateAsync({ userId: user.id })
           }
         >
-          <CircleBackslashIcon />
+          <DeviceMobileSlashIcon size={16} />
           Revoke all sessions
-        </DropdownMenu.Item>
-        <DropdownMenu.Separator />
-        <DropdownMenu.Item
-          disabled={removeUserMutation.isPending}
+        </MenuItem>
+        <MenuSeparator />
+        <MenuItem
           color="red"
-          onClick={async () =>
+          isDisabled={removeUserMutation.isPending}
+          onAction={async () =>
             await removeUserMutation.mutateAsync({ userId: user.id })
           }
         >
-          <TrashIcon />
+          <TrashSimpleIcon size={16} />
           Remove user
-        </DropdownMenu.Item>
-      </DropdownMenu.Content>
-    </DropdownMenu.Root>
+        </MenuItem>
+      </Menu>
+    </MenuTrigger>
   );
 }

@@ -1,15 +1,20 @@
 import { useState } from "react";
 import {
-  DotsVerticalIcon,
-  Pencil1Icon,
-  TrashIcon,
-} from "@radix-ui/react-icons";
+  DotsThreeVertical as DotsThreeVerticalIcon,
+  PencilSimple as PencilSimpleIcon,
+  TrashSimple as TrashSimpleIcon,
+} from "@phosphor-icons/react";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 
 import { UpdateTeamModal } from "~/components/team/update-team-modal";
-import { DropdownMenu } from "~/components/ui/dropdown-menu";
 import { IconButton } from "~/components/ui/icon-button";
+import {
+  Menu,
+  MenuItem,
+  MenuSeparator,
+  MenuTrigger,
+} from "~/components/ui/menu";
 import { removeTeam } from "~/lib/team";
 import { Team } from "~/types";
 
@@ -54,33 +59,31 @@ export function TeamActions({ team }: TeamActionsProps) {
   return (
     <>
       <UpdateTeamModal open={open} setOpen={setOpen} team={team} />
-      <DropdownMenu.Root>
-        <DropdownMenu.Trigger>
-          <IconButton variant="ghost">
-            <DotsVerticalIcon />
-          </IconButton>
-        </DropdownMenu.Trigger>
-        <DropdownMenu.Content align="end">
-          <DropdownMenu.Item onClick={() => setOpen(true)}>
-            <Pencil1Icon />
+      <MenuTrigger>
+        <IconButton>
+          <DotsThreeVerticalIcon size={20} />
+        </IconButton>
+        <Menu>
+          <MenuItem onAction={() => setOpen(true)}>
+            <PencilSimpleIcon size={16} />
             Update team
-          </DropdownMenu.Item>
-          <DropdownMenu.Separator />
-          <DropdownMenu.Item
+          </MenuItem>
+          <MenuSeparator />
+          <MenuItem
             color="red"
-            disabled={removeTeamMutation.isPending}
-            onClick={async () =>
+            isDisabled={removeTeamMutation.isPending}
+            onAction={async () =>
               await removeTeamMutation.mutateAsync({
                 organizationId: team.organizationId,
                 teamId: team.id,
               })
             }
           >
-            <TrashIcon />
+            <TrashSimpleIcon size={16} />
             Remove team
-          </DropdownMenu.Item>
-        </DropdownMenu.Content>
-      </DropdownMenu.Root>
+          </MenuItem>
+        </Menu>
+      </MenuTrigger>
     </>
   );
 }

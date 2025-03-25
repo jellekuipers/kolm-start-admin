@@ -1,6 +1,4 @@
-import { Link, useMatchRoute } from "@tanstack/react-router";
-
-import { TabNav } from "~/components/ui/tab-nav";
+import { TabNav, TabNavLink } from "~/components/ui/tab-nav";
 
 interface OrganizationTabNavProps {
   organizationId: string;
@@ -9,40 +7,27 @@ interface OrganizationTabNavProps {
 export function OrganizationTabNav({
   organizationId,
 }: OrganizationTabNavProps) {
-  const matchRoute = useMatchRoute();
-
   return (
-    <TabNav.Root>
-      <TabNav.Link
-        active={!!matchRoute({ to: "/organizations/$organizationId" })}
-        asChild
+    <TabNav>
+      <TabNavLink
+        activeOptions={{ exact: true }}
+        params={{ organizationId }}
+        to="/organizations/$organizationId"
       >
-        <Link params={{ organizationId }} to="/organizations/$organizationId">
-          Profile
-        </Link>
-      </TabNav.Link>
-      <TabNav.Link
-        active={!!matchRoute({ to: "/organizations/$organizationId/members" })}
-        asChild
+        Profile
+      </TabNavLink>
+      <TabNavLink
+        params={{ organizationId }}
+        to="/organizations/$organizationId/members"
       >
-        <Link
-          params={{ organizationId }}
-          to="/organizations/$organizationId/members"
-        >
-          Members
-        </Link>
-      </TabNav.Link>
-      <TabNav.Link
-        active={!!matchRoute({ to: "/organizations/$organizationId/teams" })}
-        asChild
+        Members
+      </TabNavLink>
+      <TabNavLink
+        params={{ organizationId }}
+        to="/organizations/$organizationId/teams"
       >
-        <Link
-          params={{ organizationId }}
-          to="/organizations/$organizationId/teams"
-        >
-          Teams
-        </Link>
-      </TabNav.Link>
-    </TabNav.Root>
+        Teams
+      </TabNavLink>
+    </TabNav>
   );
 }

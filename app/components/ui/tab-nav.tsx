@@ -1,18 +1,42 @@
-import { ComponentProps } from "react";
-import { TabNav as RadixTabNav } from "@radix-ui/themes";
+import { ActiveOptions, LinkProps } from "@tanstack/react-router";
+import { twMerge } from "tailwind-merge";
 
-export type TabNavLinkProps = ComponentProps<typeof RadixTabNav.Link>;
-export type TabNavRootProps = ComponentProps<typeof RadixTabNav.Root>;
+import { Link } from "~/components/ui/link";
 
-export function Link(props: TabNavLinkProps) {
-  return <RadixTabNav.Link {...props} />;
+interface TabNavProps {
+  children: React.ReactNode;
 }
 
-export function Root(props: TabNavRootProps) {
-  return <RadixTabNav.Root {...props} />;
+interface TabNavLinkProps {
+  activeOptions?: ActiveOptions;
+  children: React.ReactNode;
+  params?: LinkProps["params"];
+  to: LinkProps["to"];
 }
 
-export const TabNav = {
-  Link,
-  Root,
-};
+export function TabNav(props: TabNavProps) {
+  return <nav {...props} className="flex border-b border-slate-300" />;
+}
+
+export function TabNavLink({ children, ...props }: TabNavLinkProps) {
+  return (
+    <Link
+      {...props}
+      className={twMerge(
+        "group -mb-px flex items-center gap-2 border-b-2 border-transparent px-2 pb-1",
+        "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
+        "hover:no-underline",
+        "data-[status=active]:border-indigo-500",
+      )}
+    >
+      <span
+        className={twMerge(
+          "flex h-8 items-center rounded px-2 text-sm font-medium text-slate-800",
+          "group-hover:bg-slate-100",
+        )}
+      >
+        {children}
+      </span>
+    </Link>
+  );
+}

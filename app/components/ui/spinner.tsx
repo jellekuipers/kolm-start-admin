@@ -1,8 +1,5 @@
-import { ComponentProps } from "react";
-import { Spinner as RadixSpinner } from "@radix-ui/themes";
+import { CircleNotch as CircleNotchIcon } from "@phosphor-icons/react";
 
-export type SpinnerProps = ComponentProps<typeof RadixSpinner>;
-
-export function Spinner(props: SpinnerProps) {
-  return <RadixSpinner {...props} />;
+export function Spinner() {
+  return <CircleNotchIcon className="animate-spin" size={20} />;
 }

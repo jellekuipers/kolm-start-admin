@@ -7,13 +7,12 @@ import { User } from "better-auth";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
-import { FormFieldInfo } from "~/components/form/form-field-info";
-import { FormFieldLabel } from "~/components/form/form-field-label";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
-import { Flex } from "~/components/ui/flex";
+import { Modal, ModalHeading } from "~/components/ui/modal";
 import { TextField } from "~/components/ui/text-field";
 import { authClient, useSession } from "~/lib/auth-client";
+import { getFieldErrorMessage } from "~/lib/error";
 
 interface UpdateProfileModalProps {
   user: User;
@@ -76,58 +75,54 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
   };
 
   return (
-    <Dialog.Root open={open} onOpenChange={onOpenChangeHandler}>
-      <Dialog.Trigger>
-        <Button>Update profile</Button>
-      </Dialog.Trigger>
-      <Dialog.Content>
-        <Dialog.Title>Update profile</Dialog.Title>
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            handleSubmit();
-          }}
-        >
-          <Flex direction="column" gap="4">
-            <Field
-              name="name"
-              children={(field) => {
-                return (
-                  <Flex direction="column" gap="1">
-                    <FormFieldLabel htmlFor="name" text="Name" />
-                    <TextField.Root
+    <>
+      <Button onPress={() => setOpen(true)}>Update profile</Button>
+      <Modal isDismissable isOpen={open} onOpenChange={onOpenChangeHandler}>
+        <Dialog>
+          <ModalHeading slot="title">Update profile</ModalHeading>
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              handleSubmit();
+            }}
+          >
+            <div className="space-y-4">
+              <Field
+                name="name"
+                children={(field) => {
+                  return (
+                    <TextField
                       defaultValue={field.state.value}
-                      onBlur={field.handleBlur}
+                      errorMessage={getFieldErrorMessage({ field })}
+                      label="Name"
                       name={field.name}
-                      onChange={(event) =>
-                        field.handleChange(event.target.value)
-                      }
+                      onBlur={field.handleBlur}
+                      onChange={(value) => field.handleChange(value)}
                     />
-                    <FormFieldInfo field={field} />
-                  </Flex>
-                );
-              }}
-            />
-            {error ? <FormError error={error} /> : null}
-            <Subscribe
-              selector={(state) => [state.canSubmit, state.isSubmitting]}
-              children={([canSubmit, isSubmitting]) => (
-                <Flex gap="3" justify="end">
-                  <Dialog.Close>
-                    <Button variant="soft" color="gray">
-                      Cancel
+                  );
+                }}
+              />
+              {error ? <FormError error={error} /> : null}
+              <Subscribe
+                selector={(state) => [state.canSubmit, state.isSubmitting]}
+                children={([canSubmit, isSubmitting]) => (
+                  <div className="flex justify-end gap-2">
+                    <Button color="slate" slot="close" variant="light">Cancel</Button>
+                    <Button
+                      isDisabled={!canSubmit}
+                      isPending={isSubmitting}
+                      type="submit"
+                    >
+                      Save
                     </Button>
-                  </Dialog.Close>
-                  <Button disabled={!canSubmit} loading={isSubmitting}>
-                    Save
-                  </Button>
-                </Flex>
-              )}
-            />
-          </Flex>
-        </form>
-      </Dialog.Content>
-    </Dialog.Root>
+                  </div>
+                )}
+              />
+            </div>
+          </form>
+        </Dialog>
+      </Modal>
+    </>
   );
 }

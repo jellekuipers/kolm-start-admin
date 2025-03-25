@@ -1,14 +1,19 @@
 import {
-  ArrowRightIcon,
-  CardStackIcon,
-  DotsVerticalIcon,
-  DrawingPinIcon,
-} from "@radix-ui/react-icons";
+  ArrowRight as ArrowRightIcon,
+  DotsThreeVertical as DotsThreeVerticalIcon,
+  Network as NetworkIcon,
+  PushPin as PushPinIcon,
+} from "@phosphor-icons/react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
-import { DropdownMenu } from "~/components/ui/dropdown-menu";
 import { IconButton } from "~/components/ui/icon-button";
+import {
+  Menu,
+  MenuItem,
+  MenuSeparator,
+  MenuTrigger,
+} from "~/components/ui/menu";
 import { authClient, useSession } from "~/lib/auth-client";
 
 interface OrganizationActionsProps {
@@ -55,48 +60,46 @@ export function SessionUserOrganizationActions({
   });
 
   return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger>
-        <IconButton variant="ghost">
-          <DotsVerticalIcon />
-        </IconButton>
-      </DropdownMenu.Trigger>
-      <DropdownMenu.Content align="end">
-        <DropdownMenu.Item
-          onClick={() =>
+    <MenuTrigger>
+      <IconButton>
+        <DotsThreeVerticalIcon size={20} />
+      </IconButton>
+      <Menu>
+        <MenuItem
+          onAction={() =>
             navigate({
               params: { organizationId },
               to: "/organizations/$organizationId",
             })
           }
         >
-          <CardStackIcon />
+          <NetworkIcon size={16} />
           View organization
-        </DropdownMenu.Item>
-        <DropdownMenu.Item
-          onClick={async () =>
+        </MenuItem>
+        <MenuItem
+          onAction={async () =>
             await setActiveOrganizationMutation.mutateAsync({
               organizationId,
             })
           }
         >
-          <DrawingPinIcon />
+          <PushPinIcon size={16} />
           Set active organization
-        </DropdownMenu.Item>
-        <DropdownMenu.Separator />
-        <DropdownMenu.Item
+        </MenuItem>
+        <MenuSeparator />
+        <MenuItem
           color="red"
-          disabled={leaveOrganizationMutation.isPending}
-          onClick={async () =>
+          isDisabled={leaveOrganizationMutation.isPending}
+          onAction={async () =>
             await leaveOrganizationMutation.mutateAsync({
               organizationId,
             })
           }
         >
-          <ArrowRightIcon />
+          <ArrowRightIcon size={16} />
           Leave organization
-        </DropdownMenu.Item>
-      </DropdownMenu.Content>
-    </DropdownMenu.Root>
+        </MenuItem>
+      </Menu>
+    </MenuTrigger>
   );
 }

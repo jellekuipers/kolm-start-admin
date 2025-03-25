@@ -1,8 +1,11 @@
-import { ComponentProps } from "react";
-import { Code as RadixCode } from "@radix-ui/themes";
+interface CodeProps {
+  children: React.ReactNode;
+}
 
-export type CodeProps = ComponentProps<typeof RadixCode>;
-
-export function Code(props: CodeProps) {
-  return <RadixCode {...props} />;
+export function Code({ children }: CodeProps) {
+  return (
+    <code className="inline-flex rounded bg-slate-100 px-2 py-1 text-xs">
+      {children}
+    </code>
+  );
 }

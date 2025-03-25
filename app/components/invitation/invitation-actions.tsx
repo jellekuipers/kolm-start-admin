@@ -1,15 +1,20 @@
 import { useState } from "react";
 import {
-  CrossCircledIcon,
-  DotsVerticalIcon,
-  PaperPlaneIcon,
-} from "@radix-ui/react-icons";
+  DotsThreeVertical as DotsThreeVerticalIcon,
+  PaperPlaneRight as PaperPlaneRightIcon,
+  X as XIcon,
+} from "@phosphor-icons/react";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 
 import { InvitationModal } from "~/components/invitation/invitation-modal";
-import { DropdownMenu } from "~/components/ui/dropdown-menu";
 import { IconButton } from "~/components/ui/icon-button";
+import {
+  Menu,
+  MenuItem,
+  MenuSeparator,
+  MenuTrigger,
+} from "~/components/ui/menu";
 import { cancelInvitation } from "~/lib/invitation";
 import { Invitation } from "~/types";
 
@@ -47,35 +52,33 @@ export function InvitationActions({ invitation }: InvitationActionsProps) {
   return (
     <>
       <InvitationModal invitation={invitation} open={open} setOpen={setOpen} />
-      <DropdownMenu.Root>
-        <DropdownMenu.Trigger>
-          <IconButton variant="ghost">
-            <DotsVerticalIcon />
-          </IconButton>
-        </DropdownMenu.Trigger>
-        <DropdownMenu.Content align="end">
-          <DropdownMenu.Item
-            disabled={cancelInvitationMutation.isPending}
-            onClick={() => setOpen(true)}
+      <MenuTrigger>
+        <IconButton>
+          <DotsThreeVerticalIcon size={20} />
+        </IconButton>
+        <Menu>
+          <MenuItem
+            isDisabled={cancelInvitationMutation.isPending}
+            onAction={() => setOpen(true)}
           >
-            <PaperPlaneIcon />
+            <PaperPlaneRightIcon size={16} />
             View invitation
-          </DropdownMenu.Item>
-          <DropdownMenu.Separator />
-          <DropdownMenu.Item
+          </MenuItem>
+          <MenuSeparator />
+          <MenuItem
             color="red"
-            disabled={cancelInvitationMutation.isPending}
-            onClick={async () =>
+            isDisabled={cancelInvitationMutation.isPending}
+            onAction={async () =>
               await cancelInvitationMutation.mutateAsync({
                 invitationId: invitation.id,
               })
             }
           >
-            <CrossCircledIcon />
-            Cancel
-          </DropdownMenu.Item>
-        </DropdownMenu.Content>
-      </DropdownMenu.Root>
+            <XIcon size={16} />
+            Cancel invitation
+          </MenuItem>
+        </Menu>
+      </MenuTrigger>
     </>
   );
 }

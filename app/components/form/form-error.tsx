@@ -1,6 +1,6 @@
-import { InfoCircledIcon } from "@radix-ui/react-icons";
+import { Info as InfoIcon } from "@phosphor-icons/react";
 
-import { Callout } from "~/components/ui/callout";
+import { Callout, CalloutIcon, CalloutText } from "~/components/ui/callout";
 
 export interface FormErrorProps {
   error: Error;
@@ -8,11 +8,11 @@ export interface FormErrorProps {
 
 export function FormError({ error }: FormErrorProps) {
   return (
-    <Callout.Root color="red">
-      <Callout.Icon>
-        <InfoCircledIcon />
-      </Callout.Icon>
-      <Callout.Text>{error.message}</Callout.Text>
-    </Callout.Root>
+    <Callout color="red">
+      <CalloutIcon>
+        <InfoIcon size={16} />
+      </CalloutIcon>
+      <CalloutText>{error.message}</CalloutText>
+    </Callout>
   );
 }

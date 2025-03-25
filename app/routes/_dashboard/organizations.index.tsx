@@ -3,6 +3,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { ColumnDef } from "@tanstack/react-table";
 
+import { Container } from "~/components/layout/container";
 import { CopyValue } from "~/components/misc/copy-value";
 import { CreateOrganizationModal } from "~/components/organization/create-organization-modal";
 import { OrganizationActions } from "~/components/organization/organization-actions";
@@ -10,8 +11,6 @@ import { DataTable } from "~/components/table/data-table";
 import { Avatar } from "~/components/ui/avatar";
 import { Badge } from "~/components/ui/badge";
 import { Code } from "~/components/ui/code";
-import { Container } from "~/components/ui/container";
-import { Flex } from "~/components/ui/flex";
 import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
 import { Separator } from "~/components/ui/separator";
@@ -29,7 +28,9 @@ const dataTableColumns: ColumnDef<AuthOrganization | ORMOrganization>[] = [
     id: "logo",
     header: undefined,
     cell({ row }) {
-      return <Avatar fallback="@" src={row.original.logo ?? undefined} />;
+      return (
+        <Avatar fallback="@" size={10} src={row.original.logo ?? undefined} />
+      );
     },
   },
   {
@@ -54,7 +55,7 @@ const dataTableColumns: ColumnDef<AuthOrganization | ORMOrganization>[] = [
     accessorKey: "slug",
     header: "Slug",
     cell({ row }) {
-      return <Code variant="ghost">{row.original.slug}</Code>;
+      return <Code>{row.original.slug}</Code>;
     },
   },
   {
@@ -70,7 +71,7 @@ const dataTableColumns: ColumnDef<AuthOrganization | ORMOrganization>[] = [
     accessorKey: "createdAt",
     header: "Created at",
     cell({ row }) {
-      return row.original.createdAt.toLocaleString();
+      return row.original.createdAt.toDateString();
     },
   },
   {
@@ -78,9 +79,9 @@ const dataTableColumns: ColumnDef<AuthOrganization | ORMOrganization>[] = [
     header: undefined,
     cell({ row }) {
       return (
-        <Flex justify="end">
+        <div className="flex justify-end">
           <OrganizationActions organization={row.original} variant="overview" />
-        </Flex>
+        </div>
       );
     },
   },
@@ -92,20 +93,24 @@ function RouteComponent() {
   const columns = useMemo(() => dataTableColumns, []);
 
   return (
-    <Container size="3">
-      <Flex direction="column" gap="6">
-        <Flex direction="column" gap="4">
-          <Flex justify="between" gap="4" wrap="wrap">
-            <Flex align="center" gap="2">
-              <Heading>Organizations</Heading>
+    <Container>
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <Heading level={1}>Organizations</Heading>
               <Badge>{organizations.length}</Badge>
-            </Flex>
+            </div>
             <CreateOrganizationModal />
-          </Flex>
-          <Separator size="4" />
-        </Flex>
-        <DataTable columns={columns} data={organizations} />
-      </Flex>
+          </div>
+          <Separator />
+        </div>
+        <DataTable
+          columns={columns}
+          data={organizations}
+          label="Organizations"
+        />
+      </div>
     </Container>
   );
 }

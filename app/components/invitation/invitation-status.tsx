@@ -12,11 +12,11 @@ export function InvitationStatus({ status }: InvitationStatusProps) {
       case "accepted":
         return <Badge color="green">accepted</Badge>;
       case "pending":
-        return <Badge color="blue">pending</Badge>;
+        return <Badge>pending</Badge>;
       case "rejected":
         return <Badge color="red">rejected</Badge>;
       case "canceled":
-        return <Badge color="gray">canceled</Badge>;
+        return <Badge color="slate">canceled</Badge>;
       default:
         return;
     }
