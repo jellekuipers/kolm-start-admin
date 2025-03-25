@@ -25,7 +25,9 @@ export function TextField({
       <Input
         className={twMerge(
           "rounded border border-slate-300",
-          "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
+          "outline-0 outline-offset-2 outline-indigo-700 focus:outline-2 focus-visible:outline-2",
+          "disabled:border-slate-100 disabled:bg-slate-50 disabled:text-slate-200",
+          "invalid:border-red-300",
         )}
       />
       {description ? <Description>{description}</Description> : null}

@@ -41,6 +41,7 @@ export function Select<T extends object>({
       <AriaButton
         className={twMerge(
           "flex h-8 items-center justify-between gap-2 rounded border border-slate-300 px-2 text-sm",
+          "outline-0 outline-offset-2 outline-indigo-700 focus:outline-2 focus-visible:outline-2",
           "disabled:border-slate-100 disabled:bg-slate-50 disabled:text-slate-200",
         )}
       >
@@ -70,6 +71,7 @@ export function SelectItem(props: AriaListBoxItemProps) {
         "flex h-8 cursor-default items-center gap-2 rounded px-2 text-sm outline-0",
         "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
         "hover:bg-indigo-700 hover:text-white",
+        "disabled:bg-slate-50 disabled:text-slate-200",
       )}
     />
   );
