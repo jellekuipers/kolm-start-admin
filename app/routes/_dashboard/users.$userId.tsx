@@ -1,6 +1,7 @@
 import { ArrowLeft as ArrowLeftIcon } from "@phosphor-icons/react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Outlet } from "@tanstack/react-router";
+import { twMerge } from "tailwind-merge";
 
 import { Container } from "~/components/layout/container";
 import { Avatar } from "~/components/ui/avatar";
@@ -31,7 +32,13 @@ function RouteComponent() {
   return (
     <Container>
       <div className="space-y-8">
-        <Link to="/users">
+        <Link
+          className={twMerge(
+            "-mx-1 inline-flex h-8 w-auto items-center rounded px-2 text-indigo-700",
+            "hover:border-indigo-50 hover:bg-indigo-50 hover:no-underline",
+          )}
+          to="/users"
+        >
           <ArrowLeftIcon size={16} /> Users
         </Link>
         <div className="space-y-6">

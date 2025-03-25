@@ -54,7 +54,9 @@ export function Select<T extends object>({
       {description ? <Description>{description}</Description> : null}
       <FieldError>{errorMessage}</FieldError>
       <Popover className="w-(--trigger-width)">
-        <AriaListBox items={items}>{children}</AriaListBox>
+        <AriaListBox className="outline-hidden" items={items}>
+          {children}
+        </AriaListBox>
       </Popover>
     </AriaSelect>
   );
@@ -65,7 +67,8 @@ export function SelectItem(props: ListBoxItemProps) {
     <AriaListBoxItem
       {...props}
       className={twMerge(
-        "flex h-8 cursor-default items-center gap-2 rounded px-2 text-sm",
+        "flex h-8 cursor-default items-center gap-2 rounded px-2 text-sm outline-0",
+        "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
         "hover:bg-indigo-700 hover:text-white",
       )}
     />

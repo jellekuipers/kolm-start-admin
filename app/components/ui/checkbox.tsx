@@ -1,10 +1,10 @@
 import { Check as CheckIcon, Minus as MinusIcon } from "@phosphor-icons/react";
 import {
   Checkbox as AriaCheckbox,
-  type CheckboxProps,
+  type CheckboxProps as AriaCheckboxProps,
 } from "react-aria-components";
 
-export function Checkbox({ children, ...props }: CheckboxProps) {
+export function Checkbox({ children, ...props }: AriaCheckboxProps) {
   return (
     <AriaCheckbox {...props} className="flex items-center gap-2 font-medium">
       {({ isIndeterminate, isSelected }) => (

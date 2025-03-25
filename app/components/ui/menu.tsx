@@ -1,5 +1,4 @@
 import {
-  Dialog as AriaDialog,
   Header as AriaHeader,
   Menu as AriaMenu,
   MenuItem as AriaMenuItem,
@@ -21,9 +20,7 @@ interface MenuProps<T>
 export function Menu<T extends object>(props: MenuProps<T>) {
   return (
     <Popover placement="bottom right">
-      <AriaDialog className="outline-none">
-        <AriaMenu {...props} />
-      </AriaDialog>
+      <AriaMenu {...props} className="outline-0" />
     </Popover>
   );
 }
@@ -50,6 +47,7 @@ export function MenuItem({
       {...props}
       className={twMerge(
         "flex h-8 cursor-default items-center gap-2 rounded px-2 text-sm",
+        "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
         menuItemColors[color],
       )}
     />

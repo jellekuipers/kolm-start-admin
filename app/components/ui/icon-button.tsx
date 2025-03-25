@@ -7,6 +7,7 @@ export function IconButton(props: ButtonProps) {
       {...props}
       className={twMerge(
         "flex size-8 items-center justify-center rounded",
+        "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
         "disabled:opacity-25",
         "hover:bg-slate-100",
         "pressed:bg-slate-100",

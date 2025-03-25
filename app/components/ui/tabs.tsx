@@ -24,6 +24,7 @@ export function Tab({ children, ...props }: TabProps) {
       {...props}
       className={twMerge(
         "group -mb-px flex cursor-pointer items-center gap-2 border-b-2 border-transparent px-2 pb-1",
+        "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
         "selected:border-indigo-500",
       )}
     >
@@ -40,5 +41,13 @@ export function Tab({ children, ...props }: TabProps) {
 }
 
 export function TabPanel(props: TabPanelProps) {
-  return <AriaTabPanel {...props} className="flex-1" />;
+  return (
+    <AriaTabPanel
+      {...props}
+      className={twMerge(
+        "flex-1",
+        "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
+      )}
+    />
+  );
 }

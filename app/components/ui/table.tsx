@@ -70,6 +70,7 @@ export function TableCell({ className, ...props }: TableCellProps) {
       {...props}
       className={twMerge(
         "px-4 py-2 align-middle text-sm whitespace-nowrap",
+        "outline-0 -outline-offset-2 outline-indigo-700 focus-visible:outline-2",
         className,
       )}
     />
@@ -80,7 +81,11 @@ export function TableColumn({ className, ...props }: TableColumnProps) {
   return (
     <AriaColumn
       {...props}
-      className={twMerge("px-4 py-2 align-middle whitespace-nowrap", className)}
+      className={twMerge(
+        "px-4 py-2 align-middle whitespace-nowrap",
+        "outline-0 -outline-offset-2 outline-indigo-700 focus-visible:outline-2",
+        className,
+      )}
     />
   );
 }
@@ -101,5 +106,14 @@ export function TableRow<T extends object>({
   className,
   ...props
 }: TableRowProps<T>) {
-  return <AriaRow {...props} className={twMerge("align-middle", className)} />;
+  return (
+    <AriaRow
+      {...props}
+      className={twMerge(
+        "align-middle",
+        "outline-0 -outline-offset-2 outline-indigo-700 focus-visible:outline-2",
+        className,
+      )}
+    />
+  );
 }

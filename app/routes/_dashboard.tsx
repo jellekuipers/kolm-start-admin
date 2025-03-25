@@ -30,7 +30,7 @@ function LayoutComponent() {
     <>
       <header className="flex items-center justify-between gap-2 bg-slate-50 px-4 py-2">
         <div className="flex items-center gap-2">
-          <Link to="/">
+          <Link className="rounded" to="/">
             <Logo size={32} />
           </Link>
           <Code>v0.9.0</Code>

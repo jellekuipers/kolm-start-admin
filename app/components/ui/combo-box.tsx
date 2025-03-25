@@ -7,8 +7,8 @@ import {
   ComboBoxProps as AriaComboBoxProps,
   ListBox as AriaListBox,
   ListBoxItem as AriaListBoxItem,
-  ValidationResult,
-  type ListBoxItemProps,
+  type ListBoxItemProps as AriaListBoxItemProps,
+  type ValidationResult as AriaValidationResult,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 
@@ -26,7 +26,7 @@ export interface ComboBoxProps<T extends object>
   children: React.ReactNode | ((item: T) => React.ReactNode);
   className?: string;
   description?: string | null;
-  errorMessage?: string | ((validation: ValidationResult) => string);
+  errorMessage?: string | ((validation: AriaValidationResult) => string);
   label?: string;
 }
 
@@ -55,18 +55,21 @@ export function ComboBox<T extends object>({
       {description ? <Description>{description}</Description> : null}
       <FieldError>{errorMessage}</FieldError>
       <Popover className="h-60 w-(--trigger-width) overflow-y-auto" isNonModal>
-        <AriaListBox items={items}>{children}</AriaListBox>
+        <AriaListBox className="outline-0" items={items}>
+          {children}
+        </AriaListBox>
       </Popover>
     </AriaComboBox>
   );
 }
 
-export function ComboBoxItem(props: ListBoxItemProps) {
+export function ComboBoxItem(props: AriaListBoxItemProps) {
   return (
     <AriaListBoxItem
       {...props}
       className={twMerge(
         "flex h-8 cursor-default items-center gap-2 rounded px-2 text-sm",
+        "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
         "hover:bg-indigo-700 hover:text-white",
       )}
     />

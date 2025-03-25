@@ -40,6 +40,7 @@ export function FieldGroup({ className, ...props }: GroupProps) {
       {...props}
       className={twMerge(
         "group flex h-8 items-center overflow-hidden rounded border border-slate-300 bg-white",
+        "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
         className,
       )}
     />
@@ -51,7 +52,7 @@ export function Input({ className, ...props }: InputProps) {
     <AriaInput
       {...props}
       className={twMerge(
-        "h-8 min-w-0 bg-white px-2 text-base lg:text-sm",
+        "h-8 min-w-0 bg-white px-2 text-base outline-0 lg:text-sm",
         className,
       )}
     />
