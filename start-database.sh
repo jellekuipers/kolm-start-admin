@@ -1,3 +1,7 @@
+# This super handy script comes from
+# create-t3-app
+# https://github.com/t3-oss/create-t3-app
+
 #!/usr/bin/env bash
 # Use this script to start a docker container for a local development database
 
