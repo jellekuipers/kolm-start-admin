@@ -40,6 +40,7 @@ export function UpdateMemberRole({ member }: UpdateMemberRoleProps) {
 
   return (
     <Select
+      aria-label="Member role"
       isDisabled={updateMemberRoleMutation.isPending}
       onSelectionChange={async (key) =>
         await updateMemberRoleMutation.mutateAsync({

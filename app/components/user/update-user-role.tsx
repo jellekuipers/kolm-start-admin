@@ -33,6 +33,7 @@ export function UpdateUserRole({ user }: UpdateUserRoleProps) {
 
   return (
     <Select
+      aria-label="User role"
       className="w-48"
       isDisabled={setUserRoleMutation.isPending}
       onSelectionChange={async (key) =>

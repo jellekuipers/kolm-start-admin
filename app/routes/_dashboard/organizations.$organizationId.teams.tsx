@@ -63,6 +63,7 @@ function RouteComponent() {
       actions={<CreateTeamModal organizationId={organizationId} />}
       columns={columns}
       data={teams}
+      label="Organization teams"
     />
   );
 }

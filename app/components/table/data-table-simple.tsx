@@ -24,11 +24,13 @@ import { DataTableSortButton } from "./data-table-sort-button";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  label: string;
 }
 
 export function DataTableSimple<TData, TValue>({
   columns,
   data,
+  label,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
 
@@ -47,7 +49,7 @@ export function DataTableSimple<TData, TValue>({
   return (
     <>
       {table.getRowModel().rows?.length ? (
-        <Table>
+        <Table aria-label={label}>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>

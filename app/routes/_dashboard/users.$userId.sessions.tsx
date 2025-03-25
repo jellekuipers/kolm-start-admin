@@ -63,5 +63,7 @@ function RouteComponent() {
 
   const columns = useMemo(() => dataTableColumns, []);
 
-  return <DataTable columns={columns} data={userSessions} />;
+  return (
+    <DataTable columns={columns} data={userSessions} label="User sessions" />
+  );
 }

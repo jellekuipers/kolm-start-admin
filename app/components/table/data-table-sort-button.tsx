@@ -29,5 +29,9 @@ export function DataTableSortButton({
 }: DataTableSortButtonProps) {
   const icon = renderIcon(isSorted);
 
-  return <IconButton onPress={onClick}>{icon}</IconButton>;
+  return (
+    <IconButton aria-label="Sort column" onPress={onClick}>
+      {icon}
+    </IconButton>
+  );
 }

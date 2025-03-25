@@ -35,8 +35,8 @@ export function DataListItem(props: DataListItemProps) {
     <div
       {...props}
       className={twMerge(
-        "flex flex-col items-center gap-2",
-        "lg:col-span-2 lg:grid lg:grid-cols-subgrid",
+        "flex flex-col gap-2",
+        "lg:col-span-2 lg:grid lg:grid-cols-subgrid lg:items-center",
       )}
     />
   );

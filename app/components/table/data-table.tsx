@@ -43,6 +43,7 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   defaultColumnVisibility?: Record<string, boolean>;
+  label: string;
 }
 
 const fuzzyFilter: FilterFn<unknown> = (row, columnId, value, addMeta) => {
@@ -60,6 +61,7 @@ export function DataTable<TData, TValue>({
   columns,
   data,
   defaultColumnVisibility,
+  label,
 }: DataTableProps<TData, TValue>) {
   const [columnVisibility, setColumnVisibility] = useState(
     defaultColumnVisibility ?? {},
@@ -105,7 +107,7 @@ export function DataTable<TData, TValue>({
       </div>
       {table.getRowModel().rows?.length ? (
         <div className="space-y-4">
-          <Table>
+          <Table aria-label={label}>
             <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (
                 <TableRow key={headerGroup.id}>

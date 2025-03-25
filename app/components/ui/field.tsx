@@ -40,7 +40,7 @@ export function FieldGroup({ className, ...props }: GroupProps) {
       {...props}
       className={twMerge(
         "group flex h-8 items-center overflow-hidden rounded border border-slate-300 bg-white",
-        "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
+        "outline-0 outline-offset-2 outline-indigo-700 focus-within:outline-2 focus-visible:outline-2",
         "disabled:border-slate-100 disabled:bg-slate-50 disabled:text-slate-200",
         className,
       )}

@@ -105,7 +105,11 @@ function RouteComponent() {
           </div>
           <Separator />
         </div>
-        <DataTable columns={columns} data={organizations} />
+        <DataTable
+          columns={columns}
+          data={organizations}
+          label="Organizations"
+        />
       </div>
     </Container>
   );

@@ -103,6 +103,7 @@ function RouteComponent() {
       actions={<AddMemberToOrganizationModal organizationId={organizationId} />}
       columns={columns}
       data={organization.members}
+      label="Organization members"
     />
   );
 }

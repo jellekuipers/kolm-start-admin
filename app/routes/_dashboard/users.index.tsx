@@ -172,6 +172,7 @@ function RouteComponent() {
           columns={columns}
           data={users}
           defaultColumnVisibility={defaultColumnVisibility}
+          label="Users"
         />
       </div>
     </Container>

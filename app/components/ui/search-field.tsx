@@ -32,6 +32,7 @@ export function SearchField({
   return (
     <AriaSearchField
       {...props}
+      aria-label="Search"
       className="group flex min-w-[40px] flex-col gap-1"
     >
       {label && <Label>{label}</Label>}
