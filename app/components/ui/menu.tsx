@@ -4,10 +4,10 @@ import {
   MenuItem as AriaMenuItem,
   MenuTrigger as AriaMenuTrigger,
   Separator as AriaSeparator,
+  type MenuItemProps as AriaMenuItemProps,
   type MenuProps as AriaMenuProps,
-  type MenuItemProps,
-  type MenuTriggerProps,
-  type SeparatorProps,
+  type MenuTriggerProps as AriaMenuTriggerProps,
+  type SeparatorProps as AriaSeparatorProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 
@@ -15,7 +15,7 @@ import { Popover } from "~/components/ui/popover";
 
 interface MenuProps<T>
   extends AriaMenuProps<T>,
-    Omit<MenuTriggerProps, "children"> {}
+    Omit<AriaMenuTriggerProps, "children"> {}
 
 export function Menu<T extends object>(props: MenuProps<T>) {
   return (
@@ -41,23 +41,24 @@ const menuItemColors = {
 export function MenuItem({
   color = "default",
   ...props
-}: MenuItemProps & { color?: "default" | "red" }) {
+}: AriaMenuItemProps & { color?: "default" | "red" }) {
   return (
     <AriaMenuItem
       {...props}
       className={twMerge(
         "flex h-8 cursor-default items-center gap-2 rounded px-2 text-sm",
         "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
+        "disabled:bg-slate-50 disabled:text-slate-300",
         menuItemColors[color],
       )}
     />
   );
 }
 
-export function MenuSeparator(props: SeparatorProps) {
+export function MenuSeparator(props: AriaSeparatorProps) {
   return <AriaSeparator {...props} className="my-2 h-px bg-slate-300" />;
 }
 
-export function MenuTrigger(props: MenuTriggerProps) {
+export function MenuTrigger(props: AriaMenuTriggerProps) {
   return <AriaMenuTrigger {...props} />;
 }

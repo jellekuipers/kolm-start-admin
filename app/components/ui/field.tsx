@@ -4,11 +4,11 @@ import {
   Input as AriaInput,
   Label as AriaLabel,
   Text as AriaText,
+  type FieldErrorProps as AriaFieldErrorProps,
   type GroupProps as AriaGroupProps,
   type InputProps as AriaInputProps,
-  type FieldErrorProps,
-  type LabelProps,
-  type TextProps,
+  type LabelProps as AriaLabelProps,
+  type TextProps as AriaTextProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 
@@ -20,7 +20,7 @@ interface InputProps extends Omit<AriaInputProps, "className"> {
   className?: string;
 }
 
-export function Description(props: TextProps) {
+export function Description(props: AriaTextProps) {
   return (
     <AriaText
       {...props}
@@ -30,7 +30,7 @@ export function Description(props: TextProps) {
   );
 }
 
-export function FieldError(props: FieldErrorProps) {
+export function FieldError(props: AriaFieldErrorProps) {
   return <AriaFieldError {...props} className="text-sm text-red-600" />;
 }
 
@@ -59,7 +59,7 @@ export function Input({ className, ...props }: InputProps) {
   );
 }
 
-export function Label(props: LabelProps) {
+export function Label(props: AriaLabelProps) {
   return (
     <AriaLabel
       {...props}

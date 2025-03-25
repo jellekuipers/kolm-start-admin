@@ -319,6 +319,7 @@ export function Button({
       className={twMerge(
         "flex h-8 items-center gap-2 rounded border px-2 text-sm font-medium",
         "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
+        "disabled:bg-slate-50 disabled:text-slate-300",
         buttonStyles[variant][color],
         className,
       )}

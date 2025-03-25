@@ -1,7 +1,10 @@
-import { Button as AriaButton, type ButtonProps } from "react-aria-components";
+import {
+  Button as AriaButton,
+  type ButtonProps as AriaButtonProps,
+} from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 
-export function IconButton(props: ButtonProps) {
+export function IconButton(props: AriaButtonProps) {
   return (
     <AriaButton
       {...props}

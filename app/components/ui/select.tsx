@@ -5,8 +5,8 @@ import {
   ListBoxItem as AriaListBoxItem,
   Select as AriaSelect,
   SelectValue as AriaSelectValue,
+  type ListBoxItemProps as AriaListBoxItemProps,
   type SelectProps as AriaSelectProps,
-  type ListBoxItemProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 
@@ -62,7 +62,7 @@ export function Select<T extends object>({
   );
 }
 
-export function SelectItem(props: ListBoxItemProps) {
+export function SelectItem(props: AriaListBoxItemProps) {
   return (
     <AriaListBoxItem
       {...props}

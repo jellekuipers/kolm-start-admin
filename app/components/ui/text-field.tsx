@@ -1,7 +1,7 @@
 import {
   TextField as AriaTextField,
   type TextFieldProps as AriaTextFieldProps,
-  type ValidationResult,
+  type ValidationResult as AriaValidationResult,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 
@@ -10,7 +10,7 @@ import { Description, FieldError, Input, Label } from "~/components/ui/field";
 export interface TextFieldProps extends AriaTextFieldProps {
   label?: string;
   description?: string;
-  errorMessage?: string | ((validation: ValidationResult) => string);
+  errorMessage?: string | ((validation: AriaValidationResult) => string);
 }
 
 export function TextField({

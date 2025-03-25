@@ -1,10 +1,10 @@
 import {
   Heading as AriaHeading,
-  type HeadingProps,
+  type HeadingProps as AriaHeadingProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 
-export function Heading({ level, ...props }: HeadingProps) {
+export function Heading({ level, ...props }: AriaHeadingProps) {
   return (
     <AriaHeading
       {...props}

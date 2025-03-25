@@ -3,18 +3,22 @@ import {
   TabList as AriaTabList,
   TabPanel as AriaTabPanel,
   Tabs as AriaTabs,
-  type TabListProps,
-  type TabPanelProps,
-  type TabProps,
-  type TabsProps,
+  type TabListProps as AriaTabListProps,
+  type TabPanelProps as AriaTabPanelProps,
+  type TabProps as AriaTabProps,
+  type TabsProps as AriaTabsProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 
-export function Tabs(props: TabsProps) {
+interface TabProps extends AriaTabProps, Omit<AriaTabProps, "children"> {
+  children: React.ReactNode;
+}
+
+export function Tabs(props: AriaTabsProps) {
   return <AriaTabs {...props} className="flex flex-col gap-4" />;
 }
 
-export function TabList<T extends object>(props: TabListProps<T>) {
+export function TabList<T extends object>(props: AriaTabListProps<T>) {
   return <AriaTabList {...props} className="flex border-b border-slate-300" />;
 }
 
@@ -34,13 +38,13 @@ export function Tab({ children, ...props }: TabProps) {
           "group-hover:bg-slate-100",
         )}
       >
-        {children as React.ReactNode}
+        {children}
       </span>
     </AriaTab>
   );
 }
 
-export function TabPanel(props: TabPanelProps) {
+export function TabPanel(props: AriaTabPanelProps) {
   return (
     <AriaTabPanel
       {...props}

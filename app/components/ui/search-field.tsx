@@ -6,7 +6,7 @@ import {
   Button as AriaButton,
   SearchField as AriaSearchField,
   type SearchFieldProps as AriaSearchFieldProps,
-  type ValidationResult,
+  type ValidationResult as AriaValidationResult,
 } from "react-aria-components";
 
 import {
@@ -20,7 +20,7 @@ import {
 export interface SearchFieldProps extends AriaSearchFieldProps {
   label?: string;
   description?: string;
-  errorMessage?: string | ((validation: ValidationResult) => string);
+  errorMessage?: string | ((validation: AriaValidationResult) => string);
 }
 
 export function SearchField({

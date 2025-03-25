@@ -44,7 +44,7 @@ const badgeColors = {
   red: "bg-red-50 text-red-600",
   rose: "bg-rose-50 text-rose-700",
   sky: "bg-sky-50 text-sky-700",
-  slate: "bg-slate-50 text-slate-700",
+  slate: "bg-slate-100 text-slate-700",
   stone: "bg-stone-50 text-stone-700",
   teal: "bg-teal-50 text-teal-700",
   violet: "bg-violet-50 text-violet-700",
