@@ -86,7 +86,7 @@ npm install npm@latest -g
    npm run dev
    ```
 
-### Enable CORS
+### How to enable CORS
 
 In `app.config.ts` add the following lines:
 
