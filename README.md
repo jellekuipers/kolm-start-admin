@@ -100,6 +100,38 @@ In order to send invitation emails, add your email configuration to `app/lib/aut
 
 See the [open issues](https://github.com/jellekuipers/kolm-start-admin/issues) for a full list of proposed features (and known issues).
 
+### Enable CORS
+
+In `app.config.ts` add the following lines:
+
+```diff
+export default defineConfig({
+  server: {
+    preset: "node-server",
++    routeRules: {
++      "/api/**": {
++        cors: true,
++        headers: {
++          "access-control-allow-methods": "GET, POST",
++          "access-control-allow-credentials": "true",
++        },
++      },
++    },
+  },
+  vite: {
+    plugins: [
+```
+
+Add the external clients to `trustedOrigins` in `app/lib/auth.ts`:
+
+```diff
+            emailDomainName: "kolm.start",
+         }),
+      ],
++     trustedOrigins: ["http://localhost:3001"],
+   });
+```
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
