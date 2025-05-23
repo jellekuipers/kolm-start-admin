@@ -1,17 +1,17 @@
-import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
-import { twMerge } from "tailwind-merge";
+import { createFileRoute, Outlet, redirect } from '@tanstack/react-router';
+import { twMerge } from 'tailwind-merge';
 
-import { Logo } from "~/components/logo";
-import { Code } from "~/components/ui/code";
-import { Link } from "~/components/ui/link";
-import { Separator } from "~/components/ui/separator";
-import { SessionUserDropdown } from "~/components/user/session-user-dropdown";
+import { Logo } from '~/components/logo';
+import { Code } from '~/components/ui/code';
+import { Link } from '~/components/ui/link';
+import { Separator } from '~/components/ui/separator';
+import { SessionUserDropdown } from '~/components/user/session-user-dropdown';
 
-export const Route = createFileRoute("/_dashboard")({
+export const Route = createFileRoute('/_dashboard')({
   beforeLoad: ({ context: { session } }) => {
-    if (session?.user.role !== "admin") {
+    if (session?.user.role !== 'admin') {
       throw redirect({
-        to: "/auth/sign-in",
+        to: '/auth/sign-in',
       });
     }
   },
@@ -20,8 +20,8 @@ export const Route = createFileRoute("/_dashboard")({
 
 function LayoutComponent() {
   const routes = [
-    { to: "/", label: "Dashboard" },
-    { to: "/users", label: "Users" },
+    { to: '/', label: 'Dashboard' },
+    { to: '/users', label: 'Users' },
   ];
 
   return (
@@ -31,7 +31,7 @@ function LayoutComponent() {
           <Link className="rounded" to="/">
             <Logo size={32} />
           </Link>
-          <Code>v0.9.0</Code>
+          <Code>v1.1.0</Code>
         </div>
         <SessionUserDropdown />
       </header>
@@ -41,8 +41,8 @@ function LayoutComponent() {
           <Link
             key={route.to}
             className={twMerge(
-              "-mx-1 flex h-8 items-center justify-center rounded px-2 text-indigo-700",
-              "hover:border-indigo-50 hover:bg-indigo-50 hover:no-underline",
+              '-mx-1 flex h-8 items-center justify-center rounded px-2 text-indigo-700',
+              'hover:border-indigo-50 hover:bg-indigo-50 hover:no-underline',
             )}
             to={route.to}
           >
