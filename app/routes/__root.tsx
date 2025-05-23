@@ -1,4 +1,4 @@
-import * as React from "react";
+import type * as React from "react";
 import type { QueryClient } from "@tanstack/react-query";
 import {
   createRootRouteWithContext,
@@ -6,12 +6,12 @@ import {
   Outlet,
   Scripts,
 } from "@tanstack/react-router";
-import { TRPCOptionsProxy } from "@trpc/tanstack-react-query";
+import type { TRPCOptionsProxy } from "@trpc/tanstack-react-query";
 
 import { DefaultCatchBoundary } from "~/components/error/default-catch-boundary";
 import { getServerSession } from "~/lib/session";
 import appCss from "~/styles/app.css?url";
-import { AppRouter } from "~/trpc/router";
+import type { AppRouter } from "~/trpc/router";
 import { ReactQueryDevtools, TanStackRouterDevtools } from "~/utils/dev-tools";
 import { seo } from "~/utils/seo";
 

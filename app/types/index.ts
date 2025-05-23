@@ -1,5 +1,5 @@
-import { member, organization, team, user } from "~/db/schema";
-import { auth } from "~/lib/auth";
+import type { member, organization, team, user } from "~/db/schema";
+import type { auth } from "~/lib/auth";
 
 export type Account = {
   id: string;

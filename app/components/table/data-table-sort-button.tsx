@@ -3,7 +3,7 @@ import {
   CaretUpDown as CaretUpDownIcon,
   CaretUp as CaretUpIcon,
 } from "@phosphor-icons/react";
-import { SortDirection } from "@tanstack/react-table";
+import type { SortDirection } from "@tanstack/react-table";
 
 import { IconButton } from "~/components/ui/icon-button";
 

@@ -16,7 +16,7 @@ import {
   MenuTrigger,
 } from "~/components/ui/menu";
 import { cancelInvitation } from "~/lib/invitation";
-import { Invitation } from "~/types";
+import type { Invitation } from "~/types";
 
 interface InvitationActionsProps {
   invitation: Invitation;

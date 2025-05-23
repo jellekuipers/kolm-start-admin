@@ -1,4 +1,3 @@
-/* eslint-disable react/no-children-prop */
 import { useState } from "react";
 import { useForm } from "@tanstack/react-form";
 import { useMutation, useQuery } from "@tanstack/react-query";

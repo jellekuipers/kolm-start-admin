@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { ColumnDef } from "@tanstack/react-table";
+import type { ColumnDef } from "@tanstack/react-table";
 
 import { AddMemberToOrganizationModal } from "~/components/member/add-member-to-organization-modal";
 import { UpdateMemberRole } from "~/components/member/update-member-role";
@@ -10,7 +10,7 @@ import { DataTable } from "~/components/table/data-table";
 import { Avatar } from "~/components/ui/avatar";
 import { Link } from "~/components/ui/link";
 import { organizationQueryOptions } from "~/lib/organization";
-import { OrganizationMember } from "~/types";
+import type { OrganizationMember } from "~/types";
 
 export const Route = createFileRoute(
   "/_dashboard/organizations/$organizationId/members",

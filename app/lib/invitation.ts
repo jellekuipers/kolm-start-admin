@@ -7,7 +7,7 @@ import { z } from "zod";
 import { invitation } from "~/db/schema";
 import { auth } from "~/lib/auth";
 import { db } from "~/db";
-import { InvitationStatus, MemberRole } from "~/types";
+import type { InvitationStatus, MemberRole } from "~/types";
 
 export const createInvitation = createServerFn({ method: "POST" })
   .validator(

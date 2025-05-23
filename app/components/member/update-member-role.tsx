@@ -3,7 +3,7 @@ import { useRouter } from "@tanstack/react-router";
 
 import { Select, SelectItem } from "~/components/ui/select";
 import { updateMemberRole } from "~/lib/member";
-import { Member, OrganizationMember } from "~/types";
+import type { Member, OrganizationMember } from "~/types";
 
 interface UpdateMemberRoleProps {
   member: Member | OrganizationMember;

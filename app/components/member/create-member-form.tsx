@@ -1,4 +1,3 @@
-/* eslint-disable react/no-children-prop */
 import { useState } from "react";
 import { useForm } from "@tanstack/react-form";
 import { useMutation } from "@tanstack/react-query";
@@ -147,7 +146,9 @@ export function CreateMemberForm({
           selector={(state) => [state.canSubmit, state.isSubmitting]}
           children={([canSubmit, isSubmitting]) => (
             <div className="flex justify-end gap-2">
-              <Button color="slate" slot="close" variant="light">Cancel</Button>
+              <Button color="slate" slot="close" variant="light">
+                Cancel
+              </Button>
               <Button
                 isDisabled={!canSubmit}
                 isPending={isSubmitting}

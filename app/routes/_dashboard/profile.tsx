@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { ColumnDef } from "@tanstack/react-table";
+import type { ColumnDef } from "@tanstack/react-table";
 
 import { Container } from "~/components/layout/container";
 import { CopyValue } from "~/components/misc/copy-value";
@@ -16,7 +16,12 @@ import { SessionUserActiveOrganizationBadge } from "~/components/user/session-us
 import { SessionUserOrganizationActions } from "~/components/user/session-user-organization-actions";
 import { membersQueryOptions } from "~/lib/member";
 import { userAccountsQueryOptions } from "~/lib/user";
-import { Account, AuthOrganization, Member, ORMOrganization } from "~/types";
+import type {
+  Account,
+  AuthOrganization,
+  Member,
+  ORMOrganization,
+} from "~/types";
 
 export const Route = createFileRoute("/_dashboard/profile")({
   component: RouteComponent,

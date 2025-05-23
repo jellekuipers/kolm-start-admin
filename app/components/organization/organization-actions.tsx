@@ -19,7 +19,7 @@ import {
   MenuTrigger,
 } from "~/components/ui/menu";
 import { deleteOrganization } from "~/lib/organization";
-import { AuthOrganization, ORMOrganization } from "~/types";
+import type { AuthOrganization, ORMOrganization } from "~/types";
 
 interface OrganizationActionsProps {
   organization: AuthOrganization | ORMOrganization;

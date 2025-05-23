@@ -3,7 +3,7 @@ import { useRouter } from "@tanstack/react-router";
 
 import { Select, SelectItem } from "~/components/ui/select";
 import { setUserRole } from "~/lib/user";
-import { User } from "~/types";
+import type { User } from "~/types";
 
 interface UpdateUserRoleProps {
   user: User;

@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { ColumnDef } from "@tanstack/react-table";
+import type { ColumnDef } from "@tanstack/react-table";
 
 import { Container } from "~/components/layout/container";
 import { CopyValue } from "~/components/misc/copy-value";
@@ -15,7 +15,7 @@ import { Heading } from "~/components/ui/heading";
 import { Link } from "~/components/ui/link";
 import { Separator } from "~/components/ui/separator";
 import { organizationsQueryOptions } from "~/lib/organization";
-import { AuthOrganization, ORMOrganization } from "~/types";
+import type { AuthOrganization, ORMOrganization } from "~/types";
 
 export const Route = createFileRoute("/_dashboard/organizations/")({
   component: RouteComponent,

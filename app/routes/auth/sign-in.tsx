@@ -1,4 +1,3 @@
-/* eslint-disable react/no-children-prop */
 import { useState } from "react";
 import { useForm } from "@tanstack/react-form";
 import { createFileRoute, useRouter } from "@tanstack/react-router";

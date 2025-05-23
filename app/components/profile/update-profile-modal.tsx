@@ -1,9 +1,8 @@
-/* eslint-disable react/no-children-prop */
 import { useState } from "react";
 import { useForm } from "@tanstack/react-form";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
-import { User } from "better-auth";
+import type { User } from "better-auth";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
@@ -108,7 +107,9 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
                 selector={(state) => [state.canSubmit, state.isSubmitting]}
                 children={([canSubmit, isSubmitting]) => (
                   <div className="flex justify-end gap-2">
-                    <Button color="slate" slot="close" variant="light">Cancel</Button>
+                    <Button color="slate" slot="close" variant="light">
+                      Cancel
+                    </Button>
                     <Button
                       isDisabled={!canSubmit}
                       isPending={isSubmitting}

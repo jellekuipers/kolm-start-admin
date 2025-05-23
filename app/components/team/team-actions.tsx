@@ -16,7 +16,7 @@ import {
   MenuTrigger,
 } from "~/components/ui/menu";
 import { removeTeam } from "~/lib/team";
-import { Team } from "~/types";
+import type { Team } from "~/types";
 
 interface TeamActionsProps {
   team: Team;

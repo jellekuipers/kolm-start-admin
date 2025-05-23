@@ -1,4 +1,3 @@
-/* eslint-disable react/no-children-prop */
 import { useState } from "react";
 import { useForm } from "@tanstack/react-form";
 import { useMutation } from "@tanstack/react-query";
@@ -12,7 +11,7 @@ import { Modal, ModalHeading } from "~/components/ui/modal";
 import { TextField } from "~/components/ui/text-field";
 import { getFieldErrorMessage } from "~/lib/error";
 import { updateOrganization } from "~/lib/organization";
-import { AuthOrganization, ORMOrganization } from "~/types";
+import type { AuthOrganization, ORMOrganization } from "~/types";
 
 interface UpdateOrganizationModalProps {
   open: boolean;

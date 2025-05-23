@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { ColumnDef } from "@tanstack/react-table";
-import { Session } from "better-auth";
+import type { ColumnDef } from "@tanstack/react-table";
+import type { Session } from "better-auth";
 
 import { CopyValue } from "~/components/misc/copy-value";
 import { SessionActions } from "~/components/session/session-actions";

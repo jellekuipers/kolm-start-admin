@@ -4,7 +4,7 @@ import {
   CaretLeft as CaretLeftIcon,
   CaretRight as CaretRightIcon,
 } from "@phosphor-icons/react";
-import { Table } from "@tanstack/react-table";
+import type { Table } from "@tanstack/react-table";
 
 import { IconButton } from "~/components/ui/icon-button";
 

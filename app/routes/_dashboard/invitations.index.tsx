@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { ColumnDef } from "@tanstack/react-table";
+import type { ColumnDef } from "@tanstack/react-table";
 
 import { CreateInvitationModal } from "~/components/invitation/create-invitation-modal";
 import { InvitationActions } from "~/components/invitation/invitation-actions";
@@ -12,7 +12,7 @@ import { Badge } from "~/components/ui/badge";
 import { Heading } from "~/components/ui/heading";
 import { Separator } from "~/components/ui/separator";
 import { invitationsQueryOptions } from "~/lib/invitation";
-import { Invitation } from "~/types";
+import type { Invitation } from "~/types";
 
 export const Route = createFileRoute("/_dashboard/invitations/")({
   component: RouteComponent,

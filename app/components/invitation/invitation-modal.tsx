@@ -1,7 +1,7 @@
 import { InvitationCard } from "~/components/invitation/invitation-card";
 import { Dialog } from "~/components/ui/dialog";
 import { Modal, ModalHeading } from "~/components/ui/modal";
-import { Invitation } from "~/types";
+import type { Invitation } from "~/types";
 
 interface InvitationModalProps {
   invitation: Invitation;

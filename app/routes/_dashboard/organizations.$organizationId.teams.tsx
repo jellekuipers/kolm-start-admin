@@ -1,14 +1,14 @@
 import { useMemo } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { ColumnDef } from "@tanstack/react-table";
+import type { ColumnDef } from "@tanstack/react-table";
 
 import { CopyValue } from "~/components/misc/copy-value";
 import { DataTable } from "~/components/table/data-table";
 import { CreateTeamModal } from "~/components/team/create-team-modal";
 import { TeamActions } from "~/components/team/team-actions";
 import { teamsQueryOptions } from "~/lib/team";
-import { Team } from "~/types";
+import type { Team } from "~/types";
 
 export const Route = createFileRoute(
   "/_dashboard/organizations/$organizationId/teams",

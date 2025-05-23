@@ -7,7 +7,7 @@ import { z } from "zod";
 import { user } from "~/db/schema";
 import { auth } from "~/lib/auth";
 import { db } from "~/db";
-import { MemberRole } from "~/types";
+import type { MemberRole } from "~/types";
 
 export const createUser = createServerFn({ method: "POST" })
   .validator(

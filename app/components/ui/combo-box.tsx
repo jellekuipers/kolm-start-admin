@@ -4,7 +4,7 @@ import { CaretDown as CaretDownIcon } from "@phosphor-icons/react";
 import {
   Button as AriaButton,
   ComboBox as AriaComboBox,
-  ComboBoxProps as AriaComboBoxProps,
+  type ComboBoxProps as AriaComboBoxProps,
   ListBox as AriaListBox,
   ListBoxItem as AriaListBoxItem,
   type ListBoxItemProps as AriaListBoxItemProps,

@@ -15,7 +15,7 @@ import {
 } from "~/components/ui/data-list";
 import { Separator } from "~/components/ui/separator";
 import { acceptInvitation, rejectInvitation } from "~/lib/invitation";
-import { Invitation } from "~/types";
+import type { Invitation } from "~/types";
 
 interface InvitationCardProps {
   invitation: Invitation;

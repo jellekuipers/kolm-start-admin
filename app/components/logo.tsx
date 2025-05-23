@@ -4,7 +4,9 @@ interface LogoProps {
 export function Logo({ size = 32 }: LogoProps) {
   return (
     <svg
+      aria-label="Logo"
       height={size}
+      role="img"
       viewBox="0 0 200 200"
       width={size}
       xmlns="http://www.w3.org/2000/svg"

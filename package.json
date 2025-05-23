@@ -13,16 +13,17 @@
   ],
   "scripts": {
     "build": "vinxi build",
+    "check": "npx @biomejs/biome check --write .",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
     "db:reset": "npx tsx app/db/reset.ts ",
-    "db:seed": "npx tsx app/db/seed.ts ",
     "db:seed:dev": "npx tsx app/db/seed.dev.ts ",
+    "db:seed": "npx tsx app/db/seed.ts ",
     "db:studio": "drizzle-kit studio",
     "dev": "vinxi dev",
-    "format": "prettier --write .",
-    "lint": "eslint app",
+    "format": "npx @biomejs/biome format --write .",
+    "lint": "npx @biomejs/biome lint --write .",
     "postinstall": "drizzle-kit push",
     "start": "node --env-file=.env ./node_modules/.bin/vinxi start",
     "typecheck": "tsc --noEmit"
@@ -58,26 +59,19 @@
     "zod": "3.24.2"
   },
   "devDependencies": {
-    "@eslint/js": "9.23.0",
+    "@biomejs/biome": "1.9.4",
     "@faker-js/faker": "9.6.0",
-    "@ianvs/prettier-plugin-sort-imports": "4.4.1",
     "@types/node": "22.13.13",
     "@types/pg": "8.11.11",
     "@types/react": "19.0.12",
     "@types/react-dom": "19.0.4",
     "@vitejs/plugin-react": "4.3.4",
     "drizzle-kit": "0.30.5",
-    "eslint": "9.23.0",
-    "eslint-plugin-react": "7.37.4",
-    "eslint-plugin-react-hooks": "5.2.0",
-    "prettier": "3.5.3",
-    "prettier-plugin-tailwindcss": "0.6.11",
     "tailwindcss": "4.0.16",
     "tailwindcss-animate": "1.0.7",
     "tailwindcss-react-aria-components": "2.0.0",
     "tsx": "4.19.3",
     "typescript": "5.8.2",
-    "typescript-eslint": "8.28.0",
     "vite-tsconfig-paths": "5.1.4"
   }
 }

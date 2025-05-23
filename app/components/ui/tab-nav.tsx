@@ -1,4 +1,4 @@
-import { ActiveOptions, LinkProps } from "@tanstack/react-router";
+import type { ActiveOptions, LinkProps } from "@tanstack/react-router";
 import { twMerge } from "tailwind-merge";
 
 import { Link } from "~/components/ui/link";
