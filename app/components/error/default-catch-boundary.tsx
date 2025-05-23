@@ -1,5 +1,5 @@
 import { Info as InfoIcon } from "@phosphor-icons/react";
-import { type ErrorComponentProps } from "@tanstack/react-router";
+import type { ErrorComponentProps } from "@tanstack/react-router";
 
 import { Callout, CalloutIcon, CalloutText } from "~/components/ui/callout";
 

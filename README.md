@@ -18,7 +18,7 @@
 
 A `@tanstack/react-start` + `better-auth` admin starter, with `drizzle-orm`, `tRPC`, `react-aria-components`.
 
-This project is built with the `better-auth` framework, using its admin and organizations plugins as a starting point for user, organization, team and invitation management. While being fairly complete, it provides basic building blocks that can be customized to fit different needs.
+This project is built with the `better-auth` framework, using its admin plugin as a starting point for user management. While being fairly complete, it provides basic building blocks that can be customized to fit different needs.
 
 This setup is built for flexibility, allowing you to use it as an admin starter for an app or extend it into a multi-tenancy user management system, depending on your needs.
 
@@ -30,12 +30,11 @@ I've kept this as minimal and unopinionated as possible, relying primarily on th
 - `tRPC`
 - `@tanstack/react-form`
 - `react-aria-components`
+- `biome.js`
 
 Check out <a href="https://github.com/jellekuipers/kolm-start">kolm-start</a>, for a `@tanstack/react-start` starter with `tRPC`, `drizzle-orm`, `better-auth` and `tailwindcss`.
 
 For a version with `@radix-ui/themes`, check out the `radix-themes` branch.
-
-Check out the `user-management-only` branch for a version without the `better-auth` organization plugin implemented.
 
 ## Getting Started
 
@@ -87,7 +86,7 @@ npm install npm@latest -g
    ```sh
    npm run dev
    ```
-   
+
 ### How to enable CORS
 
 In `app.config.ts` add the following lines:
@@ -119,16 +118,6 @@ Add the external clients to `trustedOrigins` in `app/lib/auth.ts`:
 +     trustedOrigins: ["http://localhost:3001"],
    });
 ```
-
-### Roles & permissions
-
-To demonstrate role-based authentication, only users with the admin role (not the regular user role) can sign in. If you want to allow regular users to access the dashboard, you’ll need to make the following adjustments:
-
-- In `app/routes/_dashboard.tsx` and `app/routes/auth.tsx`, check only for an active session instead of enforcing the admin role.
-- In `app/routes/_dashboard/users.index.tsx`, specifically check for the admin role to restrict access to user management.
-- In `app/routes/_dashboard/index.tsx`, modify the statistics display by changing the procedure type in `app/trpc/router/stats.ts` to `protectedProcedure`, and remove the user count if it shouldn't be visible to non-admins.
-
-In order to send invitation emails, add your email configuration to `app/lib/auth.ts`. The `sendInvitationEmail` functionality currently only logs the data that is available for sending invitation emails.
 
 See the [open issues](https://github.com/jellekuipers/kolm-start-admin/issues) for a full list of proposed features (and known issues).
 

@@ -1,4 +1,4 @@
-import { AnyFieldApi } from "@tanstack/react-form";
+import type { AnyFieldApi } from "@tanstack/react-form";
 
 interface GetFieldErrorMessagePayload {
   field: AnyFieldApi;

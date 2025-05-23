@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { createLink, LinkComponent } from "@tanstack/react-router";
+import { createLink, type LinkComponent } from "@tanstack/react-router";
 import {
   mergeProps,
   useFocusRing,

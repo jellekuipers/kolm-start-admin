@@ -1,4 +1,4 @@
-import { Icon } from "@phosphor-icons/react";
+import type { Icon } from "@phosphor-icons/react";
 
 import { Card } from "~/components/ui/card";
 

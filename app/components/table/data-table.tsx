@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import type React from "react";
+import { useState } from "react";
 import { Empty as EmptyIcon } from "@phosphor-icons/react";
-import { RankingInfo, rankItem } from "@tanstack/match-sorter-utils";
+import { type RankingInfo, rankItem } from "@tanstack/match-sorter-utils";
 import {
-  FilterFn,
+  type FilterFn,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  PaginationState,
-  SortingState,
+  type PaginationState,
+  type SortingState,
   useReactTable,
   type ColumnDef,
 } from "@tanstack/react-table";

@@ -15,7 +15,7 @@ import { DefaultCatchBoundary } from "~/components/error/default-catch-boundary"
 import { NotFound } from "~/components/error/not-found";
 import { Pending } from "~/components/ui/pending";
 import { TRPCProvider } from "~/trpc/react";
-import { AppRouter } from "~/trpc/router";
+import type { AppRouter } from "~/trpc/router";
 import { getUrl } from "~/utils/get-url";
 
 import { routeTree } from "./routeTree.gen";

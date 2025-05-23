@@ -7,17 +7,12 @@ import { z } from "zod";
 import { user } from "~/db/schema";
 import { auth } from "~/lib/auth";
 import { db } from "~/db";
-import { MemberRole } from "~/types";
 
 export const createUser = createServerFn({ method: "POST" })
   .validator(
     z.object({
       email: z.string().email(),
       name: z.string(),
-      organizationId: z
-        .string()
-        .transform((value) => (value === "" ? null : value)),
-      memberRole: z.string(),
     }),
   )
   .handler(async ({ data }) => {
@@ -32,17 +27,6 @@ export const createUser = createServerFn({ method: "POST" })
         role: "user",
       },
     });
-
-    if (data.organizationId) {
-      await auth.api.addMember({
-        headers,
-        body: {
-          userId: user.id,
-          organizationId: data.organizationId,
-          role: data.memberRole as MemberRole,
-        },
-      });
-    }
 
     return user;
   });

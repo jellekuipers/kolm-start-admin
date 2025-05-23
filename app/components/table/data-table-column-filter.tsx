@@ -1,5 +1,5 @@
 import { CaretDown as CaretDownIcon } from "@phosphor-icons/react";
-import { Table } from "@tanstack/react-table";
+import type { Table } from "@tanstack/react-table";
 
 import { Button } from "~/components/ui/button";
 import { Checkbox } from "~/components/ui/checkbox";

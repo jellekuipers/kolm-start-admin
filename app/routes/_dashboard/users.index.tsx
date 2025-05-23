@@ -2,8 +2,8 @@ import { useMemo } from "react";
 import { Check as CheckIcon, X as XIcon } from "@phosphor-icons/react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { ColumnDef } from "@tanstack/react-table";
-import { UserWithRole } from "better-auth/plugins";
+import type { ColumnDef } from "@tanstack/react-table";
+import type { UserWithRole } from "better-auth/plugins";
 
 import { Container } from "~/components/layout/container";
 import { CopyValue } from "~/components/misc/copy-value";
@@ -17,7 +17,7 @@ import { CreateUserModal } from "~/components/user/create-user-modal";
 import { UserActions } from "~/components/user/user-actions";
 import { UserRole } from "~/components/user/user-role";
 import { usersQueryOptions } from "~/lib/user";
-import { User } from "~/types";
+import type { User } from "~/types";
 
 export const Route = createFileRoute("/_dashboard/users/")({
   component: RouteComponent,

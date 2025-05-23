@@ -1,27 +1,20 @@
-/* eslint-disable react/no-children-prop */
 import { useState } from "react";
 import { useForm } from "@tanstack/react-form";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
-import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Dialog } from "~/components/ui/dialog";
 import { Modal, ModalHeading } from "~/components/ui/modal";
-import { Select, SelectItem } from "~/components/ui/select";
-import { Separator } from "~/components/ui/separator";
 import { TextField } from "~/components/ui/text-field";
 import { getFieldErrorMessage } from "~/lib/error";
-import { organizationsQueryOptions } from "~/lib/organization";
 import { createUser } from "~/lib/user";
 
 const createUserSchema = z.object({
   email: z.string().email(),
   name: z.string(),
-  organizationId: z.string(),
-  memberRole: z.string(),
 });
 
 export function CreateUserModal() {
@@ -45,23 +38,11 @@ export function CreateUserModal() {
   };
 
   const createUserMutation = useMutation({
-    mutationFn: async ({
-      email,
-      name,
-      organizationId,
-      memberRole,
-    }: {
-      email: string;
-      name: string;
-      organizationId: string;
-      memberRole: string;
-    }) =>
+    mutationFn: async ({ email, name }: { email: string; name: string }) =>
       await createUser({
         data: {
           email,
           name,
-          organizationId,
-          memberRole,
         },
       }),
     onError: onMutationError,
@@ -72,8 +53,6 @@ export function CreateUserModal() {
     defaultValues: {
       email: "",
       name: "",
-      organizationId: "",
-      memberRole: "member",
     },
     onSubmit: async ({ value }) => {
       await createUserMutation.mutateAsync(value);
@@ -90,10 +69,6 @@ export function CreateUserModal() {
       reset();
     }
   };
-
-  const organizationsQuery = useQuery(organizationsQueryOptions());
-
-  const organizations = organizationsQuery.data;
 
   return (
     <>
@@ -136,52 +111,6 @@ export function CreateUserModal() {
                       onBlur={field.handleBlur}
                       onChange={(value) => field.handleChange(value)}
                     />
-                  );
-                }}
-              />
-              <Separator />
-              <div className="flex items-center gap-2">
-                <span className="font-medium">Organization</span>
-                <Badge>optional</Badge>
-              </div>
-              <Field
-                name="organizationId"
-                children={(field) => {
-                  return (
-                    <Select
-                      errorMessage={getFieldErrorMessage({ field })}
-                      items={organizations}
-                      label="Add to organization"
-                      name={field.name}
-                      onSelectionChange={(key) =>
-                        field.handleChange(key as string)
-                      }
-                      selectedKey={field.state.value}
-                    >
-                      {(item) => (
-                        <SelectItem id={item.id}>{item.name}</SelectItem>
-                      )}
-                    </Select>
-                  );
-                }}
-              />
-              <Field
-                name="memberRole"
-                children={(field) => {
-                  return (
-                    <Select
-                      errorMessage={getFieldErrorMessage({ field })}
-                      label="Role"
-                      name={field.name}
-                      onSelectionChange={(key) =>
-                        field.handleChange(key as string)
-                      }
-                      selectedKey={field.state.value}
-                    >
-                      <SelectItem id="admin">Admin</SelectItem>
-                      <SelectItem id="member">Member</SelectItem>
-                      <SelectItem id="owner">Owner</SelectItem>
-                    </Select>
                   );
                 }}
               />
