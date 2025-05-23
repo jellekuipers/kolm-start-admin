@@ -14,9 +14,6 @@ export function UserTabNav({ userId }: UserTabNavProps) {
       >
         Profile
       </TabNavLink>
-      <TabNavLink params={{ userId }} to="/users/$userId/organizations">
-        Organizations
-      </TabNavLink>
       <TabNavLink params={{ userId }} to="/users/$userId/sessions">
         Sessions
       </TabNavLink>
