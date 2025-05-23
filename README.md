@@ -18,7 +18,7 @@
 
 A `@tanstack/react-start` + `better-auth` admin starter, with `drizzle-orm`, `tRPC`, `react-aria-components`.
 
-This project is built with the `better-auth` framework, using its admin plugin as a starting point for user, organization, team and invitation management. While being fairly complete, it provides basic building blocks that can be customized to fit different needs.
+This project is built with the `better-auth` framework, using its admin plugin as a starting point for user management. While being fairly complete, it provides basic building blocks that can be customized to fit different needs.
 
 This setup is built for flexibility, allowing you to use it as an admin starter for an app or extend it into a multi-tenancy user management system, depending on your needs.
 
@@ -30,12 +30,11 @@ I've kept this as minimal and unopinionated as possible, relying primarily on th
 - `tRPC`
 - `@tanstack/react-form`
 - `react-aria-components`
+- `biome.js`
 
 Check out <a href="https://github.com/jellekuipers/kolm-start">kolm-start</a>, for a `@tanstack/react-start` starter with `tRPC`, `drizzle-orm`, `better-auth` and `tailwindcss`.
 
 For a version with `@radix-ui/themes`, check out the `radix-themes` branch.
-
-Check out the `user-management-only` branch for a version without the `better-auth` organization plugin implemented.
 
 ## Getting Started
 
