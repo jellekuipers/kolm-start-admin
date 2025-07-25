@@ -87,25 +87,23 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
             }}
           >
             <div className="space-y-4">
-              <Field
-                name="name"
-                children={(field) => {
-                  return (
-                    <TextField
-                      defaultValue={field.state.value}
-                      errorMessage={getFieldErrorMessage({ field })}
-                      label="Name"
-                      name={field.name}
-                      onBlur={field.handleBlur}
-                      onChange={(value) => field.handleChange(value)}
-                    />
-                  );
-                }}
-              />
+              <Field name="name">
+                {(field) => (
+                  <TextField
+                    defaultValue={field.state.value}
+                    errorMessage={getFieldErrorMessage({ field })}
+                    label="Name"
+                    name={field.name}
+                    onBlur={field.handleBlur}
+                    onChange={(value) => field.handleChange(value)}
+                  />
+                )}
+              </Field>
               {error ? <FormError error={error} /> : null}
               <Subscribe
                 selector={(state) => [state.canSubmit, state.isSubmitting]}
-                children={([canSubmit, isSubmitting]) => (
+              >
+                {([canSubmit, isSubmitting]) => (
                   <div className="flex justify-end gap-2">
                     <Button color="slate" slot="close" variant="light">
                       Cancel
@@ -119,7 +117,7 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
                     </Button>
                   </div>
                 )}
-              />
+              </Subscribe>
             </div>
           </form>
         </Dialog>

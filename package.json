@@ -2,7 +2,7 @@
   "name": "kolm-start-admin",
   "description": "A TanStack Start + better-auth admin starter, with Drizzle ORM, tRPC, React Aria.",
   "author": "Jelle Kuipers <info@jellekuipers.com> (https://jellekuipers.com)",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "keywords": [
     "better-auth",
