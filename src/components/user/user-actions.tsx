@@ -10,7 +10,6 @@ import {
 } from "@phosphor-icons/react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
-import type { UserWithRole } from "better-auth/plugins";
 import { MenuTrigger } from "react-aria-components";
 
 import { Button } from "~/components/ui/button";
@@ -26,7 +25,7 @@ import {
 import type { User } from "~/types";
 
 interface UserActionsProps {
-  user: User | UserWithRole;
+  user: User;
   variant: "overview" | "profile";
 }
 

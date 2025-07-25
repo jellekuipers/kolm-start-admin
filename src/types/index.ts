@@ -1,5 +1,4 @@
 import type { user } from "~/db/schema";
-import type { auth } from "~/lib/auth";
 
 export type Account = {
   id: string;
@@ -11,5 +10,4 @@ export type Account = {
 };
 
 export type User = typeof user.$inferSelect;
-export type SessionUser = typeof auth.$Infer.Session.user;
-export type Role = "admin" | "user";
+export type Role = "user" | "admin" | ("user" | "admin")[];

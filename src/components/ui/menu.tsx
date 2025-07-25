@@ -26,7 +26,7 @@ export function Menu<T extends object>(props: MenuProps<T>) {
 }
 
 export function MenuHeader(
-  props: React.HTMLAttributes<HTMLElement> & React.RefAttributes<object>,
+  props: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>,
 ) {
   return (
     <AriaHeader {...props} className="mb-1 px-2 py-1 text-sm font-medium" />

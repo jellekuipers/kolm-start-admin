@@ -1,8 +1,9 @@
 import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/react-start";
-import { getWebRequest, setResponseStatus } from "@tanstack/react-start/server";
+import { getWebRequest } from "@tanstack/react-start/server";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
+
 import { db } from "~/db";
 import { user } from "~/db/schema";
 import { auth } from "~/lib/auth";
@@ -10,7 +11,7 @@ import { auth } from "~/lib/auth";
 export const createUser = createServerFn({ method: "POST" })
   .validator(
     z.object({
-      email: z.string().email(),
+      email: z.email(),
       name: z.string(),
     }),
   )
@@ -31,16 +32,7 @@ export const createUser = createServerFn({ method: "POST" })
   });
 
 export const listUsers = createServerFn({ method: "GET" }).handler(async () => {
-  const { headers } = getWebRequest();
-
-  const { users } = await auth.api.listUsers({
-    headers,
-    query: {
-      limit: -1,
-      sortBy: "createdAt",
-      sortDirection: "desc",
-    },
-  });
+  const users = await db.query.user.findMany();
 
   return users;
 });
@@ -52,23 +44,11 @@ export const getUserById = createServerFn({ method: "GET" })
     }),
   )
   .handler(async ({ data }) => {
-    const { headers } = getWebRequest();
-
-    const session = await auth.api.getSession({
-      headers,
-      query: {
-        disableCookieCache: true,
-      },
-    });
-
-    if (!session) {
-      setResponseStatus(401);
-      throw new Error("Unauthorized");
-    }
-
-    return await db.query.user.findFirst({
+    const userById = await db.query.user.findFirst({
       where: eq(user.id, data.userId),
     });
+
+    return userById;
   });
 
 export const listUserAccounts = createServerFn({ method: "GET" }).handler(
@@ -133,7 +113,7 @@ export const setUserRole = createServerFn({ method: "POST" })
       headers,
       body: {
         userId: data.userId,
-        role: data.role,
+        role: data.role as "user" | "admin" | ("user" | "admin")[],
       },
     });
   });
