@@ -14,6 +14,7 @@ export function Checkbox({ children, ...props }: AriaCheckboxProps) {
         "disabled:text-slate-300",
       )}
     >
+      {/** biome-ignore lint/complexity/noUselessFragments: Required by Aria */}
       <>
         <div className="flex size-4 shrink-0 items-center justify-center rounded border border-slate-300 bg-white">
           <CheckIcon

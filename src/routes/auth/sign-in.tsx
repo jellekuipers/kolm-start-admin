@@ -67,49 +67,44 @@ function RouteComponent() {
             }}
           >
             <div className="space-y-4">
-              <Field
-                name="email"
-                children={(field) => {
-                  return (
+              <Field name="email">
+                {(field) => (
+                  <TextField
+                    defaultValue={field.state.value}
+                    errorMessage={getFieldErrorMessage({ field })}
+                    label="Email"
+                    name={field.name}
+                    onBlur={field.handleBlur}
+                    onChange={(value) => field.handleChange(value)}
+                    type="email"
+                  />
+                )}
+              </Field>
+              <Field name="password">
+                {(field) => (
+                  <div className="space-y-1">
+                    <div className="mb-1 flex items-baseline justify-between">
+                      <Label>Password</Label>
+                      <Link className="font-medium" to="/">
+                        Forgot password?
+                      </Link>
+                    </div>
                     <TextField
                       defaultValue={field.state.value}
                       errorMessage={getFieldErrorMessage({ field })}
-                      label="Email"
                       name={field.name}
                       onBlur={field.handleBlur}
                       onChange={(value) => field.handleChange(value)}
-                      type="email"
+                      type="password"
                     />
-                  );
-                }}
-              />
-              <Field
-                name="password"
-                children={(field) => {
-                  return (
-                    <div className="space-y-1">
-                      <div className="mb-1 flex items-baseline justify-between">
-                        <Label>Password</Label>
-                        <Link className="font-medium" to="/">
-                          Forgot password?
-                        </Link>
-                      </div>
-                      <TextField
-                        defaultValue={field.state.value}
-                        errorMessage={getFieldErrorMessage({ field })}
-                        name={field.name}
-                        onBlur={field.handleBlur}
-                        onChange={(value) => field.handleChange(value)}
-                        type="password"
-                      />
-                    </div>
-                  );
-                }}
-              />
+                  </div>
+                )}
+              </Field>
               {error ? <FormError error={error} /> : null}
               <Subscribe
                 selector={(state) => [state.canSubmit, state.isSubmitting]}
-                children={([canSubmit, isSubmitting]) => (
+              >
+                {([canSubmit, isSubmitting]) => (
                   <div className="flex justify-end">
                     <Button
                       isDisabled={!canSubmit}
@@ -120,7 +115,7 @@ function RouteComponent() {
                     </Button>
                   </div>
                 )}
-              />
+              </Subscribe>
             </div>
           </form>
         </div>
