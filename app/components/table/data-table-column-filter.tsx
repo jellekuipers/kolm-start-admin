@@ -1,11 +1,11 @@
-import { CaretDown as CaretDownIcon } from "@phosphor-icons/react";
-import type { Table } from "@tanstack/react-table";
+import { CaretDownIcon } from '@phosphor-icons/react';
+import type { Table } from '@tanstack/react-table';
 
-import { Button } from "~/components/ui/button";
-import { Checkbox } from "~/components/ui/checkbox";
-import { Dialog, DialogTrigger } from "~/components/ui/dialog";
-import { GridList, GridListItem } from "~/components/ui/grid-list";
-import { Popover } from "~/components/ui/popover";
+import { Button } from '~/components/ui/button';
+import { Checkbox } from '~/components/ui/checkbox';
+import { Dialog, DialogTrigger } from '~/components/ui/dialog';
+import { GridList, GridListItem } from '~/components/ui/grid-list';
+import { Popover } from '~/components/ui/popover';
 
 interface DataTableColumnFilterProps<TData> {
   table: Table<TData>;
@@ -29,9 +29,9 @@ export function DataTableColumnFilter<TData>({
               const visibilityState: Record<string, boolean> = {};
 
               for (const column of columns) {
-                if (selectedIds === "all") {
+                if (selectedIds === 'all') {
                   visibilityState[column.id] = true;
-                } else if (typeof selectedIds?.has === "function") {
+                } else if (typeof selectedIds?.has === 'function') {
                   visibilityState[column.id] = selectedIds.has(column.id);
                 }
               }

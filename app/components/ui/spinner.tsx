@@ -1,4 +1,4 @@
-import { CircleNotch as CircleNotchIcon } from "@phosphor-icons/react";
+import { CircleNotchIcon } from '@phosphor-icons/react';
 
 export function Spinner() {
   return <CircleNotchIcon className="animate-spin" size={20} />;

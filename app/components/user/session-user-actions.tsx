@@ -1,11 +1,8 @@
-import {
-  DotsThreeVertical as DotsThreeVerticalIcon,
-  User as UserIcon,
-} from "@phosphor-icons/react";
-import { useNavigate } from "@tanstack/react-router";
+import { DotsThreeVerticalIcon, UserIcon } from '@phosphor-icons/react';
+import { useNavigate } from '@tanstack/react-router';
 
-import { IconButton } from "~/components/ui/icon-button";
-import { Menu, MenuItem, MenuTrigger } from "~/components/ui/menu";
+import { IconButton } from '~/components/ui/icon-button';
+import { Menu, MenuItem, MenuTrigger } from '~/components/ui/menu';
 
 interface SessionUserActionsProps {
   userId: string;
@@ -24,7 +21,7 @@ export function SessionUserActions({ userId }: SessionUserActionsProps) {
           onAction={() =>
             navigate({
               params: { userId },
-              to: "/users/$userId",
+              to: '/users/$userId',
             })
           }
         >

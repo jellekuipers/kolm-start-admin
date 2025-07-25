@@ -1,7 +1,7 @@
-import { ArrowLeft as ArrowLeftIcon } from "@phosphor-icons/react";
+import { ArrowLeftIcon } from '@phosphor-icons/react';
 
-import { Heading } from "~/components/ui/heading";
-import { Link } from "~/components/ui/link";
+import { Heading } from '~/components/ui/heading';
+import { Link } from '~/components/ui/link';
 
 interface NotFoundProps {
   children?: React.ReactNode;

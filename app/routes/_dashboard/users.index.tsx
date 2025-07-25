@@ -1,25 +1,25 @@
-import { useMemo } from "react";
-import { Check as CheckIcon, X as XIcon } from "@phosphor-icons/react";
-import { useSuspenseQuery } from "@tanstack/react-query";
-import { createFileRoute } from "@tanstack/react-router";
-import type { ColumnDef } from "@tanstack/react-table";
-import type { UserWithRole } from "better-auth/plugins";
+import { useMemo } from 'react';
+import { CheckIcon, XIcon } from '@phosphor-icons/react';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { createFileRoute } from '@tanstack/react-router';
+import type { ColumnDef } from '@tanstack/react-table';
+import type { UserWithRole } from 'better-auth/plugins';
 
-import { Container } from "~/components/layout/container";
-import { CopyValue } from "~/components/misc/copy-value";
-import { DataTable } from "~/components/table/data-table";
-import { Avatar } from "~/components/ui/avatar";
-import { Badge } from "~/components/ui/badge";
-import { Heading } from "~/components/ui/heading";
-import { Link } from "~/components/ui/link";
-import { Separator } from "~/components/ui/separator";
-import { CreateUserModal } from "~/components/user/create-user-modal";
-import { UserActions } from "~/components/user/user-actions";
-import { UserRole } from "~/components/user/user-role";
-import { usersQueryOptions } from "~/lib/user";
-import type { User } from "~/types";
+import { Container } from '~/components/layout/container';
+import { CopyValue } from '~/components/misc/copy-value';
+import { DataTable } from '~/components/table/data-table';
+import { Avatar } from '~/components/ui/avatar';
+import { Badge } from '~/components/ui/badge';
+import { Heading } from '~/components/ui/heading';
+import { Link } from '~/components/ui/link';
+import { Separator } from '~/components/ui/separator';
+import { CreateUserModal } from '~/components/user/create-user-modal';
+import { UserActions } from '~/components/user/user-actions';
+import { UserRole } from '~/components/user/user-role';
+import { usersQueryOptions } from '~/lib/user';
+import type { User } from '~/types';
 
-export const Route = createFileRoute("/_dashboard/users/")({
+export const Route = createFileRoute('/_dashboard/users/')({
   component: RouteComponent,
   loader: async ({ context }) =>
     await context.queryClient.prefetchQuery(usersQueryOptions()),
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/_dashboard/users/")({
 
 const dataTableColumns: ColumnDef<User | UserWithRole>[] = [
   {
-    id: "image",
+    id: 'image',
     enableHiding: false,
     header: undefined,
     cell({ row }) {
@@ -37,16 +37,16 @@ const dataTableColumns: ColumnDef<User | UserWithRole>[] = [
     },
   },
   {
-    id: "id",
-    header: "ID",
+    id: 'id',
+    header: 'ID',
     cell({ row }) {
       return <CopyValue value={row.original.id} />;
     },
   },
   {
-    id: "email",
-    accessorKey: "email",
-    header: "Email",
+    id: 'email',
+    accessorKey: 'email',
+    header: 'Email',
     cell({ row }) {
       return (
         <Link
@@ -61,35 +61,35 @@ const dataTableColumns: ColumnDef<User | UserWithRole>[] = [
     },
   },
   {
-    id: "name",
-    accessorKey: "name",
-    header: "Name",
+    id: 'name',
+    accessorKey: 'name',
+    header: 'Name',
   },
   {
-    id: "role",
-    accessorKey: "role",
-    header: "Role",
+    id: 'role',
+    accessorKey: 'role',
+    header: 'Role',
     cell({ row }) {
       return <UserRole role={row.original.role} />;
     },
   },
   {
-    id: "createdAt",
-    header: "Created at",
+    id: 'createdAt',
+    header: 'Created at',
     cell({ row }) {
       return row.original.createdAt.toDateString();
     },
   },
   {
-    id: "updatedAt",
-    header: "Updated at",
+    id: 'updatedAt',
+    header: 'Updated at',
     cell({ row }) {
       return row.original.updatedAt.toDateString();
     },
   },
   {
-    id: "emailVerified",
-    header: "Email verified",
+    id: 'emailVerified',
+    header: 'Email verified',
     cell({ row }) {
       return row.original.emailVerified ? (
         <CheckIcon size={16} />
@@ -99,8 +99,8 @@ const dataTableColumns: ColumnDef<User | UserWithRole>[] = [
     },
   },
   {
-    id: "banned",
-    header: "Banned",
+    id: 'banned',
+    header: 'Banned',
     cell({ row }) {
       return row.original.banned ? (
         <CheckIcon size={16} />
@@ -110,21 +110,21 @@ const dataTableColumns: ColumnDef<User | UserWithRole>[] = [
     },
   },
   {
-    id: "banReason",
-    header: "Ban reason",
+    id: 'banReason',
+    header: 'Ban reason',
     cell({ row }) {
-      return row.original.banReason ?? "-";
+      return row.original.banReason ?? '-';
     },
   },
   {
-    id: "banExpires",
-    header: "Ban expires",
+    id: 'banExpires',
+    header: 'Ban expires',
     cell({ row }) {
-      return row.original.banExpires?.toDateString() ?? "-";
+      return row.original.banExpires?.toDateString() ?? '-';
     },
   },
   {
-    id: "actions",
+    id: 'actions',
     enableHiding: false,
     header: undefined,
     cell({ row }) {

@@ -1,7 +1,7 @@
-import type React from "react";
-import { useState } from "react";
-import { Empty as EmptyIcon } from "@phosphor-icons/react";
-import { type RankingInfo, rankItem } from "@tanstack/match-sorter-utils";
+import type React from 'react';
+import { useState } from 'react';
+import { EmptyIcon } from '@phosphor-icons/react';
+import { type RankingInfo, rankItem } from '@tanstack/match-sorter-utils';
 import {
   type FilterFn,
   flexRender,
@@ -13,10 +13,10 @@ import {
   type SortingState,
   useReactTable,
   type ColumnDef,
-} from "@tanstack/react-table";
+} from '@tanstack/react-table';
 
-import { DataTableSearch } from "~/components/table/data-table-search";
-import { Callout, CalloutIcon, CalloutText } from "~/components/ui/callout";
+import { DataTableSearch } from '~/components/table/data-table-search';
+import { Callout, CalloutIcon, CalloutText } from '~/components/ui/callout';
 import {
   Table,
   TableBody,
@@ -24,13 +24,13 @@ import {
   TableColumn,
   TableHeader,
   TableRow,
-} from "~/components/ui/table";
+} from '~/components/ui/table';
 
-import { DataTableColumnFilter } from "./data-table-column-filter";
-import { DataTablePagination } from "./data-table-pagination";
-import { DataTableSortButton } from "./data-table-sort-button";
+import { DataTableColumnFilter } from './data-table-column-filter';
+import { DataTablePagination } from './data-table-pagination';
+import { DataTableSortButton } from './data-table-sort-button';
 
-declare module "@tanstack/react-table" {
+declare module '@tanstack/react-table' {
   interface FilterFns {
     fuzzy: FilterFn<unknown>;
   }
@@ -67,7 +67,7 @@ export function DataTable<TData, TValue>({
   const [columnVisibility, setColumnVisibility] = useState(
     defaultColumnVisibility ?? {},
   );
-  const [globalFilter, setGlobalFilter] = useState<string>("");
+  const [globalFilter, setGlobalFilter] = useState<string>('');
   const [sorting, setSorting] = useState<SortingState>([]);
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
@@ -84,7 +84,7 @@ export function DataTable<TData, TValue>({
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
-    globalFilterFn: "fuzzy",
+    globalFilterFn: 'fuzzy',
     onColumnVisibilityChange: setColumnVisibility,
     onGlobalFilterChange: setGlobalFilter,
     onPaginationChange: setPagination,

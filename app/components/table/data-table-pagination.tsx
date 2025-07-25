@@ -1,12 +1,12 @@
 import {
-  CaretDoubleLeft as CaretDoubleLeftIcon,
-  CaretDoubleRight as CaretDoubleRightIcon,
-  CaretLeft as CaretLeftIcon,
-  CaretRight as CaretRightIcon,
-} from "@phosphor-icons/react";
-import type { Table } from "@tanstack/react-table";
+  CaretDoubleLeftIcon,
+  CaretDoubleRightIcon,
+  CaretLeftIcon,
+  CaretRightIcon,
+} from '@phosphor-icons/react';
+import type { Table } from '@tanstack/react-table';
 
-import { IconButton } from "~/components/ui/icon-button";
+import { IconButton } from '~/components/ui/icon-button';
 
 interface DataTablePaginationProps<TData> {
   table: Table<TData>;
@@ -30,7 +30,7 @@ export function DataTablePagination<TData>({
         <CaretLeftIcon size={16} />
       </IconButton>
       <span className="text-sm font-semibold tabular-nums px-2">
-        {(table.getState().pagination.pageIndex + 1).toString()} of{" "}
+        {(table.getState().pagination.pageIndex + 1).toString()} of{' '}
         {table.getPageCount().toString()}
       </span>
       <IconButton

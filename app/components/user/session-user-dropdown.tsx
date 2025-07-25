@@ -1,20 +1,16 @@
-import {
-  SignOut as SignOutIcon,
-  User as UserIcon,
-  UserSwitch as UserSwitchIcon,
-} from "@phosphor-icons/react";
-import { useNavigate, useRouter } from "@tanstack/react-router";
+import { SignOutIcon, UserIcon, UserSwitchIcon } from '@phosphor-icons/react';
+import { useNavigate, useRouter } from '@tanstack/react-router';
 
-import { Avatar } from "~/components/ui/avatar";
-import { IconButton } from "~/components/ui/icon-button";
+import { Avatar } from '~/components/ui/avatar';
+import { IconButton } from '~/components/ui/icon-button';
 import {
   Menu,
   MenuHeader,
   MenuItem,
   MenuSeparator,
   MenuTrigger,
-} from "~/components/ui/menu";
-import { authClient, signOut, useSession } from "~/lib/auth-client";
+} from '~/components/ui/menu';
+import { authClient, signOut, useSession } from '~/lib/auth-client';
 
 export function SessionUserDropdown() {
   const navigate = useNavigate();
@@ -52,7 +48,7 @@ export function SessionUserDropdown() {
         <MenuItem
           onAction={() =>
             navigate({
-              to: "/profile",
+              to: '/profile',
             })
           }
         >

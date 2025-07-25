@@ -1,14 +1,14 @@
-import { Users as UsersIcon } from "@phosphor-icons/react";
-import { useSuspenseQuery } from "@tanstack/react-query";
-import { createFileRoute } from "@tanstack/react-router";
+import { UsersIcon } from '@phosphor-icons/react';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { createFileRoute } from '@tanstack/react-router';
 
-import { Container } from "~/components/layout/container";
-import { StatCard } from "~/components/stats/stat-card";
-import { Heading } from "~/components/ui/heading";
-import { Separator } from "~/components/ui/separator";
-import { useTRPC } from "~/trpc/react";
+import { Container } from '~/components/layout/container';
+import { StatCard } from '~/components/stats/stat-card';
+import { Heading } from '~/components/ui/heading';
+import { Separator } from '~/components/ui/separator';
+import { useTRPC } from '~/trpc/react';
 
-export const Route = createFileRoute("/_dashboard/")({
+export const Route = createFileRoute('/_dashboard/')({
   component: RouteComponent,
   loader: async ({ context }) =>
     await context.queryClient.prefetchQuery(

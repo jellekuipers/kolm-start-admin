@@ -1,33 +1,33 @@
 import {
-  CaretDown as CaretDownIcon,
-  DeviceMobileSlash as DeviceMobileSlashIcon,
-  DotsThreeVertical as DotsThreeVerticalIcon,
-  HandPalm as HandPalmIcon,
-  HandWaving as HandWavingIcon,
-  TrashSimple as TrashSimpleIcon,
-  User as UserIcon,
-  UserSwitch as UserSwitchIcon,
-} from "@phosphor-icons/react";
-import { useMutation } from "@tanstack/react-query";
-import { useNavigate, useRouter } from "@tanstack/react-router";
-import type { UserWithRole } from "better-auth/plugins";
-import { MenuTrigger } from "react-aria-components";
+  CaretDownIcon,
+  DeviceMobileSlashIcon,
+  DotsThreeVerticalIcon,
+  HandPalmIcon,
+  HandWavingIcon,
+  TrashSimpleIcon,
+  UserIcon,
+  UserSwitchIcon,
+} from '@phosphor-icons/react';
+import { useMutation } from '@tanstack/react-query';
+import { useNavigate, useRouter } from '@tanstack/react-router';
+import type { UserWithRole } from 'better-auth/plugins';
+import { MenuTrigger } from 'react-aria-components';
 
-import { Button } from "~/components/ui/button";
-import { IconButton } from "~/components/ui/icon-button";
-import { Menu, MenuItem, MenuSeparator } from "~/components/ui/menu";
-import { authClient, useSession } from "~/lib/auth-client";
+import { Button } from '~/components/ui/button';
+import { IconButton } from '~/components/ui/icon-button';
+import { Menu, MenuItem, MenuSeparator } from '~/components/ui/menu';
+import { authClient, useSession } from '~/lib/auth-client';
 import {
   banUser,
   removeUser,
   revokeAllUserSessions,
   unbanUser,
-} from "~/lib/user";
-import type { User } from "~/types";
+} from '~/lib/user';
+import type { User } from '~/types';
 
 interface UserActionsProps {
   user: User | UserWithRole;
-  variant: "overview" | "profile";
+  variant: 'overview' | 'profile';
 }
 
 export function UserActions({ user, variant }: UserActionsProps) {
@@ -84,7 +84,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
 
   return (
     <MenuTrigger>
-      {variant === "overview" ? (
+      {variant === 'overview' ? (
         <IconButton>
           <DotsThreeVerticalIcon size={20} />
         </IconButton>
@@ -94,12 +94,12 @@ export function UserActions({ user, variant }: UserActionsProps) {
         </Button>
       )}
       <Menu>
-        {variant === "overview" ? (
+        {variant === 'overview' ? (
           <MenuItem
             onAction={() =>
               navigate({
                 params: { userId: user.id },
-                to: "/users/$userId",
+                to: '/users/$userId',
               })
             }
           >

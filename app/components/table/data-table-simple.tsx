@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Empty as EmptyIcon } from "@phosphor-icons/react";
+import { useState } from 'react';
+import { EmptyIcon } from '@phosphor-icons/react';
 import {
   flexRender,
   getCoreRowModel,
@@ -7,9 +7,9 @@ import {
   type SortingState,
   useReactTable,
   type ColumnDef,
-} from "@tanstack/react-table";
+} from '@tanstack/react-table';
 
-import { Callout, CalloutIcon, CalloutText } from "~/components/ui/callout";
+import { Callout, CalloutIcon, CalloutText } from '~/components/ui/callout';
 import {
   Table,
   TableBody,
@@ -17,9 +17,9 @@ import {
   TableColumn,
   TableHeader,
   TableRow,
-} from "~/components/ui/table";
+} from '~/components/ui/table';
 
-import { DataTableSortButton } from "./data-table-sort-button";
+import { DataTableSortButton } from './data-table-sort-button';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];

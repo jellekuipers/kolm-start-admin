@@ -1,13 +1,10 @@
-import {
-  MagnifyingGlass as MagnifyingGlassIcon,
-  X as XIcon,
-} from "@phosphor-icons/react";
+import { MagnifyingGlassIcon, XIcon } from '@phosphor-icons/react';
 import {
   Button as AriaButton,
   SearchField as AriaSearchField,
   type SearchFieldProps as AriaSearchFieldProps,
   type ValidationResult as AriaValidationResult,
-} from "react-aria-components";
+} from 'react-aria-components';
 
 import {
   Description,
@@ -15,7 +12,7 @@ import {
   FieldGroup,
   Input,
   Label,
-} from "~/components/ui/field";
+} from '~/components/ui/field';
 
 export interface SearchFieldProps extends AriaSearchFieldProps {
   label?: string;

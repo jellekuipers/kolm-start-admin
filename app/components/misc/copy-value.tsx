@@ -1,7 +1,7 @@
-import { Copy as CopyIcon } from "@phosphor-icons/react";
+import { CopyIcon } from '@phosphor-icons/react';
 
-import { Code } from "~/components/ui/code";
-import { IconButton } from "~/components/ui/icon-button";
+import { Code } from '~/components/ui/code';
+import { IconButton } from '~/components/ui/icon-button';
 
 interface CopyValueProps {
   value: string;

@@ -1,13 +1,10 @@
-import {
-  DotsThreeVertical as DotsThreeVerticalIcon,
-  TrashSimple as TrashSimpleIcon,
-} from "@phosphor-icons/react";
-import { useMutation } from "@tanstack/react-query";
-import { useRouter } from "@tanstack/react-router";
+import { DotsThreeVerticalIcon, TrashSimpleIcon } from '@phosphor-icons/react';
+import { useMutation } from '@tanstack/react-query';
+import { useRouter } from '@tanstack/react-router';
 
-import { IconButton } from "~/components/ui/icon-button";
-import { Menu, MenuItem, MenuTrigger } from "~/components/ui/menu";
-import { revokeUserSession } from "~/lib/user";
+import { IconButton } from '~/components/ui/icon-button';
+import { Menu, MenuItem, MenuTrigger } from '~/components/ui/menu';
+import { revokeUserSession } from '~/lib/user';
 
 interface SessionActionsProps {
   sessionToken: string;
