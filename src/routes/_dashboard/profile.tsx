@@ -1,7 +1,6 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import type { ColumnDef } from "@tanstack/react-table";
-import { useMemo } from "react";
 
 import { Container } from "~/components/layout/container";
 import { CopyValue } from "~/components/misc/copy-value";
@@ -25,7 +24,7 @@ export const Route = createFileRoute("/_dashboard/profile")({
   },
 });
 
-const accountsDataTableColumns: ColumnDef<Account>[] = [
+const columns: ColumnDef<Account>[] = [
   {
     id: "id",
     header: "ID",
@@ -63,8 +62,6 @@ function RouteComponent() {
 
   const { data: accounts } = useSuspenseQuery(userAccountsQueryOptions());
 
-  const accountsColumns = useMemo(() => accountsDataTableColumns, []);
-
   if (!user) return null;
 
   return (
@@ -89,11 +86,7 @@ function RouteComponent() {
         </div>
         <div className="space-y-4">
           <Heading level={2}>Accounts</Heading>
-          <DataTableSimple
-            columns={accountsColumns}
-            data={accounts}
-            label="Accounts"
-          />
+          <DataTableSimple columns={columns} data={accounts} label="Accounts" />
         </div>
       </div>
     </Container>
