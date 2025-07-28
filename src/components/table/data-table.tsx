@@ -113,7 +113,7 @@ export function DataTable<TData, TValue>({
               {table.getHeaderGroups().map((headerGroup) => (
                 <TableRow key={headerGroup.id}>
                   {headerGroup.headers.map((header) => (
-                    <TableColumn key={header.id}>
+                    <TableColumn key={header.id} isRowHeader>
                       <div className="flex items-center gap-4">
                         {header.isPlaceholder
                           ? null

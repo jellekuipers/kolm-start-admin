@@ -2,7 +2,6 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import type { ColumnDef } from "@tanstack/react-table";
 import type { Session } from "better-auth";
-import { useMemo } from "react";
 
 import { CopyValue } from "~/components/misc/copy-value";
 import { SessionActions } from "~/components/session/session-actions";
@@ -17,7 +16,7 @@ export const Route = createFileRoute("/_dashboard/users/$userId/sessions")({
     ),
 });
 
-export const dataTableColumns: ColumnDef<Session>[] = [
+export const columns: ColumnDef<Session>[] = [
   {
     id: "id",
     accessorKey: "id",
@@ -60,8 +59,6 @@ function RouteComponent() {
   const { data: userSessions } = useSuspenseQuery(
     userSessionsQueryOptions({ userId }),
   );
-
-  const columns = useMemo(() => dataTableColumns, []);
 
   return (
     <DataTable columns={columns} data={userSessions} label="User sessions" />

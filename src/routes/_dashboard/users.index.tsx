@@ -2,7 +2,6 @@ import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import type { ColumnDef } from "@tanstack/react-table";
-import { useMemo } from "react";
 
 import { Container } from "~/components/layout/container";
 import { CopyValue } from "~/components/misc/copy-value";
@@ -24,7 +23,7 @@ export const Route = createFileRoute("/_dashboard/users/")({
     await context.queryClient.ensureQueryData(usersQueryOptions()),
 });
 
-const dataTableColumns: ColumnDef<User>[] = [
+const columns: ColumnDef<User>[] = [
   {
     id: "image",
     enableHiding: false,
@@ -151,8 +150,6 @@ const defaultColumnVisibility = {
 
 function RouteComponent() {
   const { data: users } = useSuspenseQuery(usersQueryOptions());
-
-  const columns = useMemo(() => dataTableColumns, []);
 
   return (
     <Container>
