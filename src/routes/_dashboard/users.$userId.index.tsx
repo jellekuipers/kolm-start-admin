@@ -10,20 +10,18 @@ import {
   DataListValue,
 } from "~/components/ui/data-list";
 import { UpdateUserRole } from "~/components/user/update-user-role";
-import { userQueryOptions } from "~/lib/user";
+import { getUserByIdQueryOptions } from "~/queries/user";
 
 export const Route = createFileRoute("/_dashboard/users/$userId/")({
   component: RouteComponent,
-  loader: async ({ context, params }) =>
-    await context.queryClient.ensureQueryData(
-      userQueryOptions({ userId: params.userId }),
-    ),
+  loader: async ({ context: { queryClient }, params: { userId } }) =>
+    await queryClient.ensureQueryData(getUserByIdQueryOptions({ userId })),
 });
 
 function RouteComponent() {
   const userId = Route.useParams({ select: ({ userId }) => userId });
 
-  const { data: user } = useSuspenseQuery(userQueryOptions({ userId }));
+  const { data: user } = useSuspenseQuery(getUserByIdQueryOptions({ userId }));
 
   if (!user) return null;
 

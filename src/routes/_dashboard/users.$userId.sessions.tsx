@@ -6,14 +6,12 @@ import type { Session } from "better-auth";
 import { CopyValue } from "~/components/misc/copy-value";
 import { SessionActions } from "~/components/session/session-actions";
 import { DataTable } from "~/components/table/data-table";
-import { userSessionsQueryOptions } from "~/lib/user";
+import { listUserSessionsQueryOptions } from "~/queries/user";
 
 export const Route = createFileRoute("/_dashboard/users/$userId/sessions")({
   component: RouteComponent,
-  loader: async ({ context, params }) =>
-    await context.queryClient.ensureQueryData(
-      userSessionsQueryOptions({ userId: params.userId }),
-    ),
+  loader: async ({ context: { queryClient }, params: { userId } }) =>
+    await queryClient.ensureQueryData(listUserSessionsQueryOptions({ userId })),
 });
 
 export const columns: ColumnDef<Session>[] = [
@@ -57,7 +55,7 @@ function RouteComponent() {
   const userId = Route.useParams({ select: ({ userId }) => userId });
 
   const { data: userSessions } = useSuspenseQuery(
-    userSessionsQueryOptions({ userId }),
+    listUserSessionsQueryOptions({ userId }),
   );
 
   return (

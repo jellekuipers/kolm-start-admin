@@ -14,13 +14,13 @@ import { Separator } from "~/components/ui/separator";
 import { CreateUserModal } from "~/components/user/create-user-modal";
 import { UserActions } from "~/components/user/user-actions";
 import { UserRole } from "~/components/user/user-role";
-import { usersQueryOptions } from "~/lib/user";
+import { listUsersQueryOptions } from "~/queries/user";
 import type { User } from "~/types";
 
 export const Route = createFileRoute("/_dashboard/users/")({
   component: RouteComponent,
-  loader: async ({ context }) =>
-    await context.queryClient.ensureQueryData(usersQueryOptions()),
+  loader: async ({ context: { queryClient } }) =>
+    await queryClient.ensureQueryData(listUsersQueryOptions()),
 });
 
 const columns: ColumnDef<User>[] = [
@@ -149,7 +149,7 @@ const defaultColumnVisibility = {
 };
 
 function RouteComponent() {
-  const { data: users } = useSuspenseQuery(usersQueryOptions());
+  const { data: users } = useSuspenseQuery(listUsersQueryOptions());
 
   return (
     <Container>

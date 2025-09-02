@@ -7,10 +7,17 @@ import {
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 
-export function Modal(props: AriaModalOverlayProps) {
+export function Modal({
+  isDismissable,
+  isOpen,
+  onOpenChange,
+  ...props
+}: AriaModalOverlayProps) {
   return (
     <AriaModalOverlay
-      {...props}
+      isDismissable={isDismissable}
+      isOpen={isOpen}
+      onOpenChange={onOpenChange}
       className={twMerge(
         "fixed inset-0 z-10 flex min-h-full items-center justify-center overflow-y-auto bg-black/25 p-4 text-center backdrop-blur",
         "entering:animate-in entering:fade-in entering:ease-out",

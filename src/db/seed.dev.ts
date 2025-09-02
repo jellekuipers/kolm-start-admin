@@ -2,6 +2,7 @@ import "dotenv/config";
 
 import { faker } from "@faker-js/faker";
 import { eq } from "drizzle-orm";
+
 import { db } from "~/db";
 import { auth } from "~/lib/auth";
 

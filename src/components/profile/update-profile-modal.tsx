@@ -36,11 +36,12 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
   };
 
   const onMutationSuccess = async () => {
-    await router.invalidate();
+    reset();
+
+    await router.invalidate({ sync: true });
 
     session.refetch();
 
-    reset();
     setOpen(false);
   };
 

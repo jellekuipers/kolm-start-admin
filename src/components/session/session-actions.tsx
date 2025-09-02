@@ -4,7 +4,7 @@ import { useRouter } from "@tanstack/react-router";
 
 import { IconButton } from "~/components/ui/icon-button";
 import { Menu, MenuItem, MenuTrigger } from "~/components/ui/menu";
-import { revokeUserSession } from "~/lib/user";
+import { revokeUserSession } from "~/server/user";
 
 interface SessionActionsProps {
   sessionToken: string;
@@ -22,7 +22,7 @@ export function SessionActions({ sessionToken }: SessionActionsProps) {
   };
 
   const onMutationSuccess = async () => {
-    await router.invalidate();
+    await router.invalidate({ sync: true });
   };
 
   const revokeUserSessionMutation = useMutation({
