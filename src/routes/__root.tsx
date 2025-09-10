@@ -7,13 +7,11 @@ import {
   Outlet,
   Scripts,
 } from "@tanstack/react-router";
-import type { TRPCOptionsProxy } from "@trpc/tanstack-react-query";
 import type * as React from "react";
 
 import { DefaultCatchBoundary } from "~/components/error/default-catch-boundary";
-import { getServerSession } from "~/lib/session";
+import { getServerSession } from "~/server/session";
 import appCss from "~/styles/app.css?url";
-import type { AppRouter } from "~/trpc/router";
 import { ReactQueryDevtools, TanStackRouterDevtools } from "~/utils/dev-tools";
 import { seo } from "~/utils/seo";
 
@@ -22,12 +20,11 @@ const SHOW_REACT_QUERY_DEVTOOLS = false;
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
-  trpc: TRPCOptionsProxy<AppRouter>;
 }>()({
   beforeLoad: async () => {
     const session = await getServerSession();
 
-    return { session };
+    return { auth: session };
   },
   head: () => ({
     meta: [

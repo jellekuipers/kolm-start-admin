@@ -14,10 +14,6 @@ export default defineConfig({
     }),
     tanstackStart({ customViteReactPlugin: true }),
     tailwindcss(),
-    react({
-      babel: {
-        plugins: ["babel-plugin-react-compiler"],
-      },
-    }),
+    react(),
   ],
 });

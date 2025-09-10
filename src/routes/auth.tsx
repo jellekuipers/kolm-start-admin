@@ -1,8 +1,12 @@
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
+import { userRoleEnum } from "~/types/enums";
+
 export const Route = createFileRoute("/auth")({
-  beforeLoad: ({ context: { session } }) => {
-    if (session?.user.role === "admin") {
+  beforeLoad: ({ context: { auth } }) => {
+    const userIsAuthenticatedAdmin = auth?.user.role === userRoleEnum.admin;
+
+    if (userIsAuthenticatedAdmin) {
       throw redirect({
         to: "/",
       });

@@ -6,10 +6,13 @@ import { Code } from "~/components/ui/code";
 import { Link } from "~/components/ui/link";
 import { Separator } from "~/components/ui/separator";
 import { SessionUserDropdown } from "~/components/user/session-user-dropdown";
+import { userRoleEnum } from "~/types/enums";
 
 export const Route = createFileRoute("/_dashboard")({
-  beforeLoad: ({ context: { session } }) => {
-    if (session?.user.role !== "admin") {
+  beforeLoad: ({ context: { auth } }) => {
+    const userIsAuthenticatedAdmin = auth?.user.role === userRoleEnum.admin;
+
+    if (!userIsAuthenticatedAdmin) {
       throw redirect({
         to: "/auth/sign-in",
       });

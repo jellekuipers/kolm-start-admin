@@ -10,15 +10,15 @@ import { Avatar } from "~/components/ui/avatar";
 import { Code } from "~/components/ui/code";
 import { Heading } from "~/components/ui/heading";
 import { Separator } from "~/components/ui/separator";
-import { userAccountsQueryOptions } from "~/lib/user";
+import { listUserAccountsQueryOptions } from "~/queries/user";
 import type { Account } from "~/types";
 
 export const Route = createFileRoute("/_dashboard/profile")({
   component: RouteComponent,
-  loader: async ({ context }) => {
-    const user = context.session?.user;
+  loader: async ({ context: { auth, queryClient } }) => {
+    await queryClient.ensureQueryData(listUserAccountsQueryOptions());
 
-    await context.queryClient.ensureQueryData(userAccountsQueryOptions());
+    const user = auth!.user;
 
     return { user };
   },
@@ -45,7 +45,7 @@ const columns: ColumnDef<Account>[] = [
     accessorKey: "provider",
     header: "Provider",
     cell({ row }) {
-      return <Code>{row.original.provider}</Code>;
+      return <Code>{row.original.providerId}</Code>;
     },
   },
   {
@@ -60,7 +60,7 @@ const columns: ColumnDef<Account>[] = [
 function RouteComponent() {
   const { user } = Route.useLoaderData();
 
-  const { data: accounts } = useSuspenseQuery(userAccountsQueryOptions());
+  const { data: accounts } = useSuspenseQuery(listUserAccountsQueryOptions());
 
   if (!user) return null;
 

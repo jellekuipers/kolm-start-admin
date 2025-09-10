@@ -1,4 +1,9 @@
-import { SignOutIcon, UserIcon, UserSwitchIcon } from "@phosphor-icons/react";
+import {
+  CircleNotchIcon,
+  SignOutIcon,
+  UserIcon,
+  UserSwitchIcon,
+} from "@phosphor-icons/react";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 
 import { Avatar } from "~/components/ui/avatar";
@@ -15,6 +20,7 @@ import { authClient, signOut, useSession } from "~/lib/auth-client";
 export function SessionUserDropdown() {
   const navigate = useNavigate();
   const router = useRouter();
+
   const {
     data: session,
     isPending: isPendingSession,
@@ -36,7 +42,14 @@ export function SessionUserDropdown() {
       },
     });
 
-  if (isPendingSession || !session) return null;
+  if (isPendingSession)
+    return (
+      <div className="flex size-8 items-center justify-center rounded bg-indigo-50 text-indigo-700">
+        <CircleNotchIcon className="animate-spin" size={16} />
+      </div>
+    );
+
+  if (!session) return null;
 
   return (
     <MenuTrigger>

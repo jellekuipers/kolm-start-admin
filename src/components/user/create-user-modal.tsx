@@ -1,5 +1,5 @@
 import { useForm } from "@tanstack/react-form";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
@@ -10,10 +10,11 @@ import { Dialog } from "~/components/ui/dialog";
 import { Modal, ModalHeading } from "~/components/ui/modal";
 import { TextField } from "~/components/ui/text-field";
 import { getFieldErrorMessage } from "~/lib/error";
-import { createUser } from "~/lib/user";
+import { listUsersQueryOptions } from "~/queries/user";
+import { createUser } from "~/server/user";
 
 const createUserSchema = z.object({
-  email: z.string().email(),
+  email: z.email(),
   name: z.string(),
 });
 
@@ -21,6 +22,7 @@ export function CreateUserModal() {
   const [error, setError] = useState<Error | undefined>(undefined);
   const [open, setOpen] = useState(false);
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   const onMutationError = async (error: unknown) => {
     console.error(error);
@@ -31,9 +33,11 @@ export function CreateUserModal() {
   };
 
   const onMutationSuccess = async () => {
-    await router.invalidate();
-
     reset();
+
+    await router.invalidate({ sync: true });
+    await queryClient.refetchQueries(listUsersQueryOptions());
+
     setOpen(false);
   };
 

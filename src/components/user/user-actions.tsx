@@ -21,7 +21,7 @@ import {
   removeUser,
   revokeAllUserSessions,
   unbanUser,
-} from "~/lib/user";
+} from "~/server/user";
 import type { User } from "~/types";
 
 interface UserActionsProps {
@@ -43,7 +43,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
   };
 
   const onMutationSuccess = async () => {
-    await router.invalidate();
+    await router.invalidate({ sync: true });
   };
 
   const banUserMutation = useMutation({

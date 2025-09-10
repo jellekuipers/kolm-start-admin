@@ -1,4 +1,5 @@
 import { Badge } from "~/components/ui/badge";
+import { userRoleEnum } from "~/types/enums";
 
 interface UserRoleProps {
   role?: string | null;
@@ -7,9 +8,9 @@ interface UserRoleProps {
 export function UserRole({ role }: UserRoleProps) {
   const renderBadge = (role?: string | null) => {
     switch (role) {
-      case "admin":
+      case userRoleEnum.admin:
         return <Badge>admin</Badge>;
-      case "user":
+      case userRoleEnum.user:
         return <Badge color="slate">user</Badge>;
       default:
         return;

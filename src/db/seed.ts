@@ -1,9 +1,11 @@
 import "dotenv/config";
 
 import { eq } from "drizzle-orm";
+
 import { db } from "~/db";
 import { user } from "~/db/schema";
 import { auth } from "~/lib/auth";
+import { userRoleEnum } from "~/types/enums";
 
 async function main() {
   const adminUser = await auth.api.signUpEmail({
@@ -16,7 +18,7 @@ async function main() {
 
   await db
     .update(user)
-    .set({ role: "admin" })
+    .set({ role: userRoleEnum.admin })
     .where(eq(user.id, adminUser.user.id));
 }
 

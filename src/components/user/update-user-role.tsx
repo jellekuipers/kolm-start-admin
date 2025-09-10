@@ -1,9 +1,11 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 
 import { Select, SelectItem } from "~/components/ui/select";
-import { setUserRole } from "~/lib/user";
+import { getUserByIdQueryOptions } from "~/queries/user";
+import { setUserRole } from "~/server/user";
 import type { User } from "~/types";
+import { type UserRole, userRoleEnum } from "~/types/enums";
 
 interface UpdateUserRoleProps {
   user: User;
@@ -11,6 +13,7 @@ interface UpdateUserRoleProps {
 
 export function UpdateUserRole({ user }: UpdateUserRoleProps) {
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   const onMutationError = async (error: unknown) => {
     console.error(error);
@@ -21,7 +24,10 @@ export function UpdateUserRole({ user }: UpdateUserRoleProps) {
   };
 
   const onMutationSuccess = async () => {
-    await router.invalidate();
+    await router.invalidate({ sync: true });
+    await queryClient.refetchQueries(
+      getUserByIdQueryOptions({ userId: user.id }),
+    );
   };
 
   const setUserRoleMutation = useMutation({
@@ -38,14 +44,14 @@ export function UpdateUserRole({ user }: UpdateUserRoleProps) {
       isDisabled={setUserRoleMutation.isPending}
       onSelectionChange={async (key) =>
         await setUserRoleMutation.mutateAsync({
-          role: key as string,
+          role: key as UserRole,
           userId: user.id,
         })
       }
-      selectedKey={user.role ?? "user"}
+      selectedKey={user.role ?? userRoleEnum.user}
     >
-      <SelectItem id="admin">Admin</SelectItem>
-      <SelectItem id="user">User</SelectItem>
+      <SelectItem id={userRoleEnum.admin}>Admin</SelectItem>
+      <SelectItem id={userRoleEnum.user}>User</SelectItem>
     </Select>
   );
 }
