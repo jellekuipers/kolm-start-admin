@@ -21,6 +21,7 @@ const createUserSchema = z.object({
 export function CreateUserModal() {
   const [error, setError] = useState<Error | undefined>(undefined);
   const [open, setOpen] = useState(false);
+
   const router = useRouter();
   const queryClient = useQueryClient();
 

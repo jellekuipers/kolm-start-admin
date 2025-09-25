@@ -8,7 +8,7 @@ import {
   UserIcon,
   UserSwitchIcon,
 } from "@phosphor-icons/react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 import { MenuTrigger } from "react-aria-components";
 
@@ -16,6 +16,7 @@ import { Button } from "~/components/ui/button";
 import { IconButton } from "~/components/ui/icon-button";
 import { Menu, MenuItem, MenuSeparator } from "~/components/ui/menu";
 import { authClient, useSession } from "~/lib/auth-client";
+import { listUsersQueryOptions } from "~/queries/user";
 import {
   banUser,
   removeUser,
@@ -33,6 +34,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
   const navigate = useNavigate();
   const router = useRouter();
   const session = useSession();
+  const queryClient = useQueryClient();
 
   const onMutationError = async (error: unknown) => {
     console.error(error);
@@ -44,6 +46,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
 
   const onMutationSuccess = async () => {
     await router.invalidate({ sync: true });
+    await queryClient.refetchQueries(listUsersQueryOptions());
   };
 
   const banUserMutation = useMutation({

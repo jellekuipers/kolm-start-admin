@@ -1,17 +1,21 @@
 import { UsersIcon } from "@phosphor-icons/react";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { Container } from "~/components/layout/container";
 import { StatCard } from "~/components/stats/stat-card";
 import { Heading } from "~/components/ui/heading";
 import { Separator } from "~/components/ui/separator";
+import { getUserCountQueryOptions } from "~/queries/user";
 
 export const Route = createFileRoute("/_dashboard/")({
   component: RouteComponent,
+  loader: async ({ context: { queryClient } }) =>
+    await queryClient.ensureQueryData(getUserCountQueryOptions()),
 });
 
 function RouteComponent() {
-  const users = 0;
+  const { data: userCount } = useSuspenseQuery(getUserCountQueryOptions());
 
   return (
     <Container>
@@ -21,7 +25,7 @@ function RouteComponent() {
           <Separator />
         </div>
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          <StatCard count={users} icon={UsersIcon} title="Users" />
+          <StatCard count={userCount} icon={UsersIcon} title="Users" />
         </div>
       </div>
     </Container>

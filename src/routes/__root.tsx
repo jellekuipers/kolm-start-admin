@@ -7,7 +7,8 @@ import {
   Outlet,
   Scripts,
 } from "@tanstack/react-router";
-import type * as React from "react";
+import type { ReactNode } from "react";
+import { I18nProvider, useLocale } from "react-aria-components";
 
 import { DefaultCatchBoundary } from "~/components/error/default-catch-boundary";
 import { getServerSession } from "~/server/session";
@@ -58,15 +59,19 @@ export const Route = createRootRouteWithContext<{
 
 function RootComponent() {
   return (
-    <RootDocument>
-      <Outlet />
-    </RootDocument>
+    <I18nProvider locale="en-US">
+      <RootDocument>
+        <Outlet />
+      </RootDocument>
+    </I18nProvider>
   );
 }
 
-function RootDocument({ children }: { children: React.ReactNode }) {
+function RootDocument({ children }: { children: ReactNode }) {
+  const { locale, direction } = useLocale();
+
   return (
-    <html lang="en" suppressHydrationWarning={true}>
+    <html suppressHydrationWarning={true} lang={locale} dir={direction}>
       <head>
         <HeadContent />
       </head>

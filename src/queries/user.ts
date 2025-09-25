@@ -2,6 +2,7 @@ import { queryOptions } from "@tanstack/react-query";
 
 import {
   getUserById,
+  getUserCount,
   listUserAccounts,
   listUserSessions,
   listUsers,
@@ -11,6 +12,12 @@ export const listUsersQueryOptions = () =>
   queryOptions({
     queryFn: listUsers,
     queryKey: ["users"],
+  });
+
+export const getUserCountQueryOptions = () =>
+  queryOptions({
+    queryFn: getUserCount,
+    queryKey: ["user_count"],
   });
 
 export const getUserByIdQueryOptions = ({ userId }: { userId: string }) =>
