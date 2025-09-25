@@ -1,5 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
-import { getWebRequest } from "@tanstack/react-start/server";
+import { getRequest } from "@tanstack/react-start/server";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 
@@ -11,14 +11,14 @@ import { type UserRole, userRoleEnum } from "~/types/enums";
 
 export const createUser = createServerFn({ method: "POST" })
   .middleware([adminMiddleware])
-  .validator(
+  .inputValidator(
     z.object({
       email: z.email(),
       name: z.string(),
     }),
   )
   .handler(async ({ data }) => {
-    const { headers } = getWebRequest();
+    const { headers } = getRequest();
 
     const { user } = await auth.api.createUser({
       body: {
@@ -41,9 +41,17 @@ export const listUsers = createServerFn({ method: "GET" })
     return users;
   });
 
+export const getUserCount = createServerFn({ method: "GET" })
+  .middleware([adminMiddleware])
+  .handler(async () => {
+    const userCount = await db.$count(user);
+
+    return userCount;
+  });
+
 export const getUserById = createServerFn({ method: "GET" })
   .middleware([adminMiddleware])
-  .validator(
+  .inputValidator(
     z.object({
       userId: z.string(),
     }),
@@ -59,7 +67,7 @@ export const getUserById = createServerFn({ method: "GET" })
 export const listUserAccounts = createServerFn({ method: "GET" })
   .middleware([adminMiddleware])
   .handler(async () => {
-    const { headers } = getWebRequest();
+    const { headers } = getRequest();
 
     const accounts = await auth.api.listUserAccounts({
       headers,
@@ -70,13 +78,13 @@ export const listUserAccounts = createServerFn({ method: "GET" })
 
 export const listUserSessions = createServerFn({ method: "GET" })
   .middleware([adminMiddleware])
-  .validator(
+  .inputValidator(
     z.object({
       userId: z.string(),
     }),
   )
   .handler(async ({ data }) => {
-    const { headers } = getWebRequest();
+    const { headers } = getRequest();
 
     const { sessions } = await auth.api.listUserSessions({
       body: {
@@ -90,13 +98,13 @@ export const listUserSessions = createServerFn({ method: "GET" })
 
 export const removeUser = createServerFn({ method: "POST" })
   .middleware([adminMiddleware])
-  .validator(
+  .inputValidator(
     z.object({
       userId: z.string(),
     }),
   )
   .handler(async ({ data }) => {
-    const { headers } = getWebRequest();
+    const { headers } = getRequest();
 
     await auth.api.removeUser({
       body: {
@@ -108,14 +116,14 @@ export const removeUser = createServerFn({ method: "POST" })
 
 export const setUserRole = createServerFn({ method: "POST" })
   .middleware([adminMiddleware])
-  .validator(
+  .inputValidator(
     z.object({
       role: z.string(),
       userId: z.string(),
     }),
   )
   .handler(async ({ data }) => {
-    const { headers } = getWebRequest();
+    const { headers } = getRequest();
 
     await auth.api.setRole({
       body: {
@@ -128,13 +136,13 @@ export const setUserRole = createServerFn({ method: "POST" })
 
 export const banUser = createServerFn({ method: "POST" })
   .middleware([adminMiddleware])
-  .validator(
+  .inputValidator(
     z.object({
       userId: z.string(),
     }),
   )
   .handler(async ({ data }) => {
-    const { headers } = getWebRequest();
+    const { headers } = getRequest();
 
     await auth.api.banUser({
       body: {
@@ -146,13 +154,13 @@ export const banUser = createServerFn({ method: "POST" })
 
 export const unbanUser = createServerFn({ method: "POST" })
   .middleware([adminMiddleware])
-  .validator(
+  .inputValidator(
     z.object({
       userId: z.string(),
     }),
   )
   .handler(async ({ data }) => {
-    const { headers } = getWebRequest();
+    const { headers } = getRequest();
 
     await auth.api.unbanUser({
       body: {
@@ -164,13 +172,13 @@ export const unbanUser = createServerFn({ method: "POST" })
 
 export const revokeUserSession = createServerFn({ method: "POST" })
   .middleware([adminMiddleware])
-  .validator(
+  .inputValidator(
     z.object({
       sessionToken: z.string(),
     }),
   )
   .handler(async ({ data }) => {
-    const { headers } = getWebRequest();
+    const { headers } = getRequest();
 
     await auth.api.revokeUserSession({
       body: {
@@ -182,13 +190,13 @@ export const revokeUserSession = createServerFn({ method: "POST" })
 
 export const revokeAllUserSessions = createServerFn({ method: "POST" })
   .middleware([adminMiddleware])
-  .validator(
+  .inputValidator(
     z.object({
       userId: z.string(),
     }),
   )
   .handler(async ({ data }) => {
-    const { headers } = getWebRequest();
+    const { headers } = getRequest();
 
     await auth.api.revokeUserSessions({
       body: {
