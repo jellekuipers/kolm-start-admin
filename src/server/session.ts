@@ -1,11 +1,11 @@
 import { createServerFn } from "@tanstack/react-start";
-import { getRequest } from "@tanstack/react-start/server";
+import { getRequestHeaders } from "@tanstack/react-start/server";
 
 import { auth } from "~/lib/auth";
 
 export const getServerSession = createServerFn({ method: "GET" }).handler(
   async () => {
-    const { headers } = getRequest();
+    const headers = getRequestHeaders();
     const serverSession = await auth.api.getSession({ headers });
 
     if (serverSession) {

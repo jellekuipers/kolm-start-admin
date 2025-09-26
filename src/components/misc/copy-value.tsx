@@ -12,6 +12,7 @@ export function CopyValue({ value }: CopyValueProps) {
     <div className="flex items-center gap-2">
       <Code>{value}</Code>
       <IconButton
+        aria-label="Copy value to clipboard"
         onPress={async () => await navigator.clipboard.writeText(value)}
       >
         <CopyIcon size={16} />

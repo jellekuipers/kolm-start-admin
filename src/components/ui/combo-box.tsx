@@ -46,7 +46,10 @@ export function ComboBox<T extends object>({
       {label ? <Label>{label}</Label> : null}
       <FieldGroup className="relative">
         <Input className="flex-1 outline-none" />
-        <AriaButton className="absolute right-0 h-8 px-2">
+        <AriaButton
+          aria-label="Show options"
+          className="absolute right-0 h-8 px-2"
+        >
           <CaretDownIcon aria-hidden size={16} />
         </AriaButton>
       </FieldGroup>

@@ -18,12 +18,14 @@ export function DataTablePagination<TData>({
   return (
     <div className="flex items-center gap-1">
       <IconButton
+        aria-label="Go to first page"
         isDisabled={!table.getCanPreviousPage()}
         onPress={() => table.firstPage()}
       >
         <CaretDoubleLeftIcon size={16} />
       </IconButton>
       <IconButton
+        aria-label="Go to previous page"
         isDisabled={!table.getCanPreviousPage()}
         onPress={() => table.previousPage()}
       >
@@ -34,12 +36,14 @@ export function DataTablePagination<TData>({
         {table.getPageCount().toString()}
       </span>
       <IconButton
+        aria-label="Go to next page"
         isDisabled={!table.getCanNextPage()}
         onPress={() => table.nextPage()}
       >
         <CaretRightIcon size={16} />
       </IconButton>
       <IconButton
+        aria-label="Go to last page"
         isDisabled={!table.getCanNextPage()}
         onPress={() => table.lastPage()}
       >

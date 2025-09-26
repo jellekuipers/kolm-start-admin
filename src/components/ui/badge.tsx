@@ -1,6 +1,8 @@
 import { twMerge } from "tailwind-merge";
 
 interface BadgeProps {
+  children: React.ReactNode;
+  className?: string;
   color?:
     | "amber"
     | "blue"
@@ -24,7 +26,6 @@ interface BadgeProps {
     | "violet"
     | "yellow"
     | "zinc";
-  children: React.ReactNode;
 }
 
 const badgeColors = {
@@ -52,12 +53,13 @@ const badgeColors = {
   zinc: "bg-zinc-50 text-zinc-700",
 };
 
-export function Badge({ children, color = "indigo" }: BadgeProps) {
+export function Badge({ children, className, color = "indigo" }: BadgeProps) {
   return (
     <div
       className={twMerge(
         "inline-flex rounded px-1.5 py-0.5 text-xs font-medium",
         badgeColors[color],
+        className,
       )}
     >
       {children}
