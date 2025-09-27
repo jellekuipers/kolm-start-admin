@@ -4,8 +4,8 @@ import { z } from "zod";
 
 import { auth } from "~/lib/auth";
 import { db } from "~/lib/db";
+import { type UserRole, userRoleEnum } from "~/lib/enums";
 import { adminMiddleware } from "~/middleware/admin";
-import { type UserRole, userRoleEnum } from "~/types/enums";
 
 export const createUser = createServerFn({ method: "POST" })
   .middleware([adminMiddleware])

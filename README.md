@@ -64,24 +64,14 @@ npm install npm@latest -g
    BETTER_AUTH_URL=
    ```
 5. Initialize database
-
    ```sh
    npm run db:push
    ```
-
 6. (optional in development) Seed the database with an admin user
-
    ```sh
    npm run db:seed
    ```
-
-7. (optional in development) Seed the database with fake users
-
-   ```sh
-   npm run db:seed:dev
-   ```
-
-8. Start the dev server
+7. Start the dev server
    ```sh
    npm run dev
    ```

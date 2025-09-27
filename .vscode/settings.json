@@ -23,5 +23,8 @@
     "source.organizeImports.biome": "explicit",
     "source.sortImports": "explicit"
   },
-  "editor.defaultFormatter": "biomejs.biome"
+  "editor.defaultFormatter": "biomejs.biome",
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

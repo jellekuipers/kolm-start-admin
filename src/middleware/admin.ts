@@ -1,7 +1,7 @@
 import { createMiddleware } from "@tanstack/react-start";
 
+import { userRoleEnum } from "~/lib/enums";
 import { sessionMiddleware } from "~/middleware/session";
-import { userRoleEnum } from "~/types/enums";
 
 export const adminMiddleware = createMiddleware({ type: "function" })
   .middleware([sessionMiddleware])

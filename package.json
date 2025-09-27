@@ -25,7 +25,7 @@
     "dev": "vite dev",
     "format": "npx @biomejs/biome format --write .",
     "lint": "npx @biomejs/biome lint --write .",
-    "postinstall": "prisma db generate",
+    "postinstall": "prisma generate",
     "start": "vite start",
     "typecheck": "tsc --noEmit"
   },

@@ -6,7 +6,7 @@ import { Code } from "~/components/ui/code";
 import { Link } from "~/components/ui/link";
 import { Separator } from "~/components/ui/separator";
 import { SessionUserDropdown } from "~/components/user/session-user-dropdown";
-import { userRoleEnum } from "~/types/enums";
+import { userRoleEnum } from "~/lib/enums";
 
 export const Route = createFileRoute("/_dashboard")({
   beforeLoad: ({ context: { auth } }) => {
@@ -34,7 +34,7 @@ function LayoutComponent() {
           <Link className="rounded" to="/">
             <Logo size={32} />
           </Link>
-          <Code>v1.1.0</Code>
+          <Code>v1.2.1</Code>
         </div>
         <SessionUserDropdown />
       </header>

@@ -69,7 +69,7 @@ function RootDocument({ children }: { children: ReactNode }) {
   const { locale, direction } = useLocale();
 
   return (
-    <html suppressHydrationWarning={true} lang={locale} dir={direction}>
+    <html dir={direction} lang={locale} suppressHydrationWarning={true}>
       <head>
         <HeadContent />
       </head>
