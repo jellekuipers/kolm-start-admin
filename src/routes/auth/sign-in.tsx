@@ -15,7 +15,7 @@ import { signIn } from "~/lib/auth-client";
 import { getFieldErrorMessage } from "~/lib/error";
 
 const signInSchema = z.object({
-  email: z.string().email(),
+  email: z.email(),
   password: z.string(),
 });
 

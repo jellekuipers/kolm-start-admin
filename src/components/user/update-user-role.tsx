@@ -3,9 +3,9 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 
 import { Select, SelectItem } from "~/components/ui/select";
+import { type UserRole, userRoleEnum } from "~/lib/enums";
 import { getUserByIdQueryOptions } from "~/queries/user";
 import { setUserRole } from "~/server/user";
-import { type UserRole, userRoleEnum } from "~/types/enums";
 
 interface UpdateUserRoleProps {
   user: User;

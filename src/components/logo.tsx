@@ -1,6 +1,7 @@
 interface LogoProps {
   size: number;
 }
+
 export function Logo({ size = 32 }: LogoProps) {
   return (
     <svg

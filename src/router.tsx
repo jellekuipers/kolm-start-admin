@@ -8,7 +8,14 @@ import { Pending } from "~/components/ui/pending";
 import { routeTree } from "./routeTree.gen";
 
 export function getRouter() {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+        staleTime: 1000 * 60 * 2,
+      },
+    },
+  });
 
   const router = createRouter({
     routeTree,
@@ -20,6 +27,7 @@ export function getRouter() {
   setupRouterSsrQueryIntegration({
     router,
     queryClient,
+    wrapQueryClient: true,
   });
 
   return router;
