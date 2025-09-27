@@ -6,7 +6,7 @@
   <h3 align="center">kolm start admin</h3>
 
   <p align="center">
-    A TanStack Start + better-auth admin starter with Drizzle ORM, React Aria.
+    A TanStack Start + better-auth admin starter with Prisma ORM, React Aria.
     <br />
     <a href="https://github.com/jellekuipers/kolm-start-admin/issues/new?labels=bug">Report Bug</a>
     ·
@@ -16,7 +16,7 @@
 
 ## About The Project
 
-A `@tanstack/react-start` + `better-auth` admin starter, with `drizzle-orm`, `react-aria-components`.
+A `@tanstack/react-start` + `better-auth` admin starter, with `prisma`, `react-aria-components`.
 
 This project is built with the `better-auth` framework, using its admin plugin as a starting point for user management. While being fairly complete, it provides basic building blocks that can be customized to fit different needs.
 
@@ -26,7 +26,7 @@ I've kept this as minimal and unopinionated as possible, relying primarily on th
 
 - `@tanstack/react-start`
 - `better-auth`
-- `drizzle-orm`
+- `prisma`
 - `@tanstack/react-form`
 - `react-aria-components`
 - `biome.js`
@@ -136,7 +136,7 @@ Don't forget to give the project a star! Thanks again!
 ## Acknowledgments
 
 - [TanStack Start](https://tanstack.com/start/latest)
-- [Drizzle ORM](https://orm.drizzle.team/)
+- [Prisma ORM](https://www.prisma.io/)
 - [better-auth](https://www.better-auth.com/)
 - [React Aria](https://react-spectrum.adobe.com/react-aria/index.html)
 - [create-t3-app](https://github.com/t3-oss/create-t3-app)
