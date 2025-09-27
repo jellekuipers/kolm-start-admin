@@ -47,6 +47,12 @@ export function UserActions({ user, variant }: UserActionsProps) {
   const onMutationSuccess = async () => {
     await router.invalidate({ sync: true });
     await queryClient.refetchQueries(listUsersQueryOptions());
+
+    if (variant === "profile") {
+      router.navigate({
+        to: "/users",
+      });
+    }
   };
 
   const banUserMutation = useMutation({
@@ -87,7 +93,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
   return (
     <MenuTrigger>
       {variant === "overview" ? (
-        <IconButton>
+        <IconButton aria-label="Open user actions menu">
           <DotsThreeVerticalIcon size={20} />
         </IconButton>
       ) : (

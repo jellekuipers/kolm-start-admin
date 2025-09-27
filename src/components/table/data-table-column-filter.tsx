@@ -24,6 +24,7 @@ export function DataTableColumnFilter<TData>({
       <Popover>
         <Dialog>
           <GridList
+            aria-label="Toggle column visibility"
             items={columns}
             onSelectionChange={(selectedIds) => {
               const visibilityState: Record<string, boolean> = {};

@@ -34,7 +34,7 @@ export function SessionActions({ sessionToken }: SessionActionsProps) {
 
   return (
     <MenuTrigger>
-      <IconButton>
+      <IconButton aria-label="Open session actions menu">
         <DotsThreeVerticalIcon size={20} />
       </IconButton>
       <Menu>

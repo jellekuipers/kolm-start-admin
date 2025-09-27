@@ -1,5 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
-import { getRequest } from "@tanstack/react-start/server";
+import { getRequestHeaders } from "@tanstack/react-start/server";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 
@@ -18,7 +18,7 @@ export const createUser = createServerFn({ method: "POST" })
     }),
   )
   .handler(async ({ data }) => {
-    const { headers } = getRequest();
+    const headers = getRequestHeaders();
 
     const { user } = await auth.api.createUser({
       body: {
@@ -67,7 +67,7 @@ export const getUserById = createServerFn({ method: "GET" })
 export const listUserAccounts = createServerFn({ method: "GET" })
   .middleware([adminMiddleware])
   .handler(async () => {
-    const { headers } = getRequest();
+    const headers = getRequestHeaders();
 
     const accounts = await auth.api.listUserAccounts({
       headers,
@@ -84,7 +84,7 @@ export const listUserSessions = createServerFn({ method: "GET" })
     }),
   )
   .handler(async ({ data }) => {
-    const { headers } = getRequest();
+    const headers = getRequestHeaders();
 
     const { sessions } = await auth.api.listUserSessions({
       body: {
@@ -104,7 +104,7 @@ export const removeUser = createServerFn({ method: "POST" })
     }),
   )
   .handler(async ({ data }) => {
-    const { headers } = getRequest();
+    const headers = getRequestHeaders();
 
     await auth.api.removeUser({
       body: {
@@ -123,7 +123,7 @@ export const setUserRole = createServerFn({ method: "POST" })
     }),
   )
   .handler(async ({ data }) => {
-    const { headers } = getRequest();
+    const headers = getRequestHeaders();
 
     await auth.api.setRole({
       body: {
@@ -142,7 +142,7 @@ export const banUser = createServerFn({ method: "POST" })
     }),
   )
   .handler(async ({ data }) => {
-    const { headers } = getRequest();
+    const headers = getRequestHeaders();
 
     await auth.api.banUser({
       body: {
@@ -160,7 +160,7 @@ export const unbanUser = createServerFn({ method: "POST" })
     }),
   )
   .handler(async ({ data }) => {
-    const { headers } = getRequest();
+    const headers = getRequestHeaders();
 
     await auth.api.unbanUser({
       body: {
@@ -178,7 +178,7 @@ export const revokeUserSession = createServerFn({ method: "POST" })
     }),
   )
   .handler(async ({ data }) => {
-    const { headers } = getRequest();
+    const headers = getRequestHeaders();
 
     await auth.api.revokeUserSession({
       body: {
@@ -196,7 +196,7 @@ export const revokeAllUserSessions = createServerFn({ method: "POST" })
     }),
   )
   .handler(async ({ data }) => {
-    const { headers } = getRequest();
+    const headers = getRequestHeaders();
 
     await auth.api.revokeUserSessions({
       body: {

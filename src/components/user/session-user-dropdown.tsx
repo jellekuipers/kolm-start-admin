@@ -53,7 +53,7 @@ export function SessionUserDropdown() {
 
   return (
     <MenuTrigger>
-      <IconButton>
+      <IconButton aria-label="Open user menu">
         <Avatar fallback="@" size={8} src={session?.user.image ?? undefined} />
       </IconButton>
       <Menu>

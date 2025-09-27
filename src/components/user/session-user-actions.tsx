@@ -13,7 +13,7 @@ export function SessionUserActions({ userId }: SessionUserActionsProps) {
 
   return (
     <MenuTrigger>
-      <IconButton>
+      <IconButton aria-label="Open session user actions menu">
         <DotsThreeVerticalIcon size={16} />
       </IconButton>
       <Menu>

@@ -5,10 +5,16 @@ interface AvatarProps {
   className?: string;
   fallback: string;
   size?: 8 | 10 | 16;
-  src: string | undefined;
+  src?: string;
 }
 
-export function Avatar({ alt, fallback, size = 10, src }: AvatarProps) {
+export function Avatar({
+  alt,
+  fallback,
+  size = 10,
+  src,
+  className,
+}: AvatarProps) {
   return (
     <div
       className={twMerge(
@@ -16,10 +22,11 @@ export function Avatar({ alt, fallback, size = 10, src }: AvatarProps) {
         size === 8 && "size-8 rounded-sm text-sm",
         size === 10 && "size-10 rounded text-base",
         size === 16 && "size-16 rounded-lg text-2xl",
+        className,
       )}
     >
       {src ? (
-        <img alt={alt ?? ""} src={src} />
+        <img alt={alt ?? "Avatar"} src={src} />
       ) : (
         <span className="font-medium">{fallback}</span>
       )}
