@@ -1,10 +1,10 @@
+import type { User } from "@prisma/client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 
 import { Select, SelectItem } from "~/components/ui/select";
 import { getUserByIdQueryOptions } from "~/queries/user";
 import { setUserRole } from "~/server/user";
-import type { User } from "~/types";
 import { type UserRole, userRoleEnum } from "~/types/enums";
 
 interface UpdateUserRoleProps {

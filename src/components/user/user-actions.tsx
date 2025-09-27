@@ -8,6 +8,7 @@ import {
   UserIcon,
   UserSwitchIcon,
 } from "@phosphor-icons/react";
+import type { User } from "@prisma/client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 import { MenuTrigger } from "react-aria-components";
@@ -23,7 +24,6 @@ import {
   revokeAllUserSessions,
   unbanUser,
 } from "~/server/user";
-import type { User } from "~/types";
 
 interface UserActionsProps {
   user: User;

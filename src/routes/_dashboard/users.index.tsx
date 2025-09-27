@@ -1,4 +1,5 @@
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
+import type { User } from "@prisma/client";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import type { ColumnDef } from "@tanstack/react-table";
@@ -15,7 +16,6 @@ import { CreateUserModal } from "~/components/user/create-user-modal";
 import { UserActions } from "~/components/user/user-actions";
 import { UserRole } from "~/components/user/user-role";
 import { listUsersQueryOptions } from "~/queries/user";
-import type { User } from "~/types";
 
 export const Route = createFileRoute("/_dashboard/users/")({
   component: RouteComponent,

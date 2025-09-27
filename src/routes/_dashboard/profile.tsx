@@ -1,3 +1,4 @@
+import type { Account } from "@prisma/client";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import type { ColumnDef } from "@tanstack/react-table";
@@ -11,7 +12,6 @@ import { Code } from "~/components/ui/code";
 import { Heading } from "~/components/ui/heading";
 import { Separator } from "~/components/ui/separator";
 import { listUserAccountsQueryOptions } from "~/queries/user";
-import type { Account } from "~/types";
 
 export const Route = createFileRoute("/_dashboard/profile")({
   component: RouteComponent,
