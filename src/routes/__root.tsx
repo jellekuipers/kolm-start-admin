@@ -37,7 +37,7 @@ export const Route = createRootRouteWithContext<{
       ...seo({
         title: "kolm start admin",
         description:
-          "A TanStack Start + better-auth admin starter with Drizzle ORM, tRPC, React Aria",
+          "A TanStack Start + better-auth admin starter with Prisma ORM, tRPC, React Aria",
       }),
     ],
     links: [

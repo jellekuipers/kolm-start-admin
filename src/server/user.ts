@@ -1,11 +1,9 @@
 import { createServerFn } from "@tanstack/react-start";
 import { getRequestHeaders } from "@tanstack/react-start/server";
-import { eq } from "drizzle-orm";
 import { z } from "zod";
 
-import { db } from "~/db";
-import { user } from "~/db/schema";
 import { auth } from "~/lib/auth";
+import { db } from "~/lib/db";
 import { adminMiddleware } from "~/middleware/admin";
 import { type UserRole, userRoleEnum } from "~/types/enums";
 
@@ -36,7 +34,7 @@ export const createUser = createServerFn({ method: "POST" })
 export const listUsers = createServerFn({ method: "GET" })
   .middleware([adminMiddleware])
   .handler(async () => {
-    const users = await db.query.user.findMany();
+    const users = await db.user.findMany();
 
     return users;
   });
@@ -44,7 +42,7 @@ export const listUsers = createServerFn({ method: "GET" })
 export const getUserCount = createServerFn({ method: "GET" })
   .middleware([adminMiddleware])
   .handler(async () => {
-    const userCount = await db.$count(user);
+    const userCount = await db.user.count();
 
     return userCount;
   });
@@ -57,8 +55,8 @@ export const getUserById = createServerFn({ method: "GET" })
     }),
   )
   .handler(async ({ data }) => {
-    const userById = await db.query.user.findFirst({
-      where: eq(user.id, data.userId),
+    const userById = await db.user.findUnique({
+      where: { id: data.userId },
     });
 
     return userById;

@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Session {
+  id             String   @id @default(cuid())
+  expiresAt      DateTime
+  impersonatedBy String?
+  ipAddress      String?
+  token          String   @unique
+  userAgent      String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  user           User     @relation(fields: [userId], references: [id], onDelete: Restrict)
+  userId         String
+
+  @@index([userId])
+}
+
+model Account {
+  id                    String    @id @default(cuid())
+  accessToken           String?
+  accessTokenExpiresAt  DateTime?
+  accountId             String
+  idToken               String?
+  password              String?
+  providerId            String
+  refreshToken          String?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Restrict)
+  userId                String
+
+  @@index([userId])
+  @@index([providerId, accountId])
+}
+
+model Verification {
+  id         String    @id @default(cuid())
+  expiresAt  DateTime
+  identifier String
+  value      String
+  createdAt  DateTime? @default(now())
+  updatedAt  DateTime? @updatedAt
+
+  @@index([identifier])
+}
+
+model User {
+  id            String    @id @default(cuid())
+  banExpires    DateTime?
+  banned        Boolean?
+  banReason     String?
+  email         String    @unique
+  emailVerified Boolean
+  image         String?
+  name          String?
+  role          String    @default("user")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  accounts      Account[]
+  sessions      Session[]
+
+  @@index([role])
+}

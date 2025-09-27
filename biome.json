@@ -24,7 +24,7 @@
     "includes": [
       "src/**",
       "!src/routeTree.gen.ts",
-      "drizzle.config.ts",
+      "prisma.config.ts",
       "package.json",
       "vite.config.ts"
     ]

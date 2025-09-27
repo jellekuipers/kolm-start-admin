@@ -24,7 +24,9 @@ export const Route = createFileRoute("/_dashboard/profile")({
   },
 });
 
-const columns: ColumnDef<Account>[] = [
+const columns: ColumnDef<
+  Pick<Account, "id" | "accountId" | "providerId" | "createdAt">
+>[] = [
   {
     id: "id",
     header: "ID",
