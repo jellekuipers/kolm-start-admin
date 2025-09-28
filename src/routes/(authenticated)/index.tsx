@@ -8,7 +8,7 @@ import { Heading } from "~/components/ui/heading";
 import { Separator } from "~/components/ui/separator";
 import { getUserCountQueryOptions } from "~/queries/user";
 
-export const Route = createFileRoute("/_dashboard/")({
+export const Route = createFileRoute("/(authenticated)/")({
   component: RouteComponent,
   loader: async ({ context: { queryClient } }) =>
     await queryClient.ensureQueryData(getUserCountQueryOptions()),

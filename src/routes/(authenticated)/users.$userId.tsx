@@ -12,7 +12,7 @@ import { UserActions } from "~/components/user/user-actions";
 import { UserTabNav } from "~/components/user/user-tab-nav";
 import { getUserByIdQueryOptions } from "~/queries/user";
 
-export const Route = createFileRoute("/_dashboard/users/$userId")({
+export const Route = createFileRoute("/(authenticated)/users/$userId")({
   component: RouteComponent,
   loader: async ({ context: { queryClient }, params: { userId } }) =>
     await queryClient.ensureQueryData(getUserByIdQueryOptions({ userId })),

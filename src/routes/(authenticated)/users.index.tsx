@@ -17,7 +17,7 @@ import { UserActions } from "~/components/user/user-actions";
 import { UserRole } from "~/components/user/user-role";
 import { listUsersQueryOptions } from "~/queries/user";
 
-export const Route = createFileRoute("/_dashboard/users/")({
+export const Route = createFileRoute("/(authenticated)/users/")({
   component: RouteComponent,
   loader: async ({ context: { queryClient } }) =>
     await queryClient.ensureQueryData(listUsersQueryOptions()),

@@ -13,14 +13,10 @@ import { Heading } from "~/components/ui/heading";
 import { Separator } from "~/components/ui/separator";
 import { listUserAccountsQueryOptions } from "~/queries/user";
 
-export const Route = createFileRoute("/_dashboard/profile")({
+export const Route = createFileRoute("/(authenticated)/profile")({
   component: RouteComponent,
-  loader: async ({ context: { auth, queryClient } }) => {
+  loader: async ({ context: { queryClient } }) => {
     await queryClient.ensureQueryData(listUserAccountsQueryOptions());
-
-    const user = auth!.user;
-
-    return { user };
   },
 });
 
@@ -60,11 +56,9 @@ const columns: ColumnDef<
 ];
 
 function RouteComponent() {
-  const { user } = Route.useLoaderData();
+  const auth = Route.useRouteContext({ select: ({ auth }) => auth });
 
   const { data: accounts } = useSuspenseQuery(listUserAccountsQueryOptions());
-
-  if (!user) return null;
 
   return (
     <Container>
@@ -72,17 +66,23 @@ function RouteComponent() {
         <div className="space-y-4">
           <div className="flex items-start justify-between gap-4">
             <div className="flex flex-wrap items-center gap-4">
-              <Avatar fallback="@" size={16} src={user.image ?? undefined} />
-              {user.name ? (
+              <Avatar
+                fallback="@"
+                size={16}
+                src={auth.user.image ?? undefined}
+              />
+              {auth.user.name ? (
                 <div className="space-y-0">
-                  <Heading level={1}>{user.name}</Heading>
-                  <span className="text-sm text-slate-600">{user.email}</span>
+                  <Heading level={1}>{auth.user.name}</Heading>
+                  <span className="text-sm text-slate-600">
+                    {auth.user.email}
+                  </span>
                 </div>
               ) : (
-                <Heading level={1}>{user.email}</Heading>
+                <Heading level={1}>{auth.user.email}</Heading>
               )}
             </div>
-            <UpdateProfileModal user={user} />
+            <UpdateProfileModal user={auth.user} />
           </div>
           <Separator />
         </div>

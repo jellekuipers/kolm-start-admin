@@ -15,6 +15,12 @@ export const auth = betterAuth({
     requireEmailVerification: false,
   },
   plugins: [admin(), reactStartCookies()],
+  session: {
+    cookieCache: {
+      enabled: true,
+      maxAge: 5 * 60,
+    },
+  },
   user: {
     additionalFields: {
       role: {
