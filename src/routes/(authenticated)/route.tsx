@@ -8,15 +8,17 @@ import { Separator } from "~/components/ui/separator";
 import { SessionUserDropdown } from "~/components/user/session-user-dropdown";
 import { userRoleEnum } from "~/lib/enums";
 
-export const Route = createFileRoute("/_dashboard")({
+export const Route = createFileRoute("/(authenticated)")({
   beforeLoad: ({ context: { auth } }) => {
     const userIsAuthenticatedAdmin = auth?.user.role === userRoleEnum.admin;
 
     if (!userIsAuthenticatedAdmin) {
       throw redirect({
-        to: "/auth/sign-in",
+        to: "/sign-in",
       });
     }
+
+    return { auth };
   },
   component: LayoutComponent,
 });
@@ -34,7 +36,7 @@ function LayoutComponent() {
           <Link className="rounded" to="/">
             <Logo size={32} />
           </Link>
-          <Code>v1.2.1</Code>
+          <Code>v1.2.2</Code>
         </div>
         <SessionUserDropdown />
       </header>

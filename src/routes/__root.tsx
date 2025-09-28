@@ -14,9 +14,6 @@ import appCss from "~/styles/app.css?url";
 import { ReactQueryDevtools, TanStackRouterDevtools } from "~/utils/dev-tools";
 import { seo } from "~/utils/seo";
 
-const SHOW_ROUTER_DEVTOOLS = false;
-const SHOW_REACT_QUERY_DEVTOOLS = false;
-
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
 }>()({
@@ -75,12 +72,8 @@ function RootDocument({ children }: { children: ReactNode }) {
       </head>
       <body className="flex min-h-screen flex-col text-slate-800 antialiased">
         {children}
-        {SHOW_ROUTER_DEVTOOLS ? (
-          <TanStackRouterDevtools position="bottom-right" />
-        ) : null}
-        {SHOW_REACT_QUERY_DEVTOOLS ? (
-          <ReactQueryDevtools buttonPosition="bottom-left" />
-        ) : null}
+        <TanStackRouterDevtools position="bottom-right" />
+        <ReactQueryDevtools buttonPosition="bottom-left" />
         <Scripts />
       </body>
     </html>

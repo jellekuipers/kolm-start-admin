@@ -8,7 +8,7 @@ import { SessionActions } from "~/components/session/session-actions";
 import { DataTable } from "~/components/table/data-table";
 import { listUserSessionsQueryOptions } from "~/queries/user";
 
-export const Route = createFileRoute("/_dashboard/users/$userId/sessions")({
+export const Route = createFileRoute("/(authenticated)/users/$userId/sessions")({
   component: RouteComponent,
   loader: async ({ context: { queryClient }, params: { userId } }) =>
     await queryClient.ensureQueryData(listUserSessionsQueryOptions({ userId })),
