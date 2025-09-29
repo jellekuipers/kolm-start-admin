@@ -20,26 +20,6 @@ export interface SearchFieldProps extends AriaSearchFieldProps {
   errorMessage?: string | ((validation: AriaValidationResult) => string);
 }
 
-/**
- * A search input field component with built-in search and clear functionality.
- *
- * @param label - The field label (optional, renders above the input)
- * @param description - Descriptive text below the input (optional)
- * @param errorMessage - Error message to display (optional)
- * @param placeholder - Placeholder text for the input (default: "Search..")
- * @param className - Additional CSS classes
- * @param disabled - Whether the field is disabled
- * @returns A styled search field with search icon and clear button
- *
- * @example
- * ```tsx
- * <SearchField
- *   label="Search users"
- *   placeholder="Enter name or email..."
- *   onChange={(value) => console.log('Searching for:', value)}
- * />
- * ```
- */
 export function SearchField({
   label,
   description,
