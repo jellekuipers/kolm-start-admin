@@ -25,13 +25,18 @@ export function Description(props: AriaTextProps) {
     <AriaText
       {...props}
       slot="description"
-      className="text-sm text-slate-600"
+      className={twMerge("text-sm text-gray-600", "dark:text-gray-300")}
     />
   );
 }
 
 export function FieldError(props: AriaFieldErrorProps) {
-  return <AriaFieldError {...props} className="text-sm text-red-600" />;
+  return (
+    <AriaFieldError
+      {...props}
+      className={twMerge("text-sm text-red-600", "dark:text-red-400")}
+    />
+  );
 }
 
 export function FieldGroup({ className, ...props }: GroupProps) {
@@ -39,9 +44,11 @@ export function FieldGroup({ className, ...props }: GroupProps) {
     <AriaGroup
       {...props}
       className={twMerge(
-        "group flex h-8 items-center overflow-hidden rounded border border-slate-300 bg-white",
+        "group flex h-8 items-center overflow-hidden rounded border border-gray-300 bg-white",
         "outline-0 outline-offset-2 outline-indigo-700 focus-within:outline-2 focus-visible:outline-2",
-        "disabled:border-slate-100 disabled:bg-slate-50 disabled:text-slate-200",
+        "disabled:border-gray-100 disabled:bg-gray-50 disabled:text-gray-200",
+        "dark:border-gray-800 dark:bg-gray-900",
+        "dark:disabled:border-gray-800 dark:disabled:bg-gray-900 dark:disabled:text-gray-700",
         className,
       )}
     />
@@ -54,7 +61,9 @@ export function Input({ className, ...props }: InputProps) {
       {...props}
       className={twMerge(
         "h-8 min-w-0 bg-white px-2 text-base outline-0 lg:text-sm",
-        "disabled:border-slate-100 disabled:bg-slate-50 disabled:text-slate-200",
+        "disabled:border-gray-100 disabled:bg-gray-50 disabled:text-gray-200",
+        "dark:bg-gray-900",
+        "dark:disabled:border-gray-800 dark:disabled:bg-gray-900 dark:disabled:text-gray-700",
         className,
       )}
     />
@@ -65,7 +74,10 @@ export function Label(props: AriaLabelProps) {
   return (
     <AriaLabel
       {...props}
-      className="w-fit cursor-default text-sm font-medium text-slate-600"
+      className={twMerge(
+        "w-fit cursor-default text-sm font-medium text-gray-600",
+        "dark:text-gray-200",
+      )}
     />
   );
 }

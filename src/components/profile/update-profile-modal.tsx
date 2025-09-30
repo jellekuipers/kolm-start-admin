@@ -75,7 +75,9 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
 
   return (
     <>
-      <Button onPress={() => setOpen(true)}>{t("user.update_profile")}</Button>
+      <Button color="indigo" onPress={() => setOpen(true)}>
+        {t("user.update_profile")}
+      </Button>
       <Modal isDismissable isOpen={open} onOpenChange={onOpenChangeHandler}>
         <Dialog>
           <ModalHeading slot="title">{t("user.update_profile")}</ModalHeading>
@@ -105,10 +107,11 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
               >
                 {([canSubmit, isSubmitting]) => (
                   <div className="flex justify-end gap-2">
-                    <Button color="slate" slot="close" variant="light">
+                    <Button color="gray" slot="close" variant="light">
                       {t("common.cancel")}
                     </Button>
                     <Button
+                      color="indigo"
                       isDisabled={!canSubmit}
                       isPending={isSubmitting}
                       type="submit"

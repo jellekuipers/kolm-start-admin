@@ -6,7 +6,7 @@
   <h3 align="center">kolm start admin</h3>
 
   <p align="center">
-    A TanStack Start + better-auth admin starter with Prisma ORM, React Aria.
+    A TanStack Start + better-auth admin starter with Prisma ORM, React Aria, i18next.
     <br />
     <a href="https://github.com/jellekuipers/kolm-start-admin/issues/new?labels=bug">Report Bug</a>
     ·
@@ -16,16 +16,11 @@
 
 ## About The Project
 
-A `@tanstack/react-start` + `better-auth` admin starter, with `prisma`, `react-aria-components`.
-
-This project is built with the `better-auth` framework, using its admin plugin as a starting point for user management. While being fairly complete, it provides basic building blocks that can be customized to fit different needs.
-
-This setup is built for flexibility, allowing you to use it as an admin starter for an app or extend it into a multi-tenancy user management system, depending on your needs.
-
-I've kept this as minimal and unopinionated as possible, relying primarily on the built-in functionalities provided by the following packages:
+A `@tanstack/react-start` + `better-auth` admin starter, with `prisma`, `react-aria-components`, `i18next`.
 
 - `@tanstack/react-start`
 - `better-auth`
+- `i18next`
 - `prisma`
 - `@tanstack/react-form`
 - `react-aria-components`

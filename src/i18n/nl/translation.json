@@ -22,21 +22,22 @@
     "sessions": "Sessies"
   },
   "user": {
-    "users": "Gebruikers",
-    "create_user": "Gebruiker aanmaken",
-    "update_profile": "Profiel bijwerken",
-    "view_user": "Gebruiker bekijken",
-    "view_profile": "Profiel bekijken",
     "ban_user": "Gebruiker verbannen",
-    "unban_user": "Gebruiker ontbannen",
-    "impersonate_user": "Gebruiker imiteren",
-    "stop_impersonating": "Stop met imiteren",
-    "revoke_all_sessions": "Alle sessies intrekken",
-    "remove_user": "Gebruiker verwijderen",
-    "user_role": "Gebruikersrol",
-    "you": "jij",
     "banned": "verbannen",
-    "unverified": "niet geverifieerd"
+    "create_user": "Gebruiker aanmaken",
+    "impersonate_user": "Gebruiker imiteren",
+    "remove_user": "Gebruiker verwijderen",
+    "revoke_all_sessions": "Alle sessies intrekken",
+    "stop_impersonating": "Stop met imiteren",
+    "toggle_theme": "Pas thema aan",
+    "unban_user": "Gebruiker ontbannen",
+    "unverified": "niet geverifieerd",
+    "update_profile": "Profiel bijwerken",
+    "user_role": "Gebruikersrol",
+    "users": "Gebruikers",
+    "view_profile": "Profiel bekijken",
+    "view_user": "Gebruiker bekijken",
+    "you": "jij"
   },
   "session": {
     "revoke_session": "Sessie intrekken",
@@ -73,7 +74,6 @@
   "aria": {
     "open_user_actions_menu": "Open gebruikersacties menu",
     "open_session_actions_menu": "Open sessieacties menu",
-    "open_session_user_actions_menu": "Open sessiegebruikersacties menu",
     "open_user_menu": "Open gebruikersmenu",
     "toggle_column_visibility": "Kolom zichtbaarheid wijzigen",
     "copy_value_to_clipboard": "Kopieer waarde naar klembord",

@@ -28,6 +28,7 @@ export function Modal({
         {...props}
         className={twMerge(
           "w-full max-w-lg overflow-hidden rounded-lg bg-white p-6 text-left align-middle shadow-xl",
+          "dark:bg-gray-900",
           "entering:animate-in entering:zoom-in-95 entering:ease-out",
           "exiting:animate-out exiting:zoom-out-95 exiting:ease-in",
         )}

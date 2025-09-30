@@ -43,7 +43,12 @@ export function DataListItem(props: DataListItemProps) {
 }
 
 export function DataListLabel(props: DataListLabelProps) {
-  return <dt {...props} className="min-w-22 text-slate-600" />;
+  return (
+    <dt
+      {...props}
+      className={twMerge("min-w-22 text-gray-600", "dark:text-gray-300")}
+    />
+  );
 }
 
 export function DataListValue(props: DataListValueProps) {

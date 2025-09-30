@@ -3,6 +3,7 @@ import type { User } from "@prisma/client";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import type { ColumnDef } from "@tanstack/react-table";
+import type { TFunction } from "i18next";
 import { useTranslation } from "react-i18next";
 
 import { Container } from "~/components/layout/container";
@@ -24,14 +25,23 @@ export const Route = createFileRoute("/(authenticated)/users/")({
     await queryClient.ensureQueryData(listUsersQueryOptions()),
 });
 
-function getColumns({ t }: { t: (key: string) => string }): ColumnDef<User>[] {
+function getColumns({
+  t,
+}: {
+  t: TFunction<"translation", undefined>;
+}): ColumnDef<User>[] {
   return [
     {
       id: "image",
       enableHiding: false,
       header: undefined,
       cell: ({ row }) => (
-        <Avatar fallback="@" size={10} src={row.original.image ?? undefined} />
+        <Avatar
+          alt={row.original.email}
+          fallback="@"
+          size={10}
+          src={row.original.image ?? undefined}
+        />
       ),
     },
     {
@@ -139,7 +149,7 @@ function RouteComponent() {
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div className="flex items-center gap-2">
               <Heading level={1}>{t("user.users")}</Heading>
-              <Badge>{users.length}</Badge>
+              <Badge color="indigo">{users.length}</Badge>
             </div>
             <CreateUserModal />
           </div>

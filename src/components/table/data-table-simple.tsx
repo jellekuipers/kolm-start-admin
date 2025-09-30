@@ -87,7 +87,7 @@ export function DataTableSimple<TData, TValue>({
           </TableBody>
         </Table>
       ) : (
-        <Callout>
+        <Callout color="indigo">
           <CalloutIcon>
             <EmptyIcon size={16} />
           </CalloutIcon>

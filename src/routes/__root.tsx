@@ -9,9 +9,11 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import type { ReactNode } from "react";
-import { I18nextProvider } from "react-i18next";
+import { I18nextProvider, useTranslation } from "react-i18next";
+import { twMerge } from "tailwind-merge";
 
 import { DefaultCatchBoundary } from "~/components/error/default-catch-boundary";
+import { ThemeProvider } from "~/context/theme";
 import i18n from "~/lib/i18n";
 import { getServerSession } from "~/server/session";
 import appCss from "~/styles/app.css?url";
@@ -58,20 +60,29 @@ export const Route = createRootRouteWithContext<{
 function RootComponent() {
   return (
     <I18nextProvider i18n={i18n}>
-      <RootDocument>
-        <Outlet />
-      </RootDocument>
+      <ThemeProvider>
+        <RootDocument>
+          <Outlet />
+        </RootDocument>
+      </ThemeProvider>
     </I18nextProvider>
   );
 }
 
 function RootDocument({ children }: { children: ReactNode }) {
+  const { i18n } = useTranslation();
+
   return (
-    <html lang="en" suppressHydrationWarning={true}>
+    <html lang={i18n.language} suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
-      <body className="flex min-h-screen flex-col text-slate-800 antialiased">
+      <body
+        className={twMerge(
+          "flex min-h-screen flex-col text-gray-800 bg-white antialiased",
+          "dark:text-white dark:bg-gray-900",
+        )}
+      >
         {children}
         <TanStackDevtools
           plugins={[

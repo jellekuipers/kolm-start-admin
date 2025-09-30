@@ -32,8 +32,10 @@ function RouteComponent() {
       <div className="space-y-8">
         <Link
           className={twMerge(
-            "-mx-1 inline-flex h-8 w-auto items-center rounded px-2 text-indigo-700",
+            "-mx-1 inline-flex h-8 items-center rounded px-2 text-indigo-700",
             "hover:border-indigo-50 hover:bg-indigo-50 hover:no-underline",
+            "dark:text-indigo-200",
+            "dark:hover:bg-indigo-700 dark:hover:text-white",
           )}
           to="/users"
         >
@@ -42,11 +44,16 @@ function RouteComponent() {
         <div className="space-y-6">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div className="flex items-center gap-4">
-              <Avatar fallback="@" size={16} src={user.image ?? undefined} />
+              <Avatar
+                alt={user.email}
+                fallback="@"
+                size={16}
+                src={user.image ?? undefined}
+              />
               <div className="flex items-center gap-2">
                 <Heading level={1}>{user.name ?? user.email}</Heading>
                 {auth.user.id === user.id ? (
-                  <Badge>{t("user.you")}</Badge>
+                  <Badge color="indigo">{t("user.you")}</Badge>
                 ) : null}
                 {user.banned ? (
                   <Badge color="red">{t("user.banned")}</Badge>

@@ -57,7 +57,8 @@ export function TableBody<T extends object>({
     <AriaTableBody
       {...props}
       className={twMerge(
-        "divide-y divide-slate-300 border-y border-slate-300 align-middle",
+        "divide-y divide-gray-300 border-y border-gray-300 align-middle",
+        "dark:divide-gray-800 dark:border-gray-800",
         className,
       )}
     />

@@ -6,6 +6,7 @@ import {
   type ValidationResult as AriaValidationResult,
 } from "react-aria-components";
 import { useTranslation } from "react-i18next";
+import { twMerge } from "tailwind-merge";
 
 import {
   Description,
@@ -39,7 +40,10 @@ export function SearchField({
       <FieldGroup>
         <MagnifyingGlassIcon
           aria-hidden
-          className="ml-2 fill-slate-500 group-disabled:fill-slate-200"
+          className={twMerge(
+            "ml-2 fill-gray-500 group-disabled:fill-gray-200",
+            "dark:fill-gray-300 dark:group-disabled:fill-gray-700",
+          )}
         />
         <Input
           className="outline-none [&::-webkit-search-cancel-button]:hidden"
