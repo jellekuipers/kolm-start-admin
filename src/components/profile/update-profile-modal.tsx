@@ -3,6 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 import type { User } from "better-auth";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
@@ -22,6 +23,7 @@ const updateProfileSchema = z.object({
 });
 
 export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
+  const { t } = useTranslation();
   const [error, setError] = useState<Error | undefined>(undefined);
   const [open, setOpen] = useState(false);
   const router = useRouter();
@@ -76,10 +78,10 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
 
   return (
     <>
-      <Button onPress={() => setOpen(true)}>Update profile</Button>
+      <Button onPress={() => setOpen(true)}>{t("user.update_profile")}</Button>
       <Modal isDismissable isOpen={open} onOpenChange={onOpenChangeHandler}>
         <Dialog>
-          <ModalHeading slot="title">Update profile</ModalHeading>
+          <ModalHeading slot="title">{t("user.update_profile")}</ModalHeading>
           <form
             onSubmit={(event) => {
               event.preventDefault();
@@ -93,7 +95,7 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
                   <TextField
                     defaultValue={field.state.value}
                     errorMessage={getFieldErrorMessage({ field })}
-                    label="Name"
+                    label={t("common.name")}
                     name={field.name}
                     onBlur={field.handleBlur}
                     onChange={(value) => field.handleChange(value)}
@@ -107,14 +109,14 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
                 {([canSubmit, isSubmitting]) => (
                   <div className="flex justify-end gap-2">
                     <Button color="slate" slot="close" variant="light">
-                      Cancel
+                      {t("common.cancel")}
                     </Button>
                     <Button
                       isDisabled={!canSubmit}
                       isPending={isSubmitting}
                       type="submit"
                     >
-                      Save
+                      {t("common.save")}
                     </Button>
                   </div>
                 )}

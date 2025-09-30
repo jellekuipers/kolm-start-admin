@@ -8,6 +8,7 @@ import {
   type ListBoxItemProps as AriaListBoxItemProps,
   type ValidationResult as AriaValidationResult,
 } from "react-aria-components";
+import { useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";
 
 import {
@@ -37,6 +38,8 @@ export function ComboBox<T extends object>({
   label,
   ...props
 }: ComboBoxProps<T>) {
+  const { t } = useTranslation();
+
   return (
     <AriaComboBox
       {...props}
@@ -47,7 +50,7 @@ export function ComboBox<T extends object>({
       <FieldGroup className="relative">
         <Input className="flex-1 outline-none" />
         <AriaButton
-          aria-label="Show options"
+          aria-label={t("aria.show_options")}
           className="absolute right-0 h-8 px-2"
         >
           <CaretDownIcon aria-hidden size={16} />

@@ -1,6 +1,7 @@
 import type { User } from "@prisma/client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 
 import { Select, SelectItem } from "~/components/ui/select";
 import { type UserRole, userRoleEnum } from "~/lib/enums";
@@ -12,6 +13,7 @@ interface UpdateUserRoleProps {
 }
 
 export function UpdateUserRole({ user }: UpdateUserRoleProps) {
+  const { t } = useTranslation();
   const router = useRouter();
   const queryClient = useQueryClient();
 
@@ -39,7 +41,7 @@ export function UpdateUserRole({ user }: UpdateUserRoleProps) {
 
   return (
     <Select
-      aria-label="User role"
+      aria-label={t("user.user_role")}
       className="w-48"
       isDisabled={setUserRoleMutation.isPending}
       onSelectionChange={async (key) =>
@@ -50,8 +52,8 @@ export function UpdateUserRole({ user }: UpdateUserRoleProps) {
       }
       selectedKey={user.role ?? userRoleEnum.user}
     >
-      <SelectItem id={userRoleEnum.admin}>Admin</SelectItem>
-      <SelectItem id={userRoleEnum.user}>User</SelectItem>
+      <SelectItem id={userRoleEnum.admin}>{t("role.admin")}</SelectItem>
+      <SelectItem id={userRoleEnum.user}>{t("role.user")}</SelectItem>
     </Select>
   );
 }

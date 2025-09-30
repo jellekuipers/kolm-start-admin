@@ -1,0 +1,91 @@
+{
+  "common": {
+    "email": "E-mail",
+    "password": "Wachtwoord",
+    "name": "Naam",
+    "save": "Opslaan",
+    "cancel": "Annuleren",
+    "actions": "Acties",
+    "home": "Home",
+    "of": "van",
+    "search_placeholder": "Zoeken.."
+  },
+  "auth": {
+    "sign_in": "Inloggen",
+    "sign_out": "Uitloggen",
+    "forgot_password": "Wachtwoord vergeten?"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "users": "Gebruikers",
+    "profile": "Profiel",
+    "sessions": "Sessies"
+  },
+  "user": {
+    "users": "Gebruikers",
+    "create_user": "Gebruiker aanmaken",
+    "update_profile": "Profiel bijwerken",
+    "view_user": "Gebruiker bekijken",
+    "view_profile": "Profiel bekijken",
+    "ban_user": "Gebruiker verbannen",
+    "unban_user": "Gebruiker ontbannen",
+    "impersonate_user": "Gebruiker imiteren",
+    "stop_impersonating": "Stop met imiteren",
+    "revoke_all_sessions": "Alle sessies intrekken",
+    "remove_user": "Gebruiker verwijderen",
+    "user_role": "Gebruikersrol",
+    "you": "jij",
+    "banned": "verbannen",
+    "unverified": "niet geverifieerd"
+  },
+  "session": {
+    "revoke_session": "Sessie intrekken",
+    "user_sessions": "Gebruikerssessies"
+  },
+  "table": {
+    "id": "ID",
+    "email": "E-mail",
+    "name": "Naam",
+    "role": "Rol",
+    "created_at": "Aangemaakt op",
+    "updated_at": "Bijgewerkt op",
+    "email_verified": "E-mail geverifieerd",
+    "banned": "Verbannen",
+    "ban_reason": "Reden van verbanning",
+    "ban_expires": "Verbanning verloopt",
+    "expires_at": "Verloopt op",
+    "account_id": "Account ID",
+    "provider": "Provider",
+    "column_visibility": "Kolom zichtbaarheid",
+    "toggle_column_visibility": "Kolom zichtbaarheid wijzigen",
+    "go_to_first_page": "Ga naar eerste pagina",
+    "go_to_previous_page": "Ga naar vorige pagina",
+    "go_to_next_page": "Ga naar volgende pagina",
+    "go_to_last_page": "Ga naar laatste pagina"
+  },
+  "role": {
+    "admin": "Beheerder",
+    "user": "Gebruiker"
+  },
+  "profile": {
+    "accounts": "Accounts"
+  },
+  "aria": {
+    "open_user_actions_menu": "Open gebruikersacties menu",
+    "open_session_actions_menu": "Open sessieacties menu",
+    "open_session_user_actions_menu": "Open sessiegebruikersacties menu",
+    "open_user_menu": "Open gebruikersmenu",
+    "toggle_column_visibility": "Kolom zichtbaarheid wijzigen",
+    "copy_value_to_clipboard": "Kopieer waarde naar klembord",
+    "logo": "Logo",
+    "search": "Zoeken",
+    "show_options": "Toon opties",
+    "sort_column": "Sorteer kolom"
+  },
+  "error": {
+    "not_found": "404"
+  },
+  "pagination": {
+    "of": "van"
+  }
+}

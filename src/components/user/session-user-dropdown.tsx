@@ -1,23 +1,25 @@
 import {
-  CircleNotchIcon,
-  SignOutIcon,
-  UserIcon,
-  UserSwitchIcon,
+    CircleNotchIcon,
+    SignOutIcon,
+    UserIcon,
+    UserSwitchIcon,
 } from "@phosphor-icons/react";
 import { useNavigate, useRouter } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 
 import { Avatar } from "~/components/ui/avatar";
 import { IconButton } from "~/components/ui/icon-button";
 import {
-  Menu,
-  MenuHeader,
-  MenuItem,
-  MenuSeparator,
-  MenuTrigger,
+    Menu,
+    MenuHeader,
+    MenuItem,
+    MenuSeparator,
+    MenuTrigger,
 } from "~/components/ui/menu";
 import { authClient, signOut, useSession } from "~/lib/auth-client";
 
 export function SessionUserDropdown() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const router = useRouter();
 
@@ -53,7 +55,7 @@ export function SessionUserDropdown() {
 
   return (
     <MenuTrigger>
-      <IconButton aria-label="Open user menu">
+      <IconButton aria-label={t("aria.open_user_menu")}>
         <Avatar fallback="@" size={8} src={session?.user.image ?? undefined} />
       </IconButton>
       <Menu>
@@ -66,18 +68,18 @@ export function SessionUserDropdown() {
           }
         >
           <UserIcon size={16} />
-          View profile
+          {t("user.view_profile")}
         </MenuItem>
         {session?.session.impersonatedBy ? (
           <MenuItem onAction={stopImpersonatingHandler}>
             <UserSwitchIcon size={16} />
-            Stop impersonating
+            {t("user.stop_impersonating")}
           </MenuItem>
         ) : null}
         <MenuSeparator />
         <MenuItem onAction={signOutHandler}>
           <SignOutIcon size={16} />
-          Sign out
+          {t("auth.sign_out")}
         </MenuItem>
       </Menu>
     </MenuTrigger>

@@ -12,6 +12,7 @@ import type { User } from "@prisma/client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 import { MenuTrigger } from "react-aria-components";
+import { useTranslation } from "react-i18next";
 
 import { Button } from "~/components/ui/button";
 import { IconButton } from "~/components/ui/icon-button";
@@ -31,6 +32,7 @@ interface UserActionsProps {
 }
 
 export function UserActions({ user, variant }: UserActionsProps) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const router = useRouter();
   const session = useSession();
@@ -93,12 +95,12 @@ export function UserActions({ user, variant }: UserActionsProps) {
   return (
     <MenuTrigger>
       {variant === "overview" ? (
-        <IconButton aria-label="Open user actions menu">
+        <IconButton aria-label={t("aria.open_user_actions_menu")}>
           <DotsThreeVerticalIcon size={20} />
         </IconButton>
       ) : (
         <Button color="indigo" variant="light">
-          Actions <CaretDownIcon size={16} />
+          {t("common.actions")} <CaretDownIcon size={16} />
         </Button>
       )}
       <Menu>
@@ -112,7 +114,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
             }
           >
             <UserIcon size={16} />
-            View user
+            {t("user.view_user")}
           </MenuItem>
         ) : null}
         {user.banned ? (
@@ -123,7 +125,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
             }
           >
             <HandWavingIcon size={16} />
-            Unban user
+            {t("user.unban_user")}
           </MenuItem>
         ) : (
           <MenuItem
@@ -133,7 +135,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
             }
           >
             <HandPalmIcon size={16} />
-            Ban user
+            {t("user.ban_user")}
           </MenuItem>
         )}
         <MenuItem
@@ -143,7 +145,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
           }
         >
           <UserSwitchIcon size={16} />
-          Impersonate user
+          {t("user.impersonate_user")}
         </MenuItem>
         <MenuItem
           isDisabled={revokeAllUserSessionsMutation.isPending}
@@ -152,7 +154,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
           }
         >
           <DeviceMobileSlashIcon size={16} />
-          Revoke all sessions
+          {t("user.revoke_all_sessions")}
         </MenuItem>
         <MenuSeparator />
         <MenuItem
@@ -163,7 +165,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
           }
         >
           <TrashSimpleIcon size={16} />
-          Remove user
+          {t("user.remove_user")}
         </MenuItem>
       </Menu>
     </MenuTrigger>

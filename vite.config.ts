@@ -1,4 +1,3 @@
-import optimizeLocales from "@react-aria/optimize-locales-plugin";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
@@ -13,14 +12,8 @@ export default defineConfig({
     tsConfigPaths({
       projects: ["./tsconfig.json"],
     }),
-    tanstackStart({ srcDirectory: "src" }),
+    tanstackStart({ srcDirectory: "./src" }),
     tailwindcss(),
     viteReact(),
-    {
-      ...optimizeLocales.vite({
-        locales: ["en-US"],
-      }),
-      enforce: "pre",
-    },
   ],
 });

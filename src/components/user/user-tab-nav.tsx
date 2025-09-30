@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { TabNav, TabNavLink } from "~/components/ui/tab-nav";
 
 interface UserTabNavProps {
@@ -5,6 +7,8 @@ interface UserTabNavProps {
 }
 
 export function UserTabNav({ userId }: UserTabNavProps) {
+  const { t } = useTranslation();
+
   return (
     <TabNav>
       <TabNavLink
@@ -12,10 +16,10 @@ export function UserTabNav({ userId }: UserTabNavProps) {
         params={{ userId }}
         to="/users/$userId"
       >
-        Profile
+        {t("navigation.profile")}
       </TabNavLink>
       <TabNavLink params={{ userId }} to="/users/$userId/sessions">
-        Sessions
+        {t("navigation.sessions")}
       </TabNavLink>
     </TabNav>
   );
