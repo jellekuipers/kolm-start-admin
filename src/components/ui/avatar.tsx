@@ -26,7 +26,7 @@ export function Avatar({
       )}
     >
       {src ? (
-        <img alt={alt ?? "Avatar"} src={src} />
+        <img alt={alt} src={src} />
       ) : (
         <span className="font-medium">{fallback}</span>
       )}

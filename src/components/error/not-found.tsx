@@ -12,7 +12,7 @@ export function NotFound({ children }: NotFoundProps) {
   const { t } = useTranslation();
 
   return (
-    <div className="flex flex-col items-center justify-center gap-6 bg-slate-50 p-4 min-h-screen">
+    <div className="flex flex-col items-center justify-center gap-6 p-4 min-h-screen">
       {children || (
         <div className="flex flex-col items-center justify-center gap-4">
           <Heading level={1}>{t("error.not_found")}</Heading>
