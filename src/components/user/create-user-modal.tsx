@@ -2,6 +2,7 @@ import { useForm } from "@tanstack/react-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
@@ -18,7 +19,10 @@ const createUserSchema = z.object({
   name: z.string(),
 });
 
+type CreateUserInput = z.infer<typeof createUserSchema>;
+
 export function CreateUserModal() {
+  const { t } = useTranslation();
   const [error, setError] = useState<Error | undefined>(undefined);
   const [open, setOpen] = useState(false);
 
@@ -43,13 +47,7 @@ export function CreateUserModal() {
   };
 
   const createUserMutation = useMutation({
-    mutationFn: async ({ email, name }: { email: string; name: string }) =>
-      await createUser({
-        data: {
-          email,
-          name,
-        },
-      }),
+    mutationFn: (data: CreateUserInput) => createUser({ data }),
     onError: onMutationError,
     onSuccess: onMutationSuccess,
   });
@@ -59,9 +57,7 @@ export function CreateUserModal() {
       email: "",
       name: "",
     },
-    onSubmit: async ({ value }) => {
-      await createUserMutation.mutateAsync(value);
-    },
+    onSubmit: ({ value }) => createUserMutation.mutateAsync(value),
     validators: {
       onSubmit: createUserSchema,
     },
@@ -77,10 +73,10 @@ export function CreateUserModal() {
 
   return (
     <>
-      <Button onPress={() => setOpen(true)}>Create user</Button>
+      <Button onPress={() => setOpen(true)}>{t("user.create_user")}</Button>
       <Modal isDismissable isOpen={open} onOpenChange={onOpenChangeHandler}>
         <Dialog>
-          <ModalHeading slot="title">Create user</ModalHeading>
+          <ModalHeading slot="title">{t("user.create_user")}</ModalHeading>
           <form
             onSubmit={(event) => {
               event.preventDefault();
@@ -94,7 +90,7 @@ export function CreateUserModal() {
                   <TextField
                     defaultValue={field.state.value}
                     errorMessage={getFieldErrorMessage({ field })}
-                    label="Email"
+                    label={t("common.email")}
                     name={field.name}
                     onBlur={field.handleBlur}
                     onChange={(value) => field.handleChange(value)}
@@ -106,7 +102,7 @@ export function CreateUserModal() {
                   <TextField
                     defaultValue={field.state.value}
                     errorMessage={getFieldErrorMessage({ field })}
-                    label="Name"
+                    label={t("common.name")}
                     name={field.name}
                     onBlur={field.handleBlur}
                     onChange={(value) => field.handleChange(value)}
@@ -120,14 +116,14 @@ export function CreateUserModal() {
                 {([canSubmit, isSubmitting]) => (
                   <div className="flex justify-end gap-2">
                     <Button color="slate" slot="close" variant="light">
-                      Cancel
+                      {t("common.cancel")}
                     </Button>
                     <Button
                       isDisabled={!canSubmit}
                       isPending={isSubmitting}
                       type="submit"
                     >
-                      Save
+                      {t("common.save")}
                     </Button>
                   </div>
                 )}

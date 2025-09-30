@@ -5,6 +5,7 @@ import {
   type SearchFieldProps as AriaSearchFieldProps,
   type ValidationResult as AriaValidationResult,
 } from "react-aria-components";
+import { useTranslation } from "react-i18next";
 
 import {
   Description,
@@ -26,10 +27,12 @@ export function SearchField({
   errorMessage,
   ...props
 }: SearchFieldProps) {
+  const { t } = useTranslation();
+
   return (
     <AriaSearchField
       {...props}
-      aria-label="Search"
+      aria-label={t("aria.search")}
       className="group flex min-w-[40px] flex-col gap-1"
     >
       {label && <Label>{label}</Label>}
@@ -40,7 +43,7 @@ export function SearchField({
         />
         <Input
           className="outline-none [&::-webkit-search-cancel-button]:hidden"
-          placeholder="Search.."
+          placeholder={t("common.search_placeholder")}
         />
         <AriaButton className="mr-1 w-6 group-empty:invisible">
           <XIcon aria-hidden />

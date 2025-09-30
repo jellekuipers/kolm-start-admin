@@ -1,0 +1,91 @@
+{
+  "common": {
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "save": "Save",
+    "cancel": "Cancel",
+    "actions": "Actions",
+    "home": "Home",
+    "of": "of",
+    "search_placeholder": "Search.."
+  },
+  "auth": {
+    "sign_in": "Sign in",
+    "sign_out": "Sign out",
+    "forgot_password": "Forgot password?"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "profile": "Profile",
+    "sessions": "Sessions"
+  },
+  "user": {
+    "users": "Users",
+    "create_user": "Create user",
+    "update_profile": "Update profile",
+    "view_user": "View user",
+    "view_profile": "View profile",
+    "ban_user": "Ban user",
+    "unban_user": "Unban user",
+    "impersonate_user": "Impersonate user",
+    "stop_impersonating": "Stop impersonating",
+    "revoke_all_sessions": "Revoke all sessions",
+    "remove_user": "Remove user",
+    "user_role": "User role",
+    "you": "you",
+    "banned": "banned",
+    "unverified": "unverified"
+  },
+  "session": {
+    "revoke_session": "Revoke session",
+    "user_sessions": "User sessions"
+  },
+  "table": {
+    "id": "ID",
+    "email": "Email",
+    "name": "Name",
+    "role": "Role",
+    "created_at": "Created at",
+    "updated_at": "Updated at",
+    "email_verified": "Email verified",
+    "banned": "Banned",
+    "ban_reason": "Ban reason",
+    "ban_expires": "Ban expires",
+    "expires_at": "Expires at",
+    "account_id": "Account ID",
+    "provider": "Provider",
+    "column_visibility": "Column visibility",
+    "toggle_column_visibility": "Toggle column visibility",
+    "go_to_first_page": "Go to first page",
+    "go_to_previous_page": "Go to previous page",
+    "go_to_next_page": "Go to next page",
+    "go_to_last_page": "Go to last page"
+  },
+  "role": {
+    "admin": "Admin",
+    "user": "User"
+  },
+  "profile": {
+    "accounts": "Accounts"
+  },
+  "aria": {
+    "open_user_actions_menu": "Open user actions menu",
+    "open_session_actions_menu": "Open session actions menu",
+    "open_session_user_actions_menu": "Open session user actions menu",
+    "open_user_menu": "Open user menu",
+    "toggle_column_visibility": "Toggle column visibility",
+    "copy_value_to_clipboard": "Copy value to clipboard",
+    "logo": "Logo",
+    "search": "Search",
+    "show_options": "Show options",
+    "sort_column": "Sort column"
+  },
+  "error": {
+    "not_found": "404"
+  },
+  "pagination": {
+    "of": "of"
+  }
+}

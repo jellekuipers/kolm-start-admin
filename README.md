@@ -58,7 +58,7 @@ npm install npm@latest -g
    ```sh
    npm install
    ```
-4. Connect to your database in your `.env`
+4. Create a `.env` with the following values
    ```sh
    DATABASE_URL=
    BETTER_AUTH_URL=

@@ -1,6 +1,7 @@
 import { ArrowLeftIcon } from "@phosphor-icons/react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Outlet } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";
 
 import { Container } from "~/components/layout/container";
@@ -20,12 +21,11 @@ export const Route = createFileRoute("/(authenticated)/users/$userId")({
 
 function RouteComponent() {
   const auth = Route.useRouteContext({ select: ({ auth }) => auth });
-
+  const { t } = useTranslation();
   const userId = Route.useParams({ select: ({ userId }) => userId });
-
   const { data: user } = useSuspenseQuery(getUserByIdQueryOptions({ userId }));
 
-  if (!user || !auth) return null;
+  if (!user) return null;
 
   return (
     <Container>
@@ -37,7 +37,7 @@ function RouteComponent() {
           )}
           to="/users"
         >
-          <ArrowLeftIcon size={16} /> Users
+          <ArrowLeftIcon size={16} /> {t("navigation.users")}
         </Link>
         <div className="space-y-6">
           <div className="flex flex-wrap items-start justify-between gap-4">
@@ -45,8 +45,12 @@ function RouteComponent() {
               <Avatar fallback="@" size={16} src={user.image ?? undefined} />
               <div className="flex items-center gap-2">
                 <Heading level={1}>{user.name ?? user.email}</Heading>
-                {auth.user.id === user.id ? <Badge>you</Badge> : null}
-                {user.banned ? <Badge color="red">banned</Badge> : null}
+                {auth.user.id === user.id ? (
+                  <Badge>{t("user.you")}</Badge>
+                ) : null}
+                {user.banned ? (
+                  <Badge color="red">{t("user.banned")}</Badge>
+                ) : null}
               </div>
             </div>
             {auth.user.id !== user.id ? (

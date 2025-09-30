@@ -2,6 +2,7 @@ import type { Account } from "@prisma/client";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import type { ColumnDef } from "@tanstack/react-table";
+import { useTranslation } from "react-i18next";
 
 import { Container } from "~/components/layout/container";
 import { CopyValue } from "~/components/misc/copy-value";
@@ -20,45 +21,44 @@ export const Route = createFileRoute("/(authenticated)/profile")({
   },
 });
 
-const columns: ColumnDef<
+function getColumns({
+  t,
+}: {
+  t: (key: string) => string;
+}): ColumnDef<
   Pick<Account, "id" | "accountId" | "providerId" | "createdAt">
->[] = [
-  {
-    id: "id",
-    header: "ID",
-    cell({ row }) {
-      return <CopyValue value={row.original.id} />;
+>[] {
+  return [
+    {
+      id: "id",
+      header: t("table.id"),
+      cell: ({ row }) => <CopyValue value={row.original.id} />,
     },
-  },
-  {
-    id: "accountId",
-    header: "Account ID",
-    accessorKey: "accountId",
-    cell({ row }) {
-      return <CopyValue value={row.original.accountId} />;
+    {
+      id: "accountId",
+      header: t("table.account_id"),
+      accessorKey: "accountId",
+      cell: ({ row }) => <CopyValue value={row.original.accountId} />,
     },
-  },
-  {
-    id: "provider",
-    accessorKey: "provider",
-    header: "Provider",
-    cell({ row }) {
-      return <Code>{row.original.providerId}</Code>;
+    {
+      id: "provider",
+      accessorKey: "provider",
+      header: t("table.provider"),
+      cell: ({ row }) => <Code>{row.original.providerId}</Code>,
     },
-  },
-  {
-    id: "createdAt",
-    header: "Created at",
-    cell({ row }) {
-      return row.original.createdAt.toDateString();
+    {
+      id: "createdAt",
+      header: t("table.created_at"),
+      cell: ({ row }) => row.original.createdAt.toDateString(),
     },
-  },
-];
+  ];
+}
 
 function RouteComponent() {
   const auth = Route.useRouteContext({ select: ({ auth }) => auth });
-
+  const { t } = useTranslation();
   const { data: accounts } = useSuspenseQuery(listUserAccountsQueryOptions());
+  const columns = getColumns({ t });
 
   return (
     <Container>
@@ -87,8 +87,12 @@ function RouteComponent() {
           <Separator />
         </div>
         <div className="space-y-4">
-          <Heading level={2}>Accounts</Heading>
-          <DataTableSimple columns={columns} data={accounts} label="Accounts" />
+          <Heading level={2}>{t("profile.accounts")}</Heading>
+          <DataTableSimple
+            columns={columns}
+            data={accounts}
+            label={t("profile.accounts")}
+          />
         </div>
       </div>
     </Container>

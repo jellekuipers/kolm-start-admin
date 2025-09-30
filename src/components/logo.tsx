@@ -1,11 +1,14 @@
+import { useTranslation } from "react-i18next";
+
 interface LogoProps {
   size: number;
 }
 
 export function Logo({ size = 32 }: LogoProps) {
+  const { t } = useTranslation();
   return (
     <svg
-      aria-label="Logo"
+      aria-label={t("aria.logo")}
       height={size}
       role="img"
       viewBox="0 0 200 200"

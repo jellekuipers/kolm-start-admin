@@ -3,6 +3,7 @@ import type { User } from "@prisma/client";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import type { ColumnDef } from "@tanstack/react-table";
+import { useTranslation } from "react-i18next";
 
 import { Container } from "~/components/layout/container";
 import { CopyValue } from "~/components/misc/copy-value";
@@ -23,30 +24,26 @@ export const Route = createFileRoute("/(authenticated)/users/")({
     await queryClient.ensureQueryData(listUsersQueryOptions()),
 });
 
-const columns: ColumnDef<User>[] = [
-  {
-    id: "image",
-    enableHiding: false,
-    header: undefined,
-    cell({ row }) {
-      return (
+function getColumns({ t }: { t: (key: string) => string }): ColumnDef<User>[] {
+  return [
+    {
+      id: "image",
+      enableHiding: false,
+      header: undefined,
+      cell: ({ row }) => (
         <Avatar fallback="@" size={10} src={row.original.image ?? undefined} />
-      );
+      ),
     },
-  },
-  {
-    id: "id",
-    header: "ID",
-    cell({ row }) {
-      return <CopyValue value={row.original.id} />;
+    {
+      id: "id",
+      header: t("table.id"),
+      cell: ({ row }) => <CopyValue value={row.original.id} />,
     },
-  },
-  {
-    id: "email",
-    accessorKey: "email",
-    header: "Email",
-    cell({ row }) {
-      return (
+    {
+      id: "email",
+      accessorKey: "email",
+      header: t("table.email"),
+      cell: ({ row }) => (
         <Link
           params={{
             userId: row.original.id,
@@ -55,85 +52,67 @@ const columns: ColumnDef<User>[] = [
         >
           {row.original.email}
         </Link>
-      );
+      ),
     },
-  },
-  {
-    id: "name",
-    accessorKey: "name",
-    header: "Name",
-  },
-  {
-    id: "role",
-    accessorKey: "role",
-    header: "Role",
-    cell({ row }) {
-      return <UserRole role={row.original.role} />;
+    {
+      id: "name",
+      accessorKey: "name",
+      header: t("table.name"),
     },
-  },
-  {
-    id: "createdAt",
-    header: "Created at",
-    cell({ row }) {
-      return row.original.createdAt.toDateString();
+    {
+      id: "role",
+      accessorKey: "role",
+      header: t("table.role"),
+      cell: ({ row }) => <UserRole role={row.original.role} />,
     },
-  },
-  {
-    id: "updatedAt",
-    header: "Updated at",
-    cell({ row }) {
-      return row.original.updatedAt.toDateString();
+    {
+      id: "createdAt",
+      header: t("table.created_at"),
+      cell: ({ row }) => row.original.createdAt.toDateString(),
     },
-  },
-  {
-    id: "emailVerified",
-    header: "Email verified",
-    cell({ row }) {
-      return row.original.emailVerified ? (
-        <CheckIcon size={16} />
-      ) : (
-        <XIcon size={16} />
-      );
+    {
+      id: "updatedAt",
+      header: t("table.updated_at"),
+      cell: ({ row }) => row.original.updatedAt.toDateString(),
     },
-  },
-  {
-    id: "banned",
-    header: "Banned",
-    cell({ row }) {
-      return row.original.banned ? (
-        <CheckIcon size={16} />
-      ) : (
-        <XIcon size={16} />
-      );
+    {
+      id: "emailVerified",
+      header: t("table.email_verified"),
+      cell: ({ row }) =>
+        row.original.emailVerified ? (
+          <CheckIcon size={16} />
+        ) : (
+          <XIcon size={16} />
+        ),
     },
-  },
-  {
-    id: "banReason",
-    header: "Ban reason",
-    cell({ row }) {
-      return row.original.banReason ?? "-";
+    {
+      id: "banned",
+      header: t("table.banned"),
+      cell: ({ row }) =>
+        row.original.banned ? <CheckIcon size={16} /> : <XIcon size={16} />,
     },
-  },
-  {
-    id: "banExpires",
-    header: "Ban expires",
-    cell({ row }) {
-      return row.original.banExpires?.toDateString() ?? "-";
+    {
+      id: "banReason",
+      header: t("table.ban_reason"),
+      cell: ({ row }) => row.original.banReason ?? "-",
     },
-  },
-  {
-    id: "actions",
-    enableHiding: false,
-    header: undefined,
-    cell({ row }) {
-      return (
+    {
+      id: "banExpires",
+      header: t("table.ban_expires"),
+      cell: ({ row }) => row.original.banExpires?.toDateString() ?? "-",
+    },
+    {
+      id: "actions",
+      enableHiding: false,
+      header: undefined,
+      cell: ({ row }) => (
         <div className="flex justify-end">
           <UserActions user={row.original} variant="overview" />
         </div>
-      );
+      ),
     },
-  },
-];
+  ];
+}
 
 const defaultColumnVisibility = {
   banExpires: false,
@@ -149,7 +128,9 @@ const defaultColumnVisibility = {
 };
 
 function RouteComponent() {
+  const { t } = useTranslation();
   const { data: users } = useSuspenseQuery(listUsersQueryOptions());
+  const columns = getColumns({ t });
 
   return (
     <Container>
@@ -157,7 +138,7 @@ function RouteComponent() {
         <div className="space-y-4">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div className="flex items-center gap-2">
-              <Heading level={1}>Users</Heading>
+              <Heading level={1}>{t("user.users")}</Heading>
               <Badge>{users.length}</Badge>
             </div>
             <CreateUserModal />
@@ -168,7 +149,7 @@ function RouteComponent() {
           columns={columns}
           data={users}
           defaultColumnVisibility={defaultColumnVisibility}
-          label="Users"
+          label={t("user.users")}
         />
       </div>
     </Container>

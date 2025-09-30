@@ -1,6 +1,7 @@
 import { useForm } from "@tanstack/react-form";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
@@ -24,6 +25,7 @@ export const Route = createFileRoute("/(auth)/sign-in")({
 });
 
 function RouteComponent() {
+  const { t } = useTranslation();
   const [error, setError] = useState<Error | undefined>(undefined);
   const router = useRouter();
 
@@ -58,7 +60,7 @@ function RouteComponent() {
       <Logo size={40} />
       <Card className="w-96 p-4">
         <div className="space-y-4">
-          <Heading level={2}>Sign in</Heading>
+          <Heading level={2}>{t("auth.sign_in")}</Heading>
           <form
             onSubmit={(event) => {
               event.preventDefault();
@@ -72,7 +74,7 @@ function RouteComponent() {
                   <TextField
                     defaultValue={field.state.value}
                     errorMessage={getFieldErrorMessage({ field })}
-                    label="Email"
+                    label={t("common.email")}
                     name={field.name}
                     onBlur={field.handleBlur}
                     onChange={(value) => field.handleChange(value)}
@@ -84,9 +86,9 @@ function RouteComponent() {
                 {(field) => (
                   <div className="space-y-1">
                     <div className="mb-1 flex items-baseline justify-between">
-                      <Label>Password</Label>
+                      <Label>{t("common.password")}</Label>
                       <Link className="font-medium" to="/">
-                        Forgot password?
+                        {t("auth.forgot_password")}
                       </Link>
                     </div>
                     <TextField
@@ -111,7 +113,7 @@ function RouteComponent() {
                       isPending={isSubmitting}
                       type="submit"
                     >
-                      Sign in
+                      {t("auth.sign_in")}
                     </Button>
                   </div>
                 )}

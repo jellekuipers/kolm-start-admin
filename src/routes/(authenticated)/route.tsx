@@ -1,4 +1,5 @@
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";
 
 import { Logo } from "~/components/logo";
@@ -24,9 +25,10 @@ export const Route = createFileRoute("/(authenticated)")({
 });
 
 function LayoutComponent() {
+  const { t } = useTranslation();
   const routes = [
-    { to: "/", label: "Dashboard" },
-    { to: "/users", label: "Users" },
+    { to: "/", label: t("navigation.dashboard") },
+    { to: "/users", label: t("navigation.users") },
   ];
 
   return (
@@ -36,7 +38,7 @@ function LayoutComponent() {
           <Link className="rounded" to="/">
             <Logo size={32} />
           </Link>
-          <Code>v1.2.3</Code>
+          <Code>v1.2.4</Code>
         </div>
         <SessionUserDropdown />
       </header>

@@ -9,9 +9,10 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import type { ReactNode } from "react";
-import { I18nProvider, useLocale } from "react-aria-components";
+import { I18nextProvider } from "react-i18next";
 
 import { DefaultCatchBoundary } from "~/components/error/default-catch-boundary";
+import i18n from "~/lib/i18n";
 import { getServerSession } from "~/server/session";
 import appCss from "~/styles/app.css?url";
 import { seo } from "~/utils/seo";
@@ -56,19 +57,17 @@ export const Route = createRootRouteWithContext<{
 
 function RootComponent() {
   return (
-    <I18nProvider locale="en-US">
+    <I18nextProvider i18n={i18n}>
       <RootDocument>
         <Outlet />
       </RootDocument>
-    </I18nProvider>
+    </I18nextProvider>
   );
 }
 
 function RootDocument({ children }: { children: ReactNode }) {
-  const { locale, direction } = useLocale();
-
   return (
-    <html dir={direction} lang={locale} suppressHydrationWarning={true}>
+    <html lang="en" suppressHydrationWarning={true}>
       <head>
         <HeadContent />
       </head>

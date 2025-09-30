@@ -4,6 +4,7 @@ import {
   CaretUpIcon,
 } from "@phosphor-icons/react";
 import type { SortDirection } from "@tanstack/react-table";
+import { useTranslation } from "react-i18next";
 
 import { IconButton } from "~/components/ui/icon-button";
 
@@ -27,10 +28,11 @@ export function DataTableSortButton({
   isSorted,
   onClick,
 }: DataTableSortButtonProps) {
+  const { t } = useTranslation();
   const icon = renderIcon(isSorted);
 
   return (
-    <IconButton aria-label="Sort column" onPress={onClick}>
+    <IconButton aria-label={t("aria.sort_column")} onPress={onClick}>
       {icon}
     </IconButton>
   );
