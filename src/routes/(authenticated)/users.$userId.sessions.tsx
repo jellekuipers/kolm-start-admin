@@ -9,47 +9,47 @@ import { SessionActions } from "~/components/session/session-actions";
 import { DataTable } from "~/components/table/data-table";
 import { listUserSessionsQueryOptions } from "~/queries/user";
 
-export const Route = createFileRoute("/(authenticated)/users/$userId/sessions")({
-  component: RouteComponent,
-  loader: async ({ context: { queryClient }, params: { userId } }) =>
-    await queryClient.ensureQueryData(listUserSessionsQueryOptions({ userId })),
-});
+export const Route = createFileRoute("/(authenticated)/users/$userId/sessions")(
+  {
+    component: RouteComponent,
+    loader: async ({ context: { queryClient }, params: { userId } }) =>
+      await queryClient.ensureQueryData(
+        listUserSessionsQueryOptions({ userId }),
+      ),
+  },
+);
 
-function getColumns(t: (key: string) => string): ColumnDef<Session>[] {
+function getColumns({
+  t,
+}: {
+  t: (key: string) => string;
+}): ColumnDef<Session>[] {
   return [
     {
       id: "id",
       accessorKey: "id",
       header: t("table.id"),
-      cell({ row }) {
-        return <CopyValue value={row.original.id} />;
-      },
+      cell: ({ row }) => <CopyValue value={row.original.id} />,
     },
     {
       id: "createdAt",
       header: t("table.created_at"),
-      cell({ row }) {
-        return row.original.createdAt.toDateString();
-      },
+      cell: ({ row }) => row.original.createdAt.toDateString(),
     },
     {
       id: "expiresAt",
       header: t("table.expires_at"),
-      cell({ row }) {
-        return row.original.expiresAt.toDateString();
-      },
+      cell: ({ row }) => row.original.expiresAt.toDateString(),
     },
     {
       id: "actions",
       enableHiding: false,
       header: undefined,
-      cell({ row }) {
-        return (
-          <div className="flex justify-end">
-            <SessionActions sessionToken={row.original.token} />
-          </div>
-        );
-      },
+      cell: ({ row }) => (
+        <div className="flex justify-end">
+          <SessionActions sessionToken={row.original.token} />
+        </div>
+      ),
     },
   ];
 }
@@ -62,9 +62,13 @@ function RouteComponent() {
     listUserSessionsQueryOptions({ userId }),
   );
 
-  const columns = getColumns(t);
+  const columns = getColumns({ t });
 
   return (
-    <DataTable columns={columns} data={userSessions} label={t("session.user_sessions")} />
+    <DataTable
+      columns={columns}
+      data={userSessions}
+      label={t("session.user_sessions")}
+    />
   );
 }

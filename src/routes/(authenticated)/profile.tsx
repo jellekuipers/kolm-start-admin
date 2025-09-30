@@ -32,32 +32,24 @@ function getColumns({
     {
       id: "id",
       header: t("table.id"),
-      cell({ row }) {
-        return <CopyValue value={row.original.id} />;
-      },
+      cell: ({ row }) => <CopyValue value={row.original.id} />,
     },
     {
       id: "accountId",
       header: t("table.account_id"),
       accessorKey: "accountId",
-      cell({ row }) {
-        return <CopyValue value={row.original.accountId} />;
-      },
+      cell: ({ row }) => <CopyValue value={row.original.accountId} />,
     },
     {
       id: "provider",
       accessorKey: "provider",
       header: t("table.provider"),
-      cell({ row }) {
-        return <Code>{row.original.providerId}</Code>;
-      },
+      cell: ({ row }) => <Code>{row.original.providerId}</Code>,
     },
     {
       id: "createdAt",
       header: t("table.created_at"),
-      cell({ row }) {
-        return row.original.createdAt.toDateString();
-      },
+      cell: ({ row }) => row.original.createdAt.toDateString(),
     },
   ];
 }

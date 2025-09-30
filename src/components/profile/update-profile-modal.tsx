@@ -22,6 +22,8 @@ const updateProfileSchema = z.object({
   name: z.string(),
 });
 
+type UpdateProfileInput = z.infer<typeof updateProfileSchema>;
+
 export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
   const { t } = useTranslation();
   const [error, setError] = useState<Error | undefined>(undefined);
@@ -48,10 +50,7 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
   };
 
   const updateProfileMutation = useMutation({
-    mutationFn: async ({ name }: { name: string }) =>
-      await authClient.updateUser({
-        name,
-      }),
+    mutationFn: (data: UpdateProfileInput) => authClient.updateUser(data),
     onError: onMutationError,
     onSuccess: onMutationSuccess,
   });
@@ -60,9 +59,7 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
     defaultValues: {
       name: user.name,
     },
-    onSubmit: async ({ value }) => {
-      await updateProfileMutation.mutateAsync(value);
-    },
+    onSubmit: ({ value }) => updateProfileMutation.mutateAsync(value),
     validators: {
       onSubmit: updateProfileSchema,
     },

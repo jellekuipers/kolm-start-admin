@@ -30,39 +30,29 @@ function getColumns({ t }: { t: (key: string) => string }): ColumnDef<User>[] {
       id: "image",
       enableHiding: false,
       header: undefined,
-      cell({ row }) {
-        return (
-          <Avatar
-            fallback="@"
-            size={10}
-            src={row.original.image ?? undefined}
-          />
-        );
-      },
+      cell: ({ row }) => (
+        <Avatar fallback="@" size={10} src={row.original.image ?? undefined} />
+      ),
     },
     {
       id: "id",
       header: t("table.id"),
-      cell({ row }) {
-        return <CopyValue value={row.original.id} />;
-      },
+      cell: ({ row }) => <CopyValue value={row.original.id} />,
     },
     {
       id: "email",
       accessorKey: "email",
       header: t("table.email"),
-      cell({ row }) {
-        return (
-          <Link
-            params={{
-              userId: row.original.id,
-            }}
-            to="/users/$userId"
-          >
-            {row.original.email}
-          </Link>
-        );
-      },
+      cell: ({ row }) => (
+        <Link
+          params={{
+            userId: row.original.id,
+          }}
+          to="/users/$userId"
+        >
+          {row.original.email}
+        </Link>
+      ),
     },
     {
       id: "name",
@@ -73,71 +63,53 @@ function getColumns({ t }: { t: (key: string) => string }): ColumnDef<User>[] {
       id: "role",
       accessorKey: "role",
       header: t("table.role"),
-      cell({ row }) {
-        return <UserRole role={row.original.role} />;
-      },
+      cell: ({ row }) => <UserRole role={row.original.role} />,
     },
     {
       id: "createdAt",
       header: t("table.created_at"),
-      cell({ row }) {
-        return row.original.createdAt.toDateString();
-      },
+      cell: ({ row }) => row.original.createdAt.toDateString(),
     },
     {
       id: "updatedAt",
       header: t("table.updated_at"),
-      cell({ row }) {
-        return row.original.updatedAt.toDateString();
-      },
+      cell: ({ row }) => row.original.updatedAt.toDateString(),
     },
     {
       id: "emailVerified",
       header: t("table.email_verified"),
-      cell({ row }) {
-        return row.original.emailVerified ? (
+      cell: ({ row }) =>
+        row.original.emailVerified ? (
           <CheckIcon size={16} />
         ) : (
           <XIcon size={16} />
-        );
-      },
+        ),
     },
     {
       id: "banned",
       header: t("table.banned"),
-      cell({ row }) {
-        return row.original.banned ? (
-          <CheckIcon size={16} />
-        ) : (
-          <XIcon size={16} />
-        );
-      },
+      cell: ({ row }) =>
+        row.original.banned ? <CheckIcon size={16} /> : <XIcon size={16} />,
     },
     {
       id: "banReason",
       header: t("table.ban_reason"),
-      cell({ row }) {
-        return row.original.banReason ?? "-";
-      },
+      cell: ({ row }) => row.original.banReason ?? "-",
     },
     {
       id: "banExpires",
       header: t("table.ban_expires"),
-      cell({ row }) {
-        return row.original.banExpires?.toDateString() ?? "-";
-      },
+      cell: ({ row }) => row.original.banExpires?.toDateString() ?? "-",
     },
     {
       id: "actions",
       enableHiding: false,
       header: undefined,
-      cell({ row }) {
-        return (
-          <div className="flex justify-end">
-            <UserActions user={row.original} variant="overview" />
-          </div>
-        );
-      },
+      cell: ({ row }) => (
+        <div className="flex justify-end">
+          <UserActions user={row.original} variant="overview" />
+        </div>
+      ),
     },
   ];
 }

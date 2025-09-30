@@ -19,6 +19,8 @@ const createUserSchema = z.object({
   name: z.string(),
 });
 
+type CreateUserInput = z.infer<typeof createUserSchema>;
+
 export function CreateUserModal() {
   const { t } = useTranslation();
   const [error, setError] = useState<Error | undefined>(undefined);
@@ -45,13 +47,7 @@ export function CreateUserModal() {
   };
 
   const createUserMutation = useMutation({
-    mutationFn: async ({ email, name }: { email: string; name: string }) =>
-      await createUser({
-        data: {
-          email,
-          name,
-        },
-      }),
+    mutationFn: (data: CreateUserInput) => createUser({ data }),
     onError: onMutationError,
     onSuccess: onMutationSuccess,
   });
@@ -61,9 +57,7 @@ export function CreateUserModal() {
       email: "",
       name: "",
     },
-    onSubmit: async ({ value }) => {
-      await createUserMutation.mutateAsync(value);
-    },
+    onSubmit: ({ value }) => createUserMutation.mutateAsync(value),
     validators: {
       onSubmit: createUserSchema,
     },

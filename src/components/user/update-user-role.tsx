@@ -12,6 +12,11 @@ interface UpdateUserRoleProps {
   user: User;
 }
 
+type UserRoleInput = {
+  role: string;
+  userId: string;
+};
+
 export function UpdateUserRole({ user }: UpdateUserRoleProps) {
   const { t } = useTranslation();
   const router = useRouter();
@@ -19,10 +24,6 @@ export function UpdateUserRole({ user }: UpdateUserRoleProps) {
 
   const onMutationError = async (error: unknown) => {
     console.error(error);
-
-    if (error instanceof Error) {
-      alert(error.message);
-    }
   };
 
   const onMutationSuccess = async () => {
@@ -33,8 +34,7 @@ export function UpdateUserRole({ user }: UpdateUserRoleProps) {
   };
 
   const setUserRoleMutation = useMutation({
-    mutationFn: async ({ role, userId }: { role: string; userId: string }) =>
-      await setUserRole({ data: { role, userId } }),
+    mutationFn: (data: UserRoleInput) => setUserRole({ data }),
     onError: onMutationError,
     onSuccess: onMutationSuccess,
   });
@@ -44,8 +44,8 @@ export function UpdateUserRole({ user }: UpdateUserRoleProps) {
       aria-label={t("user.user_role")}
       className="w-48"
       isDisabled={setUserRoleMutation.isPending}
-      onSelectionChange={async (key) =>
-        await setUserRoleMutation.mutateAsync({
+      onSelectionChange={(key) =>
+        setUserRoleMutation.mutateAsync({
           role: key as UserRole,
           userId: user.id,
         })

@@ -11,16 +11,16 @@ interface SessionActionsProps {
   sessionToken: string;
 }
 
+type RevokeSessionInput = {
+  sessionToken: string;
+};
+
 export function SessionActions({ sessionToken }: SessionActionsProps) {
   const { t } = useTranslation();
   const router = useRouter();
 
   const onMutationError = async (error: unknown) => {
     console.error(error);
-
-    if (error instanceof Error) {
-      alert(error.message);
-    }
   };
 
   const onMutationSuccess = async () => {
@@ -28,8 +28,7 @@ export function SessionActions({ sessionToken }: SessionActionsProps) {
   };
 
   const revokeUserSessionMutation = useMutation({
-    mutationFn: async ({ sessionToken }: { sessionToken: string }) =>
-      await revokeUserSession({ data: { sessionToken } }),
+    mutationFn: (data: RevokeSessionInput) => revokeUserSession({ data }),
     onError: onMutationError,
     onSuccess: onMutationSuccess,
   });
@@ -43,8 +42,8 @@ export function SessionActions({ sessionToken }: SessionActionsProps) {
         <MenuItem
           color="red"
           isDisabled={revokeUserSessionMutation.isPending}
-          onAction={async () =>
-            await revokeUserSessionMutation.mutateAsync({
+          onAction={() =>
+            revokeUserSessionMutation.mutateAsync({
               sessionToken,
             })
           }

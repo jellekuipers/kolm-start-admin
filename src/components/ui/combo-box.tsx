@@ -34,6 +34,7 @@ export function ComboBox<T extends object>({
   className,
   description,
   errorMessage,
+  onInputChange,
   items,
   label,
   ...props
@@ -44,7 +45,7 @@ export function ComboBox<T extends object>({
     <AriaComboBox
       {...props}
       className={twMerge("flex flex-col gap-2", className)}
-      onInputChange={(value) => console.log(value)}
+      onInputChange={onInputChange}
     >
       {label ? <Label>{label}</Label> : null}
       <FieldGroup className="relative">

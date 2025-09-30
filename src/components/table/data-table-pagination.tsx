@@ -1,8 +1,8 @@
 import {
-    CaretDoubleLeftIcon,
-    CaretDoubleRightIcon,
-    CaretLeftIcon,
-    CaretRightIcon,
+  CaretDoubleLeftIcon,
+  CaretDoubleRightIcon,
+  CaretLeftIcon,
+  CaretRightIcon,
 } from "@phosphor-icons/react";
 import type { Table } from "@tanstack/react-table";
 import { useTranslation } from "react-i18next";

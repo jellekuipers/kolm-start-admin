@@ -1,8 +1,8 @@
 import {
-    CircleNotchIcon,
-    SignOutIcon,
-    UserIcon,
-    UserSwitchIcon,
+  CircleNotchIcon,
+  SignOutIcon,
+  UserIcon,
+  UserSwitchIcon,
 } from "@phosphor-icons/react";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
@@ -10,11 +10,11 @@ import { useTranslation } from "react-i18next";
 import { Avatar } from "~/components/ui/avatar";
 import { IconButton } from "~/components/ui/icon-button";
 import {
-    Menu,
-    MenuHeader,
-    MenuItem,
-    MenuSeparator,
-    MenuTrigger,
+  Menu,
+  MenuHeader,
+  MenuItem,
+  MenuSeparator,
+  MenuTrigger,
 } from "~/components/ui/menu";
 import { authClient, signOut, useSession } from "~/lib/auth-client";
 
