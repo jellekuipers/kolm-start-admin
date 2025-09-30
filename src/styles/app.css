@@ -1,5 +1,2 @@
 /** biome-ignore-all lint/suspicious/noUnknownAtRules: Tailwind 4 */
 @import "tailwindcss";
-
-@plugin "tailwindcss-react-aria-components";
-@plugin "tailwindcss-animate";
