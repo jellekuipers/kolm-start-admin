@@ -24,6 +24,7 @@ export function getRouter() {
     defaultNotFoundComponent: () => <NotFound />,
     defaultPendingComponent: () => <Pending />,
   });
+
   setupRouterSsrQueryIntegration({
     router,
     queryClient,
