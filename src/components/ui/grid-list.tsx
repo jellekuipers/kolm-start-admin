@@ -26,7 +26,10 @@ export function GridListItem({ children, ...props }: AriaGridListItemProps) {
         "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
         "hover:bg-indigo-50",
         "selected:bg-indigo-50",
-        "disabled:bg-slate-50 disabled:text-slate-200",
+        "disabled:bg-gray-50 disabled:text-gray-200",
+        "dark:hover:bg-indigo-900",
+        "dark:selected:bg-indigo-900",
+        "dark:disabled:bg-gray-900 dark:disabled:text-gray-700",
       )}
     >
       {children}

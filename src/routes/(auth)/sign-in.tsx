@@ -2,6 +2,7 @@ import { useForm } from "@tanstack/react-form";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { twMerge } from "tailwind-merge";
 import { z } from "zod";
 
 import { FormError } from "~/components/form/form-error";
@@ -56,7 +57,12 @@ function RouteComponent() {
   });
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-slate-50 p-4">
+    <div
+      className={twMerge(
+        "flex min-h-screen flex-col items-center justify-center gap-6 p-4 bg-gray-50",
+        "dark:bg-gray-950",
+      )}
+    >
       <Logo size={40} />
       <Card className="w-96 p-4">
         <div className="space-y-4">
@@ -109,6 +115,7 @@ function RouteComponent() {
                 {([canSubmit, isSubmitting]) => (
                   <div className="flex justify-end">
                     <Button
+                      color="indigo"
                       isDisabled={!canSubmit}
                       isPending={isSubmitting}
                       type="submit"

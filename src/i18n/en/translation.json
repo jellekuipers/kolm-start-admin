@@ -22,21 +22,22 @@
     "sessions": "Sessions"
   },
   "user": {
-    "users": "Users",
-    "create_user": "Create user",
-    "update_profile": "Update profile",
-    "view_user": "View user",
-    "view_profile": "View profile",
     "ban_user": "Ban user",
-    "unban_user": "Unban user",
-    "impersonate_user": "Impersonate user",
-    "stop_impersonating": "Stop impersonating",
-    "revoke_all_sessions": "Revoke all sessions",
-    "remove_user": "Remove user",
-    "user_role": "User role",
-    "you": "you",
     "banned": "banned",
-    "unverified": "unverified"
+    "create_user": "Create user",
+    "impersonate_user": "Impersonate user",
+    "remove_user": "Remove user",
+    "revoke_all_sessions": "Revoke all sessions",
+    "stop_impersonating": "Stop impersonating",
+    "toggle_theme": "Toggle theme",
+    "unban_user": "Unban user",
+    "unverified": "unverified",
+    "update_profile": "Update profile",
+    "user_role": "User role",
+    "users": "Users",
+    "view_profile": "View profile",
+    "view_user": "View user",
+    "you": "you"
   },
   "session": {
     "revoke_session": "Revoke session",
@@ -73,7 +74,6 @@
   "aria": {
     "open_user_actions_menu": "Open user actions menu",
     "open_session_actions_menu": "Open session actions menu",
-    "open_session_user_actions_menu": "Open session user actions menu",
     "open_user_menu": "Open user menu",
     "toggle_column_visibility": "Toggle column visibility",
     "copy_value_to_clipboard": "Copy value to clipboard",

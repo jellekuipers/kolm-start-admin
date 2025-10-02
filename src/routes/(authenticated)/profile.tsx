@@ -2,7 +2,9 @@ import type { Account } from "@prisma/client";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import type { ColumnDef } from "@tanstack/react-table";
+import type { TFunction } from "i18next";
 import { useTranslation } from "react-i18next";
+import { twMerge } from "tailwind-merge";
 
 import { Container } from "~/components/layout/container";
 import { CopyValue } from "~/components/misc/copy-value";
@@ -24,7 +26,7 @@ export const Route = createFileRoute("/(authenticated)/profile")({
 function getColumns({
   t,
 }: {
-  t: (key: string) => string;
+  t: TFunction<"translation", undefined>;
 }): ColumnDef<
   Pick<Account, "id" | "accountId" | "providerId" | "createdAt">
 >[] {
@@ -67,6 +69,7 @@ function RouteComponent() {
           <div className="flex items-start justify-between gap-4">
             <div className="flex flex-wrap items-center gap-4">
               <Avatar
+                alt={auth.user.email}
                 fallback="@"
                 size={16}
                 src={auth.user.image ?? undefined}
@@ -74,7 +77,12 @@ function RouteComponent() {
               {auth.user.name ? (
                 <div className="space-y-0">
                   <Heading level={1}>{auth.user.name}</Heading>
-                  <span className="text-sm text-slate-600">
+                  <span
+                    className={twMerge(
+                      "text-sm text-gray-600",
+                      "dark:text-gray-400",
+                    )}
+                  >
                     {auth.user.email}
                   </span>
                 </div>

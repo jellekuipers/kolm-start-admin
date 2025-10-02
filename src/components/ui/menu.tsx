@@ -19,7 +19,7 @@ interface MenuProps<T>
 
 export function Menu<T extends object>(props: MenuProps<T>) {
   return (
-    <Popover placement="bottom right">
+    <Popover placement="bottom right" offset={6}>
       <AriaMenu {...props} className="outline-0" />
     </Popover>
   );
@@ -34,8 +34,18 @@ export function MenuHeader(
 }
 
 const menuItemColors = {
-  default: "text-slate-800 hover:bg-indigo-700 hover:text-white",
-  red: "text-red-600 hover:bg-red-600 hover:text-white",
+  default: twMerge(
+    "text-gray-800",
+    "hover:bg-indigo-700 hover:text-white",
+    "dark:text-gray-200",
+    "dark:hover:bg-indigo-600",
+  ),
+  red: twMerge(
+    "text-red-600",
+    "hover:bg-red-600 hover:text-white",
+    "dark:text-red-400",
+    "dark:hover:bg-red-600",
+  ),
 };
 
 export function MenuItem({
@@ -48,7 +58,8 @@ export function MenuItem({
       className={twMerge(
         "flex h-8 cursor-default items-center gap-2 rounded px-2 text-sm",
         "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
-        "disabled:bg-slate-50 disabled:text-slate-300",
+        "disabled:bg-gray-50 disabled:text-gray-300",
+        "dark:disabled:bg-gray-900 dark:disabled:text-gray-700",
         menuItemColors[color],
       )}
     />
@@ -56,7 +67,12 @@ export function MenuItem({
 }
 
 export function MenuSeparator(props: AriaSeparatorProps) {
-  return <AriaSeparator {...props} className="my-2 h-px bg-slate-300" />;
+  return (
+    <AriaSeparator
+      {...props}
+      className={twMerge("my-2 h-px bg-gray-300", "dark:bg-gray-700")}
+    />
+  );
 }
 
 export function MenuTrigger(props: AriaMenuTriggerProps) {

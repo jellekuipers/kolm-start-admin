@@ -19,7 +19,15 @@ export function Tabs(props: AriaTabsProps) {
 }
 
 export function TabList<T extends object>(props: AriaTabListProps<T>) {
-  return <AriaTabList {...props} className="flex border-b border-slate-300" />;
+  return (
+    <AriaTabList
+      {...props}
+      className={twMerge(
+        "flex border-b border-gray-300",
+        "dark:border-gray-800",
+      )}
+    />
+  );
 }
 
 export function Tab({ children, ...props }: TabProps) {
@@ -34,8 +42,10 @@ export function Tab({ children, ...props }: TabProps) {
     >
       <span
         className={twMerge(
-          "flex h-8 items-center rounded px-2 text-sm font-medium text-slate-800",
-          "group-hover:bg-slate-100",
+          "flex h-8 items-center rounded px-2 text-sm font-medium text-gray-800",
+          "group-hover:bg-gray-100",
+          "dark:text-gray-200",
+          "dark:group-hover:bg-gray-800",
         )}
       >
         {children}

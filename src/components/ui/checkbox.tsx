@@ -11,12 +11,18 @@ export function Checkbox({ children, ...props }: AriaCheckboxProps) {
       {...props}
       className={twMerge(
         "group flex items-center gap-2 font-medium",
-        "disabled:text-slate-300",
+        "disabled:text-gray-300",
+        "dark:disabled:text-gray-700",
       )}
     >
       {/** biome-ignore lint/complexity/noUselessFragments: Required by Aria */}
       <>
-        <div className="flex size-4 shrink-0 items-center justify-center rounded border border-slate-300 bg-white">
+        <div
+          className={twMerge(
+            "flex size-4 shrink-0 items-center justify-center rounded border border-gray-300 bg-white",
+            "dark:border-gray-800 dark:bg-gray-900",
+          )}
+        >
           <CheckIcon
             aria-hidden
             className="group-selected:inline-block hidden"

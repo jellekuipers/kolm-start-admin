@@ -9,9 +9,9 @@ export function UserRole({ role }: UserRoleProps) {
   const renderBadge = (role?: string | null) => {
     switch (role) {
       case userRoleEnum.admin:
-        return <Badge>admin</Badge>;
+        return <Badge color="indigo">admin</Badge>;
       case userRoleEnum.user:
-        return <Badge color="slate">user</Badge>;
+        return <Badge color="gray">user</Badge>;
       default:
         return;
     }

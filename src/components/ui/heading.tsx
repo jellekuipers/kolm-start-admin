@@ -9,7 +9,8 @@ export function Heading({ level, ...props }: AriaHeadingProps) {
     <AriaHeading
       {...props}
       className={twMerge(
-        "font-bold",
+        "font-bold text-gray-900",
+        "dark:text-white",
         level === 1 && "text-2xl",
         level === 2 && "text-xl",
         level === 3 && "text-lg",

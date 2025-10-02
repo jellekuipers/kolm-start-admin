@@ -24,10 +24,13 @@ export function TextField({
       {label ? <Label>{label}</Label> : null}
       <Input
         className={twMerge(
-          "rounded border border-slate-300",
+          "rounded border border-gray-300",
           "outline-0 outline-offset-2 outline-indigo-700 focus:outline-2 focus-visible:outline-2",
-          "disabled:border-slate-100 disabled:bg-slate-50 disabled:text-slate-200",
+          "disabled:border-gray-100 disabled:bg-gray-50 disabled:text-gray-200",
           "invalid:border-red-300",
+          "dark:border-gray-800 dark:bg-gray-900",
+          "dark:disabled:border-gray-800 dark:disabled:bg-gray-900 dark:disabled:text-gray-700",
+          "dark:invalid:border-red-700",
         )}
       />
       {description ? <Description>{description}</Description> : null}

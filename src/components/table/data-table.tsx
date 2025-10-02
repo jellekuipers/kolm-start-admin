@@ -151,7 +151,7 @@ export function DataTable<TData, TValue>({
           <DataTablePagination table={table} />
         </div>
       ) : (
-        <Callout>
+        <Callout color="indigo">
           <CalloutIcon>
             <EmptyIcon size={16} />
           </CalloutIcon>

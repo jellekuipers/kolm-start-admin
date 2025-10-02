@@ -2,6 +2,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import type { ColumnDef } from "@tanstack/react-table";
 import type { Session } from "better-auth";
+import type { TFunction } from "i18next";
 import { useTranslation } from "react-i18next";
 
 import { CopyValue } from "~/components/misc/copy-value";
@@ -22,7 +23,7 @@ export const Route = createFileRoute("/(authenticated)/users/$userId/sessions")(
 function getColumns({
   t,
 }: {
-  t: (key: string) => string;
+  t: TFunction<"translation", undefined>;
 }): ColumnDef<Session>[] {
   return [
     {
