@@ -8,7 +8,7 @@ interface BadgeProps {
 
 const badgeColors = {
   gray: twMerge(
-    "bg-gray-50 text-gray-700",
+    "bg-gray-100 text-gray-700",
     "dark:bg-gray-700 dark:text-gray-100",
   ),
   green: twMerge(
