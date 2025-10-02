@@ -20,12 +20,10 @@ type ThemeProviderState = {
   theme: Theme;
 };
 
-const initialState: ThemeProviderState = {
+const ThemeProviderContext = createContext<ThemeProviderState>({
   setTheme: () => null,
   theme: "light",
-};
-
-const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
+});
 
 export function ThemeProvider({
   children,
@@ -37,15 +35,18 @@ export function ThemeProvider({
 
     const stored = localStorage.getItem("theme") as Theme | null;
 
-    if (stored) return stored;
+    if (stored) {
+      return stored;
+    }
 
     return defaultTheme;
   });
 
-  const applyTheme = useCallback((t: Theme) => {
+  const applyTheme = useCallback((theme: Theme) => {
     const root = window.document.documentElement;
+
     root.classList.remove("light", "dark");
-    root.classList.add(t);
+    root.classList.add(theme);
   }, []);
 
   useEffect(() => {

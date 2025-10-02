@@ -2,10 +2,10 @@ import { createServerFn } from "@tanstack/react-start";
 import { getRequestHeaders } from "@tanstack/react-start/server";
 import { z } from "zod";
 
-import { auth } from "~/lib/auth";
-import { db } from "~/lib/db";
-import { type UserRole, userRoleEnum } from "~/lib/enums";
-import { adminMiddleware } from "~/middleware/admin";
+import { auth } from "@/lib/auth";
+import { db } from "@/lib/db";
+import { type UserRole, userRoleEnum } from "@/lib/enums";
+import { adminMiddleware } from "@/middleware/admin";
 
 export const createUser = createServerFn({ method: "POST" })
   .middleware([adminMiddleware])

@@ -1,7 +1,7 @@
 import type { Icon } from "@phosphor-icons/react";
 import { twMerge } from "tailwind-merge";
 
-import { Card } from "~/components/ui/card";
+import { Card } from "@/components/ui/card";
 
 interface StatCardProps {
   count: number;

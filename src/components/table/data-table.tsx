@@ -15,8 +15,8 @@ import {
 import type React from "react";
 import { useState } from "react";
 
-import { DataTableSearch } from "~/components/table/data-table-search";
-import { Callout, CalloutIcon, CalloutText } from "~/components/ui/callout";
+import { DataTableSearch } from "@/components/table/data-table-search";
+import { Callout, CalloutIcon, CalloutText } from "@/components/ui/callout";
 import {
   Table,
   TableBody,
@@ -24,7 +24,7 @@ import {
   TableColumn,
   TableHeader,
   TableRow,
-} from "~/components/ui/table";
+} from "@/components/ui/table";
 
 import { DataTableColumnFilter } from "./data-table-column-filter";
 import { DataTablePagination } from "./data-table-pagination";

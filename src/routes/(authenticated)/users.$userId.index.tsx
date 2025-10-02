@@ -2,16 +2,16 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 
-import { CopyValue } from "~/components/misc/copy-value";
-import { Badge } from "~/components/ui/badge";
+import { CopyValue } from "@/components/misc/copy-value";
+import { Badge } from "@/components/ui/badge";
 import {
   DataList,
   DataListItem,
   DataListLabel,
   DataListValue,
-} from "~/components/ui/data-list";
-import { UpdateUserRole } from "~/components/user/update-user-role";
-import { getUserByIdQueryOptions } from "~/queries/user";
+} from "@/components/ui/data-list";
+import { UpdateUserRole } from "@/components/user/update-user-role";
+import { getUserByIdQueryOptions } from "@/queries/user";
 
 export const Route = createFileRoute("/(authenticated)/users/$userId/")({
   component: RouteComponent,

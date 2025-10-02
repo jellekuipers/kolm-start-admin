@@ -10,8 +10,8 @@ import {
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 
-import { Description, FieldError, Label } from "~/components/ui/field";
-import { Popover } from "~/components/ui/popover";
+import { Description, FieldError, Label } from "@/components/ui/field";
+import { Popover } from "@/components/ui/popover";
 
 interface SelectProps<T extends object>
   extends Omit<AriaSelectProps<T>, "children" | "className"> {

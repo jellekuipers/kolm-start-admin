@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import { TabNav, TabNavLink } from "~/components/ui/tab-nav";
+import { TabNav, TabNavLink } from "@/components/ui/tab-nav";
 
 interface UserTabNavProps {
   userId: string;

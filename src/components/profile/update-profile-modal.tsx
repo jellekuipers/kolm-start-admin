@@ -6,13 +6,13 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { z } from "zod";
 
-import { FormError } from "~/components/form/form-error";
-import { Button } from "~/components/ui/button";
-import { Dialog } from "~/components/ui/dialog";
-import { Modal, ModalHeading } from "~/components/ui/modal";
-import { TextField } from "~/components/ui/text-field";
-import { authClient, useSession } from "~/lib/auth-client";
-import { getFieldErrorMessage } from "~/lib/error";
+import { FormError } from "@/components/form/form-error";
+import { Button } from "@/components/ui/button";
+import { Dialog } from "@/components/ui/dialog";
+import { Modal, ModalHeading } from "@/components/ui/modal";
+import { TextField } from "@/components/ui/text-field";
+import { authClient, useSession } from "@/lib/auth-client";
+import { getFieldErrorMessage } from "@/lib/error";
 
 interface UpdateProfileModalProps {
   user: User;

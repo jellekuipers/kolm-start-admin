@@ -2,8 +2,8 @@ import { QueryClient } from "@tanstack/react-query";
 import { createRouter } from "@tanstack/react-router";
 import { setupRouterSsrQueryIntegration } from "@tanstack/react-router-ssr-query";
 
-import { NotFound } from "~/components/error/not-found";
-import { Pending } from "~/components/ui/pending";
+import { NotFound } from "@/components/error/not-found";
+import { Pending } from "@/components/ui/pending";
 
 import { routeTree } from "./routeTree.gen";
 

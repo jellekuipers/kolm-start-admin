@@ -10,17 +10,17 @@ import { useNavigate, useRouter } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";
 
-import { Avatar } from "~/components/ui/avatar";
-import { IconButton } from "~/components/ui/icon-button";
+import { Avatar } from "@/components/ui/avatar";
+import { IconButton } from "@/components/ui/icon-button";
 import {
   Menu,
   MenuHeader,
   MenuItem,
   MenuSeparator,
   MenuTrigger,
-} from "~/components/ui/menu";
-import { useTheme } from "~/context/theme";
-import { authClient, signOut, useSession } from "~/lib/auth-client";
+} from "@/components/ui/menu";
+import { useTheme } from "@/context/theme";
+import { authClient, signOut, useSession } from "@/lib/auth-client";
 
 export function SessionUserDropdown() {
   const { t } = useTranslation();

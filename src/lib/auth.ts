@@ -3,7 +3,7 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 import { admin } from "better-auth/plugins";
 import { reactStartCookies } from "better-auth/react-start";
 
-import { db } from "~/lib/db";
+import { db } from "@/lib/db";
 
 export const auth = betterAuth({
   database: prismaAdapter(db, {

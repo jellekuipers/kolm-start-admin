@@ -3,9 +3,9 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 
-import { IconButton } from "~/components/ui/icon-button";
-import { Menu, MenuItem, MenuTrigger } from "~/components/ui/menu";
-import { revokeUserSession } from "~/server/user";
+import { IconButton } from "@/components/ui/icon-button";
+import { Menu, MenuItem, MenuTrigger } from "@/components/ui/menu";
+import { revokeUserSession } from "@/server/user";
 
 interface SessionActionsProps {
   sessionToken: string;

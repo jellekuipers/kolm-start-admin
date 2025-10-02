@@ -1,8 +1,8 @@
 import { CopyIcon } from "@phosphor-icons/react";
 import { useTranslation } from "react-i18next";
 
-import { Code } from "~/components/ui/code";
-import { IconButton } from "~/components/ui/icon-button";
+import { Code } from "@/components/ui/code";
+import { IconButton } from "@/components/ui/icon-button";
 
 interface CopyValueProps {
   value: string;

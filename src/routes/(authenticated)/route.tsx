@@ -2,12 +2,12 @@ import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";
 
-import { Logo } from "~/components/logo";
-import { Code } from "~/components/ui/code";
-import { Link } from "~/components/ui/link";
-import { Separator } from "~/components/ui/separator";
-import { SessionUserDropdown } from "~/components/user/session-user-dropdown";
-import { userRoleEnum } from "~/lib/enums";
+import { Logo } from "@/components/logo";
+import { Code } from "@/components/ui/code";
+import { Link } from "@/components/ui/link";
+import { Separator } from "@/components/ui/separator";
+import { SessionUserDropdown } from "@/components/user/session-user-dropdown";
+import { userRoleEnum } from "@/lib/enums";
 
 export const Route = createFileRoute("/(authenticated)")({
   beforeLoad: ({ context: { auth } }) => {

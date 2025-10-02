@@ -5,16 +5,16 @@ import { useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";
 import { z } from "zod";
 
-import { FormError } from "~/components/form/form-error";
-import { Logo } from "~/components/logo";
-import { Button } from "~/components/ui/button";
-import { Card } from "~/components/ui/card";
-import { Label } from "~/components/ui/field";
-import { Heading } from "~/components/ui/heading";
-import { Link } from "~/components/ui/link";
-import { TextField } from "~/components/ui/text-field";
-import { signIn } from "~/lib/auth-client";
-import { getFieldErrorMessage } from "~/lib/error";
+import { FormError } from "@/components/form/form-error";
+import { Logo } from "@/components/logo";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Label } from "@/components/ui/field";
+import { Heading } from "@/components/ui/heading";
+import { Link } from "@/components/ui/link";
+import { TextField } from "@/components/ui/text-field";
+import { signIn } from "@/lib/auth-client";
+import { getFieldErrorMessage } from "@/lib/error";
 
 const signInSchema = z.object({
   email: z.email(),

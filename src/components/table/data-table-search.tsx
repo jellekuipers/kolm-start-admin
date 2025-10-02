@@ -1,4 +1,4 @@
-import { SearchField } from "~/components/ui/search-field";
+import { SearchField } from "@/components/ui/search-field";
 
 interface DataTableSearchProps {
   onChange: (value: string) => void;

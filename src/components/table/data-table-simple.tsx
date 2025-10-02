@@ -9,7 +9,7 @@ import {
 } from "@tanstack/react-table";
 import { useState } from "react";
 
-import { Callout, CalloutIcon, CalloutText } from "~/components/ui/callout";
+import { Callout, CalloutIcon, CalloutText } from "@/components/ui/callout";
 import {
   Table,
   TableBody,
@@ -17,7 +17,7 @@ import {
   TableColumn,
   TableHeader,
   TableRow,
-} from "~/components/ui/table";
+} from "@/components/ui/table";
 
 import { DataTableSortButton } from "./data-table-sort-button";
 
