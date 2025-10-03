@@ -1,25 +1,24 @@
 {
   "common": {
-    "email": "E-mail",
-    "password": "Wachtwoord",
-    "name": "Naam",
-    "save": "Opslaan",
-    "cancel": "Annuleren",
     "actions": "Acties",
-    "home": "Home",
+    "cancel": "Annuleren",
+    "email": "E-mail",
+    "name": "Naam",
     "of": "van",
+    "password": "Wachtwoord",
+    "save": "Opslaan",
     "search_placeholder": "Zoeken.."
   },
   "auth": {
+    "forgot_password": "Wachtwoord vergeten?",
     "sign_in": "Inloggen",
-    "sign_out": "Uitloggen",
-    "forgot_password": "Wachtwoord vergeten?"
+    "sign_out": "Uitloggen"
   },
   "navigation": {
     "dashboard": "Dashboard",
-    "users": "Gebruikers",
     "profile": "Profiel",
-    "sessions": "Sessies"
+    "sessions": "Sessies",
+    "users": "Gebruikers"
   },
   "user": {
     "ban_user": "Gebruiker verbannen",
@@ -44,25 +43,25 @@
     "user_sessions": "Gebruikerssessies"
   },
   "table": {
-    "id": "ID",
-    "email": "E-mail",
-    "name": "Naam",
-    "role": "Rol",
-    "created_at": "Aangemaakt op",
-    "updated_at": "Bijgewerkt op",
-    "email_verified": "E-mail geverifieerd",
-    "banned": "Verbannen",
-    "ban_reason": "Reden van verbanning",
-    "ban_expires": "Verbanning verloopt",
-    "expires_at": "Verloopt op",
     "account_id": "Account ID",
-    "provider": "Provider",
+    "ban_expires": "Verbanning verloopt",
+    "ban_reason": "Reden van verbanning",
+    "banned": "Verbannen",
     "column_visibility": "Kolom zichtbaarheid",
-    "toggle_column_visibility": "Kolom zichtbaarheid wijzigen",
+    "created_at": "Aangemaakt op",
+    "email_verified": "E-mail geverifieerd",
+    "email": "E-mail",
+    "expires_at": "Verloopt op",
     "go_to_first_page": "Ga naar eerste pagina",
-    "go_to_previous_page": "Ga naar vorige pagina",
+    "go_to_last_page": "Ga naar laatste pagina",
     "go_to_next_page": "Ga naar volgende pagina",
-    "go_to_last_page": "Ga naar laatste pagina"
+    "go_to_previous_page": "Ga naar vorige pagina",
+    "id": "ID",
+    "name": "Naam",
+    "provider": "Provider",
+    "role": "Rol",
+    "toggle_column_visibility": "Kolom zichtbaarheid wijzigen",
+    "updated_at": "Bijgewerkt op"
   },
   "role": {
     "admin": "Beheerder",
@@ -72,18 +71,19 @@
     "accounts": "Accounts"
   },
   "aria": {
-    "open_user_actions_menu": "Open gebruikersacties menu",
-    "open_session_actions_menu": "Open sessieacties menu",
-    "open_user_menu": "Open gebruikersmenu",
-    "toggle_column_visibility": "Kolom zichtbaarheid wijzigen",
     "copy_value_to_clipboard": "Kopieer waarde naar klembord",
     "logo": "Logo",
+    "open_session_actions_menu": "Open sessieacties menu",
+    "open_user_actions_menu": "Open gebruikersacties menu",
+    "open_user_menu": "Open gebruikersmenu",
     "search": "Zoeken",
     "show_options": "Toon opties",
-    "sort_column": "Sorteer kolom"
+    "sort_column": "Sorteer kolom",
+    "toggle_column_visibility": "Kolom zichtbaarheid wijzigen"
   },
   "error": {
-    "not_found": "404"
+    "404": "404",
+    "not_found": "Niet gevonden"
   },
   "pagination": {
     "of": "van"

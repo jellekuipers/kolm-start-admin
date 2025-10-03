@@ -1,25 +1,24 @@
 {
   "common": {
-    "email": "Email",
-    "password": "Password",
-    "name": "Name",
-    "save": "Save",
-    "cancel": "Cancel",
     "actions": "Actions",
-    "home": "Home",
+    "cancel": "Cancel",
+    "email": "Email",
+    "name": "Name",
     "of": "of",
+    "password": "Password",
+    "save": "Save",
     "search_placeholder": "Search.."
   },
   "auth": {
+    "forgot_password": "Forgot password?",
     "sign_in": "Sign in",
-    "sign_out": "Sign out",
-    "forgot_password": "Forgot password?"
+    "sign_out": "Sign out"
   },
   "navigation": {
     "dashboard": "Dashboard",
-    "users": "Users",
     "profile": "Profile",
-    "sessions": "Sessions"
+    "sessions": "Sessions",
+    "users": "Users"
   },
   "user": {
     "ban_user": "Ban user",
@@ -44,25 +43,25 @@
     "user_sessions": "User sessions"
   },
   "table": {
-    "id": "ID",
-    "email": "Email",
-    "name": "Name",
-    "role": "Role",
-    "created_at": "Created at",
-    "updated_at": "Updated at",
-    "email_verified": "Email verified",
-    "banned": "Banned",
-    "ban_reason": "Ban reason",
-    "ban_expires": "Ban expires",
-    "expires_at": "Expires at",
     "account_id": "Account ID",
-    "provider": "Provider",
+    "ban_expires": "Ban expires",
+    "ban_reason": "Ban reason",
+    "banned": "Banned",
     "column_visibility": "Column visibility",
-    "toggle_column_visibility": "Toggle column visibility",
+    "created_at": "Created at",
+    "email_verified": "Email verified",
+    "email": "Email",
+    "expires_at": "Expires at",
     "go_to_first_page": "Go to first page",
-    "go_to_previous_page": "Go to previous page",
+    "go_to_last_page": "Go to last page",
     "go_to_next_page": "Go to next page",
-    "go_to_last_page": "Go to last page"
+    "go_to_previous_page": "Go to previous page",
+    "id": "ID",
+    "name": "Name",
+    "provider": "Provider",
+    "role": "Role",
+    "toggle_column_visibility": "Toggle column visibility",
+    "updated_at": "Updated at"
   },
   "role": {
     "admin": "Admin",
@@ -72,18 +71,19 @@
     "accounts": "Accounts"
   },
   "aria": {
-    "open_user_actions_menu": "Open user actions menu",
-    "open_session_actions_menu": "Open session actions menu",
-    "open_user_menu": "Open user menu",
-    "toggle_column_visibility": "Toggle column visibility",
     "copy_value_to_clipboard": "Copy value to clipboard",
     "logo": "Logo",
+    "open_session_actions_menu": "Open session actions menu",
+    "open_user_actions_menu": "Open user actions menu",
+    "open_user_menu": "Open user menu",
     "search": "Search",
     "show_options": "Show options",
-    "sort_column": "Sort column"
+    "sort_column": "Sort column",
+    "toggle_column_visibility": "Toggle column visibility"
   },
   "error": {
-    "not_found": "404"
+    "404": "404",
+    "not_found": "Not found"
   },
   "pagination": {
     "of": "of"
