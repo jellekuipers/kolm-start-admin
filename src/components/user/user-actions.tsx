@@ -99,8 +99,6 @@ export function UserActions({ user, variant }: UserActionsProps) {
     <>
       <Modal isDismissable isOpen={isOpen} onOpenChange={setIsOpen}>
         <AlertDialog
-          actionLabel={t("common.confirm")}
-          cancelLabel={t("common.cancel")}
           onAction={handleRemoveUser}
           title={t("user.remove_user")}
           variant="destructive"

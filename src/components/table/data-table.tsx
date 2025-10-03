@@ -14,6 +14,7 @@ import {
 } from "@tanstack/react-table";
 import type React from "react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { DataTableSearch } from "@/components/table/data-table-search";
 import { Callout, CalloutIcon, CalloutText } from "@/components/ui/callout";
@@ -64,6 +65,7 @@ export function DataTable<TData, TValue>({
   defaultColumnVisibility,
   label,
 }: DataTableProps<TData, TValue>) {
+  const { t } = useTranslation();
   const [columnVisibility, setColumnVisibility] = useState(
     defaultColumnVisibility ?? {},
   );
@@ -155,7 +157,7 @@ export function DataTable<TData, TValue>({
           <CalloutIcon>
             <EmptyIcon size={16} />
           </CalloutIcon>
-          <CalloutText>No results</CalloutText>
+          <CalloutText>{t("common.no_results")}</CalloutText>
         </Callout>
       )}
     </div>

@@ -1,15 +1,14 @@
 import type { ReactNode } from "react";
 import { chain } from "react-aria";
 import type { DialogProps as AriaDialogProps } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
+import { useTranslation } from "react-i18next";
 
 import { Button } from "@/components/ui/button";
 import { Dialog } from "@/components/ui/dialog";
+import { Description } from "@/components/ui/field";
 import { ModalHeading } from "@/components/ui/modal";
 
 interface AlertDialogProps extends Omit<AriaDialogProps, "children"> {
-  actionLabel: string;
-  cancelLabel: string;
   children: ReactNode;
   onAction: () => void;
   onClose?: () => void;
@@ -18,8 +17,6 @@ interface AlertDialogProps extends Omit<AriaDialogProps, "children"> {
 }
 
 export function AlertDialog({
-  actionLabel,
-  cancelLabel,
   children,
   onAction,
   onClose,
@@ -27,20 +24,20 @@ export function AlertDialog({
   variant,
   ...props
 }: AlertDialogProps) {
+  const { t } = useTranslation();
+
   return (
     <Dialog role="alertdialog" {...props}>
       {({ close }) => (
         <>
           <ModalHeading slot="title">{title}</ModalHeading>
-          <p className={twMerge("text-gray-600", "dark:text-white")}>
-            {children}
-          </p>
+          <Description>{children}</Description>
           <div className="flex justify-end gap-2">
             <Button color="gray" onPress={close}>
-              {cancelLabel}
+              {t("common.cancel")}
             </Button>
             <Button color="red" autoFocus onPress={chain(onAction, close)}>
-              {actionLabel}
+              {t("common.confirm")}
             </Button>
           </div>
         </>
