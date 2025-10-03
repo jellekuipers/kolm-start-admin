@@ -5,10 +5,10 @@ import type { Session } from "better-auth";
 import type { TFunction } from "i18next";
 import { useTranslation } from "react-i18next";
 
-import { CopyValue } from "~/components/misc/copy-value";
-import { SessionActions } from "~/components/session/session-actions";
-import { DataTable } from "~/components/table/data-table";
-import { listUserSessionsQueryOptions } from "~/queries/user";
+import { CopyValue } from "@/components/misc/copy-value";
+import { SessionActions } from "@/components/session/session-actions";
+import { DataTable } from "@/components/table/data-table";
+import { listUserSessionsQueryOptions } from "@/queries/user";
 
 export const Route = createFileRoute("/(authenticated)/users/$userId/sessions")(
   {

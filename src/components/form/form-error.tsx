@@ -1,6 +1,6 @@
 import { InfoIcon } from "@phosphor-icons/react";
 
-import { Callout, CalloutIcon, CalloutText } from "~/components/ui/callout";
+import { Callout, CalloutIcon, CalloutText } from "@/components/ui/callout";
 
 export interface FormErrorProps {
   error: Error;

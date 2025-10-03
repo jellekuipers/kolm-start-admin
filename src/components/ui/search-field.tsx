@@ -14,7 +14,7 @@ import {
   FieldGroup,
   Input,
   Label,
-} from "~/components/ui/field";
+} from "@/components/ui/field";
 
 export interface SearchFieldProps extends AriaSearchFieldProps {
   label?: string;

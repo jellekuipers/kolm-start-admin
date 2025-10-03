@@ -14,17 +14,17 @@ import { useNavigate, useRouter } from "@tanstack/react-router";
 import { MenuTrigger } from "react-aria-components";
 import { useTranslation } from "react-i18next";
 
-import { Button } from "~/components/ui/button";
-import { IconButton } from "~/components/ui/icon-button";
-import { Menu, MenuItem, MenuSeparator } from "~/components/ui/menu";
-import { authClient, useSession } from "~/lib/auth-client";
-import { listUsersQueryOptions } from "~/queries/user";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/ui/icon-button";
+import { Menu, MenuItem, MenuSeparator } from "@/components/ui/menu";
+import { authClient, useSession } from "@/lib/auth-client";
+import { listUsersQueryOptions } from "@/queries/user";
 import {
   banUser,
   removeUser,
   revokeAllUserSessions,
   unbanUser,
-} from "~/server/user";
+} from "@/server/user";
 
 interface UserActionsProps {
   user: User;

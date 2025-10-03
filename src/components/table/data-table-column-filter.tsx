@@ -2,11 +2,11 @@ import { CaretDownIcon } from "@phosphor-icons/react";
 import type { Table } from "@tanstack/react-table";
 import { useTranslation } from "react-i18next";
 
-import { Button } from "~/components/ui/button";
-import { Checkbox } from "~/components/ui/checkbox";
-import { Dialog, DialogTrigger } from "~/components/ui/dialog";
-import { GridList, GridListItem } from "~/components/ui/grid-list";
-import { Popover } from "~/components/ui/popover";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import { GridList, GridListItem } from "@/components/ui/grid-list";
+import { Popover } from "@/components/ui/popover";
 
 interface DataTableColumnFilterProps<TData> {
   table: Table<TData>;

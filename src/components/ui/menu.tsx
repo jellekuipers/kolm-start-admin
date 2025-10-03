@@ -11,7 +11,7 @@ import {
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 
-import { Popover } from "~/components/ui/popover";
+import { Popover } from "@/components/ui/popover";
 
 interface MenuProps<T>
   extends AriaMenuProps<T>,

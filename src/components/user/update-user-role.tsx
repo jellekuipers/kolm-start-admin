@@ -3,10 +3,10 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 
-import { Select, SelectItem } from "~/components/ui/select";
-import { type UserRole, userRoleEnum } from "~/lib/enums";
-import { getUserByIdQueryOptions } from "~/queries/user";
-import { setUserRole } from "~/server/user";
+import { Select, SelectItem } from "@/components/ui/select";
+import { type UserRole, userRoleEnum } from "@/lib/enums";
+import { getUserByIdQueryOptions } from "@/queries/user";
+import { setUserRole } from "@/server/user";
 
 interface UpdateUserRoleProps {
   user: User;

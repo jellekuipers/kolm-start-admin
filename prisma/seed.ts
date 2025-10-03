@@ -1,10 +1,9 @@
 import { PrismaClient } from "@prisma/client";
 
-import { auth } from "~/lib/auth";
-
+import { auth } from "@/lib/auth";
 import {
   userRoleEnum,
-} from "~/lib/enums";
+} from "@/lib/enums";
 
 const db = new PrismaClient();
 

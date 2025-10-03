@@ -6,7 +6,7 @@ import {
 import type { SortDirection } from "@tanstack/react-table";
 import { useTranslation } from "react-i18next";
 
-import { IconButton } from "~/components/ui/icon-button";
+import { IconButton } from "@/components/ui/icon-button";
 
 interface DataTableSortButtonProps {
   isSorted: SortDirection | false;

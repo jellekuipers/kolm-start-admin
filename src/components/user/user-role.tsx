@@ -1,5 +1,5 @@
-import { Badge } from "~/components/ui/badge";
-import { userRoleEnum } from "~/lib/enums";
+import { Badge } from "@/components/ui/badge";
+import { userRoleEnum } from "@/lib/enums";
 
 interface UserRoleProps {
   role?: string | null;

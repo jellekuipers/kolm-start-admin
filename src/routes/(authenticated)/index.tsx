@@ -3,11 +3,11 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 
-import { Container } from "~/components/layout/container";
-import { StatCard } from "~/components/stats/stat-card";
-import { Heading } from "~/components/ui/heading";
-import { Separator } from "~/components/ui/separator";
-import { getUserCountQueryOptions } from "~/queries/user";
+import { Container } from "@/components/layout/container";
+import { StatCard } from "@/components/stats/stat-card";
+import { Heading } from "@/components/ui/heading";
+import { Separator } from "@/components/ui/separator";
+import { getUserCountQueryOptions } from "@/queries/user";
 
 export const Route = createFileRoute("/(authenticated)/")({
   component: RouteComponent,

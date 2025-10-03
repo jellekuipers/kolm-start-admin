@@ -17,8 +17,8 @@ import {
   FieldGroup,
   Input,
   Label,
-} from "~/components/ui/field";
-import { Popover } from "~/components/ui/popover";
+} from "@/components/ui/field";
+import { Popover } from "@/components/ui/popover";
 
 export interface ComboBoxProps<T extends object>
   extends Omit<AriaComboBoxProps<T>, "children" | "className"> {

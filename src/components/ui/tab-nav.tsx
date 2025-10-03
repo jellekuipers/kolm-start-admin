@@ -1,7 +1,7 @@
 import type { ActiveOptions, LinkProps } from "@tanstack/react-router";
 import { twMerge } from "tailwind-merge";
 
-import { Link } from "~/components/ui/link";
+import { Link } from "@/components/ui/link";
 
 interface TabNavProps {
   children: React.ReactNode;

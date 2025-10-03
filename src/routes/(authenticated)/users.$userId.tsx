@@ -4,14 +4,14 @@ import { createFileRoute, Outlet } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";
 
-import { Container } from "~/components/layout/container";
-import { Avatar } from "~/components/ui/avatar";
-import { Badge } from "~/components/ui/badge";
-import { Heading } from "~/components/ui/heading";
-import { Link } from "~/components/ui/link";
-import { UserActions } from "~/components/user/user-actions";
-import { UserTabNav } from "~/components/user/user-tab-nav";
-import { getUserByIdQueryOptions } from "~/queries/user";
+import { Container } from "@/components/layout/container";
+import { Avatar } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Heading } from "@/components/ui/heading";
+import { Link } from "@/components/ui/link";
+import { UserActions } from "@/components/user/user-actions";
+import { UserTabNav } from "@/components/user/user-tab-nav";
+import { getUserByIdQueryOptions } from "@/queries/user";
 
 export const Route = createFileRoute("/(authenticated)/users/$userId")({
   component: RouteComponent,

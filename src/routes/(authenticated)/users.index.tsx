@@ -6,18 +6,18 @@ import type { ColumnDef } from "@tanstack/react-table";
 import type { TFunction } from "i18next";
 import { useTranslation } from "react-i18next";
 
-import { Container } from "~/components/layout/container";
-import { CopyValue } from "~/components/misc/copy-value";
-import { DataTable } from "~/components/table/data-table";
-import { Avatar } from "~/components/ui/avatar";
-import { Badge } from "~/components/ui/badge";
-import { Heading } from "~/components/ui/heading";
-import { Link } from "~/components/ui/link";
-import { Separator } from "~/components/ui/separator";
-import { CreateUserModal } from "~/components/user/create-user-modal";
-import { UserActions } from "~/components/user/user-actions";
-import { UserRole } from "~/components/user/user-role";
-import { listUsersQueryOptions } from "~/queries/user";
+import { Container } from "@/components/layout/container";
+import { CopyValue } from "@/components/misc/copy-value";
+import { DataTable } from "@/components/table/data-table";
+import { Avatar } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Heading } from "@/components/ui/heading";
+import { Link } from "@/components/ui/link";
+import { Separator } from "@/components/ui/separator";
+import { CreateUserModal } from "@/components/user/create-user-modal";
+import { UserActions } from "@/components/user/user-actions";
+import { UserRole } from "@/components/user/user-role";
+import { listUsersQueryOptions } from "@/queries/user";
 
 export const Route = createFileRoute("/(authenticated)/users/")({
   component: RouteComponent,

@@ -6,15 +6,15 @@ import type { TFunction } from "i18next";
 import { useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";
 
-import { Container } from "~/components/layout/container";
-import { CopyValue } from "~/components/misc/copy-value";
-import { UpdateProfileModal } from "~/components/profile/update-profile-modal";
-import { DataTableSimple } from "~/components/table/data-table-simple";
-import { Avatar } from "~/components/ui/avatar";
-import { Code } from "~/components/ui/code";
-import { Heading } from "~/components/ui/heading";
-import { Separator } from "~/components/ui/separator";
-import { listUserAccountsQueryOptions } from "~/queries/user";
+import { Container } from "@/components/layout/container";
+import { CopyValue } from "@/components/misc/copy-value";
+import { UpdateProfileModal } from "@/components/profile/update-profile-modal";
+import { DataTableSimple } from "@/components/table/data-table-simple";
+import { Avatar } from "@/components/ui/avatar";
+import { Code } from "@/components/ui/code";
+import { Heading } from "@/components/ui/heading";
+import { Separator } from "@/components/ui/separator";
+import { listUserAccountsQueryOptions } from "@/queries/user";
 
 export const Route = createFileRoute("/(authenticated)/profile")({
   component: RouteComponent,

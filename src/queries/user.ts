@@ -6,7 +6,7 @@ import {
   listUserAccounts,
   listUserSessions,
   listUsers,
-} from "~/server/user";
+} from "@/server/user";
 
 export const listUsersQueryOptions = () =>
   queryOptions({

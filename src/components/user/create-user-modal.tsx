@@ -5,14 +5,14 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { z } from "zod";
 
-import { FormError } from "~/components/form/form-error";
-import { Button } from "~/components/ui/button";
-import { Dialog } from "~/components/ui/dialog";
-import { Modal, ModalHeading } from "~/components/ui/modal";
-import { TextField } from "~/components/ui/text-field";
-import { getFieldErrorMessage } from "~/lib/error";
-import { listUsersQueryOptions } from "~/queries/user";
-import { createUser } from "~/server/user";
+import { FormError } from "@/components/form/form-error";
+import { Button } from "@/components/ui/button";
+import { Dialog } from "@/components/ui/dialog";
+import { Modal, ModalHeading } from "@/components/ui/modal";
+import { TextField } from "@/components/ui/text-field";
+import { getFieldErrorMessage } from "@/lib/error";
+import { listUsersQueryOptions } from "@/queries/user";
+import { createUser } from "@/server/user";
 
 const createUserSchema = z.object({
   email: z.email(),

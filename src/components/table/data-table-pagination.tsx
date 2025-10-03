@@ -7,7 +7,7 @@ import {
 import type { Table } from "@tanstack/react-table";
 import { useTranslation } from "react-i18next";
 
-import { IconButton } from "~/components/ui/icon-button";
+import { IconButton } from "@/components/ui/icon-button";
 
 interface DataTablePaginationProps<TData> {
   table: Table<TData>;

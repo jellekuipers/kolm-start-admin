@@ -5,7 +5,7 @@ import {
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 
-import { Description, FieldError, Input, Label } from "~/components/ui/field";
+import { Description, FieldError, Input, Label } from "@/components/ui/field";
 
 export interface TextFieldProps extends AriaTextFieldProps {
   label?: string;

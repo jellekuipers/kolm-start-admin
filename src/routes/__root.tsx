@@ -12,12 +12,11 @@ import type { ReactNode } from "react";
 import { I18nextProvider, useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";
 
-import { DefaultCatchBoundary } from "~/components/error/default-catch-boundary";
-import { ThemeProvider } from "~/context/theme";
-import i18n from "~/lib/i18n";
-import { getServerSession } from "~/server/session";
-import appCss from "~/styles/app.css?url";
-import { seo } from "~/utils/seo";
+import { DefaultCatchBoundary } from "@/components/error/default-catch-boundary";
+import { ThemeProvider } from "@/context/theme";
+import i18n from "@/lib/i18n";
+import { getServerSession } from "@/server/session";
+import appCss from "@/styles/app.css?url";
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
@@ -36,11 +35,11 @@ export const Route = createRootRouteWithContext<{
         name: "viewport",
         content: "width=device-width, initial-scale=1",
       },
-      ...seo({
+      {
         title: "kolm start admin",
         description:
           "A TanStack Start + better-auth admin starter with Prisma ORM, tRPC, React Aria",
-      }),
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
