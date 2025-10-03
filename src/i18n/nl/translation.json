@@ -1,7 +1,9 @@
 {
   "common": {
+    "action_confirmation": "Weet je het zeker? Deze actie kan niet ongedaan worden gemaakt.",
     "actions": "Acties",
     "cancel": "Annuleren",
+    "confirm": "Bevestigen",
     "email": "E-mail",
     "name": "Naam",
     "of": "van",

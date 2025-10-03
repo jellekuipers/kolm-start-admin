@@ -1,7 +1,9 @@
 {
   "common": {
+    "action_confirmation": "Are you sure? This action cannot be undone.",
     "actions": "Actions",
     "cancel": "Cancel",
+    "confirm": "Confirm",
     "email": "Email",
     "name": "Name",
     "of": "of",
