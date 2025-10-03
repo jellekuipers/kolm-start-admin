@@ -4,7 +4,7 @@ import {
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 
-export function Heading({ level, ...props }: AriaHeadingProps) {
+export function Heading({ className, level, ...props }: AriaHeadingProps) {
   return (
     <AriaHeading
       {...props}
@@ -14,7 +14,9 @@ export function Heading({ level, ...props }: AriaHeadingProps) {
         level === 1 && "text-2xl",
         level === 2 && "text-xl",
         level === 3 && "text-lg",
+        className,
       )}
+      level={level}
     />
   );
 }

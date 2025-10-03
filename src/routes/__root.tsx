@@ -49,7 +49,9 @@ export const Route = createRootRouteWithContext<{
   errorComponent: (props) => {
     return (
       <RootDocument>
-        <DefaultCatchBoundary {...props} />
+        <div className="flex min-h-screen flex-col items-center justify-center">
+          <DefaultCatchBoundary {...props} />
+        </div>
       </RootDocument>
     );
   },

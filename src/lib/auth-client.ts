@@ -5,7 +5,7 @@ import type { auth } from "@/lib/auth";
 import { env } from "@/lib/env";
 
 export const authClient = createAuthClient({
-  baseURL: env.BETTER_AUTH_URL,
+  baseURL: env.VITE_BASE_URL,
   plugins: [adminClient(), inferAdditionalFields<typeof auth>()],
 });
 
