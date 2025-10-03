@@ -1,13 +1,17 @@
 {
   "common": {
+    "action_confirmation": "Are you sure? This action cannot be undone.",
     "actions": "Actions",
     "cancel": "Cancel",
+    "confirm": "Confirm",
     "email": "Email",
     "name": "Name",
+    "no_results": "No results",
     "of": "of",
     "password": "Password",
     "save": "Save",
-    "search_placeholder": "Search.."
+    "search_placeholder": "Search..",
+    "select": "Select"
   },
   "auth": {
     "forgot_password": "Forgot password?",

@@ -11,12 +11,15 @@ import {
 import type { User } from "@prisma/client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
+import { useState } from "react";
 import { MenuTrigger } from "react-aria-components";
 import { useTranslation } from "react-i18next";
 
+import { AlertDialog } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { IconButton } from "@/components/ui/icon-button";
 import { Menu, MenuItem, MenuSeparator } from "@/components/ui/menu";
+import { Modal } from "@/components/ui/modal";
 import { authClient, useSession } from "@/lib/auth-client";
 import { listUsersQueryOptions } from "@/queries/user";
 import {
@@ -37,6 +40,7 @@ type UserIdInput = {
 
 export function UserActions({ user, variant }: UserActionsProps) {
   const { t } = useTranslation();
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const router = useRouter();
   const session = useSession();
@@ -81,86 +85,101 @@ export function UserActions({ user, variant }: UserActionsProps) {
     onSuccess: onMutationSuccess,
   });
 
+  const handleRemoveUser = async () => {
+    await removeUserMutation.mutateAsync({ userId: user.id });
+
+    if (variant === "profile") {
+      router.navigate({
+        to: "/users",
+      });
+    }
+  };
+
   return (
-    <MenuTrigger>
-      {variant === "overview" ? (
-        <IconButton aria-label={t("aria.open_user_actions_menu")}>
-          <DotsThreeVerticalIcon size={20} />
-        </IconButton>
-      ) : (
-        <Button color="indigo" variant="light">
-          {t("common.actions")} <CaretDownIcon size={16} />
-        </Button>
-      )}
-      <Menu>
+    <>
+      <Modal isDismissable isOpen={isOpen} onOpenChange={setIsOpen}>
+        <AlertDialog
+          onAction={handleRemoveUser}
+          title={t("user.remove_user")}
+          variant="destructive"
+        >
+          {t("common.action_confirmation")}
+        </AlertDialog>
+      </Modal>
+      <MenuTrigger>
         {variant === "overview" ? (
+          <IconButton aria-label={t("aria.open_user_actions_menu")}>
+            <DotsThreeVerticalIcon size={20} />
+          </IconButton>
+        ) : (
+          <Button color="indigo" variant="light">
+            {t("common.actions")} <CaretDownIcon size={16} />
+          </Button>
+        )}
+        <Menu>
+          {variant === "overview" ? (
+            <MenuItem
+              onAction={() =>
+                navigate({
+                  params: { userId: user.id },
+                  to: "/users/$userId",
+                })
+              }
+            >
+              <UserIcon size={16} />
+              {t("user.view_user")}
+            </MenuItem>
+          ) : null}
+          {user.banned ? (
+            <MenuItem
+              isDisabled={unbanUserMutation.isPending}
+              onAction={() =>
+                unbanUserMutation.mutateAsync({ userId: user.id })
+              }
+            >
+              <HandWavingIcon size={16} />
+              {t("user.unban_user")}
+            </MenuItem>
+          ) : (
+            <MenuItem
+              isDisabled={banUserMutation.isPending}
+              onAction={() => banUserMutation.mutateAsync({ userId: user.id })}
+            >
+              <HandPalmIcon size={16} />
+              {t("user.ban_user")}
+            </MenuItem>
+          )}
           <MenuItem
+            isDisabled={impersonateUserMutation.isPending || !!user.banned}
             onAction={() =>
-              navigate({
-                params: { userId: user.id },
-                to: "/users/$userId",
+              impersonateUserMutation.mutateAsync({ userId: user.id })
+            }
+          >
+            <UserSwitchIcon size={16} />
+            {t("user.impersonate_user")}
+          </MenuItem>
+          <MenuItem
+            isDisabled={revokeAllUserSessionsMutation.isPending}
+            onAction={() =>
+              revokeAllUserSessionsMutation.mutateAsync({
+                userId: user.id,
               })
             }
           >
-            <UserIcon size={16} />
-            {t("user.view_user")}
+            <DeviceMobileSlashIcon size={16} />
+            {t("user.revoke_all_sessions")}
           </MenuItem>
-        ) : null}
-        {user.banned ? (
+          <MenuSeparator />
           <MenuItem
-            isDisabled={unbanUserMutation.isPending}
-            onAction={() => unbanUserMutation.mutateAsync({ userId: user.id })}
+            color="red"
+            isDisabled={removeUserMutation.isPending}
+            onAction={() => setIsOpen(true)}
           >
-            <HandWavingIcon size={16} />
-            {t("user.unban_user")}
+            <TrashSimpleIcon size={16} />
+            {t("user.remove_user")}
           </MenuItem>
-        ) : (
-          <MenuItem
-            isDisabled={banUserMutation.isPending}
-            onAction={() => banUserMutation.mutateAsync({ userId: user.id })}
-          >
-            <HandPalmIcon size={16} />
-            {t("user.ban_user")}
-          </MenuItem>
-        )}
-        <MenuItem
-          isDisabled={impersonateUserMutation.isPending || !!user.banned}
-          onAction={() =>
-            impersonateUserMutation.mutateAsync({ userId: user.id })
-          }
-        >
-          <UserSwitchIcon size={16} />
-          {t("user.impersonate_user")}
-        </MenuItem>
-        <MenuItem
-          isDisabled={revokeAllUserSessionsMutation.isPending}
-          onAction={() =>
-            revokeAllUserSessionsMutation.mutateAsync({
-              userId: user.id,
-            })
-          }
-        >
-          <DeviceMobileSlashIcon size={16} />
-          {t("user.revoke_all_sessions")}
-        </MenuItem>
-        <MenuSeparator />
-        <MenuItem
-          color="red"
-          isDisabled={removeUserMutation.isPending}
-          onAction={async () => {
-            await removeUserMutation.mutateAsync({ userId: user.id });
-
-            if (variant === "profile") {
-              router.navigate({
-                to: "/users",
-              });
-            }
-          }}
-        >
-          <TrashSimpleIcon size={16} />
-          {t("user.remove_user")}
-        </MenuItem>
-      </Menu>
-    </MenuTrigger>
+        </Menu>
+      </MenuTrigger>
+    </>
   );
 }

@@ -2,7 +2,7 @@
   "name": "kolm-start-admin",
   "description": "A TanStack Start + better-auth admin starter, with Prisma ORM, React Aria.",
   "author": "Jelle Kuipers <info@jellekuipers.com> (https://jellekuipers.com)",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "type": "module",
   "keywords": [
     "better-auth",

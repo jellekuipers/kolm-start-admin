@@ -1,13 +1,17 @@
 {
   "common": {
+    "action_confirmation": "Weet je het zeker? Deze actie kan niet ongedaan worden gemaakt.",
     "actions": "Acties",
     "cancel": "Annuleren",
+    "confirm": "Bevestigen",
     "email": "E-mail",
     "name": "Naam",
+    "no_results": "Geen resultaten",
     "of": "van",
     "password": "Wachtwoord",
     "save": "Opslaan",
-    "search_placeholder": "Zoeken.."
+    "search_placeholder": "Zoeken..",
+    "select": "Selecteer"
   },
   "auth": {
     "forgot_password": "Wachtwoord vergeten?",

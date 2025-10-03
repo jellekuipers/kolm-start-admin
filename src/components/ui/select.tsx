@@ -8,6 +8,7 @@ import {
   type SelectProps as AriaSelectProps,
   SelectValue as AriaSelectValue,
 } from "react-aria-components";
+import { useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";
 
 import { Description, FieldError, Label } from "@/components/ui/field";
@@ -32,6 +33,8 @@ export function Select<T extends object>({
   label,
   ...props
 }: SelectProps<T>) {
+  const { t } = useTranslation();
+
   return (
     <AriaSelect
       {...props}
@@ -48,9 +51,9 @@ export function Select<T extends object>({
         )}
       >
         <AriaSelectValue>
-          {({ defaultChildren, isPlaceholder }) => {
-            return isPlaceholder ? "Select" : defaultChildren;
-          }}
+          {({ defaultChildren, isPlaceholder }) =>
+            isPlaceholder ? t("common.select") : defaultChildren
+          }
         </AriaSelectValue>
         <CaretDownIcon size={16} />
       </AriaButton>

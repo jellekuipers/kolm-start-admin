@@ -8,6 +8,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { Callout, CalloutIcon, CalloutText } from "@/components/ui/callout";
 import {
@@ -32,6 +33,7 @@ export function DataTableSimple<TData, TValue>({
   data,
   label,
 }: DataTableProps<TData, TValue>) {
+  const { t } = useTranslation();
   const [sorting, setSorting] = useState<SortingState>([]);
 
   const table = useReactTable({
@@ -91,7 +93,7 @@ export function DataTableSimple<TData, TValue>({
           <CalloutIcon>
             <EmptyIcon size={16} />
           </CalloutIcon>
-          <CalloutText>No results</CalloutText>
+          <CalloutText>{t("common.no_results")}</CalloutText>
         </Callout>
       )}
     </>
