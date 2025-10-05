@@ -29,8 +29,6 @@ A `@tanstack/react-start` + `better-auth` admin starter, with `prisma`, `react-a
 
 Check out <a href="https://github.com/jellekuipers/kolm-start">kolm-start</a>, for a `@tanstack/react-start` starter with `tRPC`, `drizzle-orm`, `better-auth` and `tailwindcss`.
 
-For a version with `@radix-ui/themes`, check out the `radix-themes` branch.
-
 ## Getting Started
 
 ### Prerequisites
