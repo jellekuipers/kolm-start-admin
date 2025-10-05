@@ -43,7 +43,7 @@ function LayoutComponent() {
           <Link className="rounded" to="/">
             <Logo size={32} />
           </Link>
-          <Code>v1.3.3</Code>
+          <Code>v1.3.4</Code>
         </div>
         <SessionUserDropdown />
       </header>
