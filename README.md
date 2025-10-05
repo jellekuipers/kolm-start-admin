@@ -6,7 +6,7 @@
   <h3 align="center">kolm start admin</h3>
 
   <p align="center">
-    A TanStack Start + better-auth admin starter with Prisma ORM, React Aria, i18next.
+    A TanStack Start + better-auth admin starter with Prisma ORM, React Aria, Tailwind, i18next.
     <br />
     <a href="https://github.com/jellekuipers/kolm-start-admin/issues/new?labels=bug">Report Bug</a>
     ·
@@ -16,12 +16,13 @@
 
 ## About The Project
 
-A `@tanstack/react-start` + `better-auth` admin starter, with `prisma`, `react-aria-components`, `i18next`.
+A `@tanstack/react-start` + `better-auth` admin starter, with `prisma`, `react-aria-components`, `tailwind`, `i18next`.
 
 - `@tanstack/react-start`
 - `better-auth`
 - `i18next`
 - `prisma`
+- `tailwindcss`
 - `@tanstack/react-form`
 - `react-aria-components`
 - `biome.js`

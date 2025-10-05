@@ -1,6 +1,6 @@
 {
   "name": "kolm-start-admin",
-  "description": "A TanStack Start + better-auth admin starter, with Prisma ORM, React Aria.",
+  "description": "A TanStack Start + better-auth admin starter with Prisma ORM, React Aria, Tailwind, i18next.",
   "author": "Jelle Kuipers <info@jellekuipers.com> (https://jellekuipers.com)",
   "version": "1.3.3",
   "type": "module",
@@ -10,6 +10,7 @@
     "prisma",
     "react-aria",
     "i18next",
+    "tailwindcss",
     "tanstack-start",
     "typescript"
   ],
