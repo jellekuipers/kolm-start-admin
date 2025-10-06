@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/field";
 import { Heading } from "@/components/ui/heading";
 import { Link } from "@/components/ui/link";
 import { TextField } from "@/components/ui/text-field";
+import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip";
 import { signIn } from "@/lib/auth-client";
 import { getFieldErrorMessage } from "@/lib/error";
 
@@ -60,7 +61,7 @@ function RouteComponent() {
     <div
       className={twMerge(
         "flex min-h-screen flex-col items-center justify-center gap-6 p-4 bg-gray-50",
-        "dark:bg-gray-950",
+        "dark:bg-gray-900",
       )}
     >
       <Logo size={40} />
@@ -93,9 +94,15 @@ function RouteComponent() {
                   <div className="space-y-1">
                     <div className="mb-1 flex items-baseline justify-between">
                       <Label>{t("common.password")}</Label>
-                      <Link className="font-medium" to="/">
-                        {t("auth.forgot_password")}
-                      </Link>
+                      <TooltipTrigger delay={300}>
+                        <Link className="font-medium" disabled to="/">
+                          {t("auth.forgot_password")}
+                        </Link>
+                        <Tooltip>
+                          Start by adding authentication providers
+                          {/* Or extend the sign in with email functionality */}
+                        </Tooltip>
+                      </TooltipTrigger>
                     </div>
                     <TextField
                       defaultValue={field.state.value}
