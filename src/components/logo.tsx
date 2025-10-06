@@ -18,7 +18,7 @@ export function Logo({ size = 32 }: LogoProps) {
     >
       <g fill="none" fillRule="evenodd">
         <circle
-          className="fill-slate-950 dark:fill-white"
+          className="fill-gray-950 dark:fill-white"
           cx="100"
           cy="100"
           r="100"
