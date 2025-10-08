@@ -120,9 +120,9 @@ const buttonStyles = {
       "outline-red-600",
       "hover:border-red-700 hover:bg-red-50 hover:text-red-700",
       "pressed:border-red-700 pressed:bg-red-50 pressed:text-red-700",
-      "dark:border-red-500 dark:text-red-400",
-      "dark:hover:border-red-400 dark:hover:bg-red-900 dark:hover:text-red-300",
-      "dark:pressed:border-red-400 dark:pressed:bg-red-900 dark:pressed:text-red-300",
+      "dark:border-red-500 dark:text-white",
+      "dark:hover:border-red-400 dark:hover:bg-red-900 dark:hover:text-white",
+      "dark:pressed:border-red-400 dark:pressed:bg-red-900 dark:pressed:text-white",
     ),
   },
 };

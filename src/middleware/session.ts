@@ -1,3 +1,4 @@
+import { redirect } from "@tanstack/react-router";
 import { createMiddleware } from "@tanstack/react-start";
 import { getRequestHeaders } from "@tanstack/react-start/server";
 
@@ -9,13 +10,10 @@ export const sessionMiddleware = createMiddleware({ type: "function" }).server(
 
     const session = await auth.api.getSession({
       headers,
-      query: {
-        disableCookieCache: true,
-      },
     });
 
     if (!session) {
-      throw new Error("unauthenticated");
+      throw redirect({ to: "/sign-in" });
     }
 
     return next({ context: { auth: session } });

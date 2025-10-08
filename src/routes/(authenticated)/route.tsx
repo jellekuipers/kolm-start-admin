@@ -11,9 +11,7 @@ import { userRoleEnum } from "@/lib/enums";
 
 export const Route = createFileRoute("/(authenticated)")({
   beforeLoad: ({ context: { auth } }) => {
-    const userIsAuthenticatedAdmin = auth?.user.role === userRoleEnum.admin;
-
-    if (!userIsAuthenticatedAdmin) {
+    if (auth?.user.role !== userRoleEnum.admin) {
       throw redirect({
         to: "/sign-in",
       });
@@ -43,7 +41,7 @@ function LayoutComponent() {
           <Link className="rounded" to="/">
             <Logo size={32} />
           </Link>
-          <Code>v1.3.4</Code>
+          <Code>v1.3.6</Code>
         </div>
         <SessionUserDropdown />
       </header>

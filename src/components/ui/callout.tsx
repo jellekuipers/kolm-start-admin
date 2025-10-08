@@ -14,19 +14,16 @@ interface CalloutTextProps {
 }
 
 const calloutColors = {
-  gray: twMerge(
-    "bg-gray-50 text-gray-600",
-    "dark:bg-gray-900 dark:text-gray-200",
-  ),
+  gray: twMerge("bg-gray-50 text-gray-600", "dark:bg-gray-700 dark:text-white"),
   green: twMerge(
     "bg-green-50 text-green-600",
-    "dark:bg-green-900 dark:text-green-200",
+    "dark:bg-green-700 dark:text-white",
   ),
   indigo: twMerge(
     "bg-indigo-50 text-indigo-700",
     "dark:bg-indigo-700 dark:text-white",
   ),
-  red: twMerge("bg-red-50 text-red-600", "dark:bg-red-900 dark:text-red-400"),
+  red: twMerge("bg-red-50 text-red-600", "dark:bg-red-700 dark:text-white"),
 };
 
 export function Callout({ color, ...props }: CalloutProps) {

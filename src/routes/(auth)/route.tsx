@@ -4,9 +4,7 @@ import { userRoleEnum } from "@/lib/enums";
 
 export const Route = createFileRoute("/(auth)")({
   beforeLoad: ({ context: { auth } }) => {
-    const userIsAuthenticatedAdmin = auth?.user.role === userRoleEnum.admin;
-
-    if (userIsAuthenticatedAdmin) {
+    if (auth?.user.role === userRoleEnum.admin) {
       throw redirect({
         to: "/",
       });

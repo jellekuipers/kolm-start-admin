@@ -9,17 +9,17 @@ interface BadgeProps {
 const badgeColors = {
   gray: twMerge(
     "bg-gray-100 text-gray-700",
-    "dark:bg-gray-700 dark:text-gray-100",
+    "dark:bg-gray-700 dark:text-white",
   ),
   green: twMerge(
     "bg-green-50 text-green-700",
-    "dark:bg-green-900 dark:text-green-50",
+    "dark:bg-green-700 dark:text-white",
   ),
   indigo: twMerge(
     "bg-indigo-50 text-indigo-700",
     "dark:bg-indigo-700 dark:text-white",
   ),
-  red: twMerge("bg-red-50 text-red-600", "dark:bg-red-900 dark:text-red-400"),
+  red: twMerge("bg-red-50 text-red-600", "dark:bg-red-700 dark:text-white"),
 };
 
 export function Badge({ children, className, color }: BadgeProps) {
