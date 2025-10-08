@@ -15,7 +15,7 @@ export const resources = {
 
 i18next.use(initReactI18next).init({
   lng: "en",
-  fallbackLng: "nl",
+  fallbackLng: "en",
   resources,
 });
 

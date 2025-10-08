@@ -20,6 +20,10 @@ import appCss from "@/styles/app.css?url";
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
+  auth?: {
+    session: unknown;
+    user: unknown;
+  };
 }>()({
   beforeLoad: async () => {
     const session = await getServerSession();
@@ -85,20 +89,23 @@ function RootDocument({ children }: { children: ReactNode }) {
         )}
       >
         {children}
-        <TanStackDevtools
-          plugins={[
-            {
-              name: "TanStack Query",
-              render: <ReactQueryDevtoolsPanel />,
-            },
-            {
-              name: "TanStack Router",
-              render: <TanStackRouterDevtoolsPanel />,
-            },
-          ]}
-        />
+        {import.meta.env.DEV ? (
+          <TanStackDevtools
+            plugins={[
+              {
+                name: "TanStack Query",
+                render: <ReactQueryDevtoolsPanel />,
+              },
+              {
+                name: "TanStack Router",
+                render: <TanStackRouterDevtoolsPanel />,
+              },
+            ]}
+          />
+        ) : null}
         <Scripts />
       </body>
     </html>
   );
 }
+
