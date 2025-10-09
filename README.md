@@ -54,7 +54,7 @@ npm install npm@latest -g
    ```
 4. Create a `.env` with the following values
    ```sh
-   DATABASE_URL="file:./dev.db"
+   DATABASE_URL=file:./dev.db
    VITE_BASE_URL=http://localhost:3000
    ```
 5. Initialize database
