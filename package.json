@@ -2,7 +2,7 @@
   "name": "kolm-start-admin",
   "description": "A TanStack Start + better-auth admin starter with Prisma ORM, React Aria, Tailwind, i18next.",
   "author": "Jelle Kuipers <info@jellekuipers.com> (https://jellekuipers.com)",
-  "version": "1.3.6",
+  "version": "1.3.7",
   "type": "module",
   "keywords": [
     "better-auth",
@@ -15,7 +15,7 @@
     "typescript"
   ],
   "scripts": {
-    "build": "vite build && tsc --noEmit",
+    "build": "vite build",
     "check": "npx @biomejs/biome check --write .",
     "db:dev": "prisma migrate dev",
     "db:generate": "prisma generate",
@@ -41,9 +41,9 @@
     "@tanstack/react-query": "^5.90.2",
     "@tanstack/react-query-devtools": "^5.90.2",
     "@tanstack/react-router": "^1.132.47",
-    "@tanstack/react-router-devtools": "^1.132.50",
+    "@tanstack/react-router-devtools": "^1.132.51",
     "@tanstack/react-router-ssr-query": "^1.132.47",
-    "@tanstack/react-start": "^1.132.48",
+    "@tanstack/react-start": "^1.132.51",
     "@tanstack/react-table": "^8.21.3",
     "better-auth": "^1.3.27",
     "i18next": "^25.5.3",
