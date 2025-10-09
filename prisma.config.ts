@@ -5,4 +5,5 @@ export default {
   migrations: {
     seed: "tsx prisma/seed.ts",
   },
+  schema: "prisma/schema.prisma",
 } satisfies PrismaConfig;
