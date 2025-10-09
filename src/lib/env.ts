@@ -13,12 +13,4 @@ export const env = createEnv({
     DATABASE_URL: process.env.DATABASE_URL,
     VITE_BASE_URL: import.meta.env.VITE_BASE_URL,
   },
-  onInvalidAccess: (variable: string) => {
-    console.error(
-      `Attempted to access a server-side environment variable on the client: ${variable}`,
-    );
-    throw new Error(
-      "Attempted to access a server-side environment variable on the client",
-    );
-  },
 });
