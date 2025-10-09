@@ -1,4 +1,3 @@
-import { redirect } from "@tanstack/react-router";
 import { createMiddleware } from "@tanstack/react-start";
 import { getRequestHeaders } from "@tanstack/react-start/server";
 
@@ -13,7 +12,7 @@ export const sessionMiddleware = createMiddleware({ type: "function" }).server(
     });
 
     if (!session) {
-      throw redirect({ to: "/sign-in" });
+      throw new Error("unauthenticated");
     }
 
     return next({ context: { auth: session } });
