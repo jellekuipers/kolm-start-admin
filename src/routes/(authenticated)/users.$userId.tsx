@@ -15,8 +15,8 @@ import { getUserByIdQueryOptions } from "@/queries/user";
 
 export const Route = createFileRoute("/(authenticated)/users/$userId")({
   component: RouteComponent,
-  loader: async ({ context: { queryClient }, params: { userId } }) =>
-    await queryClient.ensureQueryData(getUserByIdQueryOptions({ userId })),
+  loader: ({ context: { queryClient }, params: { userId } }) =>
+    queryClient.ensureQueryData(getUserByIdQueryOptions({ userId })),
 });
 
 function RouteComponent() {
