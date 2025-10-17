@@ -44,13 +44,13 @@ export function UpdateUserRole({ user }: UpdateUserRoleProps) {
       aria-label={t("user.user_role")}
       className="w-48"
       isDisabled={setUserRoleMutation.isPending}
-      onSelectionChange={(key) =>
+      onChange={(key) =>
         setUserRoleMutation.mutateAsync({
           role: key as UserRole,
           userId: user.id,
         })
       }
-      selectedKey={user.role ?? userRoleEnum.user}
+      value={user.role ?? userRoleEnum.user}
     >
       <SelectItem id={userRoleEnum.admin}>{t("role.admin")}</SelectItem>
       <SelectItem id={userRoleEnum.user}>{t("role.user")}</SelectItem>

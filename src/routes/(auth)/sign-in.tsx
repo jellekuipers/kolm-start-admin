@@ -36,8 +36,8 @@ function RouteComponent() {
       email: "admin@kolm.start",
       password: "password1234",
     },
-    onSubmit: async ({ value }) => {
-      await signIn.email({
+    onSubmit: ({ value }) =>
+      signIn.email({
         email: value.email,
         password: value.password,
         fetchOptions: {
@@ -50,8 +50,7 @@ function RouteComponent() {
             router.invalidate();
           },
         },
-      });
-    },
+      }),
     validators: {
       onSubmit: signInSchema,
     },

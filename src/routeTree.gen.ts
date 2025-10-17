@@ -73,9 +73,9 @@ const authenticatedUsersUserIdSessionsRoute =
   } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof authenticatedIndexRoute
   '/sign-in': typeof authSignInRoute
   '/profile': typeof authenticatedProfileRoute
+  '/': typeof authenticatedIndexRoute
   '/users/$userId': typeof authenticatedUsersUserIdRouteWithChildren
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/users': typeof authenticatedUsersIndexRoute
@@ -83,9 +83,9 @@ export interface FileRoutesByFullPath {
   '/users/$userId/': typeof authenticatedUsersUserIdIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof authenticatedIndexRoute
   '/sign-in': typeof authSignInRoute
   '/profile': typeof authenticatedProfileRoute
+  '/': typeof authenticatedIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/users': typeof authenticatedUsersIndexRoute
   '/users/$userId/sessions': typeof authenticatedUsersUserIdSessionsRoute
@@ -107,9 +107,9 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
     | '/sign-in'
     | '/profile'
+    | '/'
     | '/users/$userId'
     | '/api/auth/$'
     | '/users'
@@ -117,9 +117,9 @@ export interface FileRouteTypes {
     | '/users/$userId/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
     | '/sign-in'
     | '/profile'
+    | '/'
     | '/api/auth/$'
     | '/users'
     | '/users/$userId/sessions'
@@ -148,15 +148,15 @@ declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/(authenticated)': {
       id: '/(authenticated)'
-      path: '/'
-      fullPath: '/'
+      path: ''
+      fullPath: ''
       preLoaderRoute: typeof authenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/(auth)': {
       id: '/(auth)'
-      path: '/'
-      fullPath: '/'
+      path: ''
+      fullPath: ''
       preLoaderRoute: typeof authRouteRouteImport
       parentRoute: typeof rootRouteImport
     }

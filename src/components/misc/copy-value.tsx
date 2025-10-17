@@ -16,7 +16,7 @@ export function CopyValue({ value }: CopyValueProps) {
       <Code>{value}</Code>
       <IconButton
         aria-label={t("aria.copy_value_to_clipboard")}
-        onPress={async () => await navigator.clipboard.writeText(value)}
+        onPress={() => navigator.clipboard.writeText(value)}
       >
         <CopyIcon size={16} />
       </IconButton>

@@ -13,10 +13,8 @@ import { listUserSessionsQueryOptions } from "@/queries/user";
 export const Route = createFileRoute("/(authenticated)/users/$userId/sessions")(
   {
     component: RouteComponent,
-    loader: async ({ context: { queryClient }, params: { userId } }) =>
-      await queryClient.ensureQueryData(
-        listUserSessionsQueryOptions({ userId }),
-      ),
+    loader: ({ context: { queryClient }, params: { userId } }) =>
+      queryClient.ensureQueryData(listUserSessionsQueryOptions({ userId })),
   },
 );
 

@@ -40,8 +40,8 @@ export function SessionUserDropdown() {
     refetchSession();
   };
 
-  const signOutHandler = async () =>
-    await signOut({
+  const signOutHandler = () =>
+    signOut({
       fetchOptions: {
         onSuccess: () => {
           router.invalidate();

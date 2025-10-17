@@ -21,8 +21,8 @@ import { listUsersQueryOptions } from "@/queries/user";
 
 export const Route = createFileRoute("/(authenticated)/users/")({
   component: RouteComponent,
-  loader: async ({ context: { queryClient } }) =>
-    await queryClient.ensureQueryData(listUsersQueryOptions()),
+  loader: ({ context: { queryClient } }) =>
+    queryClient.ensureQueryData(listUsersQueryOptions()),
 });
 
 function getColumns({

@@ -20,16 +20,16 @@ export const getUserCountQueryOptions = () =>
     queryKey: ["user_count"],
   });
 
-export const getUserByIdQueryOptions = ({ userId }: { userId: string }) =>
+export const getUserByIdQueryOptions = (data: { userId: string }) =>
   queryOptions({
-    queryFn: async () => await getUserById({ data: { userId } }),
-    queryKey: ["users", userId],
+    queryFn: () => getUserById({ data }),
+    queryKey: ["users", data.userId],
   });
 
-export const listUserSessionsQueryOptions = ({ userId }: { userId: string }) =>
+export const listUserSessionsQueryOptions = (data: { userId: string }) =>
   queryOptions({
-    queryFn: async () => await listUserSessions({ data: { userId } }),
-    queryKey: ["user_sessions", userId],
+    queryFn: () => listUserSessions({ data }),
+    queryKey: ["user_sessions", data.userId],
   });
 
 export const listUserAccountsQueryOptions = () =>
