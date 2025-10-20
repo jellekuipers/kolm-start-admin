@@ -20,10 +20,6 @@ import appCss from "@/styles/app.css?url";
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
-  auth?: {
-    session: unknown;
-    user: unknown;
-  };
 }>()({
   beforeLoad: async () => {
     const session = await getServerSession();
