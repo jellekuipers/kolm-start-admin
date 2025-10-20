@@ -33,8 +33,8 @@ const buttonStyles = {
     indigo: twMerge(
       "border-indigo-700 bg-indigo-700 text-white",
       "outline-indigo-700",
-      "hover:bg-indigo-800 hover:border-indigo-700",
-      "pressed:bg-indigo-800 pressed:border-indigo-700",
+      "hover:bg-indigo-800 hover:border-indigo-800",
+      "pressed:bg-indigo-800 pressed:border-indigo-800",
       "dark:border-indigo-600 dark:bg-indigo-600",
       "dark:hover:bg-indigo-500 dark:hover:border-indigo-500",
       "dark:pressed:bg-indigo-500 dark:pressed:border-indigo-500",
@@ -73,9 +73,9 @@ const buttonStyles = {
       "outline-indigo-700",
       "hover:bg-indigo-100 hover:border-indigo-100 hover:text-indigo-800",
       "pressed:bg-indigo-100 pressed:border-indigo-100 pressed:text-indigo-800",
-      "dark:bg-indigo-200 dark:border-indigo-900 dark:text-indigo-800",
-      "dark:hover:bg-indigo-800 dark:hover:border-indigo-800 dark:hover:text-white",
-      "dark:pressed:bg-indigo-800 dark:pressed:border-indigo-800 dark:pressed:text-white",
+      "dark:bg-indigo-200 dark:border-indigo-200 dark:text-indigo-800",
+      "dark:hover:bg-indigo-300 dark:hover:border-indigo-300 dark:hover:text-indigo-800",
+      "dark:pressed:bg-indigo-700 dark:pressed:border-indigo-700 dark:pressed:text-white",
     ),
     red: twMerge(
       "bg-red-50 border-red-50 text-red-600",

@@ -1,12 +1,12 @@
 import {
-  Tab as AriaTab,
-  TabList as AriaTabList,
-  type TabListProps as AriaTabListProps,
-  TabPanel as AriaTabPanel,
-  type TabPanelProps as AriaTabPanelProps,
-  type TabProps as AriaTabProps,
-  Tabs as AriaTabs,
-  type TabsProps as AriaTabsProps,
+    Tab as AriaTab,
+    TabList as AriaTabList,
+    type TabListProps as AriaTabListProps,
+    TabPanel as AriaTabPanel,
+    type TabPanelProps as AriaTabPanelProps,
+    type TabProps as AriaTabProps,
+    Tabs as AriaTabs,
+    type TabsProps as AriaTabsProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 
@@ -24,7 +24,7 @@ export function TabList<T extends object>(props: AriaTabListProps<T>) {
       {...props}
       className={twMerge(
         "flex border-b border-gray-300",
-        "dark:border-gray-800",
+        "dark:border-gray-700",
       )}
     />
   );

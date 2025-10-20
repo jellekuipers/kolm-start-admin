@@ -98,8 +98,7 @@ function RouteComponent() {
                           {t("auth.forgot_password")}
                         </Link>
                         <Tooltip>
-                          Start by adding authentication providers
-                          {/* Or extend the sign in with email functionality */}
+                          {t("tooltip.forgot_password_disabled")}
                         </Tooltip>
                       </TooltipTrigger>
                     </div>

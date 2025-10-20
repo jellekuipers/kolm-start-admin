@@ -42,7 +42,7 @@ export const Route = createRootRouteWithContext<{
       {
         title: "kolm start admin",
         description:
-          "A TanStack Start + better-auth admin starter with Prisma ORM, tRPC, React Aria",
+          "A TanStack Start + better-auth admin starter with Prisma ORM, React Aria, Tailwind, i18next.",
       },
     ],
     links: [
@@ -108,4 +108,3 @@ function RootDocument({ children }: { children: ReactNode }) {
     </html>
   );
 }
-

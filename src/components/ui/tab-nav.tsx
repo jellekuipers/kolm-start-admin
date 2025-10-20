@@ -20,7 +20,7 @@ export function TabNav(props: TabNavProps) {
       {...props}
       className={twMerge(
         "flex border-b border-gray-300",
-        "dark:border-gray-800",
+        "dark:border-gray-700",
       )}
     />
   );

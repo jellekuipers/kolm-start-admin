@@ -12,7 +12,7 @@ async function main() {
     body: {
       email: "admin@kolm.start",
       name: "Admin User",
-      password: 'password1234',
+      password: "password1234",
       role: userRoleEnum.admin,
     },
   });
@@ -23,8 +23,8 @@ main()
     await db.$disconnect();
   })
 
-  .catch(async (e) => {
-    console.error(e);
+  .catch(async (error) => {
+    console.error(error);
     await db.$disconnect();
     process.exit(1);
   });

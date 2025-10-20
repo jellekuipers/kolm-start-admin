@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { type UserRole, userRoleEnum } from "@/lib/enums";
+import { userRole, userRoleEnum } from "@/lib/enums";
 import { adminMiddleware } from "@/middleware/admin";
 
 export const createUser = createServerFn({ method: "POST" })
@@ -116,7 +116,7 @@ export const setUserRole = createServerFn({ method: "POST" })
   .middleware([adminMiddleware])
   .inputValidator(
     z.object({
-      role: z.string(),
+      role: userRole,
       userId: z.string(),
     }),
   )
@@ -125,7 +125,7 @@ export const setUserRole = createServerFn({ method: "POST" })
 
     await auth.api.setRole({
       body: {
-        role: data.role as UserRole,
+        role: data.role,
         userId: data.userId,
       },
       headers,

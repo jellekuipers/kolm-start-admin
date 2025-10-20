@@ -1,14 +1,14 @@
 import {
-  FieldError as AriaFieldError,
-  type FieldErrorProps as AriaFieldErrorProps,
-  Group as AriaGroup,
-  type GroupProps as AriaGroupProps,
-  Input as AriaInput,
-  type InputProps as AriaInputProps,
-  Label as AriaLabel,
-  type LabelProps as AriaLabelProps,
-  Text as AriaText,
-  type TextProps as AriaTextProps,
+    FieldError as AriaFieldError,
+    type FieldErrorProps as AriaFieldErrorProps,
+    Group as AriaGroup,
+    type GroupProps as AriaGroupProps,
+    Input as AriaInput,
+    type InputProps as AriaInputProps,
+    Label as AriaLabel,
+    type LabelProps as AriaLabelProps,
+    Text as AriaText,
+    type TextProps as AriaTextProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 
@@ -47,7 +47,7 @@ export function FieldGroup({ className, ...props }: GroupProps) {
         "group flex h-8 items-center overflow-hidden rounded border border-gray-300 bg-white",
         "outline-0 outline-offset-2 outline-indigo-700 focus-within:outline-2 focus-visible:outline-2",
         "disabled:border-gray-100 disabled:bg-gray-50 disabled:text-gray-200",
-        "dark:border-gray-800 dark:bg-gray-900",
+        "dark:border-gray-700 dark:bg-gray-800",
         "dark:disabled:border-gray-800 dark:disabled:bg-gray-900 dark:disabled:text-gray-700",
         className,
       )}
@@ -62,7 +62,7 @@ export function Input({ className, ...props }: InputProps) {
       className={twMerge(
         "h-8 min-w-0 bg-white px-2 text-base outline-0 lg:text-sm",
         "disabled:border-gray-100 disabled:bg-gray-50 disabled:text-gray-200",
-        "dark:bg-gray-900",
+        "dark:bg-gray-800",
         "dark:disabled:border-gray-800 dark:disabled:bg-gray-900 dark:disabled:text-gray-700",
         className,
       )}

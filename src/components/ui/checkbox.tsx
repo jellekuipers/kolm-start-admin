@@ -1,7 +1,7 @@
 import { CheckIcon } from "@phosphor-icons/react";
 import {
-  Checkbox as AriaCheckbox,
-  type CheckboxProps as AriaCheckboxProps,
+    Checkbox as AriaCheckbox,
+    type CheckboxProps as AriaCheckboxProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 
@@ -20,7 +20,7 @@ export function Checkbox({ children, ...props }: AriaCheckboxProps) {
         <div
           className={twMerge(
             "flex size-4 shrink-0 items-center justify-center rounded border border-gray-300 bg-white",
-            "dark:border-gray-800 dark:bg-gray-900",
+            "dark:border-gray-700 dark:bg-gray-800",
           )}
         >
           <CheckIcon

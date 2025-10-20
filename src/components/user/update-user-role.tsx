@@ -13,7 +13,7 @@ interface UpdateUserRoleProps {
 }
 
 type UserRoleInput = {
-  role: string;
+  role: UserRole;
   userId: string;
 };
 

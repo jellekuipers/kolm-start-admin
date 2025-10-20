@@ -58,7 +58,7 @@ export function TableBody<T extends object>({
       {...props}
       className={twMerge(
         "divide-y divide-gray-300 border-y border-gray-300 align-middle",
-        "dark:divide-gray-800 dark:border-gray-800",
+        "dark:divide-gray-700 dark:border-gray-700",
         className,
       )}
     />

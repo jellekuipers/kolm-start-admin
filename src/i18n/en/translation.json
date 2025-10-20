@@ -91,5 +91,8 @@
   },
   "pagination": {
     "of": "of"
+  },
+  "tooltip": {
+    "forgot_password_disabled": "Start by adding authentication providers"
   }
 }

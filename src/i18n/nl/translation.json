@@ -91,5 +91,8 @@
   },
   "pagination": {
     "of": "van"
+  },
+  "tooltip": {
+    "forgot_password_disabled": "Begin met het toevoegen van authenticatieproviders"
   }
 }
