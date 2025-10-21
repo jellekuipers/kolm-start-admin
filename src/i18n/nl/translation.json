@@ -75,6 +75,7 @@
     "accounts": "Accounts"
   },
   "aria": {
+    "copied_to_clipboard": "Gekopieerd naar klembord",
     "copy_value_to_clipboard": "Kopieer waarde naar klembord",
     "logo": "Logo",
     "open_session_actions_menu": "Open sessieacties menu",

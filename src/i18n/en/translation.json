@@ -75,6 +75,7 @@
     "accounts": "Accounts"
   },
   "aria": {
+    "copied_to_clipboard": "Copied to clipboard",
     "copy_value_to_clipboard": "Copy value to clipboard",
     "logo": "Logo",
     "open_session_actions_menu": "Open session actions menu",
