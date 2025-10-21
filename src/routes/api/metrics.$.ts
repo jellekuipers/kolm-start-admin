@@ -3,7 +3,7 @@ import { json } from "@tanstack/react-start";
 
 import { metrics } from "@/utils/metrics";
 
-export const Route = createFileRoute("/(misc)/metrics")({
+export const Route = createFileRoute("/api/metrics/$")({
   server: {
     handlers: {
       GET: async () => {

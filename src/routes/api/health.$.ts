@@ -19,20 +19,18 @@ const checkDatabase = createServerOnlyFn(async () => {
   }
 });
 
-export const Route = createFileRoute("/(misc)/health")({
+export const Route = createFileRoute("/api/health/$")({
   server: {
     handlers: {
       GET: async () => {
-        const checks = {
+        return json({
           database: await checkDatabase(),
           memory: process.memoryUsage(),
           status: "healthy",
           timestamp: new Date().toISOString(),
           uptime: process.uptime(),
           version: process.env.npm_package_version,
-        };
-
-        return json(checks);
+        });
       },
     },
   },
