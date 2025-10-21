@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as authenticatedRouteRouteImport } from './routes/(authenticated)/route'
 import { Route as authRouteRouteImport } from './routes/(auth)/route'
 import { Route as authenticatedIndexRouteImport } from './routes/(authenticated)/index'
+import { Route as miscMetricsRouteImport } from './routes/(misc)/metrics'
+import { Route as miscHealthRouteImport } from './routes/(misc)/health'
 import { Route as authenticatedProfileRouteImport } from './routes/(authenticated)/profile'
 import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
 import { Route as authenticatedUsersIndexRouteImport } from './routes/(authenticated)/users.index'
@@ -32,6 +34,16 @@ const authenticatedIndexRoute = authenticatedIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => authenticatedRouteRoute,
+} as any)
+const miscMetricsRoute = miscMetricsRouteImport.update({
+  id: '/(misc)/metrics',
+  path: '/metrics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const miscHealthRoute = miscHealthRouteImport.update({
+  id: '/(misc)/health',
+  path: '/health',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const authenticatedProfileRoute = authenticatedProfileRouteImport.update({
   id: '/profile',
@@ -75,6 +87,8 @@ const authenticatedUsersUserIdSessionsRoute =
 export interface FileRoutesByFullPath {
   '/sign-in': typeof authSignInRoute
   '/profile': typeof authenticatedProfileRoute
+  '/health': typeof miscHealthRoute
+  '/metrics': typeof miscMetricsRoute
   '/': typeof authenticatedIndexRoute
   '/users/$userId': typeof authenticatedUsersUserIdRouteWithChildren
   '/api/auth/$': typeof ApiAuthSplatRoute
@@ -85,6 +99,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/sign-in': typeof authSignInRoute
   '/profile': typeof authenticatedProfileRoute
+  '/health': typeof miscHealthRoute
+  '/metrics': typeof miscMetricsRoute
   '/': typeof authenticatedIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/users': typeof authenticatedUsersIndexRoute
@@ -97,6 +113,8 @@ export interface FileRoutesById {
   '/(authenticated)': typeof authenticatedRouteRouteWithChildren
   '/(auth)/sign-in': typeof authSignInRoute
   '/(authenticated)/profile': typeof authenticatedProfileRoute
+  '/(misc)/health': typeof miscHealthRoute
+  '/(misc)/metrics': typeof miscMetricsRoute
   '/(authenticated)/': typeof authenticatedIndexRoute
   '/(authenticated)/users/$userId': typeof authenticatedUsersUserIdRouteWithChildren
   '/api/auth/$': typeof ApiAuthSplatRoute
@@ -109,6 +127,8 @@ export interface FileRouteTypes {
   fullPaths:
     | '/sign-in'
     | '/profile'
+    | '/health'
+    | '/metrics'
     | '/'
     | '/users/$userId'
     | '/api/auth/$'
@@ -119,6 +139,8 @@ export interface FileRouteTypes {
   to:
     | '/sign-in'
     | '/profile'
+    | '/health'
+    | '/metrics'
     | '/'
     | '/api/auth/$'
     | '/users'
@@ -130,6 +152,8 @@ export interface FileRouteTypes {
     | '/(authenticated)'
     | '/(auth)/sign-in'
     | '/(authenticated)/profile'
+    | '/(misc)/health'
+    | '/(misc)/metrics'
     | '/(authenticated)/'
     | '/(authenticated)/users/$userId'
     | '/api/auth/$'
@@ -141,6 +165,8 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   authRouteRoute: typeof authRouteRouteWithChildren
   authenticatedRouteRoute: typeof authenticatedRouteRouteWithChildren
+  miscHealthRoute: typeof miscHealthRoute
+  miscMetricsRoute: typeof miscMetricsRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
 
@@ -166,6 +192,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof authenticatedIndexRouteImport
       parentRoute: typeof authenticatedRouteRoute
+    }
+    '/(misc)/metrics': {
+      id: '/(misc)/metrics'
+      path: '/metrics'
+      fullPath: '/metrics'
+      preLoaderRoute: typeof miscMetricsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(misc)/health': {
+      id: '/(misc)/health'
+      path: '/health'
+      fullPath: '/health'
+      preLoaderRoute: typeof miscHealthRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/(authenticated)/profile': {
       id: '/(authenticated)/profile'
@@ -268,6 +308,8 @@ const authenticatedRouteRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   authRouteRoute: authRouteRouteWithChildren,
   authenticatedRouteRoute: authenticatedRouteRouteWithChildren,
+  miscHealthRoute: miscHealthRoute,
+  miscMetricsRoute: miscMetricsRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }
 export const routeTree = rootRouteImport

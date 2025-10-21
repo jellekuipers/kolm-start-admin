@@ -3,13 +3,10 @@ import { useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";
 
 import { Logo } from "@/components/logo";
-import { Code } from "@/components/ui/code";
 import { Link } from "@/components/ui/link";
 import { Separator } from "@/components/ui/separator";
 import { SessionUserDropdown } from "@/components/user/session-user-dropdown";
 import { userRoleEnum } from "@/lib/enums";
-
-import packageJson from "../../../package.json";
 
 export const Route = createFileRoute("/(authenticated)")({
   beforeLoad: ({ context: { auth } }) => {
@@ -43,7 +40,6 @@ function LayoutComponent() {
           <Link className="rounded" to="/">
             <Logo size={32} />
           </Link>
-          <Code>v{packageJson.version}</Code>
         </div>
         <SessionUserDropdown />
       </header>
