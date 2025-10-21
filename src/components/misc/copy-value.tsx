@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 
 import { Code } from "@/components/ui/code";
 import { IconButton } from "@/components/ui/icon-button";
-import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip";
 import { logger } from "@/utils/logger";
 
 interface CopyValueProps {
@@ -42,19 +41,16 @@ export function CopyValue({ value }: CopyValueProps) {
   return (
     <div className="flex items-center gap-2">
       <Code>{value}</Code>
-      <TooltipTrigger delay={300}>
-        <IconButton
-          aria-label={
-            copied
-              ? t("aria.copied_to_clipboard")
-              : t("aria.copy_value_to_clipboard")
-          }
-          onPress={onPress}
-        >
-          {copied ? <CheckIcon size={16} /> : <CopyIcon size={16} />}
-        </IconButton>
-        <Tooltip>{t("aria.copy_value_to_clipboard")}</Tooltip>
-      </TooltipTrigger>
+      <IconButton
+        aria-label={
+          copied
+            ? t("aria.copied_to_clipboard")
+            : t("aria.copy_value_to_clipboard")
+        }
+        onPress={onPress}
+      >
+        {copied ? <CheckIcon size={16} /> : <CopyIcon size={16} />}
+      </IconButton>
     </div>
   );
 }

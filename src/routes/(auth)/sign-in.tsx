@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/field";
 import { Heading } from "@/components/ui/heading";
 import { Link } from "@/components/ui/link";
 import { TextField } from "@/components/ui/text-field";
+import { toastQueue } from "@/components/ui/toast";
 import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip";
 import { signIn } from "@/lib/auth-client";
 import { getFieldErrorMessage } from "@/lib/error";
@@ -50,9 +51,21 @@ function RouteComponent() {
             });
 
             setError(error);
+
+            toastQueue.add({
+              title: t("toast.sign_in_error_title"),
+              description: t("toast.sign_in_error_description"),
+              color: "red",
+            });
           },
           onSuccess: () => {
             router.invalidate();
+
+            toastQueue.add({
+              title: t("toast.sign_in_success_title"),
+              description: t("toast.sign_in_success_description"),
+              color: "gray",
+            });
           },
         },
       }),

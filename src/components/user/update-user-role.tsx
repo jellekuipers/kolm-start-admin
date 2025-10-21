@@ -4,6 +4,7 @@ import { useRouter } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 
 import { Select, SelectItem } from "@/components/ui/select";
+import { toastQueue } from "@/components/ui/toast";
 import { type UserRole, userRoleEnum } from "@/lib/enums";
 import { getUserByIdQueryOptions } from "@/queries/user";
 import { setUserRole } from "@/server/user";
@@ -23,25 +24,33 @@ export function UpdateUserRole({ user }: UpdateUserRoleProps) {
   const router = useRouter();
   const queryClient = useQueryClient();
 
-  const onMutationError = async (error: unknown) => {
-    logger({
-      level: "error",
-      message: "UpdateUserRole",
-      data: error,
-    });
-  };
-
-  const onMutationSuccess = async () => {
-    await router.invalidate({ sync: true });
-    await queryClient.refetchQueries(
-      getUserByIdQueryOptions({ userId: user.id }),
-    );
-  };
-
   const setUserRoleMutation = useMutation({
     mutationFn: (data: UserRoleInput) => setUserRole({ data }),
-    onError: onMutationError,
-    onSuccess: onMutationSuccess,
+    onError: (error: unknown) => {
+      logger({
+        level: "error",
+        message: "UpdateUserRole",
+        data: error,
+      });
+
+      toastQueue.add({
+        title: t("toast.user_role_update_error_title"),
+        description: t("toast.user_role_update_error_description"),
+        color: "red",
+      });
+    },
+    onSuccess: async () => {
+      await router.invalidate({ sync: true });
+      await queryClient.refetchQueries(
+        getUserByIdQueryOptions({ userId: user.id }),
+      );
+
+      toastQueue.add({
+        title: t("toast.user_role_update_success_title"),
+        description: t("toast.user_role_update_success_description"),
+        color: "gray",
+      });
+    },
   });
 
   return (

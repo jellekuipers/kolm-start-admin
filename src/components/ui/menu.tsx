@@ -58,8 +58,8 @@ export function MenuItem({
       className={twMerge(
         "flex h-8 cursor-default items-center gap-2 rounded px-2 text-sm",
         "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
-        "disabled:bg-gray-50 disabled:text-gray-300",
-        "dark:disabled:bg-gray-900 dark:disabled:text-gray-700",
+        "disabled:text-gray-300",
+        "dark:disabled:text-gray-700",
         menuItemColors[color],
       )}
     />
