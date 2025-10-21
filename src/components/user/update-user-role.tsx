@@ -7,6 +7,7 @@ import { Select, SelectItem } from "@/components/ui/select";
 import { type UserRole, userRoleEnum } from "@/lib/enums";
 import { getUserByIdQueryOptions } from "@/queries/user";
 import { setUserRole } from "@/server/user";
+import { logger } from "@/utils/logger";
 
 interface UpdateUserRoleProps {
   user: User;
@@ -23,7 +24,7 @@ export function UpdateUserRole({ user }: UpdateUserRoleProps) {
   const queryClient = useQueryClient();
 
   const onMutationError = async (error: unknown) => {
-    console.error(error);
+    logger("error", "UpdateUserRole", error);
   };
 
   const onMutationSuccess = async () => {

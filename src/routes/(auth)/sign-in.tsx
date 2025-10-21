@@ -16,6 +16,7 @@ import { TextField } from "@/components/ui/text-field";
 import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip";
 import { signIn } from "@/lib/auth-client";
 import { getFieldErrorMessage } from "@/lib/error";
+import { logger } from "@/utils/logger";
 
 const signInSchema = z.object({
   email: z.email(),
@@ -42,7 +43,7 @@ function RouteComponent() {
         password: value.password,
         fetchOptions: {
           onError({ error }) {
-            console.error(error);
+            logger("error", "SignIn", error);
 
             setError(error);
           },

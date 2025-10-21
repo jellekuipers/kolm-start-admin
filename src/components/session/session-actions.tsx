@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { IconButton } from "@/components/ui/icon-button";
 import { Menu, MenuItem, MenuTrigger } from "@/components/ui/menu";
 import { revokeUserSession } from "@/server/user";
+import { logger } from "@/utils/logger";
 
 interface SessionActionsProps {
   sessionToken: string;
@@ -20,7 +21,7 @@ export function SessionActions({ sessionToken }: SessionActionsProps) {
   const router = useRouter();
 
   const onMutationError = async (error: unknown) => {
-    console.error(error);
+    logger("error", "SessionActions", error);
   };
 
   const onMutationSuccess = async () => {

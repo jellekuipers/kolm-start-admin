@@ -13,6 +13,7 @@ import { TextField } from "@/components/ui/text-field";
 import { getFieldErrorMessage } from "@/lib/error";
 import { listUsersQueryOptions } from "@/queries/user";
 import { createUser } from "@/server/user";
+import { logger } from "@/utils/logger";
 
 const createUserSchema = z.object({
   email: z.email(),
@@ -30,7 +31,7 @@ export function CreateUserModal() {
   const queryClient = useQueryClient();
 
   const onMutationError = async (error: unknown) => {
-    console.error(error);
+    logger("error", "CreateUserModal", error);
 
     if (error instanceof Error) {
       setError(error);

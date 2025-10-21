@@ -28,6 +28,7 @@ import {
   revokeAllUserSessions,
   unbanUser,
 } from "@/server/user";
+import { logger } from "@/utils/logger";
 
 interface UserActionsProps {
   user: User;
@@ -47,7 +48,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
   const queryClient = useQueryClient();
 
   const onMutationError = async (error: unknown) => {
-    console.error(error);
+    logger("error", "UserActions", error);
   };
 
   const onMutationSuccess = async () => {

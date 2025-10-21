@@ -13,6 +13,7 @@ import { Modal, ModalHeading } from "@/components/ui/modal";
 import { TextField } from "@/components/ui/text-field";
 import { authClient, useSession } from "@/lib/auth-client";
 import { getFieldErrorMessage } from "@/lib/error";
+import { logger } from "@/utils/logger";
 
 interface UpdateProfileModalProps {
   user: User;
@@ -32,7 +33,7 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
   const session = useSession();
 
   const onMutationError = async (error: unknown) => {
-    console.error(error);
+    logger("error", "UpdateProfileModal", error);
 
     if (error instanceof Error) {
       setError(error);
