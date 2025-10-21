@@ -24,7 +24,11 @@ export function UpdateUserRole({ user }: UpdateUserRoleProps) {
   const queryClient = useQueryClient();
 
   const onMutationError = async (error: unknown) => {
-    logger("error", "UpdateUserRole", error);
+    logger({
+      level: "error",
+      message: "UpdateUserRole",
+      data: error,
+    });
   };
 
   const onMutationSuccess = async () => {

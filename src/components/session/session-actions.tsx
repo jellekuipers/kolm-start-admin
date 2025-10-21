@@ -21,7 +21,11 @@ export function SessionActions({ sessionToken }: SessionActionsProps) {
   const router = useRouter();
 
   const onMutationError = async (error: unknown) => {
-    logger("error", "SessionActions", error);
+    logger({
+      level: "error",
+      message: "SessionActions",
+      data: error,
+    });
   };
 
   const onMutationSuccess = async () => {

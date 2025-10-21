@@ -43,7 +43,11 @@ function RouteComponent() {
         password: value.password,
         fetchOptions: {
           onError({ error }) {
-            logger("error", "SignIn", error);
+            logger({
+              level: "error",
+              message: "SignIn",
+              data: error,
+            });
 
             setError(error);
           },

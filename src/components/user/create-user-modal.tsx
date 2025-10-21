@@ -31,7 +31,11 @@ export function CreateUserModal() {
   const queryClient = useQueryClient();
 
   const onMutationError = async (error: unknown) => {
-    logger("error", "CreateUserModal", error);
+    logger({
+      level: "error",
+      message: "CreateUserModal",
+      data: error,
+    });
 
     if (error instanceof Error) {
       setError(error);

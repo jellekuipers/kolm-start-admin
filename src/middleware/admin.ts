@@ -5,7 +5,7 @@ import { loggingMiddleware } from "@/middleware/logging";
 import { sessionMiddleware } from "@/middleware/session";
 
 export const adminMiddleware = createMiddleware({ type: "function" })
-  .middleware([sessionMiddleware, loggingMiddleware])
+  .middleware([loggingMiddleware, sessionMiddleware])
   .server(({ next, context: { auth } }) => {
     if (auth.user.role !== userRoleEnum.admin) {
       throw new Error("forbidden");

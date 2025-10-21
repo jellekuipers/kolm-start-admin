@@ -5,7 +5,11 @@ import { Callout, CalloutIcon, CalloutText } from "@/components/ui/callout";
 import { logger } from "@/utils/logger";
 
 export function DefaultCatchBoundary({ error }: ErrorComponentProps) {
-  logger("error", "DefaultCatchBoundary", error);
+  logger({
+    level: "error",
+    message: "DefaultCatchBoundary",
+    data: error,
+  });
 
   return (
     <Callout color="red">

@@ -20,7 +20,11 @@ async function main() {
 main()
   .then(() => db.$disconnect())
   .catch(async (error) => {
-    logger('error', 'Seed', error);
+    logger({
+      level: 'error',
+      message: 'Seed',
+      data: error,
+    });
 
     await db.$disconnect();
 

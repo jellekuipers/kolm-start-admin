@@ -33,7 +33,11 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
   const session = useSession();
 
   const onMutationError = async (error: unknown) => {
-    logger("error", "UpdateProfileModal", error);
+    logger({
+      level: "error",
+      message: "UpdateProfileModal",
+      data: error,
+    });
 
     if (error instanceof Error) {
       setError(error);

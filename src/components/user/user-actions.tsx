@@ -48,7 +48,11 @@ export function UserActions({ user, variant }: UserActionsProps) {
   const queryClient = useQueryClient();
 
   const onMutationError = async (error: unknown) => {
-    logger("error", "UserActions", error);
+    logger({
+      level: "error",
+      message: "UserActions",
+      data: error,
+    });
   };
 
   const onMutationSuccess = async () => {
