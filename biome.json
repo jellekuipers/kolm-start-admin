@@ -22,6 +22,7 @@
   "files": {
     "ignoreUnknown": false,
     "includes": [
+      "prisma/seed.ts",
       "src/**",
       "!src/routeTree.gen.ts",
       "prisma.config.ts",

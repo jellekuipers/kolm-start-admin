@@ -53,13 +53,13 @@ export function UserActions({ user, variant }: UserActionsProps) {
     onError: (error: unknown) => {
       logger({
         level: "error",
-        message: "UserActions",
+        message: "user_ban_error",
         data: error,
       });
 
       toastQueue.add({
-        title: t("toast.user_ban_error_title"),
-        description: t("toast.user_ban_error_description"),
+        title: t("message.user_ban_error_title"),
+        description: t("message.user_ban_error_description"),
         color: "red",
       });
     },
@@ -68,8 +68,8 @@ export function UserActions({ user, variant }: UserActionsProps) {
       await queryClient.refetchQueries(listUsersQueryOptions());
 
       toastQueue.add({
-        title: t("toast.user_ban_success_title"),
-        description: t("toast.user_ban_success_description"),
+        title: t("message.user_ban_success_title"),
+        description: t("message.user_ban_success_description"),
         color: "gray",
       });
     },
@@ -80,13 +80,13 @@ export function UserActions({ user, variant }: UserActionsProps) {
     onError: (error: unknown) => {
       logger({
         level: "error",
-        message: "UserActions",
+        message: "user_unban_error",
         data: error,
       });
 
       toastQueue.add({
-        title: t("toast.user_unban_error_title"),
-        description: t("toast.user_unban_error_description"),
+        title: t("message.user_unban_error_title"),
+        description: t("message.user_unban_error_description"),
         color: "red",
       });
     },
@@ -95,8 +95,8 @@ export function UserActions({ user, variant }: UserActionsProps) {
       await queryClient.refetchQueries(listUsersQueryOptions());
 
       toastQueue.add({
-        title: t("toast.user_unban_success_title"),
-        description: t("toast.user_unban_success_description"),
+        title: t("message.user_unban_success_title"),
+        description: t("message.user_unban_success_description"),
         color: "gray",
       });
     },
@@ -107,13 +107,13 @@ export function UserActions({ user, variant }: UserActionsProps) {
     onError: (error: unknown) => {
       logger({
         level: "error",
-        message: "UserActions",
+        message: "user_impersonate_error",
         data: error,
       });
 
       toastQueue.add({
-        title: t("toast.user_impersonate_error_title"),
-        description: t("toast.user_impersonate_error_description"),
+        title: t("message.user_impersonate_error_title"),
+        description: t("message.user_impersonate_error_description"),
         color: "red",
       });
     },
@@ -121,8 +121,8 @@ export function UserActions({ user, variant }: UserActionsProps) {
       session.refetch();
 
       toastQueue.add({
-        title: t("toast.user_impersonate_success_title"),
-        description: t("toast.user_impersonate_success_description"),
+        title: t("message.user_impersonate_success_title"),
+        description: t("message.user_impersonate_success_description"),
         color: "gray",
       });
     },
@@ -133,13 +133,13 @@ export function UserActions({ user, variant }: UserActionsProps) {
     onError: (error: unknown) => {
       logger({
         level: "error",
-        message: "UserActions",
+        message: "user_remove_error",
         data: error,
       });
 
       toastQueue.add({
-        title: t("toast.user_remove_error_title"),
-        description: t("toast.user_remove_error_description"),
+        title: t("message.user_remove_error_title"),
+        description: t("message.user_remove_error_description"),
         color: "red",
       });
     },
@@ -148,8 +148,8 @@ export function UserActions({ user, variant }: UserActionsProps) {
       await queryClient.refetchQueries(listUsersQueryOptions());
 
       toastQueue.add({
-        title: t("toast.user_remove_success_title"),
-        description: t("toast.user_remove_success_description"),
+        title: t("message.user_remove_success_title"),
+        description: t("message.user_remove_success_description"),
         color: "gray",
       });
     },
@@ -160,13 +160,13 @@ export function UserActions({ user, variant }: UserActionsProps) {
     onError: (error: unknown) => {
       logger({
         level: "error",
-        message: "UserActions",
+        message: "sessions_revoke_all_error",
         data: error,
       });
 
       toastQueue.add({
-        title: t("toast.sessions_revoke_all_error_title"),
-        description: t("toast.sessions_revoke_all_error_description"),
+        title: t("message.sessions_revoke_all_error_title"),
+        description: t("message.sessions_revoke_all_error_description"),
         color: "red",
       });
     },
@@ -175,8 +175,8 @@ export function UserActions({ user, variant }: UserActionsProps) {
       await queryClient.refetchQueries(listUsersQueryOptions());
 
       toastQueue.add({
-        title: t("toast.sessions_revoke_all_success_title"),
-        description: t("toast.sessions_revoke_all_success_description"),
+        title: t("message.sessions_revoke_all_success_title"),
+        description: t("message.sessions_revoke_all_success_description"),
         color: "gray",
       });
     },

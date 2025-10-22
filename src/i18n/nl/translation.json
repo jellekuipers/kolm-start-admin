@@ -96,7 +96,7 @@
   "tooltip": {
     "forgot_password_disabled": "Begin met het toevoegen van authenticatieproviders"
   },
-  "toast": {
+  "message": {
     "sign_in_success_title": "Inloggen geslaagd",
     "sign_in_success_description": "Je bent succesvol ingelogd",
     "sign_in_error_title": "Inloggen mislukt",

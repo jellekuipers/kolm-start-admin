@@ -96,7 +96,7 @@
   "tooltip": {
     "forgot_password_disabled": "Start by adding authentication providers"
   },
-  "toast": {
+  "message": {
     "sign_in_success_title": "Sign in successful",
     "sign_in_success_description": "You have successfully signed in",
     "sign_in_error_title": "Sign in failed",

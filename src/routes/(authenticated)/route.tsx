@@ -23,6 +23,7 @@ export const Route = createFileRoute("/(authenticated)")({
 
 function LayoutComponent() {
   const { t } = useTranslation();
+
   const routes = [
     { to: "/", label: t("navigation.dashboard") },
     { to: "/users", label: t("navigation.users") },

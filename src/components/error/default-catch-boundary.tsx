@@ -7,7 +7,7 @@ import { logger } from "@/utils/logger";
 export function DefaultCatchBoundary({ error }: ErrorComponentProps) {
   logger({
     level: "error",
-    message: "DefaultCatchBoundary",
+    message: "default_catch_boundary_error",
     data: error,
   });
 

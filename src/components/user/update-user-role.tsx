@@ -29,13 +29,13 @@ export function UpdateUserRole({ user }: UpdateUserRoleProps) {
     onError: (error: unknown) => {
       logger({
         level: "error",
-        message: "UpdateUserRole",
+        message: "user_role_update_error",
         data: error,
       });
 
       toastQueue.add({
-        title: t("toast.user_role_update_error_title"),
-        description: t("toast.user_role_update_error_description"),
+        title: t("message.user_role_update_error_title"),
+        description: t("message.user_role_update_error_description"),
         color: "red",
       });
     },
@@ -46,8 +46,8 @@ export function UpdateUserRole({ user }: UpdateUserRoleProps) {
       );
 
       toastQueue.add({
-        title: t("toast.user_role_update_success_title"),
-        description: t("toast.user_role_update_success_description"),
+        title: t("message.user_role_update_success_title"),
+        description: t("message.user_role_update_success_description"),
         color: "gray",
       });
     },

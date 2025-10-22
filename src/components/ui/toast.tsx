@@ -33,7 +33,7 @@ const toastColors = {
 export function Toast() {
   return (
     <AriaToastRegion
-      className="absolute top-4 right-4 flex flex-col gap-2"
+      className="fixed top-4 right-4 flex flex-col gap-2"
       queue={toastQueue}
     >
       {({ toast }) => {

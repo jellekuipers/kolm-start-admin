@@ -139,8 +139,8 @@ const defaultColumnVisibility = {
 
 function RouteComponent() {
   const { t } = useTranslation();
-  const { data: users } = useSuspenseQuery(listUsersQueryOptions());
   const columns = getColumns({ t });
+  const { data: users } = useSuspenseQuery(listUsersQueryOptions());
 
   return (
     <Container>

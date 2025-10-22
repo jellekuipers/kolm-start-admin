@@ -36,19 +36,18 @@ export function CreateUserModal() {
     onError: (error: unknown) => {
       logger({
         level: "error",
-        message: "CreateUserModal",
+        message: "user_create_error",
         data: error,
       });
 
       if (error instanceof Error) {
         setError(error);
+      } else {
+        setError({
+          name: t("message.user_create_error_title"),
+          message: t("message.user_create_error_description"),
+        });
       }
-
-      toastQueue.add({
-        title: t("toast.user_create_error_title"),
-        description: t("toast.user_create_error_description"),
-        color: "red",
-      });
     },
     onSuccess: async () => {
       reset();
@@ -59,8 +58,8 @@ export function CreateUserModal() {
       setOpen(false);
 
       toastQueue.add({
-        title: t("toast.user_create_success_title"),
-        description: t("toast.user_create_success_description"),
+        title: t("message.user_create_success_title"),
+        description: t("message.user_create_success_description"),
         color: "gray",
       });
     },

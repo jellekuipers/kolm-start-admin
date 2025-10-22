@@ -46,24 +46,25 @@ function RouteComponent() {
           onError({ error }) {
             logger({
               level: "error",
-              message: "SignIn",
+              message: "sign_in_error",
               data: error,
             });
 
-            setError(error);
-
-            toastQueue.add({
-              title: t("toast.sign_in_error_title"),
-              description: t("toast.sign_in_error_description"),
-              color: "red",
-            });
+            if (error instanceof Error) {
+              setError(error);
+            } else {
+              setError({
+                name: t("message.sign_in_error_title"),
+                message: t("message.sign_in_error_description"),
+              });
+            }
           },
           onSuccess: () => {
             router.invalidate();
 
             toastQueue.add({
-              title: t("toast.sign_in_success_title"),
-              description: t("toast.sign_in_success_description"),
+              title: t("message.sign_in_success_title"),
+              description: t("message.sign_in_success_description"),
               color: "gray",
             });
           },

@@ -26,13 +26,13 @@ export function SessionActions({ sessionToken }: SessionActionsProps) {
     onError: (error: unknown) => {
       logger({
         level: "error",
-        message: "SessionActions",
+        message: "session_revoke_error",
         data: error,
       });
 
       toastQueue.add({
-        title: t("toast.session_revoke_error_title"),
-        description: t("toast.session_revoke_error_description"),
+        title: t("message.session_revoke_error_title"),
+        description: t("message.session_revoke_error_description"),
         color: "red",
       });
     },
@@ -40,8 +40,8 @@ export function SessionActions({ sessionToken }: SessionActionsProps) {
       await router.invalidate({ sync: true });
 
       toastQueue.add({
-        title: t("toast.session_revoke_success_title"),
-        description: t("toast.session_revoke_success_description"),
+        title: t("message.session_revoke_success_title"),
+        description: t("message.session_revoke_success_description"),
         color: "gray",
       });
     },

@@ -22,7 +22,7 @@ export function CopyValue({ value }: CopyValueProps) {
     } catch (error) {
       logger({
         level: "error",
-        message: "CopyValue",
+        message: "copy_value_error",
         data: error,
       });
     }

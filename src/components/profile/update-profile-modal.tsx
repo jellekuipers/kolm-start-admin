@@ -38,19 +38,18 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
     onError: (error: unknown) => {
       logger({
         level: "error",
-        message: "UpdateProfileModal",
+        message: "profile_update_error",
         data: error,
       });
 
       if (error instanceof Error) {
         setError(error);
+      } else {
+        setError({
+          name: t("message.profile_update_error_title"),
+          message: t("message.profile_update_error_description"),
+        });
       }
-
-      toastQueue.add({
-        title: t("toast.profile_update_error_title"),
-        description: t("toast.profile_update_error_description"),
-        color: "red",
-      });
     },
     onSuccess: async () => {
       reset();
@@ -62,8 +61,8 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
       setOpen(false);
 
       toastQueue.add({
-        title: t("toast.profile_update_success_title"),
-        description: t("toast.profile_update_success_description"),
+        title: t("message.profile_update_success_title"),
+        description: t("message.profile_update_success_description"),
         color: "gray",
       });
     },

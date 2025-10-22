@@ -58,8 +58,8 @@ function getColumns({
 function RouteComponent() {
   const auth = Route.useRouteContext({ select: ({ auth }) => auth });
   const { t } = useTranslation();
-  const { data: accounts } = useSuspenseQuery(listUserAccountsQueryOptions());
   const columns = getColumns({ t });
+  const { data: accounts } = useSuspenseQuery(listUserAccountsQueryOptions());
 
   return (
     <Container>
