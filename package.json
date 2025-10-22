@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
-    "@prisma/client": "^6.17.1",
+    "@prisma/client": "^6.18.0",
     "@t3-oss/env-core": "^0.13.8",
     "@tanstack/match-sorter-utils": "^8.19.4",
     "@tanstack/react-devtools": "^0.7.7",
@@ -51,7 +51,7 @@
     "react-aria": "^3.44.0",
     "react-aria-components": "^1.13.0",
     "react-dom": "^19.2.0",
-    "react-i18next": "^16.1.4",
+    "react-i18next": "^16.1.5",
     "tailwind-merge": "^3.3.1",
     "zod": "^4.1.12"
   },
@@ -63,7 +63,7 @@
     "@types/react-dom": "^19.2.2",
     "@vitejs/plugin-react": "^5.0.4",
     "dotenv": "^17.2.3",
-    "prisma": "^6.17.1",
+    "prisma": "^6.18.0",
     "tailwindcss": "^4.1.15",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-react-aria-components": "^2.0.1",
