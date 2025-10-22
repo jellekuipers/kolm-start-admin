@@ -15,7 +15,6 @@ import { Heading } from "@/components/ui/heading";
 import { Link } from "@/components/ui/link";
 import { Separator } from "@/components/ui/separator";
 import { CreateUserModal } from "@/components/user/create-user-modal";
-import { SessionUserActions } from "@/components/user/session-user-actions";
 import { UserActions } from "@/components/user/user-actions";
 import { UserRole } from "@/components/user/user-role";
 import type { Session } from "@/lib/auth-client";
@@ -125,11 +124,9 @@ function getColumns({
       header: undefined,
       cell: ({ row }) => (
         <div className="flex justify-end">
-          {row.original.id === auth.session.userId ? (
-            <SessionUserActions user={auth.user} />
-          ) : (
+          {row.original.id !== auth.session.userId ? (
             <UserActions user={row.original} variant="overview" />
-          )}
+          ) : null}
         </div>
       ),
     },
