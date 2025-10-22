@@ -61,7 +61,7 @@ export function Toast() {
         return (
           <AriaToast
             className={twMerge(
-              "flex justify-between items-start gap-4 rounded-lg p-4 text-sm w-full",
+              "flex justify-between items-start gap-4 rounded-lg p-4 text-sm w-full relative",
               toastColors[color],
             )}
             style={{ viewTransitionName: toast.key }}
@@ -75,6 +75,7 @@ export function Toast() {
             </AriaToastContent>
             <AriaButton
               className={twMerge(
+                "absolute right-4 top-4",
                 "hover:opacity-75",
                 "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
               )}

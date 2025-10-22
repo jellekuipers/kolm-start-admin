@@ -3,8 +3,8 @@ import {
   MoonIcon,
   SignOutIcon,
   SunIcon,
-  UserIcon,
-  UserSwitchIcon,
+  UserSquareIcon,
+  UserSwitchIcon
 } from "@phosphor-icons/react";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
@@ -82,7 +82,7 @@ export function SessionUserDropdown() {
             })
           }
         >
-          <UserIcon size={16} />
+          <UserSquareIcon size={16} />
           {t("user.view_profile")}
         </MenuItem>
         <MenuItem

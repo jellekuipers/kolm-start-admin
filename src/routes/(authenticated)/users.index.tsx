@@ -15,8 +15,10 @@ import { Heading } from "@/components/ui/heading";
 import { Link } from "@/components/ui/link";
 import { Separator } from "@/components/ui/separator";
 import { CreateUserModal } from "@/components/user/create-user-modal";
+import { SessionUserActions } from "@/components/user/session-user-actions";
 import { UserActions } from "@/components/user/user-actions";
 import { UserRole } from "@/components/user/user-role";
+import type { Session } from "@/lib/auth-client";
 import { listUsersQueryOptions } from "@/queries/user";
 
 export const Route = createFileRoute("/(authenticated)/users/")({
@@ -26,8 +28,10 @@ export const Route = createFileRoute("/(authenticated)/users/")({
 });
 
 function getColumns({
+  auth,
   t,
 }: {
+  auth: Session;
   t: TFunction<"translation", undefined>;
 }): ColumnDef<User>[] {
   return [
@@ -121,7 +125,11 @@ function getColumns({
       header: undefined,
       cell: ({ row }) => (
         <div className="flex justify-end">
-          <UserActions user={row.original} variant="overview" />
+          {row.original.id === auth.session.userId ? (
+            <SessionUserActions user={auth.user} />
+          ) : (
+            <UserActions user={row.original} variant="overview" />
+          )}
         </div>
       ),
     },
@@ -142,8 +150,9 @@ const defaultColumnVisibility = {
 };
 
 function RouteComponent() {
+  const auth = Route.useRouteContext({ select: ({ auth }) => auth });
   const { t } = useTranslation();
-  const columns = getColumns({ t });
+  const columns = getColumns({ auth, t });
   const { data: users } = useSuspenseQuery(listUsersQueryOptions());
 
   return (
