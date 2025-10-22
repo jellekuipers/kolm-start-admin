@@ -54,14 +54,12 @@ function getColumns({
 }
 
 function RouteComponent() {
-  const { t } = useTranslation();
   const userId = Route.useParams({ select: ({ userId }) => userId });
-
+  const { t } = useTranslation();
+  const columns = getColumns({ t });
   const { data: userSessions } = useSuspenseQuery(
     listUserSessionsQueryOptions({ userId }),
   );
-
-  const columns = getColumns({ t });
 
   return (
     <DataTable

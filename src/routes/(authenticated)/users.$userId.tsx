@@ -21,8 +21,8 @@ export const Route = createFileRoute("/(authenticated)/users/$userId")({
 
 function RouteComponent() {
   const auth = Route.useRouteContext({ select: ({ auth }) => auth });
-  const { t } = useTranslation();
   const userId = Route.useParams({ select: ({ userId }) => userId });
+  const { t } = useTranslation();
   const { data: user } = useSuspenseQuery(getUserByIdQueryOptions({ userId }));
 
   if (!user) return null;

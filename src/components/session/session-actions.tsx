@@ -5,7 +5,9 @@ import { useTranslation } from "react-i18next";
 
 import { IconButton } from "@/components/ui/icon-button";
 import { Menu, MenuItem, MenuTrigger } from "@/components/ui/menu";
+import { toastQueue } from "@/components/ui/toast";
 import { revokeUserSession } from "@/server/user";
+import { logger } from "@/utils/logger";
 
 interface SessionActionsProps {
   sessionToken: string;
@@ -19,18 +21,30 @@ export function SessionActions({ sessionToken }: SessionActionsProps) {
   const { t } = useTranslation();
   const router = useRouter();
 
-  const onMutationError = async (error: unknown) => {
-    console.error(error);
-  };
-
-  const onMutationSuccess = async () => {
-    await router.invalidate({ sync: true });
-  };
-
   const revokeUserSessionMutation = useMutation({
     mutationFn: (data: RevokeSessionInput) => revokeUserSession({ data }),
-    onError: onMutationError,
-    onSuccess: onMutationSuccess,
+    onError: (error: unknown) => {
+      logger({
+        level: "error",
+        message: "session_revoke_error",
+        data: error,
+      });
+
+      toastQueue.add({
+        title: t("message.session_revoke_error_title"),
+        description: t("message.session_revoke_error_description"),
+        color: "red",
+      });
+    },
+    onSuccess: async () => {
+      await router.invalidate({ sync: true });
+
+      toastQueue.add({
+        title: t("message.session_revoke_success_title"),
+        description: t("message.session_revoke_success_description"),
+        color: "gray",
+      });
+    },
   });
 
   return (

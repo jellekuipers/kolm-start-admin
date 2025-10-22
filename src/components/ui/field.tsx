@@ -1,14 +1,14 @@
 import {
-    FieldError as AriaFieldError,
-    type FieldErrorProps as AriaFieldErrorProps,
-    Group as AriaGroup,
-    type GroupProps as AriaGroupProps,
-    Input as AriaInput,
-    type InputProps as AriaInputProps,
-    Label as AriaLabel,
-    type LabelProps as AriaLabelProps,
-    Text as AriaText,
-    type TextProps as AriaTextProps,
+  FieldError as AriaFieldError,
+  type FieldErrorProps as AriaFieldErrorProps,
+  Group as AriaGroup,
+  type GroupProps as AriaGroupProps,
+  Input as AriaInput,
+  type InputProps as AriaInputProps,
+  Label as AriaLabel,
+  type LabelProps as AriaLabelProps,
+  Text as AriaText,
+  type TextProps as AriaTextProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 

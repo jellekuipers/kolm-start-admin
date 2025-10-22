@@ -9,4 +9,6 @@ export const authClient = createAuthClient({
   plugins: [adminClient(), inferAdditionalFields<typeof auth>()],
 });
 
+export type Session = typeof authClient.$Infer.Session;
+
 export const { signIn, signOut, useSession } = authClient;

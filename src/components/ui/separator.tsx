@@ -1,6 +1,6 @@
 import {
-    Separator as AriaSeparator,
-    type SeparatorProps as AriaSeparatorProps,
+  Separator as AriaSeparator,
+  type SeparatorProps as AriaSeparatorProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 

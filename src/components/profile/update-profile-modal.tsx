@@ -11,8 +11,10 @@ import { Button } from "@/components/ui/button";
 import { Dialog } from "@/components/ui/dialog";
 import { Modal, ModalHeading } from "@/components/ui/modal";
 import { TextField } from "@/components/ui/text-field";
+import { toastQueue } from "@/components/ui/toast";
 import { authClient, useSession } from "@/lib/auth-client";
 import { getFieldErrorMessage } from "@/lib/error";
+import { logger } from "@/utils/logger";
 
 interface UpdateProfileModalProps {
   user: User;
@@ -31,28 +33,39 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
   const router = useRouter();
   const session = useSession();
 
-  const onMutationError = async (error: unknown) => {
-    console.error(error);
-
-    if (error instanceof Error) {
-      setError(error);
-    }
-  };
-
-  const onMutationSuccess = async () => {
-    reset();
-
-    await router.invalidate({ sync: true });
-
-    session.refetch();
-
-    setOpen(false);
-  };
-
   const updateProfileMutation = useMutation({
     mutationFn: (data: UpdateProfileInput) => authClient.updateUser(data),
-    onError: onMutationError,
-    onSuccess: onMutationSuccess,
+    onError: (error: unknown) => {
+      logger({
+        level: "error",
+        message: "profile_update_error",
+        data: error,
+      });
+
+      if (error instanceof Error) {
+        setError(error);
+      } else {
+        setError({
+          name: t("message.profile_update_error_title"),
+          message: t("message.profile_update_error_description"),
+        });
+      }
+    },
+    onSuccess: async () => {
+      reset();
+
+      await router.invalidate({ sync: true });
+
+      session.refetch();
+
+      setOpen(false);
+
+      toastQueue.add({
+        title: t("message.profile_update_success_title"),
+        description: t("message.profile_update_success_description"),
+        color: "gray",
+      });
+    },
   });
 
   const { Field, handleSubmit, reset, Subscribe } = useForm({

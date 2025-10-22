@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.6/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.2.7/schema.json",
   "assist": {
     "actions": {
       "source": {
@@ -22,6 +22,7 @@
   "files": {
     "ignoreUnknown": false,
     "includes": [
+      "prisma/seed.ts",
       "src/**",
       "!src/routeTree.gen.ts",
       "prisma.config.ts",

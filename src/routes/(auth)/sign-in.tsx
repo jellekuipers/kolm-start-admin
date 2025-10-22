@@ -13,9 +13,11 @@ import { Label } from "@/components/ui/field";
 import { Heading } from "@/components/ui/heading";
 import { Link } from "@/components/ui/link";
 import { TextField } from "@/components/ui/text-field";
+import { toastQueue } from "@/components/ui/toast";
 import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip";
 import { signIn } from "@/lib/auth-client";
 import { getFieldErrorMessage } from "@/lib/error";
+import { logger } from "@/utils/logger";
 
 const signInSchema = z.object({
   email: z.email(),
@@ -42,12 +44,29 @@ function RouteComponent() {
         password: value.password,
         fetchOptions: {
           onError({ error }) {
-            console.error(error);
+            logger({
+              level: "error",
+              message: "sign_in_error",
+              data: error,
+            });
 
-            setError(error);
+            if (error instanceof Error) {
+              setError(error);
+            } else {
+              setError({
+                name: t("message.sign_in_error_title"),
+                message: t("message.sign_in_error_description"),
+              });
+            }
           },
           onSuccess: () => {
             router.invalidate();
+
+            toastQueue.add({
+              title: t("message.sign_in_success_title"),
+              description: t("message.sign_in_success_description"),
+              color: "gray",
+            });
           },
         },
       }),

@@ -36,7 +36,7 @@ export function SearchField({
       aria-label={t("aria.search")}
       className="group flex min-w-[40px] flex-col gap-1"
     >
-      {label && <Label>{label}</Label>}
+      {label ? <Label>{label}</Label> : null}
       <FieldGroup>
         <MagnifyingGlassIcon
           aria-hidden
@@ -53,7 +53,7 @@ export function SearchField({
           <XIcon aria-hidden />
         </AriaButton>
       </FieldGroup>
-      {description && <Description>{description}</Description>}
+      {description ? <Description>{description}</Description> : null}
       <FieldError>{errorMessage}</FieldError>
     </AriaSearchField>
   );

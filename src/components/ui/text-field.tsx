@@ -1,7 +1,7 @@
 import {
-    TextField as AriaTextField,
-    type TextFieldProps as AriaTextFieldProps,
-    type ValidationResult as AriaValidationResult,
+  TextField as AriaTextField,
+  type TextFieldProps as AriaTextFieldProps,
+  type ValidationResult as AriaValidationResult,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 

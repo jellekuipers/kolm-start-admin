@@ -1,7 +1,7 @@
 import { CheckIcon } from "@phosphor-icons/react";
 import {
-    Checkbox as AriaCheckbox,
-    type CheckboxProps as AriaCheckboxProps,
+  Checkbox as AriaCheckbox,
+  type CheckboxProps as AriaCheckboxProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 

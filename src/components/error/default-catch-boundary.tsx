@@ -2,9 +2,14 @@ import { InfoIcon } from "@phosphor-icons/react";
 import type { ErrorComponentProps } from "@tanstack/react-router";
 
 import { Callout, CalloutIcon, CalloutText } from "@/components/ui/callout";
+import { logger } from "@/utils/logger";
 
 export function DefaultCatchBoundary({ error }: ErrorComponentProps) {
-  console.error(error);
+  logger({
+    level: "error",
+    message: "default_catch_boundary_error",
+    data: error,
+  });
 
   return (
     <Callout color="red">

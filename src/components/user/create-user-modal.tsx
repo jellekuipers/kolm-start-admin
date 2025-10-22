@@ -10,9 +10,11 @@ import { Button } from "@/components/ui/button";
 import { Dialog } from "@/components/ui/dialog";
 import { Modal, ModalHeading } from "@/components/ui/modal";
 import { TextField } from "@/components/ui/text-field";
+import { toastQueue } from "@/components/ui/toast";
 import { getFieldErrorMessage } from "@/lib/error";
 import { listUsersQueryOptions } from "@/queries/user";
 import { createUser } from "@/server/user";
+import { logger } from "@/utils/logger";
 
 const createUserSchema = z.object({
   email: z.email(),
@@ -29,27 +31,38 @@ export function CreateUserModal() {
   const router = useRouter();
   const queryClient = useQueryClient();
 
-  const onMutationError = async (error: unknown) => {
-    console.error(error);
-
-    if (error instanceof Error) {
-      setError(error);
-    }
-  };
-
-  const onMutationSuccess = async () => {
-    reset();
-
-    await router.invalidate({ sync: true });
-    await queryClient.refetchQueries(listUsersQueryOptions());
-
-    setOpen(false);
-  };
-
   const createUserMutation = useMutation({
     mutationFn: (data: CreateUserInput) => createUser({ data }),
-    onError: onMutationError,
-    onSuccess: onMutationSuccess,
+    onError: (error: unknown) => {
+      logger({
+        level: "error",
+        message: "user_create_error",
+        data: error,
+      });
+
+      if (error instanceof Error) {
+        setError(error);
+      } else {
+        setError({
+          name: t("message.user_create_error_title"),
+          message: t("message.user_create_error_description"),
+        });
+      }
+    },
+    onSuccess: async () => {
+      reset();
+
+      await router.invalidate({ sync: true });
+      await queryClient.refetchQueries(listUsersQueryOptions());
+
+      setOpen(false);
+
+      toastQueue.add({
+        title: t("message.user_create_success_title"),
+        description: t("message.user_create_success_description"),
+        color: "gray",
+      });
+    },
   });
 
   const { Field, handleSubmit, reset, Subscribe } = useForm({

@@ -13,6 +13,7 @@ import { I18nextProvider, useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";
 
 import { DefaultCatchBoundary } from "@/components/error/default-catch-boundary";
+import { Toast } from "@/components/ui/toast";
 import { ThemeProvider } from "@/context/theme";
 import i18n from "@/lib/i18n";
 import { getServerSession } from "@/server/session";
@@ -63,6 +64,7 @@ function RootComponent() {
     <I18nextProvider i18n={i18n}>
       <ThemeProvider>
         <RootDocument>
+          <Toast />
           <Outlet />
         </RootDocument>
       </ThemeProvider>
@@ -87,6 +89,9 @@ function RootDocument({ children }: { children: ReactNode }) {
         {children}
         {import.meta.env.DEV ? (
           <TanStackDevtools
+            config={{
+              position: "bottom-left",
+            }}
             plugins={[
               {
                 name: "TanStack Query",

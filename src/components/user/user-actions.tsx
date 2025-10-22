@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { IconButton } from "@/components/ui/icon-button";
 import { Menu, MenuItem, MenuSeparator } from "@/components/ui/menu";
 import { Modal } from "@/components/ui/modal";
+import { toastQueue } from "@/components/ui/toast";
 import { authClient, useSession } from "@/lib/auth-client";
 import { listUsersQueryOptions } from "@/queries/user";
 import {
@@ -28,6 +29,7 @@ import {
   revokeAllUserSessions,
   unbanUser,
 } from "@/server/user";
+import { logger } from "@/utils/logger";
 
 interface UserActionsProps {
   user: User;
@@ -46,43 +48,138 @@ export function UserActions({ user, variant }: UserActionsProps) {
   const session = useSession();
   const queryClient = useQueryClient();
 
-  const onMutationError = async (error: unknown) => {
-    console.error(error);
-  };
-
-  const onMutationSuccess = async () => {
-    await router.invalidate({ sync: true });
-    await queryClient.refetchQueries(listUsersQueryOptions());
-  };
-
   const banUserMutation = useMutation({
     mutationFn: (data: UserIdInput) => banUser({ data }),
-    onError: onMutationError,
-    onSuccess: onMutationSuccess,
+    onError: (error: unknown) => {
+      logger({
+        level: "error",
+        message: "user_ban_error",
+        data: error,
+      });
+
+      toastQueue.add({
+        title: t("message.user_ban_error_title"),
+        description: t("message.user_ban_error_description"),
+        color: "red",
+      });
+    },
+    onSuccess: async () => {
+      await router.invalidate({ sync: true });
+      await queryClient.refetchQueries(listUsersQueryOptions());
+
+      toastQueue.add({
+        title: t("message.user_ban_success_title"),
+        description: t("message.user_ban_success_description"),
+        color: "gray",
+      });
+    },
   });
 
   const unbanUserMutation = useMutation({
     mutationFn: (data: UserIdInput) => unbanUser({ data }),
-    onError: onMutationError,
-    onSuccess: onMutationSuccess,
+    onError: (error: unknown) => {
+      logger({
+        level: "error",
+        message: "user_unban_error",
+        data: error,
+      });
+
+      toastQueue.add({
+        title: t("message.user_unban_error_title"),
+        description: t("message.user_unban_error_description"),
+        color: "red",
+      });
+    },
+    onSuccess: async () => {
+      await router.invalidate({ sync: true });
+      await queryClient.refetchQueries(listUsersQueryOptions());
+
+      toastQueue.add({
+        title: t("message.user_unban_success_title"),
+        description: t("message.user_unban_success_description"),
+        color: "gray",
+      });
+    },
   });
 
   const impersonateUserMutation = useMutation({
     mutationFn: (data: UserIdInput) => authClient.admin.impersonateUser(data),
-    onError: onMutationError,
-    onSuccess: () => session.refetch(),
+    onError: (error: unknown) => {
+      logger({
+        level: "error",
+        message: "user_impersonate_error",
+        data: error,
+      });
+
+      toastQueue.add({
+        title: t("message.user_impersonate_error_title"),
+        description: t("message.user_impersonate_error_description"),
+        color: "red",
+      });
+    },
+    onSuccess: () => {
+      session.refetch();
+
+      toastQueue.add({
+        title: t("message.user_impersonate_success_title"),
+        description: t("message.user_impersonate_success_description"),
+        color: "gray",
+      });
+    },
   });
 
   const removeUserMutation = useMutation({
     mutationFn: (data: UserIdInput) => removeUser({ data }),
-    onError: onMutationError,
-    onSuccess: onMutationSuccess,
+    onError: (error: unknown) => {
+      logger({
+        level: "error",
+        message: "user_remove_error",
+        data: error,
+      });
+
+      toastQueue.add({
+        title: t("message.user_remove_error_title"),
+        description: t("message.user_remove_error_description"),
+        color: "red",
+      });
+    },
+    onSuccess: async () => {
+      await router.invalidate({ sync: true });
+      await queryClient.refetchQueries(listUsersQueryOptions());
+
+      toastQueue.add({
+        title: t("message.user_remove_success_title"),
+        description: t("message.user_remove_success_description"),
+        color: "gray",
+      });
+    },
   });
 
   const revokeAllUserSessionsMutation = useMutation({
     mutationFn: (data: UserIdInput) => revokeAllUserSessions({ data }),
-    onError: onMutationError,
-    onSuccess: onMutationSuccess,
+    onError: (error: unknown) => {
+      logger({
+        level: "error",
+        message: "sessions_revoke_all_error",
+        data: error,
+      });
+
+      toastQueue.add({
+        title: t("message.sessions_revoke_all_error_title"),
+        description: t("message.sessions_revoke_all_error_description"),
+        color: "red",
+      });
+    },
+    onSuccess: async () => {
+      await router.invalidate({ sync: true });
+      await queryClient.refetchQueries(listUsersQueryOptions());
+
+      toastQueue.add({
+        title: t("message.sessions_revoke_all_success_title"),
+        description: t("message.sessions_revoke_all_success_description"),
+        color: "gray",
+      });
+    },
   });
 
   const handleRemoveUser = async () => {

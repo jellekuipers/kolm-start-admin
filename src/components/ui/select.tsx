@@ -1,12 +1,12 @@
 import { CaretDownIcon } from "@phosphor-icons/react";
 import {
-    Button as AriaButton,
-    ListBox as AriaListBox,
-    ListBoxItem as AriaListBoxItem,
-    type ListBoxItemProps as AriaListBoxItemProps,
-    Select as AriaSelect,
-    type SelectProps as AriaSelectProps,
-    SelectValue as AriaSelectValue,
+  Button as AriaButton,
+  ListBox as AriaListBox,
+  ListBoxItem as AriaListBoxItem,
+  type ListBoxItemProps as AriaListBoxItemProps,
+  Select as AriaSelect,
+  type SelectProps as AriaSelectProps,
+  SelectValue as AriaSelectValue,
 } from "react-aria-components";
 import { useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";

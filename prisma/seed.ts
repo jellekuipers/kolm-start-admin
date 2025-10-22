@@ -1,9 +1,8 @@
 import { PrismaClient } from "@prisma/client";
 
 import { auth } from "@/lib/auth";
-import {
-  userRoleEnum,
-} from "@/lib/enums";
+import { userRoleEnum } from "@/lib/enums";
+import { logger } from "@/utils/logger";
 
 const db = new PrismaClient();
 
@@ -19,12 +18,15 @@ async function main() {
 }
 
 main()
-  .then(async () => {
-    await db.$disconnect();
-  })
-
+  .then(() => db.$disconnect())
   .catch(async (error) => {
-    console.error(error);
+    logger({
+      level: "error",
+      message: "seed_error",
+      data: error,
+    });
+
     await db.$disconnect();
+
     process.exit(1);
   });

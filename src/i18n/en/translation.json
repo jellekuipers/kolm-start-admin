@@ -25,6 +25,7 @@
     "users": "Users"
   },
   "user": {
+    "active": "active",
     "ban_user": "Ban user",
     "banned": "banned",
     "create_user": "Create user",
@@ -75,6 +76,7 @@
     "accounts": "Accounts"
   },
   "aria": {
+    "copied_to_clipboard": "Copied to clipboard",
     "copy_value_to_clipboard": "Copy value to clipboard",
     "logo": "Logo",
     "open_session_actions_menu": "Open session actions menu",
@@ -94,5 +96,47 @@
   },
   "tooltip": {
     "forgot_password_disabled": "Start by adding authentication providers"
+  },
+  "message": {
+    "sign_in_success_title": "Sign in successful",
+    "sign_in_success_description": "You have successfully signed in",
+    "sign_in_error_title": "Sign in failed",
+    "sign_in_error_description": "Unable to sign in. Please check your credentials",
+    "profile_update_success_title": "Profile updated",
+    "profile_update_success_description": "Your profile has been successfully updated",
+    "profile_update_error_title": "Update failed",
+    "profile_update_error_description": "Unable to update your profile",
+    "user_create_success_title": "User created",
+    "user_create_success_description": "User has been successfully created",
+    "user_create_error_title": "Creation failed",
+    "user_create_error_description": "Unable to create user",
+    "session_revoke_success_title": "Session revoked",
+    "session_revoke_success_description": "Session has been successfully revoked",
+    "session_revoke_error_title": "Revoke failed",
+    "session_revoke_error_description": "Unable to revoke session",
+    "user_role_update_success_title": "Role updated",
+    "user_role_update_success_description": "User role has been successfully updated",
+    "user_role_update_error_title": "Update failed",
+    "user_role_update_error_description": "Unable to update user role",
+    "user_ban_success_title": "User banned",
+    "user_ban_success_description": "User has been successfully banned",
+    "user_ban_error_title": "Ban failed",
+    "user_ban_error_description": "Unable to ban user",
+    "user_unban_success_title": "User unbanned",
+    "user_unban_success_description": "User has been successfully unbanned",
+    "user_unban_error_title": "Unban failed",
+    "user_unban_error_description": "Unable to unban user",
+    "user_impersonate_success_title": "Impersonation started",
+    "user_impersonate_success_description": "You are now impersonating this user",
+    "user_impersonate_error_title": "Impersonation failed",
+    "user_impersonate_error_description": "Unable to impersonate user",
+    "user_remove_success_title": "User removed",
+    "user_remove_success_description": "User has been successfully removed",
+    "user_remove_error_title": "Remove failed",
+    "user_remove_error_description": "Unable to remove user",
+    "sessions_revoke_all_success_title": "All sessions revoked",
+    "sessions_revoke_all_success_description": "All user sessions have been successfully revoked",
+    "sessions_revoke_all_error_title": "Revoke failed",
+    "sessions_revoke_all_error_description": "Unable to revoke all sessions"
   }
 }
