@@ -99,7 +99,11 @@ function getColumns({
       id: "banned",
       header: t("table.banned"),
       cell: ({ row }) =>
-        row.original.banned ? <CheckIcon size={16} /> : <XIcon size={16} />,
+        row.original.banned ? (
+          <Badge color="red">{t("user.banned")}</Badge>
+        ) : (
+          <Badge color="green">{t("user.active")}</Badge>
+        ),
     },
     {
       id: "banReason",

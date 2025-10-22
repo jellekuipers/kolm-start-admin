@@ -25,6 +25,7 @@
     "users": "Gebruikers"
   },
   "user": {
+    "active": "actief",
     "ban_user": "Gebruiker verbannen",
     "banned": "verbannen",
     "create_user": "Gebruiker aanmaken",

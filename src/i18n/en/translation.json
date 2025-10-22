@@ -25,6 +25,7 @@
     "users": "Users"
   },
   "user": {
+    "active": "active",
     "ban_user": "Ban user",
     "banned": "banned",
     "create_user": "Create user",

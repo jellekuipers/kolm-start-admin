@@ -89,6 +89,9 @@ function RootDocument({ children }: { children: ReactNode }) {
         {children}
         {import.meta.env.DEV ? (
           <TanStackDevtools
+            config={{
+              position: "bottom-left",
+            }}
             plugins={[
               {
                 name: "TanStack Query",
