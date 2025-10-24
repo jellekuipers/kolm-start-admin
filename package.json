@@ -21,7 +21,7 @@
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate deploy",
     "db:push": "prisma db push",
-    "db:reset": "prisma migrate reset --skip-seed --force && npx prisma db push && npx prisma db seed",
+    "db:reset": "prisma migrate reset --skip-seed --force && prisma db push && prisma db seed",
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
     "dev": "vite dev",
