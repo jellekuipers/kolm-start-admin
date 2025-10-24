@@ -12,13 +12,17 @@ import type { User } from "@prisma/client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
-import { MenuTrigger } from "react-aria-components";
 import { useTranslation } from "react-i18next";
 
 import { AlertDialog } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { IconButton } from "@/components/ui/icon-button";
-import { Menu, MenuItem, MenuSeparator } from "@/components/ui/menu";
+import {
+  Menu,
+  MenuItem,
+  MenuSeparator,
+  MenuTrigger,
+} from "@/components/ui/menu";
 import { Modal } from "@/components/ui/modal";
 import { toastQueue } from "@/components/ui/toast";
 import { authClient, useSession } from "@/lib/auth-client";
