@@ -1,6 +1,7 @@
 import { createIsomorphicFn } from "@tanstack/react-start";
 
 type LogLevel = "debug" | "info" | "warn" | "error";
+
 interface LogProps {
   level: LogLevel;
   message: string;
