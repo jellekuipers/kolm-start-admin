@@ -81,6 +81,7 @@ export function CreateUserModal() {
 
     if (!open) {
       reset();
+      setError(undefined);
     }
   };
 

@@ -11,7 +11,7 @@ export function GridList<T extends object>({
   ...props
 }: AriaGridListProps<T>) {
   return (
-    <AriaGridList {...props} className="space-y-[1px] outline-0">
+    <AriaGridList {...props} className="space-y-px outline-0">
       {children}
     </AriaGridList>
   );

@@ -83,6 +83,7 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
 
     if (!open) {
       reset();
+      setError(undefined);
     }
   };
 
