@@ -25,8 +25,6 @@ function RouteComponent() {
   const { t } = useTranslation();
   const { data: user } = useSuspenseQuery(getUserByIdQueryOptions({ userId }));
 
-  if (!user) return null;
-
   return (
     <Container>
       <div className="space-y-8">

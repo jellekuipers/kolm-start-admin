@@ -55,7 +55,7 @@ export const getUserById = createServerFn({ method: "GET" })
     }),
   )
   .handler(async ({ data }) => {
-    const userById = await db.user.findUnique({
+    const userById = await db.user.findUniqueOrThrow({
       where: { id: data.userId },
     });
 
