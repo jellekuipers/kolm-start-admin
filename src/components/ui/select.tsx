@@ -45,7 +45,7 @@ export function Select<T extends object>({
         className={twMerge(
           "flex h-8 items-center justify-between gap-2 rounded border border-gray-300 px-2 text-sm",
           "outline-0 outline-offset-2 outline-indigo-700 focus:outline-2 focus-visible:outline-2",
-          "disabled:border-gray-100 disabled:bg-gray-50 disabled:text-gray-200",
+          "disabled:border-gray-200 disabled:text-gray-200",
           "dark:border-gray-700 dark:bg-gray-800",
           "dark:disabled:border-gray-800 dark:disabled:bg-gray-900 dark:disabled:text-gray-700",
         )}

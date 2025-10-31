@@ -4,7 +4,7 @@ import {
   SignOutIcon,
   SunIcon,
   UserIcon,
-  UserSwitchIcon
+  UserSwitchIcon,
 } from "@phosphor-icons/react";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";

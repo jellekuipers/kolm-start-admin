@@ -1,6 +1,8 @@
+import { CircleNotchIcon } from "@phosphor-icons/react";
 import {
   Button as AriaButton,
   type ButtonProps as AriaButtonProps,
+  composeRenderProps,
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 
@@ -127,7 +129,89 @@ const buttonStyles = {
   },
 };
 
+const spinnerStyles = {
+  default: {
+    gray: twMerge(
+      "fill-white",
+      "dark:fill-white",
+      "group-disabled:fill-gray-300",
+      "dark:group-disabled:fill-gray-700",
+    ),
+    green: twMerge(
+      "fill-white",
+      "dark:fill-white",
+      "group-disabled:fill-gray-300",
+      "dark:group-disabled:fill-gray-700",
+    ),
+    indigo: twMerge(
+      "fill-white",
+      "dark:fill-white",
+      "group-disabled:fill-gray-300",
+      "dark:group-disabled:fill-gray-700",
+    ),
+    red: twMerge(
+      "fill-white",
+      "dark:fill-white",
+      "group-disabled:fill-gray-300",
+      "dark:group-disabled:fill-gray-700",
+    ),
+  },
+  light: {
+    gray: twMerge(
+      "fill-gray-700",
+      "dark:fill-gray-200",
+      "group-disabled:fill-gray-300",
+      "dark:group-disabled:fill-gray-700",
+    ),
+    green: twMerge(
+      "fill-green-700",
+      "dark:fill-green-300",
+      "group-disabled:fill-gray-300",
+      "dark:group-disabled:fill-gray-700",
+    ),
+    indigo: twMerge(
+      "fill-indigo-700",
+      "dark:fill-indigo-800",
+      "group-disabled:fill-gray-300",
+      "dark:group-disabled:fill-gray-700",
+    ),
+    red: twMerge(
+      "fill-red-600",
+      "dark:fill-red-300",
+      "group-disabled:fill-gray-300",
+      "dark:group-disabled:fill-gray-700",
+    ),
+  },
+  outline: {
+    gray: twMerge(
+      "fill-gray-700",
+      "dark:fill-gray-600",
+      "group-disabled:fill-gray-300",
+      "dark:group-disabled:fill-gray-700",
+    ),
+    green: twMerge(
+      "fill-green-600",
+      "dark:fill-green-500",
+      "group-disabled:fill-gray-300",
+      "dark:group-disabled:fill-gray-700",
+    ),
+    indigo: twMerge(
+      "fill-indigo-400",
+      "dark:fill-indigo-400",
+      "group-disabled:fill-gray-300",
+      "dark:group-disabled:fill-gray-700",
+    ),
+    red: twMerge(
+      "fill-red-600",
+      "dark:fill-red-400",
+      "group-disabled:fill-gray-300",
+      "dark:group-disabled:fill-gray-700",
+    ),
+  },
+};
+
 export function Button({
+  children,
   className,
   color,
   variant = "default",
@@ -137,13 +221,25 @@ export function Button({
     <AriaButton
       {...props}
       className={twMerge(
-        "flex h-8 items-center gap-2 rounded border px-2 text-sm font-medium",
+        "group flex h-8 items-center gap-2 rounded border px-2 font-medium text-sm",
         "outline-0 outline-offset-2 focus-visible:outline-2",
-        "disabled:bg-gray-50 disabled:border-gray-50 disabled:text-gray-300",
-        "dark:disabled:bg-gray-900 dark:disabled:border-gray-900 dark:disabled:text-gray-700",
+        "disabled:border-gray-50 disabled:bg-gray-50 disabled:text-gray-300",
+        "dark:disabled:border-gray-900 dark:disabled:bg-gray-900 dark:disabled:text-gray-700",
         buttonStyles[variant][color],
         className,
       )}
-    />
+    >
+      {composeRenderProps(children, (children, { isPending }) => (
+        <>
+          {isPending && (
+            <CircleNotchIcon
+              className={twMerge("animate-spin", spinnerStyles[variant][color])}
+              size={16}
+            />
+          )}
+          {children}
+        </>
+      ))}
+    </AriaButton>
   );
 }

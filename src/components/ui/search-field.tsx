@@ -34,7 +34,7 @@ export function SearchField({
     <AriaSearchField
       {...props}
       aria-label={t("aria.search")}
-      className="group flex min-w-[40px] flex-col gap-1"
+      className="group flex min-w-10 flex-col gap-1"
     >
       {label ? <Label>{label}</Label> : null}
       <FieldGroup>

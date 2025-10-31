@@ -13,7 +13,7 @@ export function Separator({
     <AriaSeparator
       {...props}
       className={twMerge(
-        "border-gray-300 bg-gray-300",
+        "border-gray-300",
         "dark:border-gray-700 dark:bg-gray-800",
         orientation === "horizontal" && "h-px w-full",
         orientation === "vertical" && "w-px",
