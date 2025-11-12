@@ -18,10 +18,10 @@ export const Route = createFileRoute("/(authenticated)")({
 
     return { auth };
   },
-  component: LayoutComponent,
+  component: RouteComponent,
 });
 
-function LayoutComponent() {
+function RouteComponent() {
   const { t } = useTranslation();
 
   const routes = [
