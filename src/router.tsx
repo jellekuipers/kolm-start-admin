@@ -28,7 +28,6 @@ export function getRouter() {
   setupRouterSsrQueryIntegration({
     router,
     queryClient,
-    wrapQueryClient: true,
   });
 
   return router;

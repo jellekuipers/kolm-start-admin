@@ -1,10 +1,7 @@
-import { PrismaClient } from "@prisma/client";
-
 import { auth } from "@/lib/auth";
+import { db } from "@/lib/db";
 import { userRoleEnum } from "@/lib/enums";
 import { logger } from "@/utils/logger";
-
-const db = new PrismaClient();
 
 async function main() {
   await auth.api.createUser({
