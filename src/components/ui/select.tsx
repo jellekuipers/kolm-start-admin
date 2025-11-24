@@ -43,11 +43,9 @@ export function Select<T extends object>({
       {label ? <Label>{label}</Label> : null}
       <AriaButton
         className={twMerge(
-          "flex h-8 items-center justify-between gap-2 rounded border border-gray-300 px-2 text-sm",
-          "outline-0 outline-offset-2 outline-indigo-700 focus:outline-2 focus-visible:outline-2",
-          "disabled:border-gray-200 disabled:text-gray-200",
-          "dark:border-gray-700 dark:bg-gray-800",
-          "dark:disabled:border-gray-800 dark:disabled:bg-gray-900 dark:disabled:text-gray-700",
+          "flex h-8 items-center justify-between gap-2 rounded border border-input bg-card px-2 text-sm",
+          "outline-0 outline-ring outline-offset-2 focus:outline-2 focus-visible:outline-2",
+          "disabled:border-muted disabled:bg-muted disabled:text-muted-foreground",
         )}
       >
         <AriaSelectValue>
@@ -74,11 +72,9 @@ export function SelectItem(props: AriaListBoxItemProps) {
       {...props}
       className={twMerge(
         "flex h-8 cursor-default items-center gap-2 rounded px-2 text-sm outline-0",
-        "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
-        "hover:bg-indigo-700 hover:text-white",
-        "disabled:bg-gray-50 disabled:text-gray-200",
-        "dark:hover:bg-indigo-600",
-        "dark:disabled:bg-gray-900 dark:disabled:text-gray-700",
+        "outline-0 outline-ring outline-offset-2 focus-visible:outline-2",
+        "hover:bg-primary hover:text-primary-foreground",
+        "disabled:bg-muted disabled:text-muted-foreground",
       )}
     />
   );

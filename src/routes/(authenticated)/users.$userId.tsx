@@ -30,10 +30,8 @@ function RouteComponent() {
       <div className="space-y-8">
         <Link
           className={twMerge(
-            "-mx-1 inline-flex h-8 items-center rounded px-2 text-indigo-700",
-            "hover:border-indigo-50 hover:bg-indigo-50 hover:no-underline",
-            "dark:text-indigo-200",
-            "dark:hover:bg-indigo-700 dark:hover:text-white",
+            "-mx-1 inline-flex h-8 items-center rounded px-2 text-primary",
+            "hover:bg-accent hover:no-underline",
           )}
           to="/users"
         >
@@ -51,10 +49,10 @@ function RouteComponent() {
               <div className="flex items-center gap-2">
                 <Heading level={1}>{user.name ?? user.email}</Heading>
                 {auth.user.id === user.id ? (
-                  <Badge color="indigo">{t("user.you")}</Badge>
+                  <Badge>{t("user.you")}</Badge>
                 ) : null}
                 {user.banned ? (
-                  <Badge color="red">{t("user.banned")}</Badge>
+                  <Badge color="destructive">{t("user.banned")}</Badge>
                 ) : null}
               </div>
             </div>

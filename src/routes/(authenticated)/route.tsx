@@ -31,12 +31,7 @@ function RouteComponent() {
 
   return (
     <>
-      <header
-        className={twMerge(
-          "flex items-center justify-between gap-2 bg-gray-50 px-4 py-2",
-          "dark:bg-gray-900",
-        )}
-      >
+      <header className="flex items-center justify-between gap-2 bg-muted px-4 py-2">
         <div className="flex items-center gap-2">
           <Link className="rounded" to="/">
             <Logo size={32} />
@@ -50,10 +45,8 @@ function RouteComponent() {
           <Link
             key={route.to}
             className={twMerge(
-              "-mx-1 flex h-8 items-center justify-center rounded px-2 text-indigo-700",
-              "hover:border-indigo-50 hover:bg-indigo-50 hover:no-underline",
-              "dark:text-indigo-200",
-              "dark:hover:bg-indigo-700 dark:hover:text-white",
+              "-mx-1 flex h-8 items-center justify-center rounded px-2 text-primary",
+              "hover:bg-accent hover:no-underline",
             )}
             to={route.to}
           >

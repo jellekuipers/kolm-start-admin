@@ -8,7 +8,7 @@ export interface FormErrorProps {
 
 export function FormError({ error }: FormErrorProps) {
   return (
-    <Callout color="red">
+    <Callout color="destructive">
       <CalloutIcon>
         <InfoIcon size={16} />
       </CalloutIcon>

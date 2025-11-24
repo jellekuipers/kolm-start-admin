@@ -76,12 +76,7 @@ function RouteComponent() {
               {auth.user.name ? (
                 <div className="space-y-0">
                   <Heading level={1}>{auth.user.name}</Heading>
-                  <span
-                    className={twMerge(
-                      "text-sm text-gray-600",
-                      "dark:text-gray-400",
-                    )}
-                  >
+                  <span className="text-muted-foreground text-sm">
                     {auth.user.email}
                   </span>
                 </div>

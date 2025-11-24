@@ -63,7 +63,7 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
       toastQueue.add({
         title: t("message.profile_update_success_title"),
         description: t("message.profile_update_success_description"),
-        color: "gray",
+        color: "success",
       });
     },
   });

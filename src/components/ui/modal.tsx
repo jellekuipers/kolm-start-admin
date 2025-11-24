@@ -17,8 +17,8 @@ export function Modal({
     <AriaModalOverlay
       className={twMerge(
         "fixed inset-0 z-10 flex min-h-full items-center justify-center overflow-y-auto bg-black/25 p-4 text-center backdrop-blur",
-        "entering:animate-in entering:fade-in entering:ease-out",
-        "exiting:animate-out exiting:fade-out exiting:ease-in",
+        "entering:fade-in entering:animate-in entering:ease-out",
+        "exiting:fade-out exiting:animate-out exiting:ease-in",
       )}
       isDismissable={isDismissable}
       isOpen={isOpen}
@@ -27,10 +27,10 @@ export function Modal({
       <AriaModal
         {...props}
         className={twMerge(
-          "w-full max-w-lg overflow-hidden rounded-lg bg-white p-6 text-left align-middle shadow-2xl",
-          "dark:bg-gray-900 dark:shadow-none",
-          "entering:animate-in entering:zoom-in-95 entering:ease-out",
-          "exiting:animate-out exiting:zoom-out-95 exiting:ease-in",
+          "w-full max-w-lg overflow-hidden rounded-lg bg-background p-6 text-left align-middle shadow-2xl",
+          "dark:shadow-none",
+          "entering:zoom-in-95 entering:animate-in entering:ease-out",
+          "exiting:zoom-out-95 exiting:animate-out exiting:ease-in",
         )}
       />
     </AriaModalOverlay>
@@ -38,5 +38,5 @@ export function Modal({
 }
 
 export function ModalHeading(props: AriaHeadingProps) {
-  return <AriaHeading {...props} className="text-xl font-bold" />;
+  return <AriaHeading {...props} className="font-bold text-xl" />;
 }

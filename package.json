@@ -21,7 +21,7 @@
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate deploy",
     "db:push": "prisma db push",
-    "db:reset": "prisma migrate reset --skip-seed --force && prisma db push && prisma db seed",
+    "db:reset": "prisma migrate reset && prisma db push && prisma db seed",
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
     "dev": "vite dev",
@@ -54,6 +54,7 @@
     "react-dom": "^19.2.0",
     "react-i18next": "^16.3.5",
     "tailwind-merge": "^3.4.0",
+    "tailwind-variants": "^3.2.2",
     "zod": "^4.1.13"
   },
   "devDependencies": {

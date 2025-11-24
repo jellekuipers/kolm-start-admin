@@ -33,7 +33,7 @@ export function SessionActions({ sessionToken }: SessionActionsProps) {
       toastQueue.add({
         title: t("message.session_revoke_error_title"),
         description: t("message.session_revoke_error_description"),
-        color: "red",
+        color: "destructive",
       });
     },
     onSuccess: async () => {
@@ -42,7 +42,7 @@ export function SessionActions({ sessionToken }: SessionActionsProps) {
       toastQueue.add({
         title: t("message.session_revoke_success_title"),
         description: t("message.session_revoke_success_description"),
-        color: "gray",
+        color: "success",
       });
     },
   });

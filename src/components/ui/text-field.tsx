@@ -6,6 +6,7 @@ import {
 import { twMerge } from "tailwind-merge";
 
 import { Description, FieldError, Input, Label } from "@/components/ui/field";
+import { ring } from "@/components/ui/utils";
 
 export interface TextFieldProps extends AriaTextFieldProps {
   label?: string;
@@ -24,13 +25,10 @@ export function TextField({
       {label ? <Label>{label}</Label> : null}
       <Input
         className={twMerge(
-          "rounded border border-gray-300",
-          "outline-0 outline-offset-2 outline-indigo-700 focus:outline-2 focus-visible:outline-2",
-          "disabled:border-gray-100 disabled:bg-gray-50 disabled:text-gray-200",
-          "invalid:border-red-300",
-          "dark:border-gray-700 dark:bg-gray-800",
-          "dark:disabled:border-gray-800 dark:disabled:bg-gray-900 dark:disabled:text-gray-700",
-          "dark:invalid:border-red-700",
+          "rounded border border-input",
+          "disabled:border-muted disabled:bg-muted disabled:text-muted-foreground",
+          "invalid:border-destructive",
+          ring(),
         )}
       />
       {description ? <Description>{description}</Description> : null}

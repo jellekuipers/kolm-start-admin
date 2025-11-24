@@ -57,8 +57,7 @@ export function TableBody<T extends object>({
     <AriaTableBody
       {...props}
       className={twMerge(
-        "divide-y divide-gray-300 border-y border-gray-300 align-middle",
-        "dark:divide-gray-700 dark:border-gray-700",
+        "divide-y divide-border border-border border-y align-middle",
         className,
       )}
     />
@@ -70,8 +69,8 @@ export function TableCell({ className, ...props }: TableCellProps) {
     <AriaCell
       {...props}
       className={twMerge(
-        "px-4 py-2 align-middle text-sm whitespace-nowrap",
-        "outline-0 -outline-offset-2 outline-indigo-700 focus-visible:outline-2",
+        "whitespace-nowrap px-4 py-2 align-middle text-sm",
+        "-outline-offset-2 outline-0 outline-ring focus-visible:outline-2",
         className,
       )}
     />
@@ -83,8 +82,8 @@ export function TableColumn({ className, ...props }: TableColumnProps) {
     <AriaColumn
       {...props}
       className={twMerge(
-        "px-4 py-2 align-middle whitespace-nowrap",
-        "outline-0 -outline-offset-2 outline-indigo-700 focus-visible:outline-2",
+        "whitespace-nowrap px-4 py-2 align-middle",
+        "-outline-offset-2 outline-0 outline-ring focus-visible:outline-2",
         className,
       )}
     />
@@ -98,7 +97,7 @@ export function TableHeader<T extends object>({
   return (
     <AriaTableHeader
       {...props}
-      className={twMerge("align-middle text-sm font-bold", className)}
+      className={twMerge("align-middle font-bold text-sm", className)}
     />
   );
 }
@@ -112,7 +111,7 @@ export function TableRow<T extends object>({
       {...props}
       className={twMerge(
         "align-middle",
-        "outline-0 -outline-offset-2 outline-indigo-700 focus-visible:outline-2",
+        "-outline-offset-2 outline-0 outline-ring focus-visible:outline-2",
         className,
       )}
     />

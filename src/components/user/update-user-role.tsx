@@ -36,7 +36,7 @@ export function UpdateUserRole({ user }: UpdateUserRoleProps) {
       toastQueue.add({
         title: t("message.user_role_update_error_title"),
         description: t("message.user_role_update_error_description"),
-        color: "red",
+        color: "destructive",
       });
     },
     onSuccess: async () => {
@@ -48,7 +48,7 @@ export function UpdateUserRole({ user }: UpdateUserRoleProps) {
       toastQueue.add({
         title: t("message.user_role_update_success_title"),
         description: t("message.user_role_update_success_description"),
-        color: "gray",
+        color: "success",
       });
     },
   });

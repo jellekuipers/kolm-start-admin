@@ -6,7 +6,6 @@ import {
   type ValidationResult as AriaValidationResult,
 } from "react-aria-components";
 import { useTranslation } from "react-i18next";
-import { twMerge } from "tailwind-merge";
 
 import {
   Description,
@@ -17,15 +16,15 @@ import {
 } from "@/components/ui/field";
 
 export interface SearchFieldProps extends AriaSearchFieldProps {
-  label?: string;
   description?: string;
   errorMessage?: string | ((validation: AriaValidationResult) => string);
+  label?: string;
 }
 
 export function SearchField({
-  label,
   description,
   errorMessage,
+  label,
   ...props
 }: SearchFieldProps) {
   const { t } = useTranslation();
@@ -40,10 +39,7 @@ export function SearchField({
       <FieldGroup>
         <MagnifyingGlassIcon
           aria-hidden
-          className={twMerge(
-            "ml-2 fill-gray-500 group-disabled:fill-gray-200",
-            "dark:fill-gray-300 dark:group-disabled:fill-gray-700",
-          )}
+          className="ml-2 fill-muted-foreground group-disabled:fill-muted-foreground/50"
         />
         <Input
           className="outline-none [&::-webkit-search-cancel-button]:hidden"

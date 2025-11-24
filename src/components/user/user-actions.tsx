@@ -64,7 +64,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
       toastQueue.add({
         title: t("message.user_ban_error_title"),
         description: t("message.user_ban_error_description"),
-        color: "red",
+        color: "destructive",
       });
     },
     onSuccess: async () => {
@@ -74,7 +74,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
       toastQueue.add({
         title: t("message.user_ban_success_title"),
         description: t("message.user_ban_success_description"),
-        color: "gray",
+        color: "success",
       });
     },
   });
@@ -91,7 +91,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
       toastQueue.add({
         title: t("message.user_unban_error_title"),
         description: t("message.user_unban_error_description"),
-        color: "red",
+        color: "destructive",
       });
     },
     onSuccess: async () => {
@@ -101,7 +101,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
       toastQueue.add({
         title: t("message.user_unban_success_title"),
         description: t("message.user_unban_success_description"),
-        color: "gray",
+        color: "success",
       });
     },
   });
@@ -118,7 +118,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
       toastQueue.add({
         title: t("message.user_impersonate_error_title"),
         description: t("message.user_impersonate_error_description"),
-        color: "red",
+        color: "destructive",
       });
     },
     onSuccess: () => {
@@ -127,7 +127,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
       toastQueue.add({
         title: t("message.user_impersonate_success_title"),
         description: t("message.user_impersonate_success_description"),
-        color: "gray",
+        color: "success",
       });
     },
   });
@@ -144,7 +144,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
       toastQueue.add({
         title: t("message.user_remove_error_title"),
         description: t("message.user_remove_error_description"),
-        color: "red",
+        color: "destructive",
       });
     },
     onSuccess: async () => {
@@ -154,7 +154,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
       toastQueue.add({
         title: t("message.user_remove_success_title"),
         description: t("message.user_remove_success_description"),
-        color: "gray",
+        color: "success",
       });
     },
   });
@@ -171,7 +171,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
       toastQueue.add({
         title: t("message.sessions_revoke_all_error_title"),
         description: t("message.sessions_revoke_all_error_description"),
-        color: "red",
+        color: "destructive",
       });
     },
     onSuccess: async () => {
@@ -181,7 +181,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
       toastQueue.add({
         title: t("message.sessions_revoke_all_success_title"),
         description: t("message.sessions_revoke_all_success_description"),
-        color: "gray",
+        color: "success",
       });
     },
   });

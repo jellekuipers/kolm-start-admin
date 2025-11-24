@@ -51,12 +51,7 @@ export function SessionUserDropdown() {
 
   if (isPendingSession)
     return (
-      <div
-        className={twMerge(
-          "flex size-8 items-center justify-center rounded bg-indigo-50 text-indigo-700",
-          "dark:bg-indigo-900 dark:text-indigo-50",
-        )}
-      >
+      <div className="flex size-8 items-center justify-center rounded bg-accent text-accent-foreground">
         <CircleNotchIcon className="animate-spin" size={16} />
       </div>
     );

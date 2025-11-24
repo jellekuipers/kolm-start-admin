@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import { twMerge } from "tailwind-merge";
 
 import { Separator } from "@/components/ui/separator";
 
@@ -11,21 +10,17 @@ export function NotFoundComponent() {
   const { t } = useTranslation();
 
   return (
-    <div className="gap-4 flex items-center">
-      <span className={twMerge("text-2xl text-gray-900", "dark:text-white")}>
-        {t("error.404")}
-      </span>
+    <div className="flex items-center gap-4">
+      <span className="text-2xl text-foreground">{t("error.404")}</span>
       <Separator className="min-h-8" orientation="vertical" />
-      <span className={twMerge("text-2xl text-gray-800", "dark:text-white")}>
-        {t("error.not_found")}
-      </span>
+      <span className="text-2xl text-foreground">{t("error.not_found")}</span>
     </div>
   );
 }
 
 export function NotFound({ children }: NotFoundProps) {
   return (
-    <div className="flex flex-col items-center justify-center gap-6 p-4 min-h-screen">
+    <div className="flex min-h-screen flex-col items-center justify-center gap-6 p-4">
       {children || <NotFoundComponent />}
     </div>
   );

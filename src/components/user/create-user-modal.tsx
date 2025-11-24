@@ -60,7 +60,7 @@ export function CreateUserModal() {
       toastQueue.add({
         title: t("message.user_create_success_title"),
         description: t("message.user_create_success_description"),
-        color: "gray",
+        color: "success",
       });
     },
   });

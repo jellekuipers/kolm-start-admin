@@ -12,7 +12,7 @@ export function DefaultCatchBoundary({ error }: ErrorComponentProps) {
   });
 
   return (
-    <Callout color="red">
+    <Callout color="destructive">
       <CalloutIcon>
         <InfoIcon size={16} />
       </CalloutIcon>

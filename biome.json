@@ -39,9 +39,17 @@
       "quoteStyle": "double"
     }
   },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
   "linter": {
     "enabled": true,
     "rules": {
+      "nursery": {
+        "useSortedClasses": "on"
+      },
       "correctness": {
         "useUniqueElementIds": "off"
       },
