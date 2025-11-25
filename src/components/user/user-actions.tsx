@@ -24,7 +24,7 @@ import {
   MenuTrigger,
 } from "@/components/ui/menu";
 import { Modal } from "@/components/ui/modal";
-import { toastQueue } from "@/components/ui/toast";
+import { toast } from "@/components/ui/toast";
 import { authClient, useSession } from "@/lib/auth-client";
 import { listUsersQueryOptions } from "@/queries/user";
 import {
@@ -61,20 +61,18 @@ export function UserActions({ user, variant }: UserActionsProps) {
         data: error,
       });
 
-      toastQueue.add({
+      toast.error({
         title: t("message.user_ban_error_title"),
         description: t("message.user_ban_error_description"),
-        color: "destructive",
       });
     },
     onSuccess: async () => {
       await router.invalidate({ sync: true });
       await queryClient.refetchQueries(listUsersQueryOptions());
 
-      toastQueue.add({
+      toast.success({
         title: t("message.user_ban_success_title"),
         description: t("message.user_ban_success_description"),
-        color: "success",
       });
     },
   });
@@ -88,20 +86,18 @@ export function UserActions({ user, variant }: UserActionsProps) {
         data: error,
       });
 
-      toastQueue.add({
+      toast.error({
         title: t("message.user_unban_error_title"),
         description: t("message.user_unban_error_description"),
-        color: "destructive",
       });
     },
     onSuccess: async () => {
       await router.invalidate({ sync: true });
       await queryClient.refetchQueries(listUsersQueryOptions());
 
-      toastQueue.add({
+      toast.success({
         title: t("message.user_unban_success_title"),
         description: t("message.user_unban_success_description"),
-        color: "success",
       });
     },
   });
@@ -115,19 +111,17 @@ export function UserActions({ user, variant }: UserActionsProps) {
         data: error,
       });
 
-      toastQueue.add({
+      toast.error({
         title: t("message.user_impersonate_error_title"),
         description: t("message.user_impersonate_error_description"),
-        color: "destructive",
       });
     },
     onSuccess: () => {
       session.refetch();
 
-      toastQueue.add({
+      toast.success({
         title: t("message.user_impersonate_success_title"),
         description: t("message.user_impersonate_success_description"),
-        color: "success",
       });
     },
   });
@@ -141,20 +135,18 @@ export function UserActions({ user, variant }: UserActionsProps) {
         data: error,
       });
 
-      toastQueue.add({
+      toast.error({
         title: t("message.user_remove_error_title"),
         description: t("message.user_remove_error_description"),
-        color: "destructive",
       });
     },
     onSuccess: async () => {
       await router.invalidate({ sync: true });
       await queryClient.refetchQueries(listUsersQueryOptions());
 
-      toastQueue.add({
+      toast.success({
         title: t("message.user_remove_success_title"),
         description: t("message.user_remove_success_description"),
-        color: "success",
       });
     },
   });
@@ -168,20 +160,18 @@ export function UserActions({ user, variant }: UserActionsProps) {
         data: error,
       });
 
-      toastQueue.add({
+      toast.error({
         title: t("message.sessions_revoke_all_error_title"),
         description: t("message.sessions_revoke_all_error_description"),
-        color: "destructive",
       });
     },
     onSuccess: async () => {
       await router.invalidate({ sync: true });
       await queryClient.refetchQueries(listUsersQueryOptions());
 
-      toastQueue.add({
+      toast.success({
         title: t("message.sessions_revoke_all_success_title"),
         description: t("message.sessions_revoke_all_success_description"),
-        color: "success",
       });
     },
   });

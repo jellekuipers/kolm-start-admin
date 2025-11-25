@@ -8,7 +8,6 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
-import type { ReactNode } from "react";
 import { I18nextProvider, useTranslation } from "react-i18next";
 
 import { DefaultCatchBoundary } from "@/components/error/default-catch-boundary";
@@ -71,7 +70,7 @@ function RootComponent() {
   );
 }
 
-function RootDocument({ children }: { children: ReactNode }) {
+function RootDocument({ children }: { children: React.ReactNode }) {
   const { i18n } = useTranslation();
 
   return (

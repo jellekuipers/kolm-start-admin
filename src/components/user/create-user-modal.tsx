@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog } from "@/components/ui/dialog";
 import { Modal, ModalHeading } from "@/components/ui/modal";
 import { TextField } from "@/components/ui/text-field";
-import { toastQueue } from "@/components/ui/toast";
+import { toast } from "@/components/ui/toast";
 import { getFieldErrorMessage } from "@/lib/error";
 import { listUsersQueryOptions } from "@/queries/user";
 import { createUser } from "@/server/user";
@@ -57,10 +57,9 @@ export function CreateUserModal() {
 
       setOpen(false);
 
-      toastQueue.add({
+      toast.success({
         title: t("message.user_create_success_title"),
         description: t("message.user_create_success_description"),
-        color: "success",
       });
     },
   });

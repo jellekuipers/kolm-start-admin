@@ -4,7 +4,7 @@ import { useRouter } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 
 import { Select, SelectItem } from "@/components/ui/select";
-import { toastQueue } from "@/components/ui/toast";
+import { toast } from "@/components/ui/toast";
 import { type UserRole, userRoleEnum } from "@/lib/enums";
 import { getUserByIdQueryOptions } from "@/queries/user";
 import { setUserRole } from "@/server/user";
@@ -33,10 +33,9 @@ export function UpdateUserRole({ user }: UpdateUserRoleProps) {
         data: error,
       });
 
-      toastQueue.add({
+      toast.error({
         title: t("message.user_role_update_error_title"),
         description: t("message.user_role_update_error_description"),
-        color: "destructive",
       });
     },
     onSuccess: async () => {
@@ -45,10 +44,9 @@ export function UpdateUserRole({ user }: UpdateUserRoleProps) {
         getUserByIdQueryOptions({ userId: user.id }),
       );
 
-      toastQueue.add({
+      toast.success({
         title: t("message.user_role_update_success_title"),
         description: t("message.user_role_update_success_description"),
-        color: "success",
       });
     },
   });

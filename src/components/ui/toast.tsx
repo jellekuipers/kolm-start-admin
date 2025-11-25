@@ -13,8 +13,13 @@ import { tv } from "tailwind-variants";
 
 interface ToastContent {
   color?: "primary" | "secondary" | "success" | "destructive";
-  title: string;
   description?: string;
+  title: string;
+}
+
+interface ToastProps {
+  description?: string;
+  title: string;
 }
 
 export const toastQueue = new AriaToastQueue<ToastContent>({
@@ -28,6 +33,15 @@ export const toastQueue = new AriaToastQueue<ToastContent>({
     }
   },
 });
+
+export const toast = {
+  error: ({ description, title }: ToastProps) =>
+    toastQueue.add({ title, description, color: "destructive" }),
+  info: ({ description, title }: ToastProps) =>
+    toastQueue.add({ title, description, color: "primary" }),
+  success: ({ description, title }: ToastProps) =>
+    toastQueue.add({ title, description, color: "success" }),
+};
 
 const toastStyles = tv({
   base: "relative flex w-full items-start justify-between gap-4 rounded-lg p-4 text-sm",
