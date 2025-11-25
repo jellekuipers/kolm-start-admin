@@ -213,7 +213,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
             <DotsThreeVerticalIcon size={20} />
           </IconButton>
         ) : (
-          <Button color="indigo" variant="light">
+          <Button variant="light">
             {t("common.actions")} <CaretDownIcon size={16} />
           </Button>
         )}
@@ -272,7 +272,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
           </MenuItem>
           <MenuSeparator />
           <MenuItem
-            color="red"
+            color="destructive"
             isDisabled={removeUserMutation.isPending}
             onAction={() => setIsOpen(true)}
           >

@@ -133,7 +133,6 @@ function RouteComponent() {
                 {([canSubmit, isSubmitting]) => (
                   <div className="flex justify-end">
                     <Button
-                      color="indigo"
                       isDisabled={!canSubmit}
                       isPending={isSubmitting}
                       type="submit"

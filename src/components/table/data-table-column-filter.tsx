@@ -20,7 +20,7 @@ export function DataTableColumnFilter<TData>({
 
   return (
     <DialogTrigger>
-      <Button color="indigo" variant="light">
+      <Button variant="light">
         {t("table.column_visibility")} <CaretDownIcon />
       </Button>
       <Popover>

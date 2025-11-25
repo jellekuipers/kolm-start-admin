@@ -87,9 +87,7 @@ export function CreateUserModal() {
 
   return (
     <>
-      <Button color="indigo" onPress={() => setOpen(true)}>
-        {t("user.create_user")}
-      </Button>
+      <Button onPress={() => setOpen(true)}>{t("user.create_user")}</Button>
       <Modal isDismissable isOpen={open} onOpenChange={onOpenChangeHandler}>
         <Dialog>
           <ModalHeading slot="title">{t("user.create_user")}</ModalHeading>
@@ -131,11 +129,10 @@ export function CreateUserModal() {
               >
                 {([canSubmit, isSubmitting]) => (
                   <div className="flex justify-end gap-2">
-                    <Button color="gray" slot="close" variant="light">
+                    <Button color="secondary" slot="close" variant="light">
                       {t("common.cancel")}
                     </Button>
                     <Button
-                      color="indigo"
                       isDisabled={!canSubmit}
                       isPending={isSubmitting}
                       type="submit"

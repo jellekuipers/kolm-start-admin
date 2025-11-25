@@ -33,10 +33,14 @@ export function AlertDialog({
           <ModalHeading slot="title">{title}</ModalHeading>
           <Description>{children}</Description>
           <div className="flex justify-end gap-2">
-            <Button color="gray" onPress={close}>
+            <Button color="secondary" onPress={close}>
               {t("common.cancel")}
             </Button>
-            <Button color="red" autoFocus onPress={chain(onAction, close)}>
+            <Button
+              color="destructive"
+              autoFocus
+              onPress={chain(onAction, close)}
+            >
               {t("common.confirm")}
             </Button>
           </div>

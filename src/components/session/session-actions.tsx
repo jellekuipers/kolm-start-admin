@@ -54,7 +54,7 @@ export function SessionActions({ sessionToken }: SessionActionsProps) {
       </IconButton>
       <Menu>
         <MenuItem
-          color="red"
+          color="destructive"
           isDisabled={revokeUserSessionMutation.isPending}
           onAction={() =>
             revokeUserSessionMutation.mutateAsync({

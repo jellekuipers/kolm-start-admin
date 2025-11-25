@@ -35,10 +35,9 @@ const toastStyles = tv({
     color: {
       primary: "bg-accent text-accent-foreground border border-primary/20",
       secondary: "bg-card text-muted-foreground border border-border",
-      success:
-        "bg-success/10 text-success border border-success/20 dark:bg-success dark:text-success-foreground dark:border-success",
+      success: "bg-success/10 text-success border border-success/20",
       destructive:
-        "bg-destructive/10 text-destructive border border-destructive/20 dark:bg-destructive dark:text-destructive-foreground dark:border-destructive",
+        "bg-destructive/10 text-destructive border border-destructive/20",
     },
   },
 });

@@ -9,13 +9,17 @@ import {
   Separator as AriaSeparator,
   type SeparatorProps as AriaSeparatorProps,
 } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
+import { tv } from "tailwind-variants";
 
 import { Popover } from "@/components/ui/popover";
 
 interface MenuProps<T>
   extends AriaMenuProps<T>,
     Omit<AriaMenuTriggerProps, "children"> {}
+
+interface MenuItemProps extends AriaMenuItemProps {
+  color?: "default" | "destructive";
+}
 
 export function Menu<T extends object>(props: MenuProps<T>) {
   return (
@@ -33,32 +37,28 @@ export function MenuHeader(
   );
 }
 
-const menuItemColors = {
-  default: twMerge(
-    "text-foreground",
-    "hover:bg-primary hover:text-primary-foreground",
-  ),
-  red: twMerge(
-    "text-destructive",
-    "hover:bg-destructive hover:text-destructive-foreground",
-  ),
-};
+const menuItemStyles = tv({
+  base: [
+    "flex h-8 cursor-default items-center gap-2 rounded px-2 text-sm",
+    "outline-0 outline-ring outline-offset-2 focus-visible:outline-2",
+    "disabled:text-muted-foreground",
+  ],
+  variants: {
+    color: {
+      default: [
+        "text-foreground",
+        "hover:bg-primary hover:text-primary-foreground",
+      ],
+      destructive: [
+        "text-destructive",
+        "hover:bg-destructive hover:text-destructive-foreground",
+      ],
+    },
+  },
+});
 
-export function MenuItem({
-  color = "default",
-  ...props
-}: AriaMenuItemProps & { color?: "default" | "red" }) {
-  return (
-    <AriaMenuItem
-      {...props}
-      className={twMerge(
-        "flex h-8 cursor-default items-center gap-2 rounded px-2 text-sm",
-        "outline-0 outline-ring outline-offset-2 focus-visible:outline-2",
-        "disabled:text-muted-foreground",
-        menuItemColors[color],
-      )}
-    />
-  );
+export function MenuItem({ color = "default", ...props }: MenuItemProps) {
+  return <AriaMenuItem {...props} className={menuItemStyles({ color })} />;
 }
 
 export function MenuSeparator(props: AriaSeparatorProps) {
