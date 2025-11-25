@@ -12,6 +12,7 @@ import {
 import { tv } from "tailwind-variants";
 
 import { Popover } from "@/components/ui/popover";
+import { ring } from "@/components/ui/utils";
 
 interface MenuProps<T>
   extends AriaMenuProps<T>,
@@ -38,9 +39,9 @@ export function MenuHeader(
 }
 
 const menuItemStyles = tv({
+  extend: ring,
   base: [
     "flex h-8 cursor-default items-center gap-2 rounded px-2 text-sm",
-    "outline-0 outline-ring outline-offset-2 focus-visible:outline-2",
     "disabled:text-muted-foreground",
   ],
   variants: {

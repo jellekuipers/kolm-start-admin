@@ -6,15 +6,17 @@ import {
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 
+import { ring } from "@/components/ui/utils";
+
 interface ButtonProps extends AriaButtonProps {
   color?: "primary" | "secondary" | "success" | "destructive";
   variant?: "default" | "light" | "outline";
 }
 
 const buttonStyles = tv({
+  extend: ring,
   base: [
     "group flex h-8 items-center gap-2 rounded border px-2 font-medium text-sm",
-    "outline-0 outline-offset-2 outline-ring focus-visible:outline-2",
     "disabled:border-muted disabled:bg-muted disabled:text-muted-foreground disabled:opacity-50",
   ],
   variants: {
