@@ -4,7 +4,9 @@ import {
   type GridListItemProps as AriaGridListItemProps,
   type GridListProps as AriaGridListProps,
 } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
+import { tv } from "tailwind-variants";
+
+import { ring } from "@/components/ui/utils";
 
 export function GridList<T extends object>({
   children,
@@ -17,18 +19,19 @@ export function GridList<T extends object>({
   );
 }
 
+const gridListItemStyles = tv({
+  extend: ring,
+  base: [
+    "flex h-8 items-center gap-2 rounded border border-transparent px-2 font-medium text-sm",
+    "hover:bg-accent",
+    "selected:bg-accent",
+    "disabled:bg-muted disabled:text-muted-foreground",
+  ],
+});
+
 export function GridListItem({ children, ...props }: AriaGridListItemProps) {
   return (
-    <AriaGridListItem
-      {...props}
-      className={twMerge(
-        "flex h-8 items-center gap-2 rounded border border-transparent px-2 font-medium text-sm",
-        "outline-0 outline-ring outline-offset-2 focus-visible:outline-2",
-        "hover:bg-accent",
-        "selected:bg-accent",
-        "disabled:bg-muted disabled:text-muted-foreground",
-      )}
-    >
+    <AriaGridListItem {...props} className={gridListItemStyles()}>
       {children}
     </AriaGridListItem>
   );

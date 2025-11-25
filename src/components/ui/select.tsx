@@ -10,9 +10,11 @@ import {
 } from "react-aria-components";
 import { useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";
+import { tv } from "tailwind-variants";
 
 import { Description, FieldError, Label } from "@/components/ui/field";
 import { Popover } from "@/components/ui/popover";
+import { ring } from "@/components/ui/utils";
 
 interface SelectProps<T extends object>
   extends Omit<AriaSelectProps<T>, "children" | "className"> {
@@ -23,6 +25,14 @@ interface SelectProps<T extends object>
   items?: Iterable<T>;
   label?: string;
 }
+
+const selectButtonStyles = tv({
+  extend: ring,
+  base: [
+    "flex h-8 items-center justify-between gap-2 rounded border border-input bg-card px-2 text-sm",
+    "disabled:border-muted disabled:bg-muted disabled:text-muted-foreground",
+  ],
+});
 
 export function Select<T extends object>({
   children,
@@ -41,13 +51,7 @@ export function Select<T extends object>({
       className={twMerge("flex flex-col gap-2", className)}
     >
       {label ? <Label>{label}</Label> : null}
-      <AriaButton
-        className={twMerge(
-          "flex h-8 items-center justify-between gap-2 rounded border border-input bg-card px-2 text-sm",
-          "outline-0 outline-ring outline-offset-2 focus:outline-2 focus-visible:outline-2",
-          "disabled:border-muted disabled:bg-muted disabled:text-muted-foreground",
-        )}
-      >
+      <AriaButton className={selectButtonStyles()}>
         <AriaSelectValue>
           {({ defaultChildren, isPlaceholder }) =>
             isPlaceholder ? t("common.select") : defaultChildren
@@ -66,16 +70,15 @@ export function Select<T extends object>({
   );
 }
 
+const selectItemStyles = tv({
+  extend: ring,
+  base: [
+    "flex h-8 cursor-default items-center gap-2 rounded px-2 text-sm outline-0",
+    "hover:bg-primary hover:text-primary-foreground",
+    "disabled:bg-muted disabled:text-muted-foreground",
+  ],
+});
+
 export function SelectItem(props: AriaListBoxItemProps) {
-  return (
-    <AriaListBoxItem
-      {...props}
-      className={twMerge(
-        "flex h-8 cursor-default items-center gap-2 rounded px-2 text-sm outline-0",
-        "outline-0 outline-ring outline-offset-2 focus-visible:outline-2",
-        "hover:bg-primary hover:text-primary-foreground",
-        "disabled:bg-muted disabled:text-muted-foreground",
-      )}
-    />
-  );
+  return <AriaListBoxItem {...props} className={selectItemStyles()} />;
 }

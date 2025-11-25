@@ -3,7 +3,7 @@ import {
   type TextFieldProps as AriaTextFieldProps,
   type ValidationResult as AriaValidationResult,
 } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
+import { tv } from "tailwind-variants";
 
 import { Description, FieldError, Input, Label } from "@/components/ui/field";
 import { ring } from "@/components/ui/utils";
@@ -14,6 +14,15 @@ export interface TextFieldProps extends AriaTextFieldProps {
   errorMessage?: string | ((validation: AriaValidationResult) => string);
 }
 
+const textFieldStyles = tv({
+  extend: ring,
+  base: [
+    "rounded border border-input",
+    "disabled:border-muted disabled:bg-muted disabled:text-muted-foreground",
+    "invalid:border-destructive",
+  ],
+});
+
 export function TextField({
   description,
   errorMessage,
@@ -23,14 +32,7 @@ export function TextField({
   return (
     <AriaTextField {...props} className="flex flex-col gap-1">
       {label ? <Label>{label}</Label> : null}
-      <Input
-        className={twMerge(
-          "rounded border border-input",
-          "disabled:border-muted disabled:bg-muted disabled:text-muted-foreground",
-          "invalid:border-destructive",
-          ring(),
-        )}
-      />
+      <Input className={textFieldStyles()} />
       {description ? <Description>{description}</Description> : null}
       <FieldError>{errorMessage}</FieldError>
     </AriaTextField>

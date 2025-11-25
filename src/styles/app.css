@@ -34,7 +34,7 @@
   --card-foreground: var(--color-gray-900);
   --muted: var(--color-gray-100);
   --muted-foreground: var(--color-gray-600);
-  --accent: var(--color-indigo-50);
+  --accent: var(--color-indigo-100);
   --accent-foreground: var(--color-indigo-700);
   --primary: var(--color-indigo-700);
   --primary-foreground: var(--color-white);

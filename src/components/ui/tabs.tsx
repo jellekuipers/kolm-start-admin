@@ -8,7 +8,7 @@ import {
   Tabs as AriaTabs,
   type TabsProps as AriaTabsProps,
 } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
+import { tv } from "tailwind-variants";
 
 import { ring } from "@/components/ui/utils";
 
@@ -24,28 +24,34 @@ export function TabList<T extends object>(props: AriaTabListProps<T>) {
   return <AriaTabList {...props} className="flex border-border border-b" />;
 }
 
+const tabStyles = tv({
+  extend: ring,
+  base: [
+    "group -mb-px flex cursor-pointer items-center gap-2 border-transparent border-b-2 px-2 pb-1",
+    "selected:border-primary",
+  ],
+});
+
+const tabSpanStyles = tv({
+  base: [
+    "flex h-8 items-center rounded px-2 font-medium text-foreground text-sm",
+    "group-hover:bg-muted",
+  ],
+});
+
 export function Tab({ children, ...props }: TabProps) {
   return (
-    <AriaTab
-      {...props}
-      className={twMerge(
-        "group -mb-px flex cursor-pointer items-center gap-2 border-transparent border-b-2 px-2 pb-1",
-        "selected:border-primary",
-        ring(),
-      )}
-    >
-      <span
-        className={twMerge(
-          "flex h-8 items-center rounded px-2 font-medium text-foreground text-sm",
-          "group-hover:bg-muted",
-        )}
-      >
-        {children}
-      </span>
+    <AriaTab {...props} className={tabStyles()}>
+      <span className={tabSpanStyles()}>{children}</span>
     </AriaTab>
   );
 }
 
+const tabPanelStyles = tv({
+  extend: ring,
+  base: "flex-1",
+});
+
 export function TabPanel(props: AriaTabPanelProps) {
-  return <AriaTabPanel {...props} className={twMerge("flex-1", ring())} />;
+  return <AriaTabPanel {...props} className={tabPanelStyles()} />;
 }

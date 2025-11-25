@@ -8,8 +8,9 @@ import {
   UNSTABLE_ToastRegion as AriaToastRegion,
 } from "react-aria-components";
 import { flushSync } from "react-dom";
-import { twMerge } from "tailwind-merge";
 import { tv } from "tailwind-variants";
+
+import { ring } from "@/components/ui/utils";
 
 interface ToastContent {
   color?: "primary" | "secondary" | "success" | "destructive";
@@ -56,6 +57,11 @@ const toastStyles = tv({
   },
 });
 
+const toastIconStyles = tv({
+  extend: ring,
+  base: ["absolute top-4 right-4", "hover:opacity-75"],
+});
+
 export function Toast() {
   return (
     <AriaToastRegion
@@ -79,14 +85,7 @@ export function Toast() {
               </AriaText>
               <AriaText slot="description">{description}</AriaText>
             </AriaToastContent>
-            <AriaButton
-              className={twMerge(
-                "absolute top-4 right-4",
-                "hover:opacity-75",
-                "outline-0 outline-ring outline-offset-2 focus-visible:outline-2",
-              )}
-              slot="close"
-            >
+            <AriaButton className={toastIconStyles()} slot="close">
               <XIcon size={16} />
             </AriaButton>
           </AriaToast>
