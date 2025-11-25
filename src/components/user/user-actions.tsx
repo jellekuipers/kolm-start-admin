@@ -8,9 +8,9 @@ import {
   UserIcon,
   UserSwitchIcon,
 } from "@phosphor-icons/react";
-import type { User } from "@prisma/client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
+import type { User } from "prisma/generated/prisma/client";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 

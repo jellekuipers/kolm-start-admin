@@ -36,7 +36,7 @@ const buttonStyles = tv({
     {
       variant: "default",
       color: "primary",
-      class: [
+      className: [
         "border-primary bg-primary text-primary-foreground",
         "hover:bg-primary/90 hover:border-primary/90",
         "pressed:bg-primary/90 pressed:border-primary/90",
@@ -45,7 +45,7 @@ const buttonStyles = tv({
     {
       variant: "default",
       color: "secondary",
-      class: [
+      className: [
         "border-secondary bg-secondary text-secondary-foreground",
         "hover:bg-secondary/80 hover:border-secondary/80",
         "pressed:bg-secondary/80 pressed:border-secondary/80",
@@ -54,7 +54,7 @@ const buttonStyles = tv({
     {
       variant: "default",
       color: "success",
-      class: [
+      className: [
         "border-success bg-success text-success-foreground",
         "hover:bg-success/90 hover:border-success/90",
         "pressed:bg-success/90 pressed:border-success/90",
@@ -63,7 +63,7 @@ const buttonStyles = tv({
     {
       variant: "default",
       color: "destructive",
-      class: [
+      className: [
         "border-destructive bg-destructive text-destructive-foreground",
         "hover:bg-destructive/90 hover:border-destructive/90",
         "pressed:bg-destructive/90 pressed:border-destructive/90",
@@ -72,7 +72,7 @@ const buttonStyles = tv({
     {
       variant: "light",
       color: "primary",
-      class: [
+      className: [
         "border-primary/10 bg-primary/10 text-primary",
         "hover:bg-primary/20 hover:border-primary/20",
         "pressed:bg-primary/20 pressed:border-primary/20",
@@ -81,7 +81,7 @@ const buttonStyles = tv({
     {
       variant: "light",
       color: "secondary",
-      class: [
+      className: [
         "border-secondary bg-secondary text-secondary-foreground",
         "hover:bg-secondary/80 hover:border-secondary/80",
         "pressed:bg-secondary/80 pressed:border-secondary/80",
@@ -90,7 +90,7 @@ const buttonStyles = tv({
     {
       variant: "light",
       color: "success",
-      class: [
+      className: [
         "border-success/10 bg-success/10 text-success",
         "hover:bg-success/20 hover:border-success/20",
         "pressed:bg-success/20 pressed:border-success/20",
@@ -99,7 +99,7 @@ const buttonStyles = tv({
     {
       variant: "light",
       color: "destructive",
-      class: [
+      className: [
         "border-destructive/10 bg-destructive/10 text-destructive",
         "hover:bg-destructive/20 hover:border-destructive/20",
         "pressed:bg-destructive/20 pressed:border-destructive/20",
@@ -108,7 +108,7 @@ const buttonStyles = tv({
     {
       variant: "outline",
       color: "primary",
-      class: [
+      className: [
         "border-primary text-primary",
         "hover:bg-primary/10",
         "pressed:bg-primary/10",
@@ -117,7 +117,7 @@ const buttonStyles = tv({
     {
       variant: "outline",
       color: "secondary",
-      class: [
+      className: [
         "border-border text-foreground",
         "hover:bg-secondary",
         "pressed:bg-secondary",
@@ -126,7 +126,7 @@ const buttonStyles = tv({
     {
       variant: "outline",
       color: "success",
-      class: [
+      className: [
         "border-success text-success",
         "hover:bg-success/10",
         "pressed:bg-success/10",
@@ -135,7 +135,7 @@ const buttonStyles = tv({
     {
       variant: "outline",
       color: "destructive",
-      class: [
+      className: [
         "border-destructive text-destructive",
         "hover:bg-destructive/10",
         "pressed:bg-destructive/10",

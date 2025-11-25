@@ -1,8 +1,8 @@
-import type { Account } from "@prisma/client";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import type { ColumnDef } from "@tanstack/react-table";
 import type { TFunction } from "i18next";
+import type { Account } from "prisma/generated/prisma/client";
 import { useTranslation } from "react-i18next";
 
 import { Container } from "@/components/layout/container";

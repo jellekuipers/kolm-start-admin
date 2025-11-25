@@ -1,6 +1,6 @@
-import type { User } from "@prisma/client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
+import type { User } from "prisma/generated/prisma/client";
 import { useTranslation } from "react-i18next";
 
 import { Select, SelectItem } from "@/components/ui/select";
