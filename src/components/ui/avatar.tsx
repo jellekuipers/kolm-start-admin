@@ -7,7 +7,7 @@ interface AvatarProps {
   src?: string;
 }
 
-const avatar = tv({
+const avatarStyles = tv({
   base: "flex shrink-0 items-center justify-center overflow-hidden bg-accent text-accent-foreground",
   variants: {
     size: {
@@ -20,7 +20,7 @@ const avatar = tv({
 
 export function Avatar({ alt, fallback, size = 10, src }: AvatarProps) {
   return (
-    <div className={avatar({ size })}>
+    <div className={avatarStyles({ size })}>
       {src ? (
         <img alt={alt} src={src} />
       ) : (

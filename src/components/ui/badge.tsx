@@ -5,7 +5,7 @@ interface BadgeProps {
   color?: "primary" | "secondary" | "success" | "destructive";
 }
 
-const badge = tv({
+const badgeStyles = tv({
   base: "inline-flex rounded px-1.5 py-0.5 font-medium text-xs",
   variants: {
     color: {
@@ -18,5 +18,5 @@ const badge = tv({
 });
 
 export function Badge({ children, color = "primary" }: BadgeProps) {
-  return <div className={badge({ color })}>{children}</div>;
+  return <div className={badgeStyles({ color })}>{children}</div>;
 }

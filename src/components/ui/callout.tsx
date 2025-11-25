@@ -13,7 +13,7 @@ interface CalloutTextProps {
   children: React.ReactNode;
 }
 
-const callOut = tv({
+const callOutStyles = tv({
   base: "flex items-center gap-2 rounded p-4 text-sm",
   variants: {
     color: {
@@ -26,7 +26,7 @@ const callOut = tv({
 });
 
 export function Callout({ color = "primary", ...props }: CalloutProps) {
-  return <div {...props} className={callOut({ color })} />;
+  return <div {...props} className={callOutStyles({ color })} />;
 }
 
 export function CalloutIcon(props: CalloutIconProps) {
