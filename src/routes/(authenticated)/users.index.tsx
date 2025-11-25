@@ -1,9 +1,9 @@
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
-import type { User } from "@prisma/client";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import type { ColumnDef } from "@tanstack/react-table";
 import type { TFunction } from "i18next";
+import type { User } from "prisma/generated/prisma/client";
 import { useTranslation } from "react-i18next";
 
 import { Container } from "@/components/layout/container";

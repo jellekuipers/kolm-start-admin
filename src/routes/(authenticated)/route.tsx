@@ -31,7 +31,7 @@ function RouteComponent() {
 
   return (
     <>
-      <header className="flex items-center justify-between gap-2 bg-muted/50 px-4 py-2">
+      <header className="flex items-center justify-between gap-2 px-4 py-2">
         <div className="flex items-center gap-2">
           <Link className="rounded" to="/">
             <Logo size={32} />
@@ -40,12 +40,12 @@ function RouteComponent() {
         <SessionUserDropdown />
       </header>
       <Separator />
-      <div className="flex items-center gap-1 overflow-x-auto p-4">
+      <div className="-ml-2 flex items-center gap-1 overflow-x-auto p-4">
         {routes.map((route) => (
           <Link
             key={route.to}
             className={twMerge(
-              "-mx-1 flex h-8 items-center justify-center rounded px-2 text-primary",
+              "flex h-8 items-center justify-center rounded px-2 text-primary",
               "hover:bg-accent hover:no-underline",
             )}
             to={route.to}

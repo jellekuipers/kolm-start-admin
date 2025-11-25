@@ -59,7 +59,7 @@ const toastStyles = tv({
 
 const toastIconStyles = tv({
   extend: ring,
-  base: ["absolute top-4 right-4", "hover:opacity-75"],
+  base: ["absolute top-4 right-4", "hover:opacity-80"],
 });
 
 export function Toast() {

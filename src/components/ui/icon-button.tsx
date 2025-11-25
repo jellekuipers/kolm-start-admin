@@ -10,7 +10,7 @@ const iconButtonStyles = tv({
   extend: ring,
   base: [
     "flex size-8 items-center justify-center rounded",
-    "disabled:opacity-25",
+    "disabled:opacity-50",
     "hover:bg-muted",
     "pressed:bg-muted",
   ],
