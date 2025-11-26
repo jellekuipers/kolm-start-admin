@@ -118,7 +118,7 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
               >
                 {([canSubmit, isSubmitting]) => (
                   <div className="flex justify-end gap-2">
-                    <Button color="secondary" slot="close" variant="light">
+                    <Button color="secondary" slot="close">
                       {t("common.cancel")}
                     </Button>
                     <Button

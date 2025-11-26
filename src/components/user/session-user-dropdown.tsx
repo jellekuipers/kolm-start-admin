@@ -39,6 +39,8 @@ export function SessionUserDropdown() {
     refetchSession();
   };
 
+  const setThemeHandler = () => setTheme(theme === "dark" ? "light" : "dark");
+
   const signOutHandler = () =>
     signOut({
       fetchOptions: {
@@ -79,9 +81,7 @@ export function SessionUserDropdown() {
           <UserIcon size={16} />
           {t("user.view_profile")}
         </MenuItem>
-        <MenuItem
-          onAction={() => setTheme(theme === "dark" ? "light" : "dark")}
-        >
+        <MenuItem onAction={setThemeHandler}>
           {theme === "dark" ? <SunIcon size={16} /> : <MoonIcon size={16} />}
           {t("user.toggle_theme")}
         </MenuItem>
