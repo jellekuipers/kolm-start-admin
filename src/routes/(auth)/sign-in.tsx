@@ -74,7 +74,7 @@ function RouteComponent() {
   });
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-muted p-4">
+    <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-background p-4">
       <Logo size={40} />
       <Card className="w-96">
         <div className="space-y-4">
