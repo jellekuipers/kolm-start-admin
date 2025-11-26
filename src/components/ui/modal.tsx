@@ -27,7 +27,7 @@ export function Modal({
       <AriaModal
         {...props}
         className={twMerge(
-          "w-full max-w-lg overflow-hidden rounded-lg bg-background p-6 text-left align-middle shadow-2xl",
+          "w-full max-w-lg overflow-hidden rounded-lg border border-border bg-background p-6 text-left align-middle shadow-2xl",
           "dark:shadow-none",
           "entering:zoom-in-95 entering:animate-in entering:ease-out",
           "exiting:zoom-out-95 exiting:animate-out exiting:ease-in",

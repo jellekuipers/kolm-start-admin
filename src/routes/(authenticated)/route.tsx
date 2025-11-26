@@ -46,7 +46,7 @@ function RouteComponent() {
             key={route.to}
             className={twMerge(
               "flex h-8 items-center justify-center rounded px-2 text-primary",
-              "hover:bg-accent hover:no-underline",
+              "hover:bg-accent hover:text-accent-foreground hover:no-underline",
             )}
             to={route.to}
           >
