@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog } from "@/components/ui/dialog";
 import { Modal, ModalHeading } from "@/components/ui/modal";
 import { TextField } from "@/components/ui/text-field";
-import { toastQueue } from "@/components/ui/toast";
+import { toast } from "@/components/ui/toast";
 import { getFieldErrorMessage } from "@/lib/error";
 import { listUsersQueryOptions } from "@/queries/user";
 import { createUser } from "@/server/user";
@@ -57,10 +57,9 @@ export function CreateUserModal() {
 
       setOpen(false);
 
-      toastQueue.add({
+      toast.success({
         title: t("message.user_create_success_title"),
         description: t("message.user_create_success_description"),
-        color: "gray",
       });
     },
   });
@@ -87,9 +86,7 @@ export function CreateUserModal() {
 
   return (
     <>
-      <Button color="indigo" onPress={() => setOpen(true)}>
-        {t("user.create_user")}
-      </Button>
+      <Button onPress={() => setOpen(true)}>{t("user.create_user")}</Button>
       <Modal isDismissable isOpen={open} onOpenChange={onOpenChangeHandler}>
         <Dialog>
           <ModalHeading slot="title">{t("user.create_user")}</ModalHeading>
@@ -131,11 +128,10 @@ export function CreateUserModal() {
               >
                 {([canSubmit, isSubmitting]) => (
                   <div className="flex justify-end gap-2">
-                    <Button color="gray" slot="close" variant="light">
+                    <Button color="secondary" slot="close">
                       {t("common.cancel")}
                     </Button>
                     <Button
-                      color="indigo"
                       isDisabled={!canSubmit}
                       isPending={isSubmitting}
                       type="submit"

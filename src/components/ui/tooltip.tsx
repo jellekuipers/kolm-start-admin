@@ -17,19 +17,16 @@ export function Tooltip({ children, ...props }: TooltipProps) {
       {...props}
       offset={10}
       className={twMerge(
-        "group bg-gray-700 border border-gray-800 text-white text-sm rounded drop-shadow-lg will-change-transform px-3 py-1",
-        "dark:bg-gray-600 dark:border-white/10 dark:shadow-none",
-        "entering:animate-in entering:fade-in entering:placement-bottom:slide-in-from-top-1 entering:placement-top:slide-in-from-bottom-1",
-        "exiting:animate-out exiting:fade-out exiting:placement-bottom:slide-out-to-top-1 exiting:placement-top:slide-out-to-bottom-1",
+        "group rounded border border-border bg-muted px-3 py-1 text-foreground text-sm drop-shadow-lg will-change-transform",
+        "dark:shadow-none",
+        "entering:fade-in entering:placement-bottom:slide-in-from-top-1 entering:placement-top:slide-in-from-bottom-1 entering:animate-in",
+        "exiting:fade-out exiting:placement-bottom:slide-out-to-top-1 exiting:placement-top:slide-out-to-bottom-1 exiting:animate-out",
       )}
     >
       <AriaOverlayArrow>
         <svg
           aria-hidden="true"
-          className={twMerge(
-            "fill-gray-700 stroke-gray-800 group-placement-bottom:rotate-180 group-placement-left:-rotate-90 group-placement-right:rotate-90",
-            "dark:fill-gray-600 dark:stroke-white/10",
-          )}
+          className="group-placement-left:-rotate-90 fill-muted stroke-border group-placement-bottom:rotate-180 group-placement-right:rotate-90"
           width={8}
           height={8}
           viewBox="0 0 8 8"

@@ -37,9 +37,7 @@ function RouteComponent() {
         <DataListValue>
           <div className="flex items-center gap-2">
             {user.email}
-            {user.emailVerified ? null : (
-              <Badge color="indigo">{t("user.unverified")}</Badge>
-            )}
+            {user.emailVerified ? null : <Badge>{t("user.unverified")}</Badge>}
           </div>
         </DataListValue>
       </DataListItem>

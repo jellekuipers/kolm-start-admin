@@ -8,7 +8,9 @@ import {
   Tabs as AriaTabs,
   type TabsProps as AriaTabsProps,
 } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
+import { tv } from "tailwind-variants";
+
+import { ring } from "@/components/ui/utils";
 
 interface TabProps extends AriaTabProps, Omit<AriaTabProps, "children"> {
   children: React.ReactNode;
@@ -19,49 +21,37 @@ export function Tabs(props: AriaTabsProps) {
 }
 
 export function TabList<T extends object>(props: AriaTabListProps<T>) {
-  return (
-    <AriaTabList
-      {...props}
-      className={twMerge(
-        "flex border-b border-gray-300",
-        "dark:border-gray-700",
-      )}
-    />
-  );
+  return <AriaTabList {...props} className="flex border-border border-b" />;
 }
+
+const tabStyles = tv({
+  extend: ring,
+  base: [
+    "group -mb-px flex cursor-pointer items-center gap-2 border-transparent border-b-2 px-2 pb-1",
+    "selected:border-primary",
+  ],
+});
+
+const tabSpanStyles = tv({
+  base: [
+    "flex h-8 items-center rounded px-2 font-medium text-foreground text-sm",
+    "group-hover:bg-muted",
+  ],
+});
 
 export function Tab({ children, ...props }: TabProps) {
   return (
-    <AriaTab
-      {...props}
-      className={twMerge(
-        "group -mb-px flex cursor-pointer items-center gap-2 border-b-2 border-transparent px-2 pb-1",
-        "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
-        "selected:border-indigo-500",
-      )}
-    >
-      <span
-        className={twMerge(
-          "flex h-8 items-center rounded px-2 text-sm font-medium text-gray-800",
-          "group-hover:bg-gray-100",
-          "dark:text-gray-200",
-          "dark:group-hover:bg-gray-800",
-        )}
-      >
-        {children}
-      </span>
+    <AriaTab {...props} className={tabStyles()}>
+      <span className={tabSpanStyles()}>{children}</span>
     </AriaTab>
   );
 }
 
+const tabPanelStyles = tv({
+  extend: ring,
+  base: "flex-1",
+});
+
 export function TabPanel(props: AriaTabPanelProps) {
-  return (
-    <AriaTabPanel
-      {...props}
-      className={twMerge(
-        "flex-1",
-        "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
-      )}
-    />
-  );
+  return <AriaTabPanel {...props} className={tabPanelStyles()} />;
 }

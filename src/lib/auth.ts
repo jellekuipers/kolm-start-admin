@@ -2,7 +2,7 @@ import { createServerOnlyFn } from "@tanstack/react-start";
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { admin } from "better-auth/plugins";
-import { reactStartCookies } from "better-auth/react-start";
+import { tanstackStartCookies } from "better-auth/tanstack-start";
 
 import { db } from "@/lib/db";
 
@@ -16,7 +16,7 @@ const config = createServerOnlyFn(() =>
       enabled: true,
       requireEmailVerification: false,
     },
-    plugins: [admin(), reactStartCookies()],
+    plugins: [admin(), tanstackStartCookies()],
     session: {
       cookieCache: {
         enabled: true,

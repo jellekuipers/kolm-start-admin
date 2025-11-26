@@ -1,37 +1,22 @@
-import { twMerge } from "tailwind-merge";
+import { tv } from "tailwind-variants";
 
 interface BadgeProps {
   children: React.ReactNode;
-  className?: string;
-  color: "gray" | "green" | "indigo" | "red";
+  color?: "primary" | "secondary" | "success" | "destructive";
 }
 
-const badgeColors = {
-  gray: twMerge(
-    "bg-gray-100 text-gray-700",
-    "dark:bg-gray-700 dark:text-white",
-  ),
-  green: twMerge(
-    "bg-green-50 text-green-700",
-    "dark:bg-green-700 dark:text-white",
-  ),
-  indigo: twMerge(
-    "bg-indigo-50 text-indigo-700",
-    "dark:bg-indigo-600 dark:text-white",
-  ),
-  red: twMerge("bg-red-50 text-red-600", "dark:bg-red-700 dark:text-white"),
-};
+const badgeStyles = tv({
+  base: "inline-flex rounded px-1.5 py-0.5 font-medium text-xs",
+  variants: {
+    color: {
+      primary: "bg-accent text-accent-foreground",
+      secondary: "bg-secondary text-secondary-foreground",
+      success: "bg-success/10 text-success",
+      destructive: "bg-destructive/10 text-destructive",
+    },
+  },
+});
 
-export function Badge({ children, className, color }: BadgeProps) {
-  return (
-    <div
-      className={twMerge(
-        "inline-flex rounded px-1.5 py-0.5 text-xs font-medium",
-        badgeColors[color],
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
+export function Badge({ children, color = "primary" }: BadgeProps) {
+  return <div className={badgeStyles({ color })}>{children}</div>;
 }

@@ -4,3 +4,93 @@
 @plugin "tailwindcss-animate";
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-light: var(--primary-light);
+  --color-primary-light-foreground: var(--primary-light-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-light: var(--secondary-light);
+  --color-secondary-light-foreground: var(--secondary-light-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-light: var(--success-light);
+  --color-success-light-foreground: var(--success-light-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-light: var(--destructive-light);
+  --color-destructive-light-foreground: var(--destructive-light-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --background: var(--color-white);
+  --foreground: var(--color-gray-900);
+  --card: var(--color-white);
+  --card-foreground: var(--color-gray-900);
+  --muted: var(--color-gray-100);
+  --muted-foreground: var(--color-gray-600);
+  --accent: var(--color-indigo-50);
+  --accent-foreground: var(--color-indigo-700);
+  --primary: var(--color-indigo-700);
+  --primary-foreground: var(--color-white);
+  --primary-light: var(--color-indigo-50);
+  --primary-light-foreground: var(--color-indigo-700);
+  --secondary: var(--color-gray-200);
+  --secondary-foreground: var(--color-gray-700);
+  --secondary-light: var(--color-gray-100);
+  --secondary-light-foreground: var(--color-gray-700);
+  --success: var(--color-green-600);
+  --success-foreground: var(--color-white);
+  --success-light: var(--color-green-50);
+  --success-light-foreground: var(--color-green-600);
+  --destructive: var(--color-red-600);
+  --destructive-foreground: var(--color-white);
+  --destructive-light: var(--color-red-50);
+  --destructive-light-foreground: var(--color-red-600);
+  --border: var(--color-gray-300);
+  --input: var(--color-gray-300);
+  --ring: var(--color-indigo-700);
+}
+
+.dark {
+  --color-background: var(--color-gray-950);
+  --color-foreground: var(--color-gray-50);
+  --color-card: var(--color-gray-900);
+  --color-card-foreground: var(--color-gray-50);
+  --color-muted: var(--color-gray-800);
+  --color-muted-foreground: var(--color-gray-400);
+  --color-accent: var(--color-gray-700);
+  --color-accent-foreground: var(--color-gray-100);
+  --color-primary: var(--color-gray-200);
+  --color-primary-foreground: var(--color-gray-950);
+  --primary-light: var(--color-gray-800);
+  --primary-light-foreground: var(--color-gray-300);
+  --color-secondary: var(--color-gray-700);
+  --color-secondary-foreground: var(--color-gray-100);
+  --secondary-light: var(--color-gray-800);
+  --secondary-light-foreground: var(--color-gray-300);
+  --color-success: var(--color-green-600);
+  --color-success-foreground: var(--color-white);
+  --success-light: var(--color-green-950);
+  --success-light-foreground: var(--color-green-400);
+  --color-destructive: var(--color-red-600);
+  --color-destructive-foreground: var(--color-white);
+  --destructive-light: var(--color-red-950);
+  --destructive-light-foreground: var(--color-white);
+  --color-border: var(--color-gray-800);
+  --color-input: var(--color-gray-800);
+  --color-ring: var(--color-gray-800);
+}

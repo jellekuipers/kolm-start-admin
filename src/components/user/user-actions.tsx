@@ -8,9 +8,9 @@ import {
   UserIcon,
   UserSwitchIcon,
 } from "@phosphor-icons/react";
-import type { User } from "@prisma/client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
+import type { User } from "prisma/generated/prisma/client";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -24,7 +24,7 @@ import {
   MenuTrigger,
 } from "@/components/ui/menu";
 import { Modal } from "@/components/ui/modal";
-import { toastQueue } from "@/components/ui/toast";
+import { toast } from "@/components/ui/toast";
 import { authClient, useSession } from "@/lib/auth-client";
 import { listUsersQueryOptions } from "@/queries/user";
 import {
@@ -61,20 +61,18 @@ export function UserActions({ user, variant }: UserActionsProps) {
         data: error,
       });
 
-      toastQueue.add({
+      toast.error({
         title: t("message.user_ban_error_title"),
         description: t("message.user_ban_error_description"),
-        color: "red",
       });
     },
     onSuccess: async () => {
       await router.invalidate({ sync: true });
       await queryClient.refetchQueries(listUsersQueryOptions());
 
-      toastQueue.add({
+      toast.success({
         title: t("message.user_ban_success_title"),
         description: t("message.user_ban_success_description"),
-        color: "gray",
       });
     },
   });
@@ -88,20 +86,18 @@ export function UserActions({ user, variant }: UserActionsProps) {
         data: error,
       });
 
-      toastQueue.add({
+      toast.error({
         title: t("message.user_unban_error_title"),
         description: t("message.user_unban_error_description"),
-        color: "red",
       });
     },
     onSuccess: async () => {
       await router.invalidate({ sync: true });
       await queryClient.refetchQueries(listUsersQueryOptions());
 
-      toastQueue.add({
+      toast.success({
         title: t("message.user_unban_success_title"),
         description: t("message.user_unban_success_description"),
-        color: "gray",
       });
     },
   });
@@ -115,19 +111,17 @@ export function UserActions({ user, variant }: UserActionsProps) {
         data: error,
       });
 
-      toastQueue.add({
+      toast.error({
         title: t("message.user_impersonate_error_title"),
         description: t("message.user_impersonate_error_description"),
-        color: "red",
       });
     },
     onSuccess: () => {
       session.refetch();
 
-      toastQueue.add({
+      toast.success({
         title: t("message.user_impersonate_success_title"),
         description: t("message.user_impersonate_success_description"),
-        color: "gray",
       });
     },
   });
@@ -141,20 +135,18 @@ export function UserActions({ user, variant }: UserActionsProps) {
         data: error,
       });
 
-      toastQueue.add({
+      toast.error({
         title: t("message.user_remove_error_title"),
         description: t("message.user_remove_error_description"),
-        color: "red",
       });
     },
     onSuccess: async () => {
       await router.invalidate({ sync: true });
       await queryClient.refetchQueries(listUsersQueryOptions());
 
-      toastQueue.add({
+      toast.success({
         title: t("message.user_remove_success_title"),
         description: t("message.user_remove_success_description"),
-        color: "gray",
       });
     },
   });
@@ -168,20 +160,18 @@ export function UserActions({ user, variant }: UserActionsProps) {
         data: error,
       });
 
-      toastQueue.add({
+      toast.error({
         title: t("message.sessions_revoke_all_error_title"),
         description: t("message.sessions_revoke_all_error_description"),
-        color: "red",
       });
     },
     onSuccess: async () => {
       await router.invalidate({ sync: true });
       await queryClient.refetchQueries(listUsersQueryOptions());
 
-      toastQueue.add({
+      toast.success({
         title: t("message.sessions_revoke_all_success_title"),
         description: t("message.sessions_revoke_all_success_description"),
-        color: "gray",
       });
     },
   });
@@ -213,7 +203,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
             <DotsThreeVerticalIcon size={20} />
           </IconButton>
         ) : (
-          <Button color="indigo" variant="light">
+          <Button variant="light">
             {t("common.actions")} <CaretDownIcon size={16} />
           </Button>
         )}
@@ -272,7 +262,7 @@ export function UserActions({ user, variant }: UserActionsProps) {
           </MenuItem>
           <MenuSeparator />
           <MenuItem
-            color="red"
+            color="destructive"
             isDisabled={removeUserMutation.isPending}
             onAction={() => setIsOpen(true)}
           >

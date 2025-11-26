@@ -10,7 +10,9 @@ import {
   Text as AriaText,
   type TextProps as AriaTextProps,
 } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
+import { tv } from "tailwind-variants";
+
+import { ring } from "@/components/ui/utils";
 
 interface GroupProps extends Omit<AriaGroupProps, "className"> {
   className?: string;
@@ -24,60 +26,44 @@ export function Description(props: AriaTextProps) {
   return (
     <AriaText
       {...props}
+      className="text-muted-foreground text-sm"
       slot="description"
-      className={twMerge("text-sm text-gray-600", "dark:text-gray-300")}
     />
   );
 }
 
 export function FieldError(props: AriaFieldErrorProps) {
-  return (
-    <AriaFieldError
-      {...props}
-      className={twMerge("text-sm text-red-600", "dark:text-red-400")}
-    />
-  );
+  return <AriaFieldError {...props} className="text-destructive text-sm" />;
 }
+
+const fieldGroupStyles = tv({
+  extend: ring,
+  base: [
+    "group flex h-8 items-center overflow-hidden rounded border border-input bg-card",
+    "disabled:border-muted disabled:bg-muted disabled:text-muted-foreground",
+  ],
+});
 
 export function FieldGroup({ className, ...props }: GroupProps) {
-  return (
-    <AriaGroup
-      {...props}
-      className={twMerge(
-        "group flex h-8 items-center overflow-hidden rounded border border-gray-300 bg-white",
-        "outline-0 outline-offset-2 outline-indigo-700 focus-within:outline-2 focus-visible:outline-2",
-        "disabled:border-gray-100 disabled:bg-gray-50 disabled:text-gray-200",
-        "dark:border-gray-700 dark:bg-gray-800",
-        "dark:disabled:border-gray-800 dark:disabled:bg-gray-900 dark:disabled:text-gray-700",
-        className,
-      )}
-    />
-  );
+  return <AriaGroup {...props} className={fieldGroupStyles({ className })} />;
 }
 
+const inputStyles = tv({
+  base: [
+    "h-8 min-w-0 bg-card px-2 text-base outline-0 lg:text-sm",
+    "disabled:border-muted disabled:bg-muted disabled:text-muted-foreground",
+  ],
+});
+
 export function Input({ className, ...props }: InputProps) {
-  return (
-    <AriaInput
-      {...props}
-      className={twMerge(
-        "h-8 min-w-0 bg-white px-2 text-base outline-0 lg:text-sm",
-        "disabled:border-gray-100 disabled:bg-gray-50 disabled:text-gray-200",
-        "dark:bg-gray-800",
-        "dark:disabled:border-gray-800 dark:disabled:bg-gray-900 dark:disabled:text-gray-700",
-        className,
-      )}
-    />
-  );
+  return <AriaInput {...props} className={inputStyles({ className })} />;
 }
 
 export function Label(props: AriaLabelProps) {
   return (
     <AriaLabel
       {...props}
-      className={twMerge(
-        "w-fit cursor-default text-sm font-medium text-gray-600",
-        "dark:text-gray-200",
-      )}
+      className="w-fit cursor-default font-medium text-muted-foreground text-sm"
     />
   );
 }

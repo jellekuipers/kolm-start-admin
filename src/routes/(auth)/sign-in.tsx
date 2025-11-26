@@ -2,7 +2,6 @@ import { useForm } from "@tanstack/react-form";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { twMerge } from "tailwind-merge";
 import { z } from "zod";
 
 import { FormError } from "@/components/form/form-error";
@@ -13,7 +12,7 @@ import { Label } from "@/components/ui/field";
 import { Heading } from "@/components/ui/heading";
 import { Link } from "@/components/ui/link";
 import { TextField } from "@/components/ui/text-field";
-import { toastQueue } from "@/components/ui/toast";
+import { toast } from "@/components/ui/toast";
 import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip";
 import { signIn } from "@/lib/auth-client";
 import { getFieldErrorMessage } from "@/lib/error";
@@ -62,10 +61,9 @@ function RouteComponent() {
           onSuccess: () => {
             router.invalidate();
 
-            toastQueue.add({
+            toast.success({
               title: t("message.sign_in_success_title"),
               description: t("message.sign_in_success_description"),
-              color: "gray",
             });
           },
         },
@@ -76,14 +74,9 @@ function RouteComponent() {
   });
 
   return (
-    <div
-      className={twMerge(
-        "flex min-h-screen flex-col items-center justify-center gap-6 p-4 bg-gray-50",
-        "dark:bg-gray-900",
-      )}
-    >
+    <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-muted p-4">
       <Logo size={40} />
-      <Card className="w-96 p-4">
+      <Card className="w-96">
         <div className="space-y-4">
           <Heading level={2}>{t("auth.sign_in")}</Heading>
           <form
@@ -139,7 +132,6 @@ function RouteComponent() {
                 {([canSubmit, isSubmitting]) => (
                   <div className="flex justify-end">
                     <Button
-                      color="indigo"
                       isDisabled={!canSubmit}
                       isPending={isSubmitting}
                       type="submit"

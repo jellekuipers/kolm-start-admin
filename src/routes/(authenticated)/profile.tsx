@@ -1,10 +1,9 @@
-import type { Account } from "@prisma/client";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import type { ColumnDef } from "@tanstack/react-table";
 import type { TFunction } from "i18next";
+import type { Account } from "prisma/generated/prisma/client";
 import { useTranslation } from "react-i18next";
-import { twMerge } from "tailwind-merge";
 
 import { Container } from "@/components/layout/container";
 import { CopyValue } from "@/components/misc/copy-value";
@@ -76,12 +75,7 @@ function RouteComponent() {
               {auth.user.name ? (
                 <div className="space-y-0">
                   <Heading level={1}>{auth.user.name}</Heading>
-                  <span
-                    className={twMerge(
-                      "text-sm text-gray-600",
-                      "dark:text-gray-400",
-                    )}
-                  >
+                  <span className="text-muted-foreground text-sm">
                     {auth.user.email}
                   </span>
                 </div>

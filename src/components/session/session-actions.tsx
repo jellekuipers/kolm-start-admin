@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import { IconButton } from "@/components/ui/icon-button";
 import { Menu, MenuItem, MenuTrigger } from "@/components/ui/menu";
-import { toastQueue } from "@/components/ui/toast";
+import { toast } from "@/components/ui/toast";
 import { revokeUserSession } from "@/server/user";
 import { logger } from "@/utils/logger";
 
@@ -30,19 +30,17 @@ export function SessionActions({ sessionToken }: SessionActionsProps) {
         data: error,
       });
 
-      toastQueue.add({
+      toast.error({
         title: t("message.session_revoke_error_title"),
         description: t("message.session_revoke_error_description"),
-        color: "red",
       });
     },
     onSuccess: async () => {
       await router.invalidate({ sync: true });
 
-      toastQueue.add({
+      toast.success({
         title: t("message.session_revoke_success_title"),
         description: t("message.session_revoke_success_description"),
-        color: "gray",
       });
     },
   });
@@ -54,7 +52,7 @@ export function SessionActions({ sessionToken }: SessionActionsProps) {
       </IconButton>
       <Menu>
         <MenuItem
-          color="red"
+          color="destructive"
           isDisabled={revokeUserSessionMutation.isPending}
           onAction={() =>
             revokeUserSessionMutation.mutateAsync({

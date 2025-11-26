@@ -1,9 +1,9 @@
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
-import type { User } from "@prisma/client";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import type { ColumnDef } from "@tanstack/react-table";
 import type { TFunction } from "i18next";
+import type { User } from "prisma/generated/prisma/client";
 import { useTranslation } from "react-i18next";
 
 import { Container } from "@/components/layout/container";
@@ -103,9 +103,9 @@ function getColumns({
       header: t("table.banned"),
       cell: ({ row }) =>
         row.original.banned ? (
-          <Badge color="red">{t("user.banned")}</Badge>
+          <Badge color="destructive">{t("user.banned")}</Badge>
         ) : (
-          <Badge color="green">{t("user.active")}</Badge>
+          <Badge color="success">{t("user.active")}</Badge>
         ),
     },
     {
@@ -159,7 +159,7 @@ function RouteComponent() {
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div className="flex items-center gap-2">
               <Heading level={1}>{t("user.users")}</Heading>
-              <Badge color="indigo">{users.length}</Badge>
+              <Badge>{users.length}</Badge>
             </div>
             <CreateUserModal />
           </div>

@@ -8,12 +8,19 @@ import {
   useLink,
   useObjectRef,
 } from "react-aria";
-import { twMerge } from "tailwind-merge";
+import { tv } from "tailwind-variants";
+
+import { ring } from "@/components/ui/utils";
 
 export interface AriaLinkProps extends Omit<AriaLinkOptions, "href"> {
   className?: string;
   children?: React.ReactNode;
 }
+
+const linkStyles = tv({
+  extend: ring,
+  base: ["flex items-center gap-2 text-primary text-sm", "hover:underline"],
+});
 
 const AriaLinkComponent = forwardRef<HTMLAnchorElement, AriaLinkProps>(
   ({ className, ...props }, forwardedRef) => {
@@ -26,13 +33,7 @@ const AriaLinkComponent = forwardRef<HTMLAnchorElement, AriaLinkProps>(
     return (
       <a
         {...mergeProps(linkProps, hoverProps, focusProps, props)}
-        className={twMerge(
-          "flex items-center gap-2 text-sm text-indigo-700",
-          "hover:underline",
-          "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
-          "dark:text-indigo-200",
-          className,
-        )}
+        className={linkStyles({ className })}
         data-focus-visible={isFocusVisible || undefined}
         data-focused={isFocused || undefined}
         data-hovered={isHovered || undefined}

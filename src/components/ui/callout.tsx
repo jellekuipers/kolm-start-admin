@@ -1,8 +1,8 @@
-import { twMerge } from "tailwind-merge";
+import { tv } from "tailwind-variants";
 
 interface CalloutProps {
-  color: "gray" | "green" | "indigo" | "red";
   children: React.ReactNode;
+  color?: "primary" | "secondary" | "success" | "destructive";
 }
 
 interface CalloutIconProps {
@@ -13,29 +13,20 @@ interface CalloutTextProps {
   children: React.ReactNode;
 }
 
-const calloutColors = {
-  gray: twMerge("bg-gray-50 text-gray-600", "dark:bg-gray-700 dark:text-white"),
-  green: twMerge(
-    "bg-green-50 text-green-600",
-    "dark:bg-green-700 dark:text-white",
-  ),
-  indigo: twMerge(
-    "bg-indigo-50 text-indigo-700",
-    "dark:bg-indigo-600 dark:text-white",
-  ),
-  red: twMerge("bg-red-50 text-red-600", "dark:bg-red-700 dark:text-white"),
-};
+const callOutStyles = tv({
+  base: "flex items-center gap-2 rounded p-4 text-sm",
+  variants: {
+    color: {
+      primary: "bg-accent text-accent-foreground",
+      secondary: "bg-secondary text-secondary-foreground",
+      success: "bg-success/10 text-success",
+      destructive: "bg-destructive/10 text-destructive",
+    },
+  },
+});
 
-export function Callout({ color, ...props }: CalloutProps) {
-  return (
-    <div
-      {...props}
-      className={twMerge(
-        "flex items-center gap-2 rounded p-4 text-sm",
-        calloutColors[color],
-      )}
-    />
-  );
+export function Callout({ color = "primary", ...props }: CalloutProps) {
+  return <div {...props} className={callOutStyles({ color })} />;
 }
 
 export function CalloutIcon(props: CalloutIconProps) {

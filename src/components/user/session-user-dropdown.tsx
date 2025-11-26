@@ -8,7 +8,6 @@ import {
 } from "@phosphor-icons/react";
 import { useNavigate, useRouter } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
-import { twMerge } from "tailwind-merge";
 
 import { Avatar } from "@/components/ui/avatar";
 import { IconButton } from "@/components/ui/icon-button";
@@ -40,6 +39,8 @@ export function SessionUserDropdown() {
     refetchSession();
   };
 
+  const setThemeHandler = () => setTheme(theme === "dark" ? "light" : "dark");
+
   const signOutHandler = () =>
     signOut({
       fetchOptions: {
@@ -51,12 +52,7 @@ export function SessionUserDropdown() {
 
   if (isPendingSession)
     return (
-      <div
-        className={twMerge(
-          "flex size-8 items-center justify-center rounded bg-indigo-50 text-indigo-700",
-          "dark:bg-indigo-900 dark:text-indigo-50",
-        )}
-      >
+      <div className="flex size-8 items-center justify-center rounded bg-accent text-accent-foreground">
         <CircleNotchIcon className="animate-spin" size={16} />
       </div>
     );
@@ -85,9 +81,7 @@ export function SessionUserDropdown() {
           <UserIcon size={16} />
           {t("user.view_profile")}
         </MenuItem>
-        <MenuItem
-          onAction={() => setTheme(theme === "dark" ? "light" : "dark")}
-        >
+        <MenuItem onAction={setThemeHandler}>
           {theme === "dark" ? <SunIcon size={16} /> : <MoonIcon size={16} />}
           {t("user.toggle_theme")}
         </MenuItem>

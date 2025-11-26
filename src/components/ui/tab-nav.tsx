@@ -1,7 +1,9 @@
 import type { ActiveOptions, LinkProps } from "@tanstack/react-router";
 import { twMerge } from "tailwind-merge";
+import { tv } from "tailwind-variants";
 
 import { Link } from "@/components/ui/link";
+import { ring } from "@/components/ui/utils";
 
 interface TabNavProps {
   children: React.ReactNode;
@@ -15,34 +17,25 @@ interface TabNavLinkProps {
 }
 
 export function TabNav(props: TabNavProps) {
-  return (
-    <nav
-      {...props}
-      className={twMerge(
-        "flex border-b border-gray-300",
-        "dark:border-gray-700",
-      )}
-    />
-  );
+  return <nav {...props} className="flex border-border border-b" />;
 }
+
+const tabNavLinkStyles = tv({
+  extend: ring,
+  base: [
+    "group -mb-px flex items-center gap-2 border-transparent border-b-2 px-2 pb-1",
+    "hover:no-underline",
+    "data-[status=active]:border-primary",
+  ],
+});
 
 export function TabNavLink({ children, ...props }: TabNavLinkProps) {
   return (
-    <Link
-      {...props}
-      className={twMerge(
-        "group -mb-px flex items-center gap-2 border-b-2 border-transparent px-2 pb-1",
-        "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
-        "hover:no-underline",
-        "data-[status=active]:border-indigo-500",
-      )}
-    >
+    <Link {...props} className={tabNavLinkStyles()}>
       <span
         className={twMerge(
-          "flex h-8 items-center rounded px-2 text-sm font-medium text-gray-800",
-          "group-hover:bg-gray-100",
-          "dark:text-gray-200",
-          "dark:group-hover:bg-gray-800",
+          "flex h-8 items-center rounded px-2 font-medium text-foreground text-sm",
+          "group-hover:bg-muted",
         )}
       >
         {children}

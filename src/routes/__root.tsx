@@ -8,9 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
-import type { ReactNode } from "react";
 import { I18nextProvider, useTranslation } from "react-i18next";
-import { twMerge } from "tailwind-merge";
 
 import { DefaultCatchBoundary } from "@/components/error/default-catch-boundary";
 import { Toast } from "@/components/ui/toast";
@@ -72,7 +70,7 @@ function RootComponent() {
   );
 }
 
-function RootDocument({ children }: { children: ReactNode }) {
+function RootDocument({ children }: { children: React.ReactNode }) {
   const { i18n } = useTranslation();
 
   return (
@@ -80,12 +78,7 @@ function RootDocument({ children }: { children: ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body
-        className={twMerge(
-          "flex min-h-screen flex-col text-gray-800 bg-white antialiased",
-          "dark:text-white dark:bg-gray-900",
-        )}
-      >
+      <body className="flex min-h-screen flex-col bg-background text-foreground antialiased">
         {children}
         {import.meta.env.DEV ? (
           <TanStackDevtools

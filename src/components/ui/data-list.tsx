@@ -2,7 +2,6 @@ import { twMerge } from "tailwind-merge";
 
 interface DataListProps {
   children: React.ReactNode;
-  className?: string;
 }
 
 interface DataListItemProps {
@@ -17,14 +16,13 @@ interface DataListValueProps {
   children: React.ReactNode;
 }
 
-export function DataList({ className, ...props }: DataListProps) {
+export function DataList(props: DataListProps) {
   return (
     <dl
       {...props}
       className={twMerge(
         "flex flex-col gap-2 text-sm",
         "lg:grid lg:auto-rows-fr lg:grid-cols-[auto_1fr]",
-        className,
       )}
     />
   );
@@ -43,12 +41,7 @@ export function DataListItem(props: DataListItemProps) {
 }
 
 export function DataListLabel(props: DataListLabelProps) {
-  return (
-    <dt
-      {...props}
-      className={twMerge("min-w-22 text-gray-600", "dark:text-gray-300")}
-    />
-  );
+  return <dt {...props} className="min-w-22 text-muted-foreground" />;
 }
 
 export function DataListValue(props: DataListValueProps) {

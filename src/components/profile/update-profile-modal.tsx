@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog } from "@/components/ui/dialog";
 import { Modal, ModalHeading } from "@/components/ui/modal";
 import { TextField } from "@/components/ui/text-field";
-import { toastQueue } from "@/components/ui/toast";
+import { toast } from "@/components/ui/toast";
 import { authClient, useSession } from "@/lib/auth-client";
 import { getFieldErrorMessage } from "@/lib/error";
 import { logger } from "@/utils/logger";
@@ -60,10 +60,9 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
 
       setOpen(false);
 
-      toastQueue.add({
+      toast.success({
         title: t("message.profile_update_success_title"),
         description: t("message.profile_update_success_description"),
-        color: "gray",
       });
     },
   });
@@ -89,9 +88,7 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
 
   return (
     <>
-      <Button color="indigo" onPress={() => setOpen(true)}>
-        {t("user.update_profile")}
-      </Button>
+      <Button onPress={() => setOpen(true)}>{t("user.update_profile")}</Button>
       <Modal isDismissable isOpen={open} onOpenChange={onOpenChangeHandler}>
         <Dialog>
           <ModalHeading slot="title">{t("user.update_profile")}</ModalHeading>
@@ -121,11 +118,10 @@ export function UpdateProfileModal({ user }: UpdateProfileModalProps) {
               >
                 {([canSubmit, isSubmitting]) => (
                   <div className="flex justify-end gap-2">
-                    <Button color="gray" slot="close" variant="light">
+                    <Button color="secondary" slot="close">
                       {t("common.cancel")}
                     </Button>
                     <Button
-                      color="indigo"
                       isDisabled={!canSubmit}
                       isPending={isSubmitting}
                       type="submit"

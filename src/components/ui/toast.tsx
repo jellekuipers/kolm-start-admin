@@ -8,12 +8,19 @@ import {
   UNSTABLE_ToastRegion as AriaToastRegion,
 } from "react-aria-components";
 import { flushSync } from "react-dom";
-import { twMerge } from "tailwind-merge";
+import { tv } from "tailwind-variants";
+
+import { ring } from "@/components/ui/utils";
 
 interface ToastContent {
-  color: keyof typeof toastColors;
-  title: string;
+  color?: "primary" | "secondary" | "success" | "destructive";
   description?: string;
+  title: string;
+}
+
+interface ToastProps {
+  description?: string;
+  title: string;
 }
 
 export const toastQueue = new AriaToastQueue<ToastContent>({
@@ -28,42 +35,47 @@ export const toastQueue = new AriaToastQueue<ToastContent>({
   },
 });
 
-const toastColors = {
-  gray: twMerge(
-    "bg-white text-gray-600 border border-gray-300",
-    "dark:bg-gray-700 dark:text-white dark:border dark:border-gray-700",
-  ),
-  green: twMerge(
-    "bg-green-50 text-green-600 border border-green-300",
-    "dark:bg-green-700 dark:text-white dark:border dark:border-green-700",
-  ),
-  indigo: twMerge(
-    "bg-indigo-50 text-indigo-700 border border-indigo-300",
-    "dark:bg-indigo-600 dark:text-white dark:border dark:border-indigo-700",
-  ),
-  red: twMerge(
-    "bg-red-50 text-red-600 border border-red-300",
-    "dark:bg-red-700 dark:text-white dark:border dark:border-red-700",
-  ),
-} as const;
+export const toast = {
+  error: ({ description, title }: ToastProps) =>
+    toastQueue.add({ title, description, color: "destructive" }),
+  info: ({ description, title }: ToastProps) =>
+    toastQueue.add({ title, description, color: "primary" }),
+  success: ({ description, title }: ToastProps) =>
+    toastQueue.add({ title, description, color: "success" }),
+};
+
+const toastStyles = tv({
+  base: "relative flex w-full items-start justify-between gap-4 rounded-lg p-4 text-sm",
+  variants: {
+    color: {
+      primary: "bg-accent text-accent-foreground border border-primary/20",
+      secondary: "bg-card text-muted-foreground border border-border",
+      success: "bg-success/10 text-success border border-success/20",
+      destructive:
+        "bg-destructive/10 text-destructive border border-destructive/20",
+    },
+  },
+});
+
+const toastIconStyles = tv({
+  extend: ring,
+  base: ["absolute top-4 right-4", "hover:opacity-80"],
+});
 
 export function Toast() {
   return (
     <AriaToastRegion
-      className="fixed bottom-4 right-4 flex flex-col-reverse gap-2 max-w-80 w-full"
+      className="fixed right-4 bottom-4 flex w-full max-w-80 flex-col-reverse gap-2"
       queue={toastQueue}
     >
       {({ toast }) => {
         const {
-          content: { color, description, title },
+          content: { color = "primary", description, title },
         } = toast;
 
         return (
           <AriaToast
-            className={twMerge(
-              "flex justify-between items-start gap-4 rounded-lg p-4 text-sm w-full relative",
-              toastColors[color],
-            )}
+            className={toastStyles({ color })}
             style={{ viewTransitionName: toast.key }}
             toast={toast}
           >
@@ -73,14 +85,7 @@ export function Toast() {
               </AriaText>
               <AriaText slot="description">{description}</AriaText>
             </AriaToastContent>
-            <AriaButton
-              className={twMerge(
-                "absolute right-4 top-4",
-                "hover:opacity-75",
-                "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
-              )}
-              slot="close"
-            >
+            <AriaButton className={toastIconStyles()} slot="close">
               <XIcon size={16} />
             </AriaButton>
           </AriaToast>

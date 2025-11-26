@@ -10,6 +10,7 @@ import {
 } from "react-aria-components";
 import { useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";
+import { tv } from "tailwind-variants";
 
 import {
   Description,
@@ -19,6 +20,7 @@ import {
   Label,
 } from "@/components/ui/field";
 import { Popover } from "@/components/ui/popover";
+import { ring } from "@/components/ui/utils";
 
 export interface ComboBoxProps<T extends object>
   extends Omit<AriaComboBoxProps<T>, "children" | "className"> {
@@ -68,18 +70,15 @@ export function ComboBox<T extends object>({
   );
 }
 
+const comboBoxItemStyles = tv({
+  extend: ring,
+  base: [
+    "flex h-8 cursor-default items-center gap-2 rounded px-2 text-sm",
+    "hover:bg-primary hover:text-primary-foreground",
+    "disabled:bg-muted disabled:text-muted-foreground",
+  ],
+});
+
 export function ComboBoxItem(props: AriaListBoxItemProps) {
-  return (
-    <AriaListBoxItem
-      {...props}
-      className={twMerge(
-        "flex h-8 cursor-default items-center gap-2 rounded px-2 text-sm",
-        "outline-0 outline-offset-2 outline-indigo-700 focus-visible:outline-2",
-        "hover:bg-indigo-700 hover:text-white",
-        "disabled:bg-gray-50 disabled:text-gray-200",
-        "dark:hover:bg-indigo-600",
-        "dark:disabled:bg-gray-900 dark:disabled:text-gray-700",
-      )}
-    />
-  );
+  return <AriaListBoxItem {...props} className={comboBoxItemStyles()} />;
 }
