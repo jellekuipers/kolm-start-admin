@@ -7,6 +7,7 @@ import { Link } from "@/components/ui/link";
 import { Separator } from "@/components/ui/separator";
 import { SessionUserDropdown } from "@/components/user/session-user-dropdown";
 import { userRoleEnum } from "@/lib/enums";
+import type { FileRoutesByTo } from "@/routeTree.gen";
 
 export const Route = createFileRoute("/(authenticated)")({
   beforeLoad: ({ context: { auth } }) => {
@@ -24,7 +25,7 @@ export const Route = createFileRoute("/(authenticated)")({
 function RouteComponent() {
   const { t } = useTranslation();
 
-  const routes = [
+  const routes: { to: keyof FileRoutesByTo; label: string }[] = [
     { to: "/", label: t("navigation.dashboard") },
     { to: "/users", label: t("navigation.users") },
   ];
