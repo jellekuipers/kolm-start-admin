@@ -26,7 +26,7 @@ export function Tooltip({ children, ...props }: TooltipProps) {
       <AriaOverlayArrow>
         <svg
           aria-hidden="true"
-          className="group-placement-left:-rotate-90 fill-muted stroke-border group-placement-bottom:rotate-180 group-placement-right:rotate-90"
+          className="fill-muted stroke-border group-placement-bottom:rotate-180 group-placement-left:-rotate-90 group-placement-right:rotate-90"
           width={8}
           height={8}
           viewBox="0 0 8 8"
