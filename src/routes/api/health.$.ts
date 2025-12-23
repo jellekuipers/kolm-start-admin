@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { createServerOnlyFn, json } from "@tanstack/react-start";
+import { createServerOnlyFn } from "@tanstack/react-start";
 
 import { db } from "@/lib/db";
 
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/api/health/$")({
   server: {
     handlers: {
       GET: async () => {
-        return json({
+        return Response.json({
           database: await checkDatabase(),
           memory: process.memoryUsage(),
           status: "healthy",

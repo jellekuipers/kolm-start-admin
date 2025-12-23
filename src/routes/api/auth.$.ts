@@ -1,11 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { createServerOnlyFn } from "@tanstack/react-start";
 
 import { auth } from "@/lib/auth";
 
-const handler = createServerOnlyFn(({ request }: { request: Request }) => {
+const handler = ({ request }: { request: Request }) => {
   return auth.handler(request);
-});
+};
 
 export const Route = createFileRoute("/api/auth/$")({
   server: {
