@@ -92,7 +92,7 @@ export interface FileRoutesByFullPath {
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/health/$': typeof ApiHealthSplatRoute
   '/api/metrics/$': typeof ApiMetricsSplatRoute
-  '/users': typeof authenticatedUsersIndexRoute
+  '/users/': typeof authenticatedUsersIndexRoute
   '/users/$userId/sessions': typeof authenticatedUsersUserIdSessionsRoute
   '/users/$userId/': typeof authenticatedUsersUserIdIndexRoute
 }
@@ -132,7 +132,7 @@ export interface FileRouteTypes {
     | '/api/auth/$'
     | '/api/health/$'
     | '/api/metrics/$'
-    | '/users'
+    | '/users/'
     | '/users/$userId/sessions'
     | '/users/$userId/'
   fileRoutesByTo: FileRoutesByTo
@@ -210,7 +210,7 @@ declare module '@tanstack/react-router' {
     '/(authenticated)/users/': {
       id: '/(authenticated)/users/'
       path: '/users'
-      fullPath: '/users'
+      fullPath: '/users/'
       preLoaderRoute: typeof authenticatedUsersIndexRouteImport
       parentRoute: typeof authenticatedRouteRoute
     }

@@ -42,7 +42,7 @@ export function SearchField({
           className="ml-2 fill-muted-foreground group-disabled:fill-muted-foreground/50"
         />
         <Input
-          className="outline-none [&::-webkit-search-cancel-button]:hidden"
+          className="w-full outline-none [&::-webkit-search-cancel-button]:hidden"
           placeholder={t("common.search_placeholder")}
         />
         <AriaButton className="mr-1 w-6 group-empty:invisible">
