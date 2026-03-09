@@ -48,11 +48,13 @@ const toastStyles = tv({
   base: "relative flex w-full items-start justify-between gap-4 rounded-lg p-4 text-sm",
   variants: {
     color: {
-      primary: "bg-accent text-accent-foreground border border-primary/20",
+      primary:
+        "bg-accent text-accent-foreground border border-accent-foreground",
       secondary: "bg-card text-muted-foreground border border-border",
-      success: "bg-success/10 text-success border border-success/20",
+      success:
+        "bg-success-light text-success-light-foreground border border-success-light-foreground",
       destructive:
-        "bg-destructive/10 text-destructive border border-destructive/20",
+        "bg-destructive-light text-destructive-light-foreground border border-destructive-light-foreground",
     },
   },
 });

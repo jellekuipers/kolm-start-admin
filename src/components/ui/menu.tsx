@@ -1,5 +1,6 @@
 import {
   Header as AriaHeader,
+  type HeaderProps as AriaHeaderProps,
   Menu as AriaMenu,
   MenuItem as AriaMenuItem,
   type MenuItemProps as AriaMenuItemProps,
@@ -30,9 +31,7 @@ export function Menu<T extends object>(props: MenuProps<T>) {
   );
 }
 
-export function MenuHeader(
-  props: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>,
-) {
+export function MenuHeader(props: AriaHeaderProps) {
   return (
     <AriaHeader {...props} className="mb-1 px-2 py-1 font-medium text-sm" />
   );
