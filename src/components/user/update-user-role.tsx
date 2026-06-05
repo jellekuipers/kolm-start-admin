@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
-import type { User } from "prisma/generated/prisma/client";
 import { useTranslation } from "react-i18next";
 
 import { Select, SelectItem } from "@/components/ui/select";
 import { toast } from "@/components/ui/toast";
+import type { User } from "@/lib/db";
 import { type UserRole, userRoleEnum } from "@/lib/enums";
 import { getUserByIdQueryOptions } from "@/queries/user";
 import { setUserRole } from "@/server/user";

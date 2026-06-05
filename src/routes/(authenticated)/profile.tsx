@@ -2,7 +2,6 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import type { ColumnDef } from "@tanstack/react-table";
 import type { TFunction } from "i18next";
-import type { Account } from "prisma/generated/prisma/client";
 import { useTranslation } from "react-i18next";
 
 import { Container } from "@/components/layout/container";
@@ -13,6 +12,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { Code } from "@/components/ui/code";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
+import type { Account } from "@/lib/db";
 import { listUserAccountsQueryOptions } from "@/queries/user";
 
 export const Route = createFileRoute("/(authenticated)/profile")({

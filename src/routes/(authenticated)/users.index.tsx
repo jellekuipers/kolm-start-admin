@@ -3,7 +3,6 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import type { ColumnDef } from "@tanstack/react-table";
 import type { TFunction } from "i18next";
-import type { User } from "prisma/generated/prisma/client";
 import { useTranslation } from "react-i18next";
 
 import { Container } from "@/components/layout/container";
@@ -18,6 +17,7 @@ import { CreateUserModal } from "@/components/user/create-user-modal";
 import { UserActions } from "@/components/user/user-actions";
 import { UserRole } from "@/components/user/user-role";
 import type { Session } from "@/lib/auth-client";
+import type { User } from "@/lib/db";
 import { listUsersQueryOptions } from "@/queries/user";
 
 export const Route = createFileRoute("/(authenticated)/users/")({

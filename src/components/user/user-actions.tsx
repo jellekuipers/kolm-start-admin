@@ -10,7 +10,6 @@ import {
 } from "@phosphor-icons/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useRouter } from "@tanstack/react-router";
-import type { User } from "prisma/generated/prisma/client";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -26,6 +25,7 @@ import {
 import { Modal } from "@/components/ui/modal";
 import { toast } from "@/components/ui/toast";
 import { authClient, useSession } from "@/lib/auth-client";
+import type { User } from "@/lib/db";
 import { listUsersQueryOptions } from "@/queries/user";
 import {
   banUser,
