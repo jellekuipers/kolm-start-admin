@@ -1,5 +1,4 @@
 import { CaretDownIcon } from "@phosphor-icons/react";
-import type { Table } from "@tanstack/react-table";
 import { useTranslation } from "react-i18next";
 
 import { Button } from "@/components/ui/button";
@@ -8,13 +7,25 @@ import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { GridList, GridListItem } from "@/components/ui/grid-list";
 import { Popover } from "@/components/ui/popover";
 
-interface DataTableColumnFilterProps<TData> {
-  table: Table<TData>;
+interface ColumnVisibilityTable {
+  getAllColumns(): Array<{
+    columnDef: {
+      header?: unknown;
+    };
+    getCanHide(): boolean;
+    id: string;
+  }>;
+  getVisibleLeafColumns(): Array<{
+    id: string;
+  }>;
+  setColumnVisibility(visibilityState: Record<string, boolean>): void;
 }
 
-export function DataTableColumnFilter<TData>({
-  table,
-}: DataTableColumnFilterProps<TData>) {
+interface DataTableColumnFilterProps {
+  table: ColumnVisibilityTable;
+}
+
+export function DataTableColumnFilter({ table }: DataTableColumnFilterProps) {
   const { t } = useTranslation();
   const columns = table.getAllColumns().filter((column) => column.getCanHide());
 
@@ -47,7 +58,7 @@ export function DataTableColumnFilter<TData>({
             {(column) => (
               <GridListItem textValue={column.id}>
                 <Checkbox slot="selection">
-                  {column.columnDef.header?.toString()}
+                  {String(column.columnDef.header ?? "")}
                 </Checkbox>
               </GridListItem>
             )}

@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { Container } from "@/components/layout/container";
 import { CopyValue } from "@/components/misc/copy-value";
 import { UpdateProfileModal } from "@/components/profile/update-profile-modal";
+import type { DataTableSimpleFeatures } from "@/components/table/data-table-simple";
 import { DataTableSimple } from "@/components/table/data-table-simple";
 import { Avatar } from "@/components/ui/avatar";
 import { Code } from "@/components/ui/code";
@@ -26,7 +27,9 @@ function getColumns({
 }: {
   t: TFunction<"translation", undefined>;
 }): ColumnDef<
-  Pick<Account, "id" | "accountId" | "providerId" | "createdAt">
+  DataTableSimpleFeatures,
+  Pick<Account, "id" | "accountId" | "providerId" | "createdAt">,
+  unknown
 >[] {
   return [
     {
@@ -42,7 +45,7 @@ function getColumns({
     },
     {
       id: "provider",
-      accessorKey: "provider",
+      accessorKey: "providerId",
       header: t("table.provider"),
       cell: ({ row }) => <Code>{row.original.providerId}</Code>,
     },

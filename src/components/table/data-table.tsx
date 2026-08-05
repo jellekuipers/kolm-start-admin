@@ -1,16 +1,23 @@
 import { EmptyIcon } from "@phosphor-icons/react";
-import { type RankingInfo, rankItem } from "@tanstack/match-sorter-utils";
+import { rankItem } from "@tanstack/match-sorter-utils";
 import {
   type ColumnDef,
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  createFilteredRowModel,
+  createPaginatedRowModel,
+  createSortedRowModel,
   type FilterFn,
   flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
+  globalFilteringFeature,
   type PaginationState,
+  type RowData,
+  rowPaginationFeature,
+  rowSortingFeature,
   type SortingState,
-  useReactTable,
+  type TableFeatures,
+  tableFeatures,
+  useTable,
 } from "@tanstack/react-table";
 import type React from "react";
 import { useState } from "react";
@@ -31,40 +38,50 @@ import { DataTableColumnFilter } from "./data-table-column-filter";
 import { DataTablePagination } from "./data-table-pagination";
 import { DataTableSortButton } from "./data-table-sort-button";
 
-declare module "@tanstack/react-table" {
-  interface FilterFns {
-    fuzzy: FilterFn<unknown>;
-  }
-  interface FilterMeta {
-    itemRank: RankingInfo;
-  }
-}
-
-interface DataTableProps<TData, TValue> {
+interface DataTableProps<TData extends RowData> {
   actions?: React.ReactNode;
-  columns: ColumnDef<TData, TValue>[];
+  columns: Array<ColumnDef<DataTableFeatures, TData, unknown>>;
   data: TData[];
   defaultColumnVisibility?: Record<string, boolean>;
   label: string;
 }
 
-const fuzzyFilter: FilterFn<unknown> = (row, columnId, value, addMeta) => {
+const fuzzyFilter: FilterFn<TableFeatures, RowData> = (
+  row,
+  columnId,
+  value,
+  addMeta,
+) => {
   const itemRank = rankItem(row.getValue(columnId), value);
 
-  addMeta({
+  addMeta?.({
     itemRank,
   });
 
   return itemRank.passed;
 };
 
-export function DataTable<TData, TValue>({
+const dataTableFeatures = tableFeatures({
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  filteredRowModel: createFilteredRowModel(),
+  filterFns: { fuzzy: fuzzyFilter },
+  globalFilteringFeature,
+  paginatedRowModel: createPaginatedRowModel(),
+  rowPaginationFeature,
+  rowSortingFeature,
+  sortedRowModel: createSortedRowModel(),
+});
+
+export type DataTableFeatures = typeof dataTableFeatures;
+
+export function DataTable<TData extends RowData>({
   actions,
   columns,
   data,
   defaultColumnVisibility,
   label,
-}: DataTableProps<TData, TValue>) {
+}: DataTableProps<TData>) {
   const { t } = useTranslation();
   const [columnVisibility, setColumnVisibility] = useState(
     defaultColumnVisibility ?? {},
@@ -76,16 +93,10 @@ export function DataTable<TData, TValue>({
     pageSize: 25,
   });
 
-  const table = useReactTable({
-    data,
+  const table = useTable<DataTableFeatures, TData>({
     columns,
-    filterFns: {
-      fuzzy: fuzzyFilter,
-    },
-    getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
+    data,
+    features: dataTableFeatures,
     globalFilterFn: "fuzzy",
     onColumnVisibilityChange: setColumnVisibility,
     onGlobalFilterChange: setGlobalFilter,
@@ -112,42 +123,44 @@ export function DataTable<TData, TValue>({
         <div className="space-y-4">
           <Table aria-label={label}>
             <TableHeader>
-              {table.getHeaderGroups().map((headerGroup) => (
-                <TableRow key={headerGroup.id}>
-                  {headerGroup.headers.map((header) => (
-                    <TableColumn key={header.id} isRowHeader>
-                      <div className="flex items-center gap-4">
-                        {header.isPlaceholder
-                          ? null
-                          : flexRender(
-                              header.column.columnDef.header,
-                              header.getContext(),
-                            )}
-                        {header.column.getCanSort() ? (
-                          <DataTableSortButton
-                            isSorted={header.column.getIsSorted()}
-                            onClick={header.column.getToggleSortingHandler()}
-                          />
-                        ) : null}
-                      </div>
-                    </TableColumn>
-                  ))}
-                </TableRow>
-              ))}
+              {table.getHeaderGroups().flatMap((headerGroup) =>
+                headerGroup.headers.map((header) => (
+                  <TableColumn key={header.id} id={header.id} isRowHeader>
+                    <div className="flex items-center gap-4">
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext(),
+                          )}
+                      {header.column.getCanSort() ? (
+                        <DataTableSortButton
+                          isSorted={header.column.getIsSorted()}
+                          onClick={header.column.getToggleSortingHandler()}
+                        />
+                      ) : null}
+                    </div>
+                  </TableColumn>
+                )),
+              )}
             </TableHeader>
             <TableBody>
-              {table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id}>
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext(),
-                      )}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))}
+              {table.getRowModel().rows.map((row) => {
+                const cells = row.getVisibleCells?.() ?? row.getAllCells();
+
+                return (
+                  <TableRow key={row.id}>
+                    {cells.map((cell) => (
+                      <TableCell key={cell.id}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext(),
+                        )}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                );
+              })}
             </TableBody>
           </Table>
           <DataTablePagination table={table} />

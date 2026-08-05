@@ -9,26 +9,31 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as authenticatedRouteRouteImport } from './routes/(authenticated)/route'
 import { Route as authRouteRouteImport } from './routes/(auth)/route'
+import { Route as authenticatedRouteRouteImport } from './routes/(authenticated)/route'
+import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
 import { Route as authenticatedIndexRouteImport } from './routes/(authenticated)/index'
 import { Route as authenticatedProfileRouteImport } from './routes/(authenticated)/profile'
-import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
 import { Route as authenticatedUsersIndexRouteImport } from './routes/(authenticated)/users.index'
-import { Route as ApiMetricsSplatRouteImport } from './routes/api/metrics.$'
-import { Route as ApiHealthSplatRouteImport } from './routes/api/health.$'
-import { Route as ApiAuthSplatRouteImport } from './routes/api/auth.$'
 import { Route as authenticatedUsersUserIdRouteImport } from './routes/(authenticated)/users.$userId'
+import { Route as ApiAuthSplatRouteImport } from './routes/api/auth.$'
+import { Route as ApiHealthSplatRouteImport } from './routes/api/health.$'
+import { Route as ApiMetricsSplatRouteImport } from './routes/api/metrics.$'
 import { Route as authenticatedUsersUserIdIndexRouteImport } from './routes/(authenticated)/users.$userId.index'
 import { Route as authenticatedUsersUserIdSessionsRouteImport } from './routes/(authenticated)/users.$userId.sessions'
 
+const authRouteRoute = authRouteRouteImport.update({
+  id: '/(auth)',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const authenticatedRouteRoute = authenticatedRouteRouteImport.update({
   id: '/(authenticated)',
   getParentRoute: () => rootRouteImport,
 } as any)
-const authRouteRoute = authRouteRouteImport.update({
-  id: '/(auth)',
-  getParentRoute: () => rootRouteImport,
+const authSignInRoute = authSignInRouteImport.update({
+  id: '/sign-in',
+  path: '/sign-in',
+  getParentRoute: () => authRouteRoute,
 } as any)
 const authenticatedIndexRoute = authenticatedIndexRouteImport.update({
   id: '/',
@@ -40,30 +45,10 @@ const authenticatedProfileRoute = authenticatedProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => authenticatedRouteRoute,
 } as any)
-const authSignInRoute = authSignInRouteImport.update({
-  id: '/sign-in',
-  path: '/sign-in',
-  getParentRoute: () => authRouteRoute,
-} as any)
 const authenticatedUsersIndexRoute = authenticatedUsersIndexRouteImport.update({
   id: '/users/',
   path: '/users/',
   getParentRoute: () => authenticatedRouteRoute,
-} as any)
-const ApiMetricsSplatRoute = ApiMetricsSplatRouteImport.update({
-  id: '/api/metrics/$',
-  path: '/api/metrics/$',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiHealthSplatRoute = ApiHealthSplatRouteImport.update({
-  id: '/api/health/$',
-  path: '/api/health/$',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
-  id: '/api/auth/$',
-  path: '/api/auth/$',
-  getParentRoute: () => rootRouteImport,
 } as any)
 const authenticatedUsersUserIdRoute =
   authenticatedUsersUserIdRouteImport.update({
@@ -71,6 +56,21 @@ const authenticatedUsersUserIdRoute =
     path: '/users/$userId',
     getParentRoute: () => authenticatedRouteRoute,
   } as any)
+const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
+  id: '/api/auth/$',
+  path: '/api/auth/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiHealthSplatRoute = ApiHealthSplatRouteImport.update({
+  id: '/api/health/$',
+  path: '/api/health/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiMetricsSplatRoute = ApiMetricsSplatRouteImport.update({
+  id: '/api/metrics/$',
+  path: '/api/metrics/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const authenticatedUsersUserIdIndexRoute =
   authenticatedUsersUserIdIndexRouteImport.update({
     id: '/',
@@ -172,6 +172,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/(auth)': {
+      id: '/(auth)'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof authRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/(authenticated)': {
       id: '/(authenticated)'
       path: ''
@@ -179,12 +186,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof authenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/(auth)': {
-      id: '/(auth)'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof authRouteRouteImport
-      parentRoute: typeof rootRouteImport
+    '/(auth)/sign-in': {
+      id: '/(auth)/sign-in'
+      path: '/sign-in'
+      fullPath: '/sign-in'
+      preLoaderRoute: typeof authSignInRouteImport
+      parentRoute: typeof authRouteRoute
     }
     '/(authenticated)/': {
       id: '/(authenticated)/'
@@ -200,13 +207,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof authenticatedProfileRouteImport
       parentRoute: typeof authenticatedRouteRoute
     }
-    '/(auth)/sign-in': {
-      id: '/(auth)/sign-in'
-      path: '/sign-in'
-      fullPath: '/sign-in'
-      preLoaderRoute: typeof authSignInRouteImport
-      parentRoute: typeof authRouteRoute
-    }
     '/(authenticated)/users/': {
       id: '/(authenticated)/users/'
       path: '/users'
@@ -214,11 +214,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof authenticatedUsersIndexRouteImport
       parentRoute: typeof authenticatedRouteRoute
     }
-    '/api/metrics/$': {
-      id: '/api/metrics/$'
-      path: '/api/metrics/$'
-      fullPath: '/api/metrics/$'
-      preLoaderRoute: typeof ApiMetricsSplatRouteImport
+    '/(authenticated)/users/$userId': {
+      id: '/(authenticated)/users/$userId'
+      path: '/users/$userId'
+      fullPath: '/users/$userId'
+      preLoaderRoute: typeof authenticatedUsersUserIdRouteImport
+      parentRoute: typeof authenticatedRouteRoute
+    }
+    '/api/auth/$': {
+      id: '/api/auth/$'
+      path: '/api/auth/$'
+      fullPath: '/api/auth/$'
+      preLoaderRoute: typeof ApiAuthSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/health/$': {
@@ -228,19 +235,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiHealthSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/auth/$': {
-      id: '/api/auth/$'
-      path: '/api/auth/$'
-      fullPath: '/api/auth/$'
-      preLoaderRoute: typeof ApiAuthSplatRouteImport
+    '/api/metrics/$': {
+      id: '/api/metrics/$'
+      path: '/api/metrics/$'
+      fullPath: '/api/metrics/$'
+      preLoaderRoute: typeof ApiMetricsSplatRouteImport
       parentRoute: typeof rootRouteImport
-    }
-    '/(authenticated)/users/$userId': {
-      id: '/(authenticated)/users/$userId'
-      path: '/users/$userId'
-      fullPath: '/users/$userId'
-      preLoaderRoute: typeof authenticatedUsersUserIdRouteImport
-      parentRoute: typeof authenticatedRouteRoute
     }
     '/(authenticated)/users/$userId/': {
       id: '/(authenticated)/users/$userId/'

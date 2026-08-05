@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 
 import { Container } from "@/components/layout/container";
 import { CopyValue } from "@/components/misc/copy-value";
+import type { DataTableFeatures } from "@/components/table/data-table";
 import { DataTable } from "@/components/table/data-table";
 import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -32,7 +33,7 @@ function getColumns({
 }: {
   auth: Session;
   t: TFunction<"translation", undefined>;
-}): ColumnDef<User>[] {
+}): ColumnDef<DataTableFeatures, User, unknown>[] {
   return [
     {
       id: "image",

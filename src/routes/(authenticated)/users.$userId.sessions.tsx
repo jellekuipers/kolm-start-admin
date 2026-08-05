@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 
 import { CopyValue } from "@/components/misc/copy-value";
 import { SessionActions } from "@/components/session/session-actions";
+import type { DataTableFeatures } from "@/components/table/data-table";
 import { DataTable } from "@/components/table/data-table";
 import { listUserSessionsQueryOptions } from "@/queries/user";
 
@@ -22,7 +23,7 @@ function getColumns({
   t,
 }: {
   t: TFunction<"translation", undefined>;
-}): ColumnDef<Session>[] {
+}): ColumnDef<DataTableFeatures, Session, unknown>[] {
   return [
     {
       id: "id",

@@ -9,7 +9,7 @@ import { adminMiddleware } from "@/middleware/admin";
 
 export const createUser = createServerFn({ method: "POST" })
   .middleware([adminMiddleware])
-  .inputValidator(
+  .validator(
     z.object({
       email: z.email(),
       name: z.string(),
@@ -49,7 +49,7 @@ export const getUserCount = createServerFn({ method: "GET" })
 
 export const getUserById = createServerFn({ method: "GET" })
   .middleware([adminMiddleware])
-  .inputValidator(
+  .validator(
     z.object({
       userId: z.string(),
     }),
@@ -76,7 +76,7 @@ export const listUserAccounts = createServerFn({ method: "GET" })
 
 export const listUserSessions = createServerFn({ method: "GET" })
   .middleware([adminMiddleware])
-  .inputValidator(
+  .validator(
     z.object({
       userId: z.string(),
     }),
@@ -96,7 +96,7 @@ export const listUserSessions = createServerFn({ method: "GET" })
 
 export const removeUser = createServerFn({ method: "POST" })
   .middleware([adminMiddleware])
-  .inputValidator(
+  .validator(
     z.object({
       userId: z.string(),
     }),
@@ -114,7 +114,7 @@ export const removeUser = createServerFn({ method: "POST" })
 
 export const setUserRole = createServerFn({ method: "POST" })
   .middleware([adminMiddleware])
-  .inputValidator(
+  .validator(
     z.object({
       role: userRole,
       userId: z.string(),
@@ -134,7 +134,7 @@ export const setUserRole = createServerFn({ method: "POST" })
 
 export const banUser = createServerFn({ method: "POST" })
   .middleware([adminMiddleware])
-  .inputValidator(
+  .validator(
     z.object({
       userId: z.string(),
     }),
@@ -152,7 +152,7 @@ export const banUser = createServerFn({ method: "POST" })
 
 export const unbanUser = createServerFn({ method: "POST" })
   .middleware([adminMiddleware])
-  .inputValidator(
+  .validator(
     z.object({
       userId: z.string(),
     }),
@@ -170,7 +170,7 @@ export const unbanUser = createServerFn({ method: "POST" })
 
 export const revokeUserSession = createServerFn({ method: "POST" })
   .middleware([adminMiddleware])
-  .inputValidator(
+  .validator(
     z.object({
       sessionToken: z.string(),
     }),
@@ -188,7 +188,7 @@ export const revokeUserSession = createServerFn({ method: "POST" })
 
 export const revokeAllUserSessions = createServerFn({ method: "POST" })
   .middleware([adminMiddleware])
-  .inputValidator(
+  .validator(
     z.object({
       userId: z.string(),
     }),

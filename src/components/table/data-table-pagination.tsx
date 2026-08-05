@@ -4,18 +4,30 @@ import {
   CaretLeftIcon,
   CaretRightIcon,
 } from "@phosphor-icons/react";
-import type { Table } from "@tanstack/react-table";
 import { useTranslation } from "react-i18next";
 
 import { IconButton } from "@/components/ui/icon-button";
 
-interface DataTablePaginationProps<TData> {
-  table: Table<TData>;
+interface PaginationTable {
+  getCanNextPage(): boolean;
+  getCanPreviousPage(): boolean;
+  getPageCount(): number;
+  firstPage(): void;
+  lastPage(): void;
+  nextPage(): void;
+  previousPage(): void;
+  state: {
+    pagination: {
+      pageIndex: number;
+    };
+  };
 }
 
-export function DataTablePagination<TData>({
-  table,
-}: DataTablePaginationProps<TData>) {
+interface DataTablePaginationProps {
+  table: PaginationTable;
+}
+
+export function DataTablePagination({ table }: DataTablePaginationProps) {
   const { t } = useTranslation();
 
   return (
@@ -35,8 +47,8 @@ export function DataTablePagination<TData>({
         <CaretLeftIcon size={16} />
       </IconButton>
       <span className="px-2 font-semibold text-sm tabular-nums">
-        {(table.getState().pagination.pageIndex + 1).toString()}{" "}
-        {t("pagination.of")} {table.getPageCount().toString()}
+        {(table.state.pagination.pageIndex + 1).toString()} {t("pagination.of")}{" "}
+        {table.getPageCount().toString()}
       </span>
       <IconButton
         aria-label={t("table.go_to_next_page")}

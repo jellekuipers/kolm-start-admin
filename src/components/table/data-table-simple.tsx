@@ -1,11 +1,13 @@
 import { EmptyIcon } from "@phosphor-icons/react";
 import {
   type ColumnDef,
+  createSortedRowModel,
   flexRender,
-  getCoreRowModel,
-  getSortedRowModel,
+  type RowData,
+  rowSortingFeature,
   type SortingState,
-  useReactTable,
+  tableFeatures,
+  useTable,
 } from "@tanstack/react-table";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -22,26 +24,31 @@ import {
 
 import { DataTableSortButton } from "./data-table-sort-button";
 
-interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
+interface DataTableProps<TData extends RowData> {
+  columns: Array<ColumnDef<DataTableSimpleFeatures, TData, unknown>>;
   data: TData[];
   label: string;
 }
 
-export function DataTableSimple<TData, TValue>({
+const dataTableSimpleFeatures = tableFeatures({
+  rowSortingFeature,
+  sortedRowModel: createSortedRowModel(),
+});
+
+export type DataTableSimpleFeatures = typeof dataTableSimpleFeatures;
+
+export function DataTableSimple<TData extends RowData>({
   columns,
   data,
   label,
-}: DataTableProps<TData, TValue>) {
+}: DataTableProps<TData>) {
   const { t } = useTranslation();
   const [sorting, setSorting] = useState<SortingState>([]);
 
-  const table = useReactTable({
-    data,
+  const table = useTable<DataTableSimpleFeatures, TData>({
     columns,
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    filterFns: { fuzzy: () => true },
+    data,
+    features: dataTableSimpleFeatures,
     onSortingChange: setSorting,
     state: {
       sorting,
@@ -53,39 +60,44 @@ export function DataTableSimple<TData, TValue>({
       {table.getRowModel().rows?.length ? (
         <Table aria-label={label}>
           <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <TableColumn key={header.id} isRowHeader>
-                    <div className="flex items-center gap-2">
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext(),
-                          )}
-                      {header.column.getCanSort() ? (
-                        <DataTableSortButton
-                          isSorted={header.column.getIsSorted()}
-                          onClick={header.column.getToggleSortingHandler()}
-                        />
-                      ) : null}
-                    </div>
-                  </TableColumn>
-                ))}
-              </TableRow>
-            ))}
+            {table.getHeaderGroups().flatMap((headerGroup) =>
+              headerGroup.headers.map((header) => (
+                <TableColumn key={header.id} id={header.id} isRowHeader>
+                  <div className="flex items-center gap-2">
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext(),
+                        )}
+                    {header.column.getCanSort() ? (
+                      <DataTableSortButton
+                        isSorted={header.column.getIsSorted()}
+                        onClick={header.column.getToggleSortingHandler()}
+                      />
+                    ) : null}
+                  </div>
+                </TableColumn>
+              )),
+            )}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows.map((row) => (
-              <TableRow key={row.id}>
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))}
+            {table.getRowModel().rows.map((row) => {
+              const cells = row.getAllCells();
+
+              return (
+                <TableRow key={row.id}>
+                  {cells.map((cell) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
+                      )}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       ) : (
